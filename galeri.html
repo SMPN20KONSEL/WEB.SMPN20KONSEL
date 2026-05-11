@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galeri - SMPN 20 Konawe Selatan</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<header>
+  <div class="top-bar" style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background-color:#eee;color:rgb(0, 0, 0);">
+    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+    <div class="social-icons">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <nav>
+<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+  &#9776;
+</div>
+<div class="logo" style="display: flex; align-items: center; gap: 2px;">
+  <img src="image/Logo_transparent.png" alt="Logo" style="width: 50px;background-color:white;">
+  <div style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.5;">
+    <h2 style="margin: 0; font-size: 20px; color: white;">SMPN20KONSEL</h2>
+    <small style="font-size: 12px; color: white;">Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small>
+  </div>
+</div>
+
+</div>
+    <div class="nav-links" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+      <a href="profil.html" style="color:white;text-decoration:none;">Profil</a>
+      <a href="kesiswaan.html" style="color:white;text-decoration:none;">Kesiswaan</a>
+      <a href="informasi.html" style="color:white;text-decoration:none;">Informasi</a>
+      <a href="galeri.html" style="color:white;text-decoration:none;">Galeri</a>
+      <a href="kontak.html" style="color:white;text-decoration:none;">Kontak</a>
+      <a class="login-btn" href="daftar_spmb.html" style="background-color:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </nav>
+</header>
+
+<head>
+    <title>Galeri Gambar</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #003366;
+      border-top: 4px solid #007BFF;
+      border-bottom: 4px solid #007BFF;
+      padding: 10px 0;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .galeri {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .gambar-item {
+      text-align: center;
+      flex: 1 1 30%;
+      max-width: 200px;
+    }
+
+    .gambar-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .video-container {
+      margin-top: 50px;
+    }
+
+    .judul-video {
+      text-align: center;
+      font-size: 24px;
+      border-top: 3px solid #007BFF;
+      border-bottom: 3px solid #007BFF;
+      color: #003366;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .video-grid iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 225px;
+      border-radius: 8px;
+    }
+
+    video {
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+.video-wrapper {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.video-wrapper video {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .gambar-item, .video-grid iframe {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<section>
+  <div class="container">
+    <h1>SMP To Me</h1>
+    <h2>Kumpulan foto kegiatan sekolah</h2>
+    <div class="galeri">
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0001.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0007.jpg" alt="Kegiatan"></div>      
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0003.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0005.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0006.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0002.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0008.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0009.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0010.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0011.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0012.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0013.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0014.jpg" alt="Kegiatan"></div>
+       <div class="gambar-item"><img src="Galeri/IMG-20250613-WA0015.jpg" alt="Kegiatan"></div>
+    </div>
+    <p style="margin-top: 30px; text-align:center;"> Untuk melihat semua galeri, <a href="galeri Lengkap.html" style="color: #2980b9; font-weight: bold;">tekan halaman ini</a>.</p>
+
+  <div class="video-container">
+  <h3 class="judul-video">VIDEO</h3>
+  <p>Berikut video kegiatan SMPN 20 Konawe Selatan:</p>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/Yq7AEyqDvlA" allowfullscreen title="Video YouTube"></iframe>
+    <iframe src="https://www.youtube.com/embed/BhrCBxCSLUM" allowfullscreen title="Video SMPN 20 Konawe Selatan"></iframe>
+    <div class="video-wrapper">
+      <video controls width="100%">
+        <source src="Galeri/VID-20250429-WA0003.mp4" type="video/mp4">
+        Browser Anda tidak mendukung pemutar video.
+      </video>
+      <p>Video 1</p>
+    </div>
+    <div class="video-wrapper">
+      <video controls width="100%">
+        <source src="Galeri/VID-20250429-WA0004.mp4" type="video/mp4">
+        Browser Anda tidak mendukung pemutar video.
+      </video>
+      <p>Video 2</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
+  <div class="column">
+    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
+      <h2 style="margin: 0; font-size: 32px; color: white; text-align: center;">SMPN20KONSEL</h2>
+    </div>
+    <p>SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
+  </div>
+  <div class="column">
+    <div class="counter-section" style="display:flex;justify-content:center;gap:40px;">
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
+        <span>840</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
+        <span>122</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
+        <span>15</span>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <strong>Temukan Kami</strong>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="footer-icons" style="display:flex;gap:10px;">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p><i class="fab fa-google-play"></i> Download Aplikasi</p>
+        <a href="https://play.google.com/store/apps" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
+        </a>
+        </div>
+      <div>
+        <iframe allowfullscreen="" height="100" loading="lazy" src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" style="border:0;border-radius:10px;" width="200"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
+  © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.cm
+</div>
+
+</body>
+</html>

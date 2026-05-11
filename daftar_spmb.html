@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Profil - SMPN 20 Konawe Selatan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <div class="top-bar" style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background-color:#eee;color:rgb(0, 0, 0);">
+    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+    <div class="social-icons">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <nav>
+<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+  &#9776;
+</div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:50px; background-color:white;">
+      <h2 style="margin: 0; font-size: 20px; color: white; line-height: 1.4;">SMPN20KONSEL<br><small style="font-size: 12px; font-weight: normal; color: white;">Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small></h2>
+    </h2>
+    </div>
+    <div class="nav-links" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+      <a href="profil.html" style="color:white;text-decoration:none;">Profil</a>
+      <a href="kesiswaan.html" style="color:white;text-decoration:none;">Kesiswaan</a>
+      <a href="informasi.html" style="color:white;text-decoration:none;">Informasi</a>
+      <a href="galeri.html" style="color:white;text-decoration:none;">Galeri</a>
+      <a href="kontak.html" style="color:white;text-decoration:none;">Kontak</a>
+      <a class="login-btn" href="daftar_spmb.html" style="background-color:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 60px auto; /* Batas atas dan bawah tetap */
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .container::before,
+  .container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: transparent;
+  }
+
+  h1 {
+    color: #2c3e50;
+    border-top: 4px solid #3498db;
+    border-bottom: 4px solid #3498db;
+    padding: 15px 0;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+ h2 {
+  border: none !important;
+  box-shadow: none !important;
+    color: #000;
+    margin-top: 25px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #3498db;
+  }
+  
+
+  h3 {
+    color: #000;
+    margin-top: 20px;
+  }
+
+  ul {
+    margin-top: 0;
+    padding-left: 20px;
+    color: #000;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #000;
+    margin-top: 10px;
+  }
+
+  .arrow-box {
+    display: inline-block;
+    border: 2px solid #3498db;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #ecf6fd;
+    border-radius: 8px;
+    position: relative;
+    font-weight: bold;
+  }
+
+  .arrow-box::after {
+    content: "➤";
+    color: #3498db;
+    font-size: 18px;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .arrow-box a {
+    color: #3498db;
+    text-decoration: none;
+  }
+
+  .arrow-box a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container">
+  <h1>Informasi Pendaftaran Sekolah</h1>
+
+  <h2>Persyaratan Administrasi</h2>
+  <ul>
+    <li><strong>Akte Kelahiran:</strong> Dokumen yang membuktikan usia dan identitas calon siswa.</li>
+    <li><strong>Kartu Keluarga (KK):</strong> Dokumen yang membuktikan hubungan keluarga dan domisili calon siswa.</li>
+    <li><strong>Ijazah atau Surat Keterangan Lulus (SKL):</strong> Dokumen yang membuktikan kelulusan dari jenjang pendidikan sebelumnya.</li>
+    <li><strong>Data Diri Calon Siswa:</strong> Informasi pribadi seperti nama lengkap, alamat, nomor telepon, dan email.</li>
+  </ul>
+
+  <h2>Persyaratan Tambahan</h2>
+  <ul>
+    <li><strong>Jalur Prestasi:</strong> Bukti prestasi akademik dan non-akademik seperti piagam, sertifikat lomba, atau keikutsertaan kegiatan ekstrakurikuler.</li>
+    <li><strong>Jalur Afirmasi:</strong> Dokumen yang membuktikan kondisi sosial ekonomi atau disabilitas, seperti surat keterangan miskin atau disabilitas.</li>
+    <li><strong>Jalur Zonasi:</strong> Dokumen yang menunjukkan domisili di zona sekolah.</li>
+  </ul>
+
+  <h2>Proses Pendaftaran</h2>
+  <ul></ul>
+  <h3>Pendaftaran Online</h3>
+  <ul>
+    <li><strong>Pengumuman Penerimaan:</strong> Jadwal dan tata cara pendaftaran diumumkan di website resmi atau platform SPMB daerah.</li>
+    <li><strong>Akses Situs Pendaftaran:</strong> Calon siswa mengunjungi situs resmi SPMB atau website sekolah.</li>
+    <li><strong>Pengisian Formulir:</strong> Formulir diisi secara online dengan data diri lengkap dan pilihan jalur masuk.</li>
+    <li><strong>Upload Dokumen:</strong> Dokumen seperti KK, akta kelahiran, dan lainnya diunggah dalam format digital (PDF/JPG).</li>
+    <li><strong>Verifikasi Data:</strong> Sekolah memverifikasi kelengkapan dan keaslian berkas digital.</li>
+    <li><strong>Seleksi:</strong> Jika diperlukan, seleksi dilakukan berdasarkan jalur zonasi, prestasi, afirmasi, atau tes tambahan.</li>
+    <li><strong>Pengumuman Hasil:</strong> Hasil seleksi diumumkan secara daring.</li>
+    <li><strong>Daftar Ulang:</strong> Siswa yang diterima mencetak bukti penerimaan dan melakukan registrasi ulang.</li>
+  </ul>
+
+  <h3>Pendaftaran Offline (Manual)</h3>
+  <ul>
+    <li><strong>Pengumuman Penerimaan:</strong> Informasi tersedia di papan pengumuman sekolah atau brosur resmi.</li>
+    <li><strong>Pengambilan Formulir:</strong> Formulir diambil langsung di sekolah oleh calon siswa atau orang tua.</li>
+    <li><strong>Pengisian dan Penyerahan Formulir:</strong> Formulir diisi manual dan dikembalikan bersama dokumen persyaratan.</li>
+    <li><strong>Verifikasi dan Seleksi:</strong> Panitia memeriksa dokumen dan melaksanakan proses seleksi bila diperlukan.</li>
+    <li><strong>Pengumuman Hasil:</strong> Hasil seleksi diumumkan langsung di sekolah atau surat pemberitahuan.</li>
+    <li><strong>Registrasi Ulang:</strong> Siswa yang diterima melakukan daftar ulang dan menerima info awal masuk.</li>
+  </ul>
+
+  <p>Dengan memahami informasi ini, calon siswa dan orang tua dapat mempersiapkan diri dengan baik dan memastikan kelancaran proses pendaftaran.</p>
+
+  <h2>Daftar SPMB</h2>
+  <p>Klik tautan berikut untuk mendaftar:</p>
+
+  <div class="arrow-box">
+    <a href="https://forms.gle/CtLWqQJjr27Jz3MJ6" target="_blank">Formulir Pendaftaran Online SPMB</a>
+  </div>
+</div>
+
+
+
+<footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
+  <div class="column">
+    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
+      <h2 style="margin: 0; font-size: 32px; color: white; text-align: center;">SMPN20KONSEL</h2>
+    </div>
+    <p style="color: white; text-align: center;">SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
+  </div>
+  <div class="column">
+    <div class="counter-section" style="display:flex;justify-content:center;gap:40px;">
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
+        <span>840</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
+        <span>122</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
+        <span>15</span>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <strong>Temukan Kami</strong>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="footer-icons" style="display:flex;gap:10px;">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="color: white; text-align: center;"><i class="fab fa-google-play"></i> Download Aplikasi</p>
+        <a href="https://play.google.com/store/apps" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
+        </a>
+        </div>
+      <div>
+        <iframe allowfullscreen="" height="100" loading="lazy" src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" style="border:0;border-radius:10px;" width="200"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
+  © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.cm
+</div>
+
+</body>
+</html>

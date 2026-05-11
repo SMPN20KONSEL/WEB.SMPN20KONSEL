@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil Guru - SMPN 20 Konawe Selatan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <style>
+    .swiper {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding-bottom: 3rem;
+    }
+
+    .swiper-slide {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .slide-header {
+      background: #4299e1;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .slide-header img {
+      width: 80px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid white;
+    }
+
+    .slide-header h2 {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .slide-body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .slide-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .slide-table td {
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .slide-table td:first-child {
+      font-weight: bold;
+      background: #f7f7f7;
+      width: 40%;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #4299e1;
+    }
+
+    @media (max-width: 600px) {
+      .slide-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .slide-header img {
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <div class="top-bar" style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background-color:#eee;color:rgb(0, 0, 0);">
+    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+    <div class="social-icons">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <nav>
+<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+  &#9776;
+</div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:50px; background-color:white;">
+      <h2 style="margin:0; font-size:20px; color:white;">SMPN20KONSEL<br><small style="font-size:12px; font-weight:normal; color:white;"> Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small>
+      </h2>
+    </div>
+    <div class="nav-links" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+      <a href="profil.html" style="color:white;text-decoration:none;">Profil</a>
+      <a href="kesiswaan.html" style="color:white;text-decoration:none;">Kesiswaan</a>
+      <a href="informasi.html" style="color:white;text-decoration:none;">Informasi</a>
+      <a href="galeri.html" style="color:white;text-decoration:none;">Galeri</a>
+      <a href="kontak.html" style="color:white;text-decoration:none;">Kontak</a>
+      <a class="login-btn" href="daftar_spmb.html" style="background-color:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </nav>
+</header>
+
+<hr style="border: none; border-top: 1px solid #ddd; margin: 0 1rem 1rem;" />
+<div class="swiper">
+  <div class="swiper-wrapper">
+
+    <!-- Slide 1: I Nyoman Sukana -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/I NYOMAN SUKANADA.jpeg" alt="Foto I Nyoman Sukana" />
+    <h2>I Nyoman Sukana, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Kepala Sekolah</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Bali, 18 Juli 1970</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Laki-laki</td></tr>
+      <tr><td>Agama</td><td>Hindu</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>085298507216</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>Desa Morini Mulya, Kec. Landono</td></tr>
+      <tr><td>No. HP</td><td>085298507216</td></tr>
+      <tr><td>Email</td><td>i.nyoman386661@admin.smp.belajar.id</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 2: Jusman Paduay -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/jusman paduai.jpg" alt="Foto Jusman Paduay" />
+    <h2>Jusman Paduay, S.Pd.I</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru PAI</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Boro-Boro, 08 Oktober 1990</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Laki-laki</td></tr>
+      <tr><td>Agama</td><td>Islam</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>082228244075</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>Desa Duduria, Kec.Ranomeeto, Kab.Konawe Selatan</td></tr>
+      <tr><td>No. HP</td><td>082228244075</td></tr>
+      <tr><td>Email</td><td>jusmanpaduay2020@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 3: Langgiong -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/Langgiong Aja.jpg" alt="Foto Langgiong" />
+    <h2>Langgiong, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru IPS</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Sabulakoa, 15 Juli 1989</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Laki-laki</td></tr>
+      <tr><td>Agama</td><td>Islam</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>085398126975</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>Sabulakoa</td></tr>
+      <tr><td>No. HP</td><td>085398126975</td></tr>
+      <tr><td>Email</td><td>langgiongaja6@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 4: I Nyoman Berata -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/I Nyoman Berata.jpg" alt="Foto I Nyoman Berata" />
+    <h2>I Nyoman Berata, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru Matematika</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Buleleng, 27 September 1966</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Laki-laki</td></tr>
+      <tr><td>Agama</td><td>Hindu</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>081341758855</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>Talumbinga</td></tr>
+      <tr><td>No. HP</td><td>081341758855</td></tr>
+      <tr><td>Email</td><td>inyomanberata1966@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 5: Nurmila Pelesa -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/Nurmila Pelesa.jpeg" alt="Foto Nurmila Pelesa" />
+    <h2>Nurmila Pelesa, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru IPA</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Amosilu, 16 April 1982</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Perempuan</td></tr>
+      <tr><td>Agama</td><td>Islam</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>085757161049</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>Jl Konggoasa Lr Mutiara No 8, Lamokato, Kolaka</td></tr>
+      <tr><td>No. HP</td><td>085757161049</td></tr>
+      <tr><td>Email</td><td>nurmilapelesa@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 6: Asrianti Tongalu -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/ASRIANTI TONGALU - Asrianti Tongalu.jpg" alt="Foto Asrianti Tongalu" />
+    <h2>Asrianti Tongalu, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru IPS</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Sabulakoa, 23 Oktober 1990</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Perempuan</td></tr>
+      <tr><td>Agama</td><td>Islam</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>082343090650</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>Desa Sabulakoa, Kec. Sabulakoa</td></tr>
+      <tr><td>No. HP</td><td>082343090650</td></tr>
+      <tr><td>Email</td><td>tongaluasrianti@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 7: Sri Santi Yusni -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/Sri Santi Yusni - anak rantau.jpg" alt="Foto Sri Santi Yusni" />
+    <h2>Sri Santi Yusni, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru Bahasa Indonesia</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Ranoeya, 10 November 1990</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Perempuan</td></tr>
+      <tr><td>Agama</td><td>Islam</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>082271215949</td></tr>
+      <tr><td>Status Perkawinan</td><td>Kawin</td></tr>
+      <tr><td>Alamat Rumah</td><td>PERUM BUMI ARUM BLOK I/4, Kel. Baruga, Kec. Baruga, Kota Kendari</td></tr>
+      <tr><td>No. HP</td><td>082271215949</td></tr>
+      <tr><td>Email</td><td>srisantiyusni70@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+<!-- Slide 8: Ahriani Ahmad, S.Pd -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/Ahriani Ahmad.jpeg" alt="FotoAhriani Ahmad, S.Pd" />
+    <h2>Ahriani Ahmad, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru Bahasa Inggris</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Sabulakoa, 13 Juli 1990</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Perempuan</td></tr>
+      <tr><td>Agama</td><td>Islam</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>'082347424078</td></tr>
+      <tr><td>Status Perkawinan</td><td>Belum Menikah</td></tr>
+      <tr><td>Alamat Rumah</td><td>Kel. Tudaone, Kec. Konawe, Kab. Konawe</td></tr>
+      <tr><td>No. HP</td><td>'082347424078</td></tr>
+      <tr><td>Email</td><td>ahrianiahmad37@guru.smp.belajar.id</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Slide 9: Komang Winastiyana, S.Pd -->
+<div class="swiper-slide">
+  <div class="slide-header">
+    <img src="image/komang winastiyana.jpg" alt="FotoKomang Winastiyana, S.Pd" />
+    <h2>Komang Winastiyana, S.Pd</h2>
+  </div>
+  <div class="slide-body">
+    <table class="slide-table">
+      <tr><td>Jabatan Fungsional</td><td>Guru Informatika</td></tr>
+      <tr><td>Tempat, Tanggal Lahir</td><td>Linonggasi, 03 Januari 1998</td></tr>
+      <tr><td>Jenis Kelamin</td><td>Laki-Laki</td></tr>
+      <tr><td>Agama</td><td>Hindu</td></tr>
+      <tr><td>Sekolah</td><td>SMPN 20 Konawe Selatan</td></tr>
+      <tr><td>Alamat Sekolah</td><td>Jl. Poros Sabulakoa-Talumbinga</td></tr>
+      <tr><td>Telepon/Fax</td><td>'085221986170</td></tr>
+      <tr><td>Status Perkawinan</td><td>Belum Menikah</td></tr>
+      <tr><td>Alamat Rumah</td><td>Dea Linonggasai, Kec. Wonggeduku Barat, Kab. Konawe</td></tr>
+      <tr><td>No. HP</td><td>'085221986170</td></tr>
+      <tr><td>Email</td><td>komangwinastiyana03@gmail.com</td></tr>
+    </table>
+  </div>
+</div>
+    <!-- Tambahkan slide lain di sini dengan cara copy paste dari atas -->
+
+  </div>
+
+  <!-- Tombol Navigasi -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <!-- Indikator Bulat -->
+  <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+
+<footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
+  <div class="column">
+    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
+      <h2 style="margin: 0; font-size: 32px; color: white; text-align: center;">SMPN20KONSEL</h2>
+    </div>
+    <p>SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
+  </div>
+  <div class="column">
+    <div class="counter-section" style="display:flex;justify-content:center;gap:40px;">
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
+        <span>840</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
+        <span>122</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
+        <span>15</span>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <strong>Temukan Kami</strong>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="footer-icons" style="display:flex;gap:10px;">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p><i class="fab fa-google-play"></i> Download Aplikasi</p>
+        <a href="https://play.google.com/store/apps" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
+        </a>
+        </div>
+      <div>
+        <iframe allowfullscreen="" height="100" loading="lazy" src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" style="border:0;border-radius:10px;" width="200"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
+  © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.cm
+</div>
+</body>
+</html>

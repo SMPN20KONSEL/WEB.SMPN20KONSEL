@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil - SMPN 20 Konawe Selatan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      width: 100%;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 20px;
+      font-size: 14px;
+      background-color: #eee;
+      color: #000;
+      border-bottom: 2px solid #09038b;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+      background-color: #09038b;
+      color: white;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    .nav-links a.login-btn {
+      background-color: orange;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+
+    .kontak-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-top: 4px solid #09038b;
+    }
+
+    .kontak-section h2,
+    .kontak-section h3 {
+      color: #2c3e50;
+      margin-top: 30px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .kontak-section p,
+    label,
+    input,
+    textarea {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    iframe {
+      margin-top: 20px;
+      border: none;
+      width: 100%;
+      height: 300px;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .counter-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .icon-text {
+      text-align: center;
+    }
+
+    .bottom-bar {
+      background-color: #f7df09;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      nav, .counter-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .column {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+    <div class="social-icons">
+      <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+  <nav>
+<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+  &#9776;
+</div>
+    <div class="logo">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:50px; background-color:white;">
+      <h2 style="margin:0; font-size:20px;">SMPN20KONSEL<br>
+        <small style="font-size:12px; font-weight:normal;">Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small>
+      </h2>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="profil.html">Profil</a>
+      <a href="kesiswaan.html">Kesiswaan</a>
+      <a href="informasi.html">Informasi</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="kontak.html">Kontak</a>
+      <a class="login-btn" href="daftar_spmb.html">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </nav>
+</header>
+
+<div class="kontak-section">
+  <h2>Kontak Sekolah</h2>
+  <div class="info">
+    <p><strong>Alamat:</strong>Alamat : Jln. Poros Sabulakoa Kec.Landono Kode Pos 93373</p>
+    <p><strong>Telepon:</strong> (0341) 123456</p>
+    <p><strong>WA:</strong> '082347424078</p>
+    <p><strong>Email:</strong> smpn20konsel.@gmail.com</p>
+    <p><strong>Jam Operasional:</strong> Senin–Kamis: 07.00–13.00 WIB|Jum'at–Sabtu: 07.30–12.00 WIB |Minggu: Libur</p>
+  </div>
+
+  <h3>Media Sosial</h3>
+  <div class="social">
+    <a href="https://web.facebook.com/profile.php?id=61577266951408" target="_blank">Facebook</a>
+    <a href="https://instagram.com/sekolah" target="_blank">Instagram</a>
+    <a href="https://youtube.com/@smpn20konsel?si=MCegZnOo6UBJ8IwC" target="_blank">YouTube</a>
+    <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"target="_blank">Tik Tok</a>
+  </div>
+
+  <h3>Berikan Ulasan Anda Untuk SMPN 20 Konawe Selatan</h3>
+  <form id="formKontak">
+    <label for="nama">Nama</label>
+    <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Contoh: budi@email.com" required>
+
+    <label for="subjek">Subjek</label>
+    <input type="text" id="subjek" placeholder="Contoh: Permintaan Info">
+
+    <label for="pesan">Pesan</label>
+    <textarea id="pesan" placeholder="Tulis pesan Anda di sini..." required></textarea>
+
+    <button type="submit">Kirim Pesan</button>
+  </form>
+
+  <h3>Lokasi Sekolah</h3>
+  <iframe src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" allowfullscreen="" loading="lazy"></iframe>
+</div>
+  <footer>
+    <div class="column">
+      <div class="footer-logo">
+        <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
+        <h2>SMPN20KONSEL</h2>
+      </div>
+      <p>SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
+    </div>
+
+    <div class="column">
+      <div class="counter-section">
+        <div class="counter-box">
+          <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
+          <span>840</span>
+        </div>
+        <div class="counter-box">
+          <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
+          <span>122</span>
+        </div>
+        <div class="counter-box">
+          <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
+          <span>15</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <strong>Temukan Kami</strong>
+      <div class="footer-icons">
+        <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p><i class="fab fa-google-play"></i> Download Aplikasi</p>
+      <a href="https://play.google.com/store/apps" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
+      </a>
+    </div>
+  </footer>
+
+  <div class="bottom-bar">
+    © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.com
+  </div>
+
+</body>
+</html>

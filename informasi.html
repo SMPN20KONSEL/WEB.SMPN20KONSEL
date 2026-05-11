@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Profil - SMPN 20 Konawe Selatan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <header>
+  <div class="top-bar" style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background-color:#eee;color:rgb(0, 0, 0);">
+    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+    <div class="social-icons">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <nav>
+<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+  &#9776;
+</div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:50px; background-color:white;">
+      <h2 style="margin:0; font-size:20px; color:white;">SMPN20KONSEL<br><small style="font-size:12px; font-weight:normal; color:white;"> Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small>
+      </h2>
+    </div>
+    <div class="nav-links" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+      <a href="profil.html" style="color:white;text-decoration:none;">Profil</a>
+      <a href="kesiswaan.html" style="color:white;text-decoration:none;">Kesiswaan</a>
+      <a href="informasi.html" style="color:white;text-decoration:none;">Informasi</a>
+      <a href="galeri.html" style="color:white;text-decoration:none;">Galeri</a>
+      <a href="kontak.html" style="color:white;text-decoration:none;">Kontak</a>
+      <a class="login-btn" href="daftar_spmb.html" style="background-color:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </nav>
+</header>
+<style>
+  /* Gaya Umum */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  margin: 0.5em 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #2980b9;
+  color: #2c3e50;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: left;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Section */
+section {
+  padding: 30px;
+}
+
+/* Kartu Isi Konten */
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+  border: 1px solid #ccc;
+}
+
+/* Daftar */
+.card ul {
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.card li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.card li strong {
+  font-weight: bold;
+}
+
+/* Navigasi */
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+/* Form */
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+form button {
+  padding: 0.5rem 1rem;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Gambar Responsif */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+/* Tabel */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  min-width: 700px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+caption {
+  caption-side: top;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Statistik Section */
+.statistik {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.statistik > div {
+  flex: 1 1 30%;
+  background: #eaf2f8;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.statistik h3 {
+  margin-bottom: 10px;
+  color: #2980b9;
+}
+
+.statistik p {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Siswa Berprestasi Grid */
+.prestasi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 1rem;
+}
+
+.siswa-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.siswa-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.siswa-card h4 {
+  margin: 10px 0 5px;
+  font-size: 1.1em;
+  color: #2c3e50;
+}
+
+.siswa-card p {
+  font-size: 0.95em;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  section {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+}
+</style>
+
+</head>
+<body>
+  <main>
+    <div class="card" style="padding: 30px; margin: 30px auto; max-width: 1200px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+      
+      <!-- Judul Utama -->
+      <h1 style="text-align: left; font-size: 32px; margin-bottom: 30px;">Informasi Sekolah</h1>
+
+      <!-- Informasi Guru -->
+      <section id="guru">
+        <h2>Informasi Guru dan Tenaga Kependidikan</h2>
+        <div>
+          <iframe 
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcZNGG64HpniQ5xKpYuonJLvgROcNCYa0brPH3hmQ20KIXVgRqEt1IihtRpGBFx6usHn3FLdfyznWO/pubhtml?gid=1496526009&single=true" 
+            width="100%" height="250">
+          </iframe>
+          <p>Untuk melihat Profil Guru dan Tenaga Kependidikan, silakan kunjungi 
+            <a href="pofil guru.html" style="font-size: 22px; font-weight: bold;">Halaman Ini</a></p>
+        </div>    
+        <table>
+      <caption style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 40px;margin-bottom: 10px;">Riwayat Kepala Sekolah SMPN 20 Konawe Selatan</caption>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>No</th><th>Nama</th><th>Bertugas Pada Tahun</th><th>Ket</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Halim Lamite</td><td>1997 - 2002</td><td>Kepala Sekolah</td></tr>
+              <tr><td>2</td><td>Thamrin</td><td>2002 - 2007</td><td>Kepala Sekolah</td></tr>
+              <tr><td>3</td><td>Sutomo Hs, S.Pd</td><td>2007 - 2012</td><td>Kepala Sekolah</td></tr>
+              <tr><td>4</td><td>Suyitno, S.Pd., M.Pd</td><td>2012 - 2017</td><td>Kepala Sekolah</td></tr>
+              <tr><td>5</td><td>Drs, Sri Harto</td><td>2017 - 2021</td><td>Kepala Sekolah</td></tr>
+              <tr><td>6</td><td>I Nyoman Berata, S.Pd</td><td>2021 - 2023</td><td>Kepala Sekolah</td></tr>
+              <tr><td>7</td><td>I Nyoman Sukada, S.Pd</td><td>2023 - Sampai Sekarang</td><td>Kepala Sekolah</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+     <section class="card" style="padding: 20px; text-align: justify;" id="berprestasi" style="padding: 30px;">
+       <h2>Data Siswa</h2>
+        <h2 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 10px; margin-bottom: 4px;">DATA PESERTA DIDIK SMP N 20 KONAWE SELATAN</h2>
+        <h3 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 0;margin-bottom: 10px;">TAHUN PELAJARAN 2024/2025</h3>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">NO</th>
+              <th rowspan="2">KELAS</th>
+              <th colspan="3">BERDASARKAN ROMBEL</th>
+              <th colspan="3">BERDASARKAN AGAMA</th>
+              <th rowspan="2">JUMLAH</th>
+              <th rowspan="2">WALI KELAS</th>
+            </tr>
+            <tr>
+              <th>LAKI-LAKI</th>
+              <th>PEREMPUAN</th>
+              <th>JUMLAH</th>
+              <th>ISLAM</th>
+              <th>HINDU</th>
+              <th>KRISTEN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>VII.A</td><td>10</td><td>8</td><td>18</td><td>16</td><td>2</td><td>0</td><td>18</td><td>NURMILA P. S.Pd</td></tr>
+            <tr><td>2</td><td>VII.B</td><td>7</td><td>10</td><td>17</td><td>16</td><td>1</td><td>0</td><td>17</td><td>ROSNIA, S.Pd</td></tr>
+            <tr><td>3</td><td>VIII</td><td>18</td><td>12</td><td>30</td><td>27</td><td>3</td><td>0</td><td>30</td><td>SRI SANTI YUSNI, S.Pd</td></tr>
+            <tr><td>4</td><td>IX.A</td><td>10</td><td>11</td><td>21</td><td>21</td><td>0</td><td>0</td><td>21</td><td>I NYOMAN BERATA, S.Pd</td></tr>
+            <tr><td>5</td><td>IX.B</td><td>9</td><td>12</td><td>21</td><td>15</td><td>6</td><td>0</td><td>21</td><td>HASTATI, S.Pd</td></tr>
+            <tr><th colspan="2">JML</th><th>54</th><th>53</th><th>107</th><th>95</th><th>12</th><th>0</th><th>107</th><th></th></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 50px;margin-bottom: 0;">DATA PESERTA DIDIK SMP N 20 KONAWE SELATAN</h2>
+      <h3 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 0;">TAHUN PELAJARAN 2024/2025</h3>
+      <div class="">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">NO</th>
+              <th rowspan="2">KELAS</th>
+              <th colspan="3">BERDASARKAN JENIS KELAMIN</th>
+              <th colspan="3">BERDASARKAN AGAMA</th>
+              <th rowspan="2">JUMLAH</th>
+              <th rowspan="2">WALI KELAS</th>
+            </tr>
+            <tr>
+              <th>LAKI-LAKI</th>
+              <th>PEREMPUAN</th>
+              <th>JUMLAH</th>
+              <th>ISLAM</th>
+              <th>HINDU</th>
+              <th>KRISTEN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>VII.A</td><td>13</td><td>7</td><td>20</td><td>16</td><td>4</td><td>0</td><td>20</td><td>Hastati, S.Pd</td></tr>
+            <tr><td>2</td><td>VII.B</td><td>13</td><td>7</td><td>20</td><td>20</td><td>0</td><td>0</td><td>20</td><td>Rosnia, S.Pd</td></tr>
+            <tr><td>3</td><td>VIII.A</td><td>10</td><td>8</td><td>18</td><td>16</td><td>2</td><td>0</td><td>18</td><td>Sri Santi Yusni, S.Pd</td></tr>
+            <tr><td>4</td><td>VIII.B</td><td>6</td><td>11</td><td>17</td><td>16</td><td>1</td><td>0</td><td>17</td><td>Selviani, S.Pd</td></tr>
+            <tr><td>5</td><td>IX</td><td>18</td><td>10</td><td>28</td><td>25</td><td>3</td><td>0</td><td>28</td><td>Asrianti Tongalu, S.Pd</td></tr>
+            <tr><th colspan="2">JML</th><th>60</th><th>43</th><th>103</th><th>93</th><th>10</th><th>0</th><th>103</th><th></th></tr>
+          </tbody>
+        </table>
+      </div>
+        <div>
+         <div>
+            <h3 style="text-align:center; font-size: 20px; font-weight: bold; color: #000; margin-top: 50px;">Statistik Siswa dan Alumni</h3>
+        <div class="statistik">
+          <div><h3>Jumlah Siswa</h3><p>1203</p></div>
+          <div><h3>Siswa Lulus</h3><p>840</p></div>
+          <div><h3>Alumni Aktif</h3><p>673</p></div>
+        </div>
+        <h2 style="text-align:center; font-size: 20px; font-weight: bold; color: #000; margin-top: 50px;">Siswa Berprestasi</h2>
+        <div class="statistik">
+        <div class="prestasi-grid">
+          <div class="siswa-card">
+            <img src="Galeri/IMG-20250613-WA0025.jpg" alt="Putri Ayu">
+            <h4>OSN</h4>
+          </div>
+          <div class="siswa-card">
+            <img src="Galeri/IMG-20250529-WA0004.jpg" alt="Rizki Ramadhan">
+            <h4>O2SN</h4>
+          </div>
+          <div class="siswa-card">
+            <img src="Galeri/galeri 6.jpg" alt="Nurul Aini">
+            <h4>FLS3N</h4>
+          </div>
+        </div>
+      </section>
+<section class="card" style="padding: 20px; text-align: justify;" id="kurikulum" style="padding: 30px;">
+  <h2 style="text-align: left; margin-bottom: 20px;">Kurikulum Sekolah</h2>
+  <div>
+    <p style="margin-bottom: 20px;">
+      Sekolah kami menerapkan Kurikulum Nasional yang dirancang untuk membentuk peserta didik yang berkarakter, kreatif, dan siap menghadapi tantangan zaman. Kurikulum ini dikembangkan dengan pendekatan tematik integratif serta mengedepankan nilai-nilai karakter, literasi, dan pemanfaatan teknologi.
+    </p>
+    <h3 style="margin-bottom: 10px;">1. Struktur Kurikulum</h3>
+    <ul style="margin-bottom: 25px;">
+      <li>Kurikulum Merdeka dan/atau Kurikulum 2013 (K-13)</li>
+      <li>Pembelajaran tematik dan berbasis proyek</li>
+      <li>Penekanan pada literasi, numerasi, dan karakter</li>
+    </ul>
+    <h3 style="margin-bottom: 10px;">2. Bidang Pelajaran</h3>
+    <ul style="margin-bottom: 25px;">
+      <li>Pendidikan Agama dan Budi Pekerti</li>
+      <li>PPKn (Pendidikan Pancasila dan Kewarganegaraan)</li>
+      <li>Bahasa Indonesia dan Bahasa Inggris</li>
+      <li>Matematika</li>
+      <li>Ilmu Pengetahuan Alam (IPA) dan Ilmu Pengetahuan Sosial (IPS)</li>
+      <li>Seni Budaya</li>
+      <li>PJOK (Pendidikan Jasmani, Olahraga, dan Kesehatan)</li>
+      <li>Prakarya dan Kewirausahaan</li>
+      <li>Muatan Lokal (Bahasa Daerah, dll.)</li>
+    </ul>
+    <h3 style="margin-bottom: 10px;">3. Pendekatan Pembelajaran</h3>
+    <ul>
+      <li>Pembelajaran aktif, kolaboratif, dan menyenangkan</li>
+      <li>Pemanfaatan media digital dan teknologi informasi</li>
+      <li>Penilaian proses dan hasil belajar (formatif & sumatif)</li>
+      <li>Proyek Penguatan Profil Pelajar Pancasila</li>
+    </ul>
+  </div>
+</section>
+
+<section class="card" style="padding: 20px; text-align: justify;"id="sarana" style="padding: 30px;">
+  <h2 style="text-align: left; margin-bottom: 20px;">Daftar Sarana dan Prasarana Sekolah</h2>
+  <div>
+
+    <h3 style="margin-bottom: 10px;">1. Ruang Pembelajaran</h3>
+    <ul style="margin-bottom: 25px;">
+      <li><strong>Ruang Kelas:</strong> Nyaman, bersih, dilengkapi papan tulis, proyektor, dan kursi siswa.</li>
+      <li><strong>Laboratorium IPA:</strong> Fasilitas praktikum Biologi, Kimia, dan Fisika.</li>
+      <li><strong>Laboratorium Komputer:</strong> Dilengkapi perangkat modern dan koneksi internet.</li>
+      <li><strong>Perpustakaan:</strong> Koleksi buku pelajaran, fiksi, referensi, dan buku digital.</li>
+    </ul>
+
+    <h3 style="margin-bottom: 10px;">2. Sarana Ibadah dan Ekstrakurikuler</h3>
+    <ul style="margin-bottom: 25px;">
+      <li><strong>Ruang OSIS dan Ekstrakurikuler:</strong> Ruang organisasi siswa dan kegiatan klub sekolah.</li>
+    </ul>
+
+    <h3 style="margin-bottom: 10px;">3. Sarana Olahraga</h3>
+    <ul style="margin-bottom: 25px;">
+      <li><strong>Lapangan Sepak Bola:</strong> Untuk pelajaran PJOK dan kegiatan olahraga.</li>
+      <li><strong>Lapangan Basket / Voli:</strong> Lapangan serbaguna untuk berbagai cabang olahraga.</li>
+      <li><strong>Alat Olahraga:</strong> Seperti bola, net, raket, dan perlengkapan lainnya.</li>
+    </ul>
+
+    <h3 style="margin-bottom: 10px;">4. Sarana Pendukung</h3>
+    <ul style="margin-bottom: 25px;">
+      <li><strong>Kantin Sekolah:</strong> Menyediakan makanan sehat dan higienis.</li>
+      <li><strong>UKS (Unit Kesehatan Sekolah):</strong> Menangani pertolongan pertama dan kesehatan ringan siswa.</li>
+      <li><strong>Ruang Guru:</strong> Tempat kerja dan istirahat guru.</li>
+      <li><strong>Ruang Kepala Sekolah:</strong> Ruang pimpinan sekolah untuk operasional manajerial.</li>
+      <li><strong>Ruang Tata Usaha (TU):</strong> Pengelolaan administrasi sekolah.</li>
+    </ul>
+
+    <h3 style="margin-bottom: 10px;">5. Prasarana Tambahan</h3>
+    <ul>
+      <li><strong>Tempat Parkir:</strong> Area parkir untuk guru, karyawan, tamu sekolah, dan siswa.</li>
+      <li><strong>Toilet Siswa dan Guru:</strong> Terpisah, bersih, dan terjaga kebersihannya.</li>
+      <li><strong>Tempat Cuci Tangan:</strong> Disediakan di berbagai titik untuk kebersihan tangan.</li>
+      <li><strong>WiFi Sekolah:</strong> Mendukung pembelajaran digital dan akses informasi.</li>
+      <li><strong>Sistem Informasi Sekolah (SIS):</strong> Untuk pengelolaan data siswa, akademik, dan administrasi.</li>
+    </ul>
+  </div>
+</section>
+   <div class="container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUhXhnLC8Ao1p3JYDf2QIpc-W4dfdPdQ3Pwypo4wJYm7KJEA/viewform?embedded=true" width="640" height="717" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+      </div>
+    </section>
+  </main>
+
+<footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
+  <div class="column">
+    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
+      <h2 style="margin: 0; font-size: 32px; color: white; text-align: center;">SMPN20KONSEL</h2>
+    </div>
+    <p>SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
+  </div>
+  <div class="column">
+    <div class="counter-section" style="display:flex;justify-content:center;gap:40px;">
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
+        <span>840</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
+        <span>122</span>
+      </div>
+      <div class="counter-box">
+        <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
+        <span>15</span>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <strong>Temukan Kami</strong>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="footer-icons" style="display:flex;gap:10px;">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p><i class="fab fa-google-play"></i> Download Aplikasi</p>
+        <a href="https://play.google.com/store/apps" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
+        </a>
+        </div>
+      <div>
+        <iframe allowfullscreen="" height="100" loading="lazy" src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" style="border:0;border-radius:10px;" width="200"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
+  © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.cm
+</div>
+
+</body>
+</html>
+
