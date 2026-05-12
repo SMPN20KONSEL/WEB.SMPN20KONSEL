@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Profil Sekolah</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f4f6f9;
+  display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+  width:260px;
+  background:#111827;
+  color:white;
+  height:100vh;
+  position:fixed;
+  left:0;
+  top:0;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo img{
+  width:70px;
+  background:white;
+  border-radius:10px;
+  padding:5px;
+}
+
+.logo h2{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.menu-title{
+  font-size:12px;
+  color:#9ca3af;
+  margin:20px 0 10px;
+}
+
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.sidebar a:hover,
+.sidebar .active{
+  background:#2563eb;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+  margin-left:260px;
+  width:100%;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  background:white;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.header h2{
+  font-size:22px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+  padding:25px;
+}
+
+/* ================= MAIN CARD ================= */
+
+.main-card{
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 2px 15px rgba(0,0,0,.05);
+}
+
+/* ================= HEADER CARD ================= */
+
+.main-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.foto-sekolah{
+  width:120px;
+  height:120px;
+  border-radius:15px;
+  object-fit:cover;
+  border:4px solid #2563eb;
+}
+
+.main-header h1{
+  font-size:28px;
+  margin-bottom:5px;
+}
+
+.main-header p{
+  color:#666;
+}
+
+/* ================= CARD SECTION ================= */
+
+.card-section{
+  background:#f9fafb;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:25px;
+  border:1px solid #eee;
+}
+
+.section-title{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:20px;
+  color:#111827;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+  overflow:auto;
+}
+
+.profil-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.profil-table th,
+.profil-table td{
+  padding:14px;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.profil-table th{
+  width:280px;
+  background:#f3f4f6;
+  text-align:left;
+}
+
+/* ================= INPUT ================= */
+
+.edit-input{
+  width:100%;
+  padding:10px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  display:none;
+  outline:none;
+}
+
+textarea.edit-input{
+  min-height:120px;
+  resize:vertical;
+}
+
+.edit-input:focus{
+  border-color:#2563eb;
+}
+
+/* ================= BUTTON ================= */
+
+.btn-edit,
+.btn-save{
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.btn-edit{
+  background:#2563eb;
+}
+
+.btn-save{
+  background:#16a34a;
+  display:none;
+}
+
+.save-area{
+  text-align:right;
+}
+
+/* ================= CONTENT ================= */
+
+.visi-box,
+.misi-box,
+.sejarah-box,
+.tujuan-box{
+  margin-top:15px;
+}
+
+.visi-box h3,
+.misi-box h3,
+.sejarah-box h3,
+.tujuan-box h3{
+  margin-bottom:10px;
+  color:#111827;
+}
+
+.view{
+  line-height:1.8;
+}
+.sejarah-box .view,
+.visi-box .view,
+.misi-box .view,
+.tujuan-box .view{
+  white-space:pre-line;
+}
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    position:relative;
+    height:auto;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .header-left{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .main-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <img src="../image/Logo_transparent.png">
+
+    <h2>SMPN 20 KONSEL</h2>
+
+  </div>
+
+  <div class="menu-title">
+    Menu Utama
+  </div>
+
+  <a href="dashboard.html">
+    <i class="fas fa-home"></i>
+    Dashboard
+  </a>
+
+  <a class="active" href="profil_admin.html">
+    <i class="fas fa-school"></i>
+    Profil Sekolah
+  </a>
+
+  <a href="siswa.html">
+    <i class="fas fa-users"></i>
+    Data Siswa
+  </a>
+
+  <a href="guru.html">
+    <i class="fas fa-chalkboard-teacher"></i>
+    Data Guru
+  </a>
+
+  <a href="pengumuman.html">
+    <i class="fas fa-bullhorn"></i>
+    Pengumuman
+  </a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <h2>
+      Admin Profil Sekolah
+    </h2>
+
+    <div>
+      <i class="fas fa-user-circle"></i>
+      Administrator
+    </div>
+
+  </div>
+
+  <!-- CONTENT -->
+
+  <div class="container">
+
+    <div class="main-card">
+
+      <!-- HEADER -->
+      <div class="main-header">
+
+        <div class="header-left">
+
+          <img
+            src="../image/Profil SMP.jpg"
+            class="foto-sekolah"
+            onerror="this.src='../image/user.png'">
+
+          <div>
+
+            <h1 id="namaSekolah">
+              SMP Negeri 20 Konawe Selatan
+            </h1>
+
+            <p id="alamatSekolah">
+              Jln. Poros Sabulakoa
+            </p>
+
+          </div>
+
+        </div>
+
+        <button class="btn-edit" onclick="toggleEdit()">
+
+          <i class="fas fa-pen"></i>
+          Edit Data
+
+        </button>
+
+      </div>
+
+      <!-- ================= IDENTITAS ================= -->
+
+      <div class="card-section">
+
+        <div class="section-title">
+
+          <i class="fas fa-school"></i>
+          Identitas Sekolah
+
+        </div>
+
+        <div class="table-wrap">
+
+          <table class="profil-table">
+
+            <tr>
+              <th>Nama</th>
+              <td>
+                <span class="view" id="v_nama"></span>
+                <input class="edit-input" id="e_nama">
+              </td>
+            </tr>
+
+            <tr>
+              <th>NPSN</th>
+              <td>
+                <span class="view" id="v_npsn"></span>
+                <input class="edit-input" id="e_npsn">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Alamat</th>
+              <td>
+                <span class="view" id="v_alamat"></span>
+                <input class="edit-input" id="e_alamat">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Kode Pos</th>
+              <td>
+                <span class="view" id="v_kodepos"></span>
+                <input class="edit-input" id="e_kodepos">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Desa / Kelurahan</th>
+              <td>
+                <span class="view" id="v_desa"></span>
+                <input class="edit-input" id="e_desa">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Kecamatan</th>
+              <td>
+                <span class="view" id="v_kecamatan"></span>
+                <input class="edit-input" id="e_kecamatan">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Kabupaten</th>
+              <td>
+                <span class="view" id="v_kabupaten"></span>
+                <input class="edit-input" id="e_kabupaten">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Provinsi</th>
+              <td>
+                <span class="view" id="v_provinsi"></span>
+                <input class="edit-input" id="e_provinsi">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Status Sekolah</th>
+              <td>
+                <span class="view" id="v_status"></span>
+                <input class="edit-input" id="e_status">
+              </td>
+            </tr>
+
+                        <tr>
+              <th>Waktu Penyelenggaraan</th>
+              <td>
+                <span class="view" id="v_waktu"></span>
+                <input class="edit-input" id="e_waktu">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Jenjang Pendidikan</th>
+              <td>
+                <span class="view" id="v_jenjang"></span>
+                <input class="edit-input" id="e_jenjang">
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <!-- ================= DOKUMEN ================= -->
+
+      <div class="card-section">
+
+        <div class="section-title">
+
+          <i class="fas fa-file-alt"></i>
+          Dokumen dan Perizinan
+
+        </div>
+
+        <div class="table-wrap">
+
+          <table class="profil-table">
+
+            <tr>
+              <th>Naungan</th>
+              <td>
+                <span class="view" id="v_naungan"></span>
+                <input class="edit-input" id="e_naungan">
+              </td>
+            </tr>
+
+            <tr>
+              <th>No. SK. Pendirian</th>
+              <td>
+                <span class="view" id="v_sk_pendirian"></span>
+                <input class="edit-input" id="e_sk_pendirian">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Tanggal SK. Pendirian</th>
+              <td>
+                <span class="view" id="v_tgl_pendirian"></span>
+                <input class="edit-input" id="e_tgl_pendirian">
+              </td>
+            </tr>
+
+            <tr>
+              <th>No. SK. Operasional</th>
+              <td>
+                <span class="view" id="v_sk_operasional"></span>
+                <input class="edit-input" id="e_sk_operasional">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Tanggal SK. Operasional</th>
+              <td>
+                <span class="view" id="v_tgl_operasional"></span>
+                <input class="edit-input" id="e_tgl_operasional">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Akreditasi</th>
+              <td>
+                <span class="view" id="v_akreditasi"></span>
+                <input class="edit-input" id="e_akreditasi">
+              </td>
+            </tr>
+
+            <tr>
+              <th>No. SK. Akreditasi</th>
+              <td>
+                <span class="view" id="v_sk_akreditasi"></span>
+                <input class="edit-input" id="e_sk_akreditasi">
+              </td>
+            </tr>
+
+            <tr>
+              <th>Tanggal SK. Akreditasi</th>
+              <td>
+                <span class="view" id="v_tgl_akreditasi"></span>
+                <input class="edit-input" id="e_tgl_akreditasi">
+              </td>
+            </tr>
+
+            <tr>
+              <th>No. Sertifikasi ISO</th>
+              <td>
+                <span class="view" id="v_iso"></span>
+                <input class="edit-input" id="e_iso">
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <!-- ================= SEJARAH ================= -->
+
+      <div class="card-section">
+
+        <div class="section-title">
+
+          <i class="fas fa-book"></i>
+          Sejarah Sekolah
+
+        </div>
+
+        <div class="sejarah-box">
+
+          <div class="view" id="v_sejarah"></div>
+
+          <textarea
+          class="edit-input"
+          id="e_sejarah"></textarea>
+
+        </div>
+
+      </div>
+
+      <!-- ================= VISI MISI ================= -->
+
+      <div class="card-section">
+
+        <div class="section-title">
+
+          <i class="fas fa-bullseye"></i>
+          Visi Misi dan Tujuan
+
+        </div>
+
+        <div class="visi-box">
+
+          <h3>Visi</h3>
+
+          <div class="view" id="v_visi"></div>
+
+          <textarea
+          class="edit-input"
+          id="e_visi"></textarea>
+
+        </div>
+
+        <div class="misi-box">
+
+          <h3>Misi</h3>
+
+          <div class="view" id="v_misi"></div>
+
+          <textarea
+          class="edit-input"
+          id="e_misi"></textarea>
+
+        </div>
+
+        <div class="tujuan-box">
+
+          <h3>Tujuan</h3>
+
+          <div class="view" id="v_tujuan"></div>
+
+          <textarea
+          class="edit-input"
+          id="e_tujuan"></textarea>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON SAVE -->
+
+      <div class="save-area">
+
+        <button
+        class="btn-save"
+        id="btnSave"
+        onclick="simpanProfil()">
+
+          <i class="fas fa-save"></i>
+          Simpan Perubahan
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+  doc,
+  getDoc,
+  setDoc
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= EDIT MODE ================= */
+
+let editMode = false;
+
+window.toggleEdit = () => {
+
+  editMode = !editMode;
+
+  document.querySelectorAll(".view")
+  .forEach(el => {
+    el.style.display = editMode ? "none" : "block";
+  });
+
+  document.querySelectorAll(".edit-input")
+  .forEach(el => {
+    el.style.display = editMode ? "block" : "none";
+  });
+
+  document.getElementById("btnSave")
+  .style.display =
+  editMode ? "inline-block" : "none";
+
+};
+
+/* ================= SIMPAN ================= */
+
+window.simpanProfil = async () => {
+
+  const data = {
+
+    /* IDENTITAS */
+
+    nama: e_nama.value,
+    npsn: e_npsn.value,
+    alamat: e_alamat.value,
+    kodepos: e_kodepos.value,
+    desa: e_desa.value,
+    kecamatan: e_kecamatan.value,
+    kabupaten: e_kabupaten.value,
+    provinsi: e_provinsi.value,
+    status: e_status.value,
+    waktu: e_waktu.value,
+    jenjang: e_jenjang.value,
+
+    /* DOKUMEN */
+
+    naungan: e_naungan.value,
+    sk_pendirian: e_sk_pendirian.value,
+    tgl_pendirian: e_tgl_pendirian.value,
+    sk_operasional: e_sk_operasional.value,
+    tgl_operasional: e_tgl_operasional.value,
+    akreditasi: e_akreditasi.value,
+    sk_akreditasi: e_sk_akreditasi.value,
+    tgl_akreditasi: e_tgl_akreditasi.value,
+    iso: e_iso.value,
+
+    /* PROFIL */
+
+    sejarah: e_sejarah.value,
+    visi: e_visi.value,
+    misi: e_misi.value,
+    tujuan: e_tujuan.value
+
+  };
+
+  try{
+
+    await setDoc(
+      doc(db,"website","profil"),
+      data
+    );
+
+    alert("Profil berhasil disimpan");
+
+    loadProfil();
+
+    toggleEdit();
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Gagal menyimpan data");
+
+  }
+
+};
+
+/* ================= LOAD DATA ================= */
+
+async function loadProfil(){
+
+  try{
+
+    const ref =
+    doc(db,"website","profil");
+
+    const snap =
+    await getDoc(ref);
+
+    let d = {};
+
+    /* DEFAULT DATA */
+
+    if(snap.exists()){
+
+      d = snap.data();
+
+    }else{
+
+      d = {
+
+        /* IDENTITAS */
+
+        nama:"SMP Negeri 20 Konawe Selatan",
+        npsn:"40401903",
+        alamat:"Jl. Sabulakoa - Landono Desa Sabulakoa",
+        kodepos:"93373",
+        desa:"Sabulakoa",
+        kecamatan:"Sabulakoa",
+        kabupaten:"Kab. Konawe Selatan",
+        provinsi:"Sulawesi Tenggara",
+        status:"Negeri",
+        waktu:"Pagi / 6 Hari",
+        jenjang:"SMP",
+
+        /* DOKUMEN */
+
+        naungan:"Pemerintah Daerah",
+        sk_pendirian:"07/O/1997",
+        tgl_pendirian:"16-05-1997",
+        sk_operasional:"107/O/1997",
+        tgl_operasional:"16-05-1997",
+        akreditasi:"B",
+        sk_akreditasi:"40/BAP-SM/SULTRA/X/2017",
+        tgl_akreditasi:"30-10-2017",
+        iso:"Belum Bersertifikat",
+
+        /* PROFIL */
+
+        sejarah:
+`SMP Negeri 20 Konawe Selatan, yang terletak di Jalan Poros Sabulakoa, Kecamatan Sabulakoa, Kabupaten Konawe Selatan, Provinsi Sulawesi Tenggara, merupakan lembaga pendidikan yang berdedikasi tinggi dalam mencetak generasi muda yang berkualitas.
+
+Pada awalnya sekolah ini merupakan kelas jauh dari SMPN 1 Landono pada tahun 1997, kemudian berdiri sendiri menjadi SMPN 3 Landono dan berubah menjadi SMPN 20 Konawe Selatan hingga saat ini.`,
+
+        visi:
+`Mewujudkan Generasi Unggul Dalam Berprestasi Melalui Penguasaan Ilmu Pengetahuan Dan Teknologi Berdasarkan Iman Dan Taqwa.`,
+
+        misi:
+`Menumbuhkan penghayatan terhadap ajaran agama yang dianutnya.
+Melaksanakan pembelajaran dan bimbingan secara efektif.
+Menumbuhkan semangat keunggulan secara intensif kepada warga sekolah.
+Mendorong dan membantu setiap siswa untuk mengenali potensi dirinya.
+Mengembangkan manajemen partisipatif.`,
+
+        tujuan:
+`Menjadikan anak didik yang bertaqwa, cerdas, dan terampil dalam era globalisasi.`
+
+      };
+
+      /* AUTO SIMPAN DEFAULT */
+
+      await setDoc(
+        doc(db,"website","profil"),
+        d
+      );
+
+    }
+
+    /* ================= HEADER ================= */
+
+    namaSekolah.innerText =
+    d.nama || "-";
+
+    alamatSekolah.innerText =
+    d.alamat || "-";
+
+    /* ================= LOOP VIEW ================= */
+
+    for(const key in d){
+
+      const view =
+      document.getElementById("v_" + key);
+
+      const edit =
+      document.getElementById("e_" + key);
+
+      /* VIEW */
+
+      if(view){
+
+        /* MISI */
+
+        if(key === "misi"){
+
+          const items =
+          d[key]
+          ?.split("\n")
+          .filter(x => x.trim() !== "")
+          .map(x => `<li>${x}</li>`)
+          .join("");
+
+          view.innerHTML =
+          `<ul>${items}</ul>`;
+
+        }
+
+        /* SEJARAH */
+
+        else if(key === "sejarah"){
+
+          view.innerHTML =
+          (d[key] || "")
+          .replace(/\n/g,"<br><br>");
+
+        }
+
+        /* VISI & TUJUAN */
+
+        else{
+
+          view.innerText =
+          d[key] || "-";
+
+        }
+
+      }
+
+      /* INPUT */
+
+      if(edit){
+
+        edit.value =
+        d[key] || "";
+
+      }
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Gagal load data profil");
+
+  }
+
+}
+
+loadProfil();
+
+</script>
+
+</body>
+</html>

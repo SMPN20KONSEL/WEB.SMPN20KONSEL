@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Siswa</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:#f4f6f9;
+  display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+  width:260px;
+  height:100vh;
+  background:#111827;
+  color:white;
+  position:fixed;
+  left:0;
+  top:0;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo img{
+  width:70px;
+  background:white;
+  padding:5px;
+  border-radius:10px;
+}
+
+.logo h2{
+  font-size:18px;
+  margin-top:8px;
+}
+
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  margin-bottom:8px;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-size:14px;
+  transition:.2s;
+}
+
+.sidebar a:hover{
+  background:#2563eb;
+}
+
+/* ================= MAIN ================= */
+.main{
+  margin-left:260px;
+  width:100%;
+}
+
+/* ================= HEADER ================= */
+.header{
+  background:white;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+/* ================= FORM ================= */
+.form-card{
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.form-title{
+  margin-bottom:20px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+input, select{
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:#2563eb;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  color:white;
+  font-size:14px;
+}
+
+.btn-save{
+  background:#16a34a;
+}
+
+.btn-import{
+  background:#2563eb;
+}
+
+/* ================= TABLE ================= */
+.container{
+  padding:20px;
+}
+
+.table-card{
+  background:white;
+  border-radius:12px;
+  overflow:auto;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th, td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+  text-align:left;
+}
+
+th{
+  background:#f3f4f6;
+}
+
+/* FOTO */
+.foto{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #eee;
+}
+
+/* BADGE */
+.badge{
+  padding:5px 10px;
+  border-radius:6px;
+  font-size:12px;
+  color:white;
+}
+
+.aktif{
+  background:#16a34a;
+}
+
+.pindah{
+  background:#dc2626;
+}
+
+/* INFO */
+.info-foto{
+  margin-top:15px;
+  padding:15px;
+  background:#eff6ff;
+  border-left:4px solid #2563eb;
+  border-radius:8px;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    position:relative;
+    height:auto;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+
+  <div class="logo">
+    <img src="../image/Logo_transparent.png">
+    <h2>SMPN 20 KONSEL</h2>
+  </div>
+
+  <div class="menu-title">Menu Utama</div>
+
+  <a class="active" href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a>
+  <a href="siswa.html"><i class="fas fa-users"></i>Data Siswa</a>
+  <a href="guru.html"><i class="fas fa-chalkboard-teacher"></i>Data Guru</a>
+  <a href="berita.html"><i class="fas fa-newspaper"></i>Berita</a>
+  <a href="galeri.html"><i class="fas fa-image"></i>Galeri</a>
+  <a href="slider.html"><i class="fas fa-images"></i>Slider</a>
+  <a href="statistik.html"><i class="fas fa-chart-bar"></i>Statistik</a>
+  <a href="pengumuman.html"><i class="fas fa-bullhorn"></i>Pengumuman</a>
+  <a href="pengaturan.html"><i class="fas fa-cog"></i>Pengaturan</a>
+  <a href="login.html"><i class="fas fa-right-from-bracket"></i>Logout</a>
+
+</div>
+<!-- ================= MAIN ================= -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h3>Data Siswa</h3>
+    <div>
+      <i class="fas fa-users"></i>
+      Manajemen Siswa
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-card">
+
+    <h3 class="form-title">
+      Tambah Siswa
+    </h3>
+
+    <div class="form-grid">
+
+      <input id="nis"
+      placeholder="NIS">
+
+      <input id="nisn"
+      placeholder="NISN">
+
+      <input id="nama"
+      placeholder="Nama Lengkap">
+
+      <select id="jk">
+        <option value="Laki-laki">
+          Laki-laki
+        </option>
+
+        <option value="Perempuan">
+          Perempuan
+        </option>
+      </select>
+
+<select id="agama">
+        <option value="Islam">
+          Islam
+        </option>
+        <option value="Kristen">
+          Kristen
+        </option>
+        <option value="Katolik">
+          Katolik
+        </option>
+        <option value="Hindu">
+          Hindu
+        </option>
+        <option value="Budha">
+          Budha
+        </option>
+      </select>
+      <input id="kelas"
+      placeholder="Kelas">
+
+      <input id="wali"
+      placeholder="Wali Kelas">
+
+    </div>
+
+    <br>
+
+    <button
+    class="btn btn-save"
+    onclick="tambahSiswa()">
+
+      <i class="fas fa-save"></i>
+      Simpan Siswa
+
+    </button>
+
+    <hr style="margin:25px 0; border:none; border-top:1px solid #eee;">
+
+    <h3 style="margin-bottom:15px;">
+      Import CSV
+    </h3>
+
+    <input type="file" id="fileCSV">
+
+    <br><br>
+
+    <button
+    class="btn btn-import"
+    onclick="importCSV()">
+
+      <i class="fas fa-file-import"></i>
+      Import CSV
+
+    </button>
+
+    <div class="info-foto">
+
+      <b>📸 Sistem Foto GitHub</b><br>
+
+      Upload foto manual ke folder:
+
+      <br><br>
+
+      <b>
+      image/siswa/
+      </b>
+
+      <br><br>
+
+      Nama file harus sesuai NISN siswa.
+
+      <br><br>
+
+      Contoh:
+      <br>
+
+      <b>1234567890.jpg</b>
+
+    </div>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="container">
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>NIS</th>
+            <th>NISN</th>
+            <th>Nama</th>
+            <th>JK</th>
+            <th>Agama</th>
+            <th>Kelas</th>
+            <th>Wali</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="dataSiswa">
+
+          <tr>
+            <td colspan="9">
+              Loading...
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= FIREBASE ================= -->
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+  collection,
+  setDoc,
+  doc,
+  onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= URL FOTO GITHUB ================= */
+
+const FOTO_BASE =
+"https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/siswa/";
+
+/* ================= TAMBAH SISWA ================= */
+
+window.tambahSiswa = async () => {
+
+  const nis =
+  document.getElementById("nis").value;
+
+  const nisn =
+  document.getElementById("nisn").value;
+
+  const nama =
+  document.getElementById("nama").value;
+
+  const jk =
+  document.getElementById("jk").value;
+
+  const kelas =
+  document.getElementById("kelas").value;
+
+  const wali =
+  document.getElementById("wali").value;
+
+  const agama =
+  document.getElementById("agama").value;
+
+  if(!nis || !nisn || !nama){
+
+    alert("Lengkapi data");
+
+    return;
+  }
+
+  await setDoc(doc(db,"siswa",nis),{
+
+    nis,
+    nisn,
+    nama,
+    jk,
+    kelas,
+    wali,
+    agama,
+
+    status:"aktif",
+
+    createdAt:new Date()
+
+  });
+
+  alert("Siswa berhasil ditambahkan");
+
+  // reset form
+  document.getElementById("nis").value = "";
+  document.getElementById("nisn").value = "";
+  document.getElementById("nama").value = "";
+  document.getElementById("kelas").value = "";
+  document.getElementById("wali").value = "";
+
+};
+
+/* ================= IMPORT CSV ================= */
+
+window.importCSV = async () => {
+
+  const file =
+  document.getElementById("fileCSV").files[0];
+
+  if(!file){
+
+    alert("Pilih file CSV");
+
+    return;
+  }
+
+  const text =
+  await file.text();
+
+  const rows =
+  text.split("\n");
+
+  for(let r of rows){
+
+    const data =
+    r.split(",");
+
+    const nis   = data[0]?.trim();
+    const nisn  = data[1]?.trim();
+    const nama  = data[2]?.trim();
+    const jk    = data[3]?.trim();
+    const agama = data[4]?.trim();
+    const kelas = data[5]?.trim();
+    const wali  = data[6]?.trim();
+
+    if(!nis) continue;
+
+    await setDoc(doc(db,"siswa",nis),{
+
+      nis,
+      nisn,
+      nama,
+      jk,
+      agama,
+      kelas,
+      wali,
+
+      status:"aktif",
+
+      createdAt:new Date()
+
+    });
+
+  }
+
+  alert("Import CSV berhasil");
+
+};
+
+/* ================= REALTIME ================= */
+
+onSnapshot(collection(db,"siswa"),(snap)=>{
+
+  let html = "";
+
+  snap.forEach((d)=>{
+
+    const s = d.data();
+
+    const foto =
+    `${FOTO_BASE}${s.nisn}.jpg`;
+
+    html += `
+
+      <tr>
+<td>
+<img
+  class="foto"
+  src="../image/siswa/${s.nis}.jpg"
+  onerror="this.onerror=null;
+  this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+</td>
+
+        <td>${s.nis || "-"}</td>
+
+        <td>${s.nisn || "-"}</td>
+
+        <td>${s.nama || "-"}</td>
+
+        <td>${s.jk || "-"}</td>
+
+        <td>${s.agama || "-"}</td>
+
+        <td>${s.kelas || "-"}</td>
+
+        <td>${s.wali || "-"}</td>
+
+        <td>
+
+          <span class="badge ${s.status}">
+
+            ${s.status || "aktif"}
+
+          </span>
+
+        </td>
+
+      </tr>
+
+    `;
+  });
+
+  document.getElementById("dataSiswa").innerHTML =
+  html || `
+    <tr>
+      <td colspan="8">
+        Tidak ada data siswa
+      </td>
+    </tr>
+  `;
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Statistik</title>
+</head>
+<body>
+
+<h2>Statistik Sekolah (AUTO)</h2>
+
+<p>Guru: <span id="guru"></span></p>
+<p>Siswa: <span id="siswa"></span></p>
+
+<button onclick="sync()">Sync Statistik</button>
+
+<script type="module">
+import { getGuru, getSiswa, setStatistik } from "../assets/js/services.js";
+
+async function load(){
+  guru.innerText = (await getGuru()).length;
+  siswa.innerText = (await getSiswa()).length;
+}
+
+window.sync = async () => {
+  const g = await getGuru();
+  const s = await getSiswa();
+
+  await setStatistik({
+    guru: g.length,
+    siswa: s.length,
+    alumni: 840
+  });
+
+  alert("Statistik updated");
+};
+
+load();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Guru</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:#f4f6f9;
+  display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+  width:260px;
+  background:#111827;
+  color:white;
+  height:100vh;
+  padding:20px;
+  position:fixed;
+  left:0;
+  top:0;
+  overflow-y:auto;
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo img{
+  width:70px;
+  background:white;
+  padding:5px;
+  border-radius:10px;
+}
+
+.logo h2{
+  font-size:18px;
+  margin-top:8px;
+}
+
+.menu-title{
+  font-size:12px;
+  color:#9ca3af;
+  margin:20px 0 10px;
+}
+
+.sidebar a{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  color:white;
+  text-decoration:none;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.sidebar a:hover{
+  background:#2563eb;
+}
+
+/* ================= MAIN ================= */
+.main{
+  margin-left:260px;
+  width:100%;
+  padding:20px;
+}
+
+/* ================= CARD ================= */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* ================= FORM ================= */
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+input, select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+}
+
+input:focus, select:focus{
+  border-color:#2563eb;
+}
+
+/* ================= BUTTON ================= */
+button{
+  padding:10px 14px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  color:white;
+}
+
+.btn-save{ background:#16a34a; }
+.btn-danger{ background:#dc2626; }
+
+/* ================= FOTO ================= */
+.foto{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #eee;
+}
+
+/* ================= TABLE ================= */
+.table-card{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th, td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+  text-align:left;
+}
+
+th{
+  background:#f3f4f6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  body{ flex-direction:column; }
+  .sidebar{ width:100%; position:relative; height:auto; }
+  .main{ margin-left:0; }
+  .form-grid{ grid-template-columns:1fr; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+
+  <div class="logo">
+    <img src="../image/Logo_transparent.png">
+    <h2>SMPN 20 KONSEL</h2>
+  </div>
+
+  <div class="menu-title">Menu Utama</div>
+
+  <a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a>
+
+  <a href="siswa.html">
+    <i class="fas fa-users"></i>Data Siswa
+  </a>
+
+  <a class="active" href="guru.html">
+    <i class="fas fa-chalkboard-teacher"></i>Data Guru
+  </a>
+
+  <a href="berita.html">
+    <i class="fas fa-newspaper"></i>Berita
+  </a>
+
+  <a href="galeri.html">
+    <i class="fas fa-image"></i>Galeri
+  </a>
+
+  <a href="slider.html">
+    <i class="fas fa-images"></i>Slider
+  </a>
+
+  <a href="statistik.html">
+    <i class="fas fa-chart-bar"></i>Statistik
+  </a>
+
+  <a href="pengumuman.html">
+    <i class="fas fa-bullhorn"></i>Pengumuman
+  </a>
+
+  <a href="pengaturan.html">
+    <i class="fas fa-cog"></i>Pengaturan
+  </a>
+
+  <a href="login.html">
+    <i class="fas fa-right-from-bracket"></i>Logout
+  </a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+<div class="main">
+
+<div class="card">
+
+  <h2>Tambah Guru</h2>
+
+  <div class="form-grid">
+
+    <input id="nip" placeholder="NIP/NUPTK/ID SEKOLAH (unik=GR001/TU001)">
+    <input id="nama" placeholder="Nama Guru dengan gelar">
+
+ <div style="position:relative; width:100%;"> 
+<input id="mapel" placeholder="Klik untuk pilih mapel" readonly onclick="toggleMapel()">
+<div id="mapelBox" style="
+  display:none;
+  position:absolute;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:8px;
+  max-height:200px;
+  overflow:auto;
+  width:250px;
+  z-index:999;
+">
+  <div onclick="pilihMapel('Pendidikan Agama')" style="padding:8px;cursor:pointer;">Pendidikan Agama</div>
+  <div onclick="pilihMapel('Pendidikan Kewarganegaraan (PKn)')" style="padding:8px;cursor:pointer;">Pendidikan Kewarganegaraan (PKn)</div>
+  <div onclick="pilihMapel('Bahasa Indonesia')" style="padding:8px;cursor:pointer;">Bahasa Indonesia</div>
+  <div onclick="pilihMapel('Matematika')" style="padding:8px;cursor:pointer;">Matematika</div>
+  <div onclick="pilihMapel('Ilmu Pengetahuan Alam (IPA)')" style="padding:8px;cursor:pointer;">Ilmu Pengetahuan Alam (IPA)</div>
+  <div onclick="pilihMapel('Ilmu Pengetahuan Sosial (IPS)')" style="padding:8px;cursor:pointer;">Ilmu Pengetahuan Sosial (IPS)</div>
+  <div onclick="pilihMapel('Bahasa Inggris')" style="padding:8px;cursor:pointer;">Bahasa Inggris</div>
+  <div onclick="pilihMapel('Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)')" style="padding:8px;cursor:pointer;">Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)</div>
+  <div onclick="pilihMapel('Informatika')" style="padding:8px;cursor:pointer;">Informatika</div>
+  <div onclick="pilihMapel('Seni Budaya')" style="padding:8px;cursor:pointer;">Seni Budaya</div>
+  <div onclick="pilihMapel('Prakarya')" style="padding:8px;cursor:pointer;">Prakarya</div>
+  <div onclick="pilihMapel('Bahasa Daerah')" style="padding:8px;cursor:pointer;">Bahasa Daerah</div>
+  <div onclick="pilihMapel('Tidak Mengajar')" style="padding:8px;cursor:pointer;">Tidak Mengajar</div>
+  </div>
+</div> 
+
+<div style="position:relative; width:100%;">  
+<input id="jabatan" placeholder="Klik untuk pilih jabatan" readonly onclick="toggleJabatan()">
+<div id="jabatanBox" style="
+  display:none;
+  position:absolute;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:8px;
+  max-height:200px;
+  overflow:auto;
+  width:250px;
+  z-index:999;
+">
+  <div onclick="pilihJabatan('Kepala Sekolah')" style="padding:8px;cursor:pointer;">Kepala Sekolah</div>
+  <div onclick="pilihJabatan('Wakil Kepala Sekolah')" style="padding:8px;cursor:pointer;">Wakil Kepala Sekolah</div>
+  <div onclick="pilihJabatan('Wakasek Kurikulum')" style="padding:8px;cursor:pointer;">Wakasek Kurikulum</div>
+  <div onclick="pilihJabatan('Wakasek Kesiswaan')" style="padding:8px;cursor:pointer;">Wakasek Kesiswaan</div>
+  <div onclick="pilihJabatan('Wakasek Sarana dan Prasarana')" style="padding:8px;cursor:pointer;">Wakasek Sarana dan Prasarana</div>
+  <div onclick="pilihJabatan('Wakasek Humas')" style="padding:8px;cursor:pointer;">Wakasek Humas</div>
+  <div onclick="pilihJabatan('Guru Mata Pelajaran')" style="padding:8px;cursor:pointer;">Guru Mata Pelajaran</div>
+  <div onclick="pilihJabatan('Wali Kelas')" style="padding:8px;cursor:pointer;">Wali Kelas</div>
+  <div onclick="pilihJabatan('Guru Bimbingan Konseling (BK)')" style="padding:8px;cursor:pointer;">Guru BK</div>
+  <div onclick="pilihJabatan('Operator Sekolah')" style="padding:8px;cursor:pointer;">Operator Sekolah</div>
+  <div onclick="pilihJabatan('Bendahara Sekolah')" style="padding:8px;cursor:pointer;">Bendahara Sekolah</div>
+  <div onclick="pilihJabatan('Tata Usaha (TU)')" style="padding:8px;cursor:pointer;">Tata Usaha</div>
+  <div onclick="pilihJabatan('Pustakawan')" style="padding:8px;cursor:pointer;">Pustakawan</div>
+  <div onclick="pilihJabatan('Laboran')" style="padding:8px;cursor:pointer;">Laboran</div>
+  <div onclick="pilihJabatan('Proktor Ujian')" style="padding:8px;cursor:pointer;">Proktor Ujian</div>
+  <div onclick="pilihJabatan('Teknisi')" style="padding:8px;cursor:pointer;">Teknisi</div>
+  <div onclick="pilihJabatan('Pembina OSIS')" style="padding:8px;cursor:pointer;">Pembina OSIS</div>
+  <div onclick="pilihJabatan('Pembina Ekstrakurikuler')" style="padding:8px;cursor:pointer;">Pembina Ekstrakurikuler</div>
+  <div onclick="pilihJabatan('Satpam')" style="padding:8px;cursor:pointer;">Satpam</div>
+  <div onclick="pilihJabatan('Penjaga Sekolah')" style="padding:8px;cursor:pointer;">Penjaga Sekolah</div>
+  <div onclick="pilihJabatan('Petugas Kebersihan')" style="padding:8px;cursor:pointer;">Petugas Kebersihan</div>
+</div>
+</div> 
+
+    <input id="tempatLahir" placeholder="Tempat Lahir">
+    <input id="tanggalLahir" type="date">
+
+    <select id="jenisKelamin">
+      <option value="">Jenis Kelamin</option>
+      <option>Laki-Laki</option>
+      <option>Perempuan</option>
+    </select>
+
+    <select id="agama">
+      <option value="">Agama</option>
+      <option>Islam</option>
+      <option>Kristen</option>
+      <option>Katolik</option>
+      <option>Hindu</option>
+      <option>Buddha</option>
+      <option>Konghucu</option>
+    </select>
+
+    <input id="sekolah" placeholder="Sekolah">
+    <input id="telepon" placeholder="Telepon/Fax">
+
+    <select id="statusPerkawinan">
+      <option value="">Status Perkawinan</option>
+      <option>Belum Menikah</option>
+      <option>Menikah</option>
+    </select>
+
+    <input id="alamatRumah" placeholder="Alamat Rumah">
+    <input id="nohp" placeholder="No. HP">
+    <input id="email" placeholder="Email">
+
+  </div>
+
+  <div style="margin-top:15px;">
+    <button class="btn-save" onclick="simpan()">
+      Simpan Guru
+    </button>
+  </div>
+
+</div>
+
+  <!-- ================= TABLE ================= -->
+  <div class="card table-card">
+
+    <h2>Data Guru</h2>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>NIP</th>
+          <th>Nama</th>
+          <th>Mapel</th>
+          <th>Jabatan</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody">
+
+        <tr>
+          <td colspan="6">
+            Loading...
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+  collection,
+  setDoc,
+  doc,
+  deleteDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= JABATAN DROPDOWN ================= */
+
+window.toggleMapel = function () {
+  const box = document.getElementById("mapelBox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+};
+
+window.pilihMapel = function (value) {
+  const input = document.getElementById("mapel");
+
+  let data = input.value
+    ? input.value.split(",").map(v => v.trim())
+    : [];
+
+  if (!data.includes(value)) {
+    data.push(value);
+  }
+
+  input.value = data.join(", ");
+
+  document.getElementById("mapelBox").style.display = "none";
+};
+
+/* klik luar (lebih aman) */
+document.addEventListener("click", function (e) {
+  const box = document.getElementById("mapelBox");
+  const input = document.getElementById("mapel");
+
+  if (!box || !input) return;
+
+  if (!box.contains(e.target) && e.target !== input) {
+    box.style.display = "none";
+  }
+});
+
+/* ================= MAPEL DROPDOWN ================= */
+
+window.toggleJabatan = function () {
+  const box = document.getElementById("jabatanBox");
+  if (!box) return;
+
+  box.style.display = box.style.display === "block" ? "none" : "block";
+};
+
+window.pilihJabatan = function (value) {
+  const input = document.getElementById("jabatan");
+  if (!input) return;
+
+  let data = input.value
+    ? input.value.split(",").map(v => v.trim()).filter(v => v)
+    : [];
+
+  if (!data.includes(value)) {
+    data.push(value);
+  }
+
+  input.value = data.join(", ");
+
+  const box = document.getElementById("jabatanBox");
+  if (box) box.style.display = "none";
+};
+/* klik luar (lebih aman) */
+document.addEventListener("click", function (e) {
+  const box = document.getElementById("jabatanBox");
+  const input = document.getElementById("jabatan");
+
+  if (!box || !input) return;
+
+  if (!box.contains(e.target) && e.target !== input) {
+    box.style.display = "none";
+  }
+});
+
+/* ================= SIMPAN ================= */
+
+window.simpan = async () => {
+
+  const nip = val("nip");
+  const nama = val("nama");
+  const mapel = val("mapel");
+  const jabatan = val("jabatan");
+
+  const tempatLahir = val("tempatLahir");
+  const tanggalLahir = val("tanggalLahir");
+  const jenisKelamin = val("jenisKelamin");
+  const agama = val("agama");
+  const sekolah = val("sekolah");
+  const telepon = val("telepon");
+  const statusPerkawinan = val("statusPerkawinan");
+  const alamatRumah = val("alamatRumah");
+  const nohp = val("nohp");
+  const email = val("email");
+
+  if(!nip || !nama){
+    alert("NIP & Nama wajib diisi");
+    return;
+  }
+
+  await setDoc(doc(db,"guru",nip),{
+
+    nip,
+    nama,
+    mapel,
+    jabatan,
+    tempatLahir,
+    tanggalLahir,
+    jenisKelamin,
+    agama,
+    sekolah,
+    telepon,
+    statusPerkawinan,
+    alamatRumah,
+    nohp,
+    email,
+    createdAt: new Date()
+
+  });
+
+  alert("Guru berhasil disimpan");
+
+  resetForm();
+};
+
+/* ================= HAPUS ================= */
+
+window.hapus = async (id) => {
+
+  if(!confirm("Hapus data guru?")) return;
+
+  await deleteDoc(doc(db,"guru",id));
+
+  alert("Berhasil dihapus");
+};
+
+/* ================= REALTIME ================= */
+
+onSnapshot(collection(db,"guru"),(snap)=>{
+
+  let html = "";
+
+  snap.forEach((d)=>{
+
+    const g = d.data();
+
+    html += `
+      <tr>
+
+        <td>
+          <img class="foto"
+            src="../image/guru/${g.nip}.jpg"
+            onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+        </td>
+
+        <td>${g.nip || "-"}</td>
+        <td>${g.nama || "-"}</td>
+        <td>${g.mapel || "-"}</td>
+        <td>${g.jabatan || "-"}</td>
+
+        <td>
+          <button class="btn-danger" onclick="hapus('${g.nip}')">
+            Hapus
+          </button>
+        </td>
+
+      </tr>
+    `;
+  });
+
+  document.getElementById("tbody").innerHTML =
+    html || `<tr><td colspan="6">Tidak ada data</td></tr>`;
+
+});
+
+/* ================= HELPER ================= */
+
+function val(id){
+  return document.getElementById(id).value;
+}
+
+function resetForm(){
+  [
+    "nip","nama","mapel","jabatan",
+    "tempatLahir","tanggalLahir",
+    "jenisKelamin","agama",
+    "sekolah","telepon",
+    "statusPerkawinan","alamatRumah",
+    "nohp","email"
+  ].forEach(id=>{
+    document.getElementById(id).value = "";
+  });
+}
+
+</script>
+
+</body>
+</html>

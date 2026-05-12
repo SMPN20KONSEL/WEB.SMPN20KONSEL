@@ -1,0 +1,26 @@
+body{
+  font-family:Arial;
+  margin:0;
+  background:#eef2f7;
+}
+
+.sidebar{
+  width:220px;
+  height:100vh;
+  background:#1e3a8a;
+  position:fixed;
+  color:white;
+  padding:20px;
+}
+
+.main{
+  margin-left:240px;
+  padding:20px;
+}
+
+.box{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+}

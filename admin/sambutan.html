@@ -1,0 +1,67 @@
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Edit Sambutan</title>
+
+<style>
+body{
+  font-family:Arial;
+  padding:20px;
+}
+
+textarea{
+  width:100%;
+  height:200px;
+  padding:10px;
+}
+
+button{
+  margin-top:20px;
+  padding:12px 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Edit Sambutan Kepala Sekolah</h1>
+
+<textarea id="isi"></textarea>
+
+<button onclick="simpan()">Simpan</button>
+
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+  doc,
+  setDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+async function load(){
+
+  const snap = await getDoc(doc(db,"website","sambutan"));
+
+  if(snap.exists()){
+    document.getElementById("isi").value = snap.data().isi;
+  }
+}
+
+window.simpan = async function(){
+
+  const isi = document.getElementById("isi").value;
+
+  await setDoc(doc(db,"website","sambutan"),{
+    isi
+  });
+
+  alert("Sambutan berhasil disimpan");
+}
+
+load();
+
+</script>
+
+</body>
+</html>

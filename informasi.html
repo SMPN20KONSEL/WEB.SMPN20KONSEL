@@ -256,24 +256,14 @@ caption {
 </head>
 <body>
   <main>
-    <div class="card" style="padding: 30px; margin: 30px auto; max-width: 1200px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-      
-      <!-- Judul Utama -->
-      <h1 style="text-align: left; font-size: 32px; margin-bottom: 30px;">Informasi Sekolah</h1>
+ <div class="card" style="padding: 30px; margin: 30px auto; max-width: 1200px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
 
-      <!-- Informasi Guru -->
-      <section id="guru">
-        <h2>Informasi Guru dan Tenaga Kependidikan</h2>
-        <div>
-          <iframe 
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcZNGG64HpniQ5xKpYuonJLvgROcNCYa0brPH3hmQ20KIXVgRqEt1IihtRpGBFx6usHn3FLdfyznWO/pubhtml?gid=1496526009&single=true" 
-            width="100%" height="250">
-          </iframe>
-          <p>Untuk melihat Profil Guru dan Tenaga Kependidikan, silakan kunjungi 
-            <a href="pofil guru.html" style="font-size: 22px; font-weight: bold;">Halaman Ini</a></p>
-        </div>    
-        <table>
-      <caption style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 40px;margin-bottom: 10px;">Riwayat Kepala Sekolah SMPN 20 Konawe Selatan</caption>
+  <h1 style="text-align: left; font-size: 32px; margin-bottom: 30px;">
+    Informasi Sekolah
+  </h1>
+
+<section class="card">
+  <h2>Riwayat Kepala Sekolah SMPN 20 Konawe Selatan</h2>
         <div class="table-wrapper">
           <table>
             <thead>
@@ -290,45 +280,47 @@ caption {
             </tbody>
           </table>
         </div>
-      </section>
-    
-     <section class="card" style="padding: 20px; text-align: justify;" id="berprestasi" style="padding: 30px;">
-       <h2>Data Siswa</h2>
-        <h2 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 10px; margin-bottom: 4px;">DATA PESERTA DIDIK SMP N 20 KONAWE SELATAN</h2>
-        <h3 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 0;margin-bottom: 10px;">TAHUN PELAJARAN 2024/2025</h3>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th rowspan="2">NO</th>
-              <th rowspan="2">KELAS</th>
-              <th colspan="3">BERDASARKAN ROMBEL</th>
-              <th colspan="3">BERDASARKAN AGAMA</th>
-              <th rowspan="2">JUMLAH</th>
-              <th rowspan="2">WALI KELAS</th>
-            </tr>
-            <tr>
-              <th>LAKI-LAKI</th>
-              <th>PEREMPUAN</th>
-              <th>JUMLAH</th>
-              <th>ISLAM</th>
-              <th>HINDU</th>
-              <th>KRISTEN</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>VII.A</td><td>10</td><td>8</td><td>18</td><td>16</td><td>2</td><td>0</td><td>18</td><td>NURMILA P. S.Pd</td></tr>
-            <tr><td>2</td><td>VII.B</td><td>7</td><td>10</td><td>17</td><td>16</td><td>1</td><td>0</td><td>17</td><td>ROSNIA, S.Pd</td></tr>
-            <tr><td>3</td><td>VIII</td><td>18</td><td>12</td><td>30</td><td>27</td><td>3</td><td>0</td><td>30</td><td>SRI SANTI YUSNI, S.Pd</td></tr>
-            <tr><td>4</td><td>IX.A</td><td>10</td><td>11</td><td>21</td><td>21</td><td>0</td><td>0</td><td>21</td><td>I NYOMAN BERATA, S.Pd</td></tr>
-            <tr><td>5</td><td>IX.B</td><td>9</td><td>12</td><td>21</td><td>15</td><td>6</td><td>0</td><td>21</td><td>HASTATI, S.Pd</td></tr>
-            <tr><th colspan="2">JML</th><th>54</th><th>53</th><th>107</th><th>95</th><th>12</th><th>0</th><th>107</th><th></th></tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 50px;margin-bottom: 0;">DATA PESERTA DIDIK SMP N 20 KONAWE SELATAN</h2>
-      <h3 style="text-align:center; font-size: 18px; font-weight: bold; color: #000; margin-top: 0;">TAHUN PELAJARAN 2024/2025</h3>
-      <div class="">
+</section>
+
+  <!-- ================= GURU & TENAGA ================= -->
+  <section class="card">
+
+    <h3>Data Tenaga Kependidikan</h3>
+
+    <p>
+      Guru dan tenaga kependidikan SMP Negeri 20 Konawe Selatan terdiri dari tenaga pendidik dan tenaga kependidikan yang profesional.
+    </p>
+
+    <!-- TABEL DINAMIS -->
+    <div style="margin-top: 30px;">
+      <table>
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>JENIS TENAGA</th>
+            <th>JUMLAH</th>
+          </tr>
+        </thead>
+
+        <tbody id="tbodyTenaga">
+          <tr>
+            <td colspan="3">Loading...</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+<p>
+    Untuk melihat Profil Guru dan Tenaga Kependidikan, silakan kunjungi
+    <a href="pofil guru.html" style="font-size: 22px; font-weight: bold;">Halaman Ini</a>
+  </p>
+  </section>
+
+
+<section class="card">
+        <h3>DATA PESERTA DIDIK SMP N 20 KONAWE SELATAN</h3>
+        <h3 id="tahunPelajaran"></h3>
+       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -336,7 +328,6 @@ caption {
               <th rowspan="2">KELAS</th>
               <th colspan="3">BERDASARKAN JENIS KELAMIN</th>
               <th colspan="3">BERDASARKAN AGAMA</th>
-              <th rowspan="2">JUMLAH</th>
               <th rowspan="2">WALI KELAS</th>
             </tr>
             <tr>
@@ -345,29 +336,26 @@ caption {
               <th>JUMLAH</th>
               <th>ISLAM</th>
               <th>HINDU</th>
-              <th>KRISTEN</th>
+              <th>JUMLAH</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td>1</td><td>VII.A</td><td>13</td><td>7</td><td>20</td><td>16</td><td>4</td><td>0</td><td>20</td><td>Hastati, S.Pd</td></tr>
-            <tr><td>2</td><td>VII.B</td><td>13</td><td>7</td><td>20</td><td>20</td><td>0</td><td>0</td><td>20</td><td>Rosnia, S.Pd</td></tr>
-            <tr><td>3</td><td>VIII.A</td><td>10</td><td>8</td><td>18</td><td>16</td><td>2</td><td>0</td><td>18</td><td>Sri Santi Yusni, S.Pd</td></tr>
-            <tr><td>4</td><td>VIII.B</td><td>6</td><td>11</td><td>17</td><td>16</td><td>1</td><td>0</td><td>17</td><td>Selviani, S.Pd</td></tr>
-            <tr><td>5</td><td>IX</td><td>18</td><td>10</td><td>28</td><td>25</td><td>3</td><td>0</td><td>28</td><td>Asrianti Tongalu, S.Pd</td></tr>
-            <tr><th colspan="2">JML</th><th>60</th><th>43</th><th>103</th><th>93</th><th>10</th><th>0</th><th>103</th><th></th></tr>
-          </tbody>
+          <tbody id="tbodySiswa">
+  <tr>
+    <td colspan="9">Loading...</td>
+  </tr>
+           </tbody>
         </table>
       </div>
-        <div>
-         <div>
-            <h3 style="text-align:center; font-size: 20px; font-weight: bold; color: #000; margin-top: 50px;">Statistik Siswa dan Alumni</h3>
-        <div class="statistik">
-          <div><h3>Jumlah Siswa</h3><p>1203</p></div>
-          <div><h3>Siswa Lulus</h3><p>840</p></div>
-          <div><h3>Alumni Aktif</h3><p>673</p></div>
-        </div>
+<p>
+    Untuk melihat Profil Siswa, silakan kunjungi
+    <a href="profil-siswa.html" style="font-size: 22px; font-weight: bold;">Halaman Ini</a>
+  </p>
+  </section>
+
+
         <h2 style="text-align:center; font-size: 20px; font-weight: bold; color: #000; margin-top: 50px;">Siswa Berprestasi</h2>
         <div class="statistik">
+          
         <div class="prestasi-grid">
           <div class="siswa-card">
             <img src="Galeri/IMG-20250613-WA0025.jpg" alt="Putri Ayu">
@@ -383,6 +371,7 @@ caption {
           </div>
         </div>
       </section>
+
 <section class="card" style="padding: 20px; text-align: justify;" id="kurikulum" style="padding: 30px;">
   <h2 style="text-align: left; margin-bottom: 20px;">Kurikulum Sekolah</h2>
   <div>
@@ -459,11 +448,6 @@ caption {
       <li><strong>Sistem Informasi Sekolah (SIS):</strong> Untuk pengelolaan data siswa, akademik, dan administrasi.</li>
     </ul>
   </div>
-</section>
-   <div class="container">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeUhXhnLC8Ao1p3JYDf2QIpc-W4dfdPdQ3Pwypo4wJYm7KJEA/viewform?embedded=true" width="640" height="717" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      </div>
-    </section>
   </main>
 
 <footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
@@ -516,7 +500,137 @@ caption {
 <div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
   © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.cm
 </div>
+<script type="module">
 
+import { db } from "../assets/js/firebase.js";
+import {
+  collection,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= REKAP TENAGA GURU ================= */
+  const sekarang = new Date();
+  const tahun = sekarang.getFullYear();
+
+  // Jika bulan Juli ke atas = tahun ajaran baru
+  const mulai =
+    sekarang.getMonth() >= 6 ? tahun : tahun - 1;
+
+  const selesai = mulai + 1;
+
+  document.getElementById("tahunPelajaran").innerText =
+    `TAHUN PELAJARAN ${mulai}/${selesai}`;
+const tbodyTenaga = document.getElementById("tbodyTenaga");
+
+onSnapshot(collection(db, "guru"), (snap) => {
+
+  let kepalaSekolah = 0;
+  let guruMapel = 0;
+  let tendik = 0;
+
+  snap.forEach((d) => {
+    const g = d.data();
+    const jabatan = (g.jabatan || "").toLowerCase();
+
+    if (jabatan.includes("kepala sekolah")) {
+      kepalaSekolah++;
+    }
+    else if (jabatan.includes("guru")) {
+      guruMapel++;
+    }
+    else {
+      tendik++;
+    }
+  });
+
+  const total = kepalaSekolah + guruMapel + tendik;
+
+  tbodyTenaga.innerHTML = `
+    <tr>
+      <td>1</td>
+      <td>Kepala Sekolah</td>
+      <td>${kepalaSekolah}</td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>Guru Mata Pelajaran</td>
+      <td>${guruMapel}</td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td>Tenaga Kependidikan</td>
+      <td>${tendik}</td>
+    </tr>
+
+    <tr>
+      <th colspan="2">JUMLAH</th>
+      <th>${total}</th>
+    </tr>
+  `;
+});
+
+onSnapshot(collection(db, "siswa"), (snap) => {
+
+  let no = 1;
+
+  let totalL = 0;
+  let totalP = 0;
+  let totalIslam = 0;
+  let totalHindu = 0;
+
+  let html = "";
+
+  snap.forEach((doc) => {
+
+    const s = doc.data();
+
+    const jk = (s.jk || "").toLowerCase();
+    const agama = (s.agama || "").toLowerCase();
+
+    if (jk === "laki-laki") totalL++;
+    if (jk === "perempuan") totalP++;
+
+    if (agama === "islam") totalIslam++;
+    if (agama === "hindu") totalHindu++;
+
+    const jumlah = 1;
+
+    html += `
+      <tr>
+        <td>${no++}</td>
+        <td>${s.kelas || "-"}</td>
+        <td>${jk === "laki-laki" ? 1 : 0}</td>
+        <td>${jk === "perempuan" ? 1 : 0}</td>
+        <td>${jumlah}</td>
+        <td>${agama === "islam" ? 1 : 0}</td>
+        <td>${agama === "hindu" ? 1 : 0}</td>
+        <td>${jumlah}</td>
+        <td>${s.wali || "-"}</td>
+      </tr>
+    `;
+  });
+
+  const total = totalL + totalP;
+
+  html += `
+    <tr>
+      <th colspan="2">JML</th>
+      <th>${totalL}</th>
+      <th>${totalP}</th>
+      <th>${total}</th>
+      <th>${totalIslam}</th>
+      <th>${totalHindu}</th>
+      <th>${total}</th>
+      <th></th>
+    </tr>
+  `;
+
+  document.getElementById("tbodySiswa").innerHTML = html;
+});
+
+</script>
 </body>
 </html>
 

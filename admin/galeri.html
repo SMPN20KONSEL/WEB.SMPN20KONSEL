@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galeri Sekolah</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f3f4f6;
+  display:flex;
+}
+
+/* ================= SIDEBAR (TETAP UTUH) ================= */
+.sidebar{
+  width:250px;
+  height:100vh;
+  background:#111827;
+  color:white;
+  position:fixed;
+  left:0;
+  top:0;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.sidebar .logo{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.sidebar .logo img{
+  width:80px;
+  border-radius:10px;
+  background:white;
+  padding:5px;
+}
+
+.sidebar h2{
+  font-size:18px;
+  margin-top:10px;
+  margin-bottom:20px;
+}
+
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:white;
+  text-decoration:none;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:10px;
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  background:#2563eb;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+  margin-left:250px;
+  width:100%;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+  background:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.topbar h1{
+  font-size:24px;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+  padding:25px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom:25px;
+}
+
+/* ================= FORM ================= */
+
+.form-group{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:bold;
+}
+
+input,textarea{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+}
+
+textarea{
+  min-height:120px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  color:white;
+}
+
+.btn-save{background:#16a34a;}
+.btn-delete{background:#dc2626;}
+
+/* ================= PREVIEW ================= */
+
+.preview img{
+  width:220px;
+  margin-top:10px;
+  border-radius:10px;
+  display:none;
+}
+
+/* ================= GALERI ================= */
+
+.galeri-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.galeri-card{
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.galeri-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.galeri-content{
+  padding:18px;
+}
+
+.footer-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+}
+
+.tanggal{
+  font-size:13px;
+  color:#777;
+}
+
+/* empty */
+.empty{
+  text-align:center;
+  padding:40px;
+  color:#777;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+  body{flex-direction:column;}
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+  .main{margin-left:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+
+  <div class="logo">
+    <img src="../image/Logo_transparent.png">
+    <h2>SMPN 20 KONSEL</h2>
+  </div>
+
+  <a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a>
+  <a href="siswa.html"><i class="fas fa-users"></i>Data Siswa</a>
+  <a href="guru.html"><i class="fas fa-chalkboard-teacher"></i>Data Guru</a>
+  <a href="berita.html"><i class="fas fa-newspaper"></i>Berita</a>
+  <a href="galeri.html"><i class="fas fa-image"></i>Galeri</a>
+  <a href="slider.html"><i class="fas fa-images"></i>Slider</a>
+  <a href="statistik.html"><i class="fas fa-chart-bar"></i>Statistik</a>
+  <a href="pengumuman.html"><i class="fas fa-bullhorn"></i>Pengumuman</a>
+  <a href="pengaturan.html"><i class="fas fa-cog"></i>Pengaturan</a>
+  <a href="login.html"><i class="fas fa-right-from-bracket"></i>Logout</a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+  <div class="topbar">
+    <h1>Galeri Sekolah</h1>
+    <span><i class="fas fa-user-circle"></i> Admin</span>
+  </div>
+
+  <div class="content">
+
+    <!-- FORM -->
+    <div class="card">
+
+      <h2>Tambah Galeri</h2>
+
+      <div class="form-group">
+        <label>Judul</label>
+        <input id="judul">
+      </div>
+
+      <div class="form-group">
+        <label>Gambar</label>
+        <input type="file" id="gambar" accept="image/*">
+        <div class="preview">
+          <img id="preview">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Keterangan</label>
+        <textarea id="keterangan"></textarea>
+      </div>
+
+      <button class="btn btn-save" onclick="simpan()">
+        Simpan
+      </button>
+
+    </div>
+
+    <!-- LIST -->
+    <div class="galeri-grid" id="listGaleri"></div>
+
+  </div>
+</div>
+
+<!-- ================= FIREBASE ================= -->
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  serverTimestamp,
+  onSnapshot,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= PREVIEW ================= */
+gambar.onchange = (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    preview.src = ev.target.result;
+    preview.style.display = "block";
+  };
+  reader.readAsDataURL(file);
+};
+
+/* ================= SIMPAN ================= */
+window.simpan = async () => {
+
+  if(!judul.value){
+    alert("Isi judul!");
+    return;
+  }
+
+  const file = gambar.files[0];
+  const path = file ? "../Galeri/" + file.name : "";
+
+  await addDoc(collection(db,"galeri"),{
+    judul: judul.value,
+    gambar: path,
+    keterangan: keterangan.value,
+    createdAt: serverTimestamp()
+  });
+
+  alert("Data tersimpan (upload file manual ke folder Galeri)");
+
+  judul.value="";
+  gambar.value="";
+  keterangan.value="";
+  preview.style.display="none";
+};
+
+/* ================= REALTIME ================= */
+const q = query(collection(db,"galeri"), orderBy("createdAt","desc"));
+
+onSnapshot(q,(snap)=>{
+
+  let html="";
+
+  snap.forEach(d=>{
+
+    const data = d.data();
+
+    html += `
+    <div class="galeri-card">
+      <img src="${data.gambar || 'https://via.placeholder.com/400'}">
+      <div class="galeri-content">
+        <h3>${data.judul}</h3>
+        <p>${data.keterangan || "-"}</p>
+
+        <div class="footer-card">
+          <span class="tanggal">Galeri</span>
+          <button class="btn btn-delete" onclick="hapus('${d.id}')">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  listGaleri.innerHTML = html || `<div class="empty">Belum ada data galeri</div>`;
+
+});
+
+/* ================= HAPUS ================= */
+window.hapus = async (id)=>{
+  if(confirm("Hapus?")){
+    await deleteDoc(doc(db,"galeri",id));
+  }
+};
+
+</script>
+
+</body>
+</html>
