@@ -571,8 +571,53 @@ onSnapshot(collection(db, "guru"), (snap) => {
   `;
 });
 
+/* ================= REKAP SISWA PER KELAS ================= */
+
 onSnapshot(collection(db, "siswa"), (snap) => {
 
+  let dataKelas = {};
+
+  snap.forEach((doc) => {
+
+    const s = doc.data();
+
+    const kelas = s.kelas || "-";
+    const jk = (s.jk || "").toLowerCase();
+    const agama = (s.agama || "").toLowerCase();
+
+    if (!dataKelas[kelas]) {
+
+      dataKelas[kelas] = {
+        laki: 0,
+        perempuan: 0,
+        islam: 0,
+        hindu: 0,
+        wali: s.wali || "-"
+      };
+
+    }
+
+    // gender
+    if (jk === "laki-laki") {
+      dataKelas[kelas].laki++;
+    }
+
+    if (jk === "perempuan") {
+      dataKelas[kelas].perempuan++;
+    }
+
+    // agama
+    if (agama === "islam") {
+      dataKelas[kelas].islam++;
+    }
+
+    if (agama === "hindu") {
+      dataKelas[kelas].hindu++;
+    }
+
+  });
+
+  let html = "";
   let no = 1;
 
   let totalL = 0;
@@ -580,56 +625,72 @@ onSnapshot(collection(db, "siswa"), (snap) => {
   let totalIslam = 0;
   let totalHindu = 0;
 
-  let html = "";
+  for (const kelas in dataKelas) {
 
-  snap.forEach((doc) => {
+    const k = dataKelas[kelas];
 
-    const s = doc.data();
+    const jumlah =
+      k.laki + k.perempuan;
 
-    const jk = (s.jk || "").toLowerCase();
-    const agama = (s.agama || "").toLowerCase();
+    totalL += k.laki;
+    totalP += k.perempuan;
 
-    if (jk === "laki-laki") totalL++;
-    if (jk === "perempuan") totalP++;
-
-    if (agama === "islam") totalIslam++;
-    if (agama === "hindu") totalHindu++;
-
-    const jumlah = 1;
+    totalIslam += k.islam;
+    totalHindu += k.hindu;
 
     html += `
       <tr>
+
         <td>${no++}</td>
-        <td>${s.kelas || "-"}</td>
-        <td>${jk === "laki-laki" ? 1 : 0}</td>
-        <td>${jk === "perempuan" ? 1 : 0}</td>
+
+        <td>${kelas}</td>
+
+        <td>${k.laki}</td>
+
+        <td>${k.perempuan}</td>
+
         <td>${jumlah}</td>
-        <td>${agama === "islam" ? 1 : 0}</td>
-        <td>${agama === "hindu" ? 1 : 0}</td>
+
+        <td>${k.islam}</td>
+
+        <td>${k.hindu}</td>
+
         <td>${jumlah}</td>
-        <td>${s.wali || "-"}</td>
+
+        <td>${k.wali}</td>
+
       </tr>
     `;
-  });
+  }
 
-  const total = totalL + totalP;
+  const total =
+    totalL + totalP;
 
   html += `
     <tr>
+
       <th colspan="2">JML</th>
+
       <th>${totalL}</th>
+
       <th>${totalP}</th>
+
       <th>${total}</th>
+
       <th>${totalIslam}</th>
+
       <th>${totalHindu}</th>
+
       <th>${total}</th>
+
       <th></th>
+
     </tr>
   `;
 
   document.getElementById("tbodySiswa").innerHTML = html;
-});
 
+});
 </script>
 </body>
 </html>
