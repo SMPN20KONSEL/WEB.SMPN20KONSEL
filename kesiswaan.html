@@ -1,648 +1,1722 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Profil - SMPN 20 Konawe Selatan</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="assets/css/style.css" rel="stylesheet" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kesiswaan SMPN 20 Konawe Selatan</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/kesiswaan.css">
 </head>
 <body>
-
 <header>
-  <div class="top-bar" style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background-color:#eee;color:rgb(0, 0, 0);">
-    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+
+  <div class="top-bar">
+
+    <div>
+      <i class="fas fa-phone"></i> -
+      &nbsp;&nbsp;
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </div>
+
     <div class="social-icons">
-          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
-          <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
-          <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
-          <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
     </div>
+
   </div>
+
   <nav>
-<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-  &#9776;
-</div>
-    <div class="logo" style="display:flex;align-items:center;gap:10px;">
-      <img src="image/Logo_transparent.png" alt="Logo" style="width:50px; background-color:white;">
-      <h2 style="margin:0; font-size:20px; color:white;">SMPN20KONSEL<br><small style="font-size:12px; font-weight:normal; color:white;"> Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small>
+
+    <div class="logo">
+
+      <img src="image/Logo_transparent.png" alt="Logo">
+
+      <h2>
+        SMPN20KONSEL
+        <br>
+        <small>
+          Tempat menimba ilmu, tumbuh berprestasi
+        </small>
       </h2>
+
     </div>
-    <div class="nav-links" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
-      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
-      <a href="profil.html" style="color:white;text-decoration:none;">Profil</a>
-      <a href="kesiswaan.html" style="color:white;text-decoration:none;">Kesiswaan</a>
-      <a href="informasi.html" style="color:white;text-decoration:none;">Informasi</a>
-      <a href="galeri.html" style="color:white;text-decoration:none;">Galeri</a>
-      <a href="kontak.html" style="color:white;text-decoration:none;">Kontak</a>
-      <a class="login-btn" href="daftar_spmb.html" style="background-color:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+
+    <div class="nav-toggle">
+      ☰
     </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <!-- PROFIL -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Profil ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+
+      </div>
+
+      <!-- MANAJEMEN -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Manajemen ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpras</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+      <a href="galeri.html"> Galeri </a>
+      <a href="kontak.html">Kontak</a>
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+    </div>
+
   </nav>
+
 </header>
 
- <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      line-height: 1.6;
-    }
+<!-- =========================
+     HERO
+========================= -->
 
-    #kesiswaan-container {
-      max-width: 900px;
-      margin: 40px auto;
-      background-color: #ffffff;
-      padding: 30px 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
+<section class="hero">
 
-    #kesiswaan-container > h2 {
-      font-size: 26px;
-      color: #2c3e50;
-      margin: 0 0 30px;
-      padding: 12px 0;
-      border-top: 4px solid #3498db;
-      border-bottom: 4px solid #3498db;
-      text-align: center;
-      background-color: #f5faff;
-      border-radius: 6px;
-    }
+<div class="hero-content">
 
-    .kesiswaan-section {
-      margin-bottom: 40px;
-    }
+<h1>
+Bidang <span>Kesiswaan</span>
+</h1>
 
-    .kesiswaan-section h3 {
-      font-size: 20px;
-      color: #2c3e50;
-      margin-bottom: 10px;
-      padding-bottom: 5px;
-      border-bottom: 2px solid #ccc;
-    }
+<p>
+Membentuk peserta didik yang disiplin,
+berprestasi, kreatif, dan berkarakter
+melalui berbagai kegiatan akademik
+dan non akademik.
+</p>
 
-    .kesiswaan-section h4 {
-      font-size: 17px;
-      color: #34495e;
-      margin-top: 18px;
-    }
+<div class="hero-btn">
+<a href="#ekskul">
+Lihat Ekstrakurikuler
+</a>
+</div>
 
-    .kesiswaan-section p, .kesiswaan-section ul {
-      margin-top: 8px;
-      margin-left: 15px;
-    }
+</div>
 
-    .kesiswaan-section ul {
-      padding-left: 20px;
-    }
+</section>
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+<!-- =========================
+     TENTANG KESISWAAN
+========================= -->
 
-    .gallery img {
-      width: 120px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    }
+<section id="tentang-kesiswaan">
 
-    a {
-      color: #3498db;
-      text-decoration: none;
-    }
+  <div class="section-title">
+    <h2>Tentang Kesiswaan</h2>
+    <p>Bidang Kesiswaan SMPN 20 Konawe Selatan</p>
+  </div>
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
+  <div class="about-kesiswaan">
 
-<section id="kesiswaan-container">
-  <h2>Kesiswaan</h2>
+    <img src="image/kesiswaan/1.jpg"
+    alt="Kesiswaan Sekolah">
 
-  <div class="kesiswaan-section">
-    <h3>Informasi OSIS</h3>
+    <div class="about-text">
 
-    <h4 style="margin-top:20px; color:black;">Profil OSIS</h4>
-    <p><strong>OSIS SMPN 20 Konawe Selatan</strong> adalah wadah siswa untuk mengembangkan potensi kepemimpinan, kreativitas, dan tanggung jawab.</p>
-    <p>OSIS mendukung siswa dalam berorganisasi, berdiskusi, dan menyelenggarakan berbagai kegiatan sekolah dan sosial.</p>
+      <h3>Membina Karakter dan Prestasi Siswa</h3>
 
-    <h4 style="margin-top:20px; color:black;">Kegiatan OSIS</h4>
-    <ul>
-      <li>Pelantikan Pengurus OSIS</li>
-      <li>Bakti Sosial</li>
-      <li>Peringatan Hari Besar Nasional</li>
-      <li>Lomba dan Ekstrakurikuler</li>
-    </ul>
+      <p>
+        Bidang kesiswaan memiliki peran penting dalam
+        membina peserta didik agar menjadi siswa yang
+        disiplin, bertanggung jawab, berprestasi,
+        dan memiliki karakter yang baik.
+      </p>
 
-    <h4 style="margin-top:20px; color:black;">Struktur Organisasi</h4>
-    <ul>
-      <li>Ketua</li>
-      <li>Wakil Ketua</li>
-      <li>Sekretaris</li>
-      <li>Bendahara</li>
-      <li>Bidang-bidang kerja</li>
-    </ul>
+      <p>
+        Kesiswaan bertanggung jawab dalam pelaksanaan
+        kegiatan siswa, pembinaan organisasi sekolah,
+        pengembangan bakat dan minat, serta mendukung
+        berbagai kegiatan akademik maupun non akademik.
+      </p>
 
-<h4 style="margin-top:20px; color:black;">Pengurus OSIS</h4>
+      <p>
+        Melalui berbagai program pembinaan dan kegiatan
+        ekstrakurikuler, bidang kesiswaan berupaya
+        menciptakan lingkungan sekolah yang aktif,
+        kreatif, aman, dan menyenangkan bagi seluruh siswa.
+      </p>
 
-<section>
-
-  <h2 style="
-    text-align:center;
-    margin-bottom:15px;
-    font-size:18px;
-  ">
-    Daftar Pengurus OSIS Aktif
-  </h2>
-
-  <div style="overflow-x:auto;">
-
-    <table style="
-      width:100%;
-      border-collapse:collapse;
-      font-family:sans-serif;
-      background:white;
-    ">
-
-<thead>
-
-  <tr style="
-    background:#3498db;
-    color:white;
-  ">
-
-    <th style="
-      padding:8px 4px;
-      border:1px solid #ddd;
-      width:45px;
-      text-align:center;
-    ">
-      No
-    </th>
-
-<th style="
-  padding:8px 30px;
-  border:1px solid #ddd;
-  width:80px;
-  text-align:center;
-">
-  Foto
-</th>
-
-    <th style="
-      padding:8px;
-      border:1px solid #ddd;
-      text-align:left;
-    ">
-      Nama
-    </th>
-
-    <th style="
-      padding:8px;
-      border:1px solid #ddd;
-      width:70px;
-      text-align:center;
-    ">
-      Kelas
-    </th>
-
-    <th style="
-      padding:8px;
-      border:1px solid #ddd;
-      width:170px;
-    ">
-      Jabatan
-    </th>
-
-    <th style="
-      padding:8px;
-      border:1px solid #ddd;
-      width:120px;
-      text-align:center;
-    ">
-      Periode
-    </th>
-
-  </tr>
-
-</thead>
-
-      <tbody id="tableOsisPublik">
-
-        <tr>
-
-          <td colspan="6" style="
-            padding:20px;
-            text-align:center;
-            border:1px solid #ddd;
-          ">
-            Memuat data...
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
+    </div>
 
   </div>
 
 </section>
-    <p>Daftar pengurus aktif tersedia di <a href="#">halaman OSIS</a>.</p>
+
+<!-- =========================
+     OSIS
+========================= -->
+<section id="osis">
+
+  <div class="section-title">
+    <h2>Organisasi Siswa Intra Sekolah</h2>
+    <p>
+      Wadah pengembangan kepemimpinan,
+      kreativitas, dan tanggung jawab siswa.
+    </p>
   </div>
 
-  <div class="kesiswaan-section">
-  <h3>Kegiatan Ekstrakurikuler</h3>
-  <p>Berikut adalah daftar kegiatan ekstrakurikuler yang tersedia di sekolah:</p>
-  <ul style="columns:2; -webkit-columns:2; -moz-columns:2; list-style:disc; padding-left:20px;">
-    <li>Pramuka</li>
-    <li>PMR</li>a
-    <li>Futsal</li>
-    <li>Bola Voli</li>
-    <li>Sepak Takraw</li>
-    <li>Sepak Bola</li>
-    <li>Karate</li>
-    <li>Wushu</li>
-    <li>Atletik</li>
-    <li>Basket</li>
-    <li>Badminton / Bulu Tangkis</li>
-    <li>Tenis Meja</li>
-    <li>Catur</li>
-    <li>KIR</li>
-    <li>Bahasa Inggris</li>
-    <li>Seni Tari dan Musik</li>
-    <li>Padus (Paduan Suara)</li>
-    <li>Coding</li>
-    <li>OSIS</li>
-    <li>Pesantren Kilat</li>
-    <li>Pasraman</li>
-  </ul>
-  <p>Informasi lebih lengkap tersedia di <a href="#">halaman ekstrakurikuler</a>.</p>
-</div>
+  <div class="osis-container">
 
-  <div class="kesiswaan-section">
-  <h3>Lomba dan Kompetisi</h3>
-  <p style="text-align:justify;">
-    Siswa-siswi SMPN 20 Konawe Selatan secara aktif mengikuti berbagai lomba dan kompetisi di tingkat kecamatan, kabupaten, hingga nasional. 
-    Kegiatan ini mencakup bidang akademik, seni, olahraga, teknologi, serta keterampilan lainnya. 
-    Melalui partisipasi ini, para siswa tidak hanya mengasah kemampuan, tetapi juga membawa nama baik sekolah di berbagai ajang bergengsi.</p>
-    <p>Lihat info lomba di <a href="#">halaman lomba</a>.</p>
-  </div>
-
-  <div class="kesiswaan-section">
-  <h3>Bimbingan dan Konseling (BK)</h3>
-  <p>
-    Layanan BK (Bimbingan dan Konseling) mendampingi siswa dalam perkembangan akademik, sosial, pribadi, dan karier. BK bertujuan membantu siswa mengenali potensi diri, menyelesaikan masalah, serta merencanakan masa depan secara lebih baik.
-  </p>
-
-  <h4 style="margin-top:20px; color:black;">Jadwal Layanan BK</h4>
-  <table style="width:100%; border-collapse:collapse; margin-top:10px;">
-    <thead style="background-color:#f0f0f0;">
-      <tr>
-        <th style="padding:10px; border:1px solid #ccc;">Hari</th>
-        <th style="padding:10px; border:1px solid #ccc;">Waktu</th>
-        <th style="padding:10px; border:1px solid #ccc;">Keterangan</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:10px; border:1px solid #ccc;">Senin - Kamis</td>
-        <td style="padding:10px; border:1px solid #ccc;">08.00 – 13.00</td>
-        <td style="padding:10px; border:1px solid #ccc;">Sesi konsultasi individu & kelompok</td>
-      </tr>
-      <tr>
-        <td style="padding:10px; border:1px solid #ccc;">Jumat</td>
-        <td style="padding:10px; border:1px solid #ccc;">08.00 – 11.00</td>
-        <td style="padding:10px; border:1px solid #ccc;">Layanan motivasi & bimbingan karier</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4 style="margin-top:20px; color:black;">Kontak BK</h4>
-  <ul style="list-style:none; padding-left:0;">
-    <li><strong>Nama:</strong> Bapak Jusman Paduay, S.Pd.I.</li>
-    <li><strong>Ruang BK:</strong> Gedung Utama Samping Ruang Guru</li>
-    <li><strong>Email:</strong> jusmanpaduay2020@gmail.com</li>
-    <li><strong>Telp/WA:</strong> 082228244075</li>
-  </ul>
-</div>
-
-  <div class="kesiswaan-section">
-  <h3>Kegiatan Kesiswaan Lainnya</h3>
-  <p style="text-align:justify;">
-    Selain kegiatan OSIS dan ekstrakurikuler, sekolah juga menyelenggarakan berbagai kegiatan pendukung yang bertujuan untuk membentuk karakter, memperkuat nilai-nilai spiritual, dan mengembangkan kepemimpinan siswa.
-  </p>
-
-  <h4 style="margin-top:20px; color:black;">1. Kegiatan Sosial</h4>
-  <p style="text-align:justify;">
-    Kegiatan sosial bertujuan menumbuhkan empati dan kepedulian sosial siswa terhadap masyarakat. Beberapa kegiatan yang rutin dilaksanakan antara lain:
-  </p>
-  <ul>
-    <li>Donor darah kerja sama dengan PMI</li>
-    <li>Penggalangan dana bencana alam</li>
-    <li>Kunjungan ke panti asuhan dan panti jompo</li>
-    <li>Bakti sosial menjelang hari besar nasional atau keagamaan</li>
-  </ul>
-
-  <h4 style="margin-top:20px; color:black;">2. Kegiatan Keagamaan</h4>
-  <p style="text-align:justify;">
-    Sekolah memberikan ruang bagi penguatan karakter religius melalui kegiatan keagamaan, seperti:
-  </p>
-  <ul>
-    <li>Peringatan hari besar keagamaan (Maulid Nabi, Isra Mi'raj, dll.)</li>
-    <li>Pesantren Kilat saat Ramadhan</li>
-    <li>Pasraman untuk siswa beragama Hindu</li>
-    <li>Kajian Jumat dan tadarus bersama</li>
-    <li>Doa bersama awal dan akhir semester</li>
-  </ul>
-
-  <h4 style="margin-top:20px; color:black;">3. Pelatihan Kepemimpinan</h4>
-  <p style="text-align:justify;">
-    Untuk membentuk karakter pemimpin masa depan, sekolah mengadakan:
-  </p>
-  <ul>
-    <li>Latihan Dasar Kepemimpinan Siswa (LDKS)</li>
-    <li>Workshop pengembangan diri dan public speaking</li>
-    <li>Pelatihan OSIS dan organisasi siswa lainnya</li>
-    <li>Studi lapangan dan kunjungan ke instansi</li>
-  </ul>
-</div>
-
-
-  <div class="kesiswaan-section">
-    <h3>Galeri Foto</h3>
-    <div class="gallery">
-      <a href="galeri Lengkap.html" target="_blank"><img src="Galeri/IMG-20250613-WA0052.jpg" /></a>
-      <a href="galeri Lengkap.html" target="_blank"><img src="Galeri/IMG-20250613-WA0060.jpg" /></a>
-      <a href="galeri Lengkap.html" target="_blank"><img src="Galeri/IMG-20250613-WA0066.jpg" /></a>
+    <!-- FOTO -->
+    <div class="osis-image">
+      <img
+        src="image/OSIS/1.jpeg"
+        alt="OSIS SMPN 20"
+      >
     </div>
-  </div>
 
- <div class="kesiswaan-section">
-  <h3>Agenda Kegiatan</h3>
-  <p style="text-align:justify;">
-    Agenda kegiatan OSIS dan ekstrakurikuler diperbarui secara berkala sebagai bentuk transparansi dan informasi kepada seluruh warga sekolah. Agenda mencakup kegiatan rutin maupun insidental yang mendukung pengembangan karakter dan prestasi siswa.
-  </p>
+    <!-- KONTEN -->
+    <div class="osis-content">
 
-  <table style="width:100%; border-collapse:collapse; margin-top:20px;">
-    <thead style="background-color:#f0f0f0;">
-      <tr>
-        <th style="padding:10px; border:1px solid #ccc;">Tanggal</th>
-        <th style="padding:10px; border:1px solid #ccc;">Kegiatan</th>
-        <th style="padding:10px; border:1px solid #ccc;">Tempat</th>
-        <th style="padding:10px; border:1px solid #ccc;">Keterangan</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding:10px; border:1px solid #ccc;">15 Juli 2025</td>
-        <td style="padding:10px; border:1px solid #ccc;">Masa Pengenalan Lingkungan Sekolah (MPLS)</td>
-        <td style="padding:10px; border:1px solid #ccc;">Aula Sekolah</td>
-        <td style="padding:10px; border:1px solid #ccc;">Untuk siswa baru</td>
-      </tr>
-      <tr>
-        <td style="padding:10px; border:1px solid #ccc;">28 Agustus 2025</td>
-        <td style="padding:10px; border:1px solid #ccc;">Lomba 17 Agustus</td>
-        <td style="padding:10px; border:1px solid #ccc;">Lapangan Sekolah</td>
-        <td style="padding:10px; border:1px solid #ccc;">Perlombaan antar kelas</td>
-      </tr>
-      <tr>
-        <td style="padding:10px; border:1px solid #ccc;">10 Oktober 2025</td>
-        <td style="padding:10px; border:1px solid #ccc;">Pelatihan Kepemimpinan OSIS</td>
-        <td style="padding:10px; border:1px solid #ccc;">Ruang BK</td>
-        <td style="padding:10px; border:1px solid #ccc;">Untuk pengurus OSIS</td>
-      </tr>
-      <tr>
-        <td style="padding:10px; border:1px solid #ccc;">5 Desember 2025</td>
-        <td style="padding:10px; border:1px solid #ccc;">Pentas Seni dan Ekstrakurikuler</td>
-        <td style="padding:10px; border:1px solid #ccc;">Halaman Sekolah</td>
-        <td style="padding:10px; border:1px solid #ccc;">Akhir semester</td>
-      </tr>
-    </tbody>
-  </table>
+      <span class="osis-badge">
+        <i class="fas fa-users"></i>
+        Struktur Organisasi OSIS
+      </span>
 
-  <p style="margin-top:20px;">Lihat pembaruan agenda secara lengkap di <a href="#">halaman agenda sekolah</a>.</p>
-</div>
-</section>
+      <h3>OSIS SMPN 20 Konawe Selatan</h3>
 
-<footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
-  <div class="column">
-    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
-      <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
-      <h2 style="margin: 0; font-size: 32px; color: white; text-align: center;">SMPN20KONSEL</h2>
-    </div>
-    <p>SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
-  </div>
-  <div class="column">
-    <div class="counter-section" style="display:flex;justify-content:center;gap:40px;">
-      <div class="counter-box">
-        <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
-        <span>840</span>
-      </div>
-      <div class="counter-box">
-        <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
-        <span>122</span>
-      </div>
-      <div class="counter-box">
-        <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
-        <span>15</span>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <strong>Temukan Kami</strong>
-    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div class="footer-icons" style="display:flex;gap:10px;">
-          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
-      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
-      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+      <p>
+        OSIS merupakan organisasi resmi siswa
+        yang menjadi wadah pembinaan karakter,
+        kepemimpinan, disiplin, dan kreativitas
+        peserta didik di sekolah.
+      </p>
+
+      <p>
+        Melalui berbagai program kerja dan kegiatan,
+        OSIS aktif membantu sekolah dalam menciptakan
+        lingkungan belajar yang aktif, tertib,
+        kreatif, dan menyenangkan.
+      </p>
+
+      <!-- STRUKTUR -->
+      <div class="osis-info">
+
+        <!-- Ketua -->
+        <div class="info-card">
+
+          <div class="osis-avatar">
+            <img
+              id="ketuaFoto"
+              src="image/siswa/user.png"
+              onerror="this.src='image/siswa/user.png'"
+              alt="Ketua OSIS"
+            >
+          </div>
+
+          <div class="osis-data">
+            <h4>Ketua OSIS</h4>
+            <p id="ketuaNama">-</p>
+            <span id="ketuaKelas">-</span>
+          </div>
+
         </div>
-        <p><i class="fab fa-google-play"></i> Download Aplikasi</p>
-        <a href="https://play.google.com/store/apps" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
+
+        <!-- Wakil -->
+        <div class="info-card">
+
+          <div class="osis-avatar">
+            <img
+              id="wakilFoto"
+              src="image/siswa/user.png"
+              onerror="this.src='image/siswa/user.png'"
+              alt="Wakil Ketua OSIS"
+            >
+          </div>
+
+          <div class="osis-data">
+            <h4>Wakil Ketua OSIS</h4>
+            <p id="wakilNama">-</p>
+            <span id="wakilKelas">-</span>
+          </div>
+
+        </div>
+
+        <!-- Sekretaris -->
+        <div class="info-card">
+
+          <div class="osis-avatar">
+            <img
+              id="sekretarisFoto"
+              src="image/siswa/user.png"
+              onerror="this.src='image/siswa/user.png'"
+              alt="Sekretaris"
+            >
+          </div>
+
+          <div class="osis-data">
+            <h4>Sekretaris</h4>
+            <p id="sekretarisNama">-</p>
+            <span id="sekretarisKelas">-</span>
+          </div>
+
+        </div>
+
+        <!-- Bendahara -->
+        <div class="info-card">
+
+          <div class="osis-avatar">
+            <img
+              id="bendaharaFoto"
+              src="image/siswa/user.png"
+              onerror="this.src='image/siswa/user.png'"
+              alt="Bendahara"
+            >
+          </div>
+
+          <div class="osis-data">
+            <h4>Bendahara</h4>
+            <p id="bendaharaNama">-</p>
+            <span id="bendaharaKelas">-</span>
+          </div>
+
+        </div>
+
+        <!-- Bidang Kerja -->
+        <div class="info-card bidang-card">
+
+          <div class="periode-icon">
+            <i class="fas fa-users"></i>
+          </div>
+
+          <div class="osis-data">
+            <h4>Bidang Kerja</h4>
+            <p id="totalBidang">0 Siswa</p>
+            <span>Total anggota bidang kerja OSIS</span>
+          </div>
+
+        </div>
+
+        <!-- Masa Jabatan -->
+        <div class="info-card periode-card">
+
+          <div class="periode-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+
+          <div class="osis-data">
+            <h4>Masa Jabatan</h4>
+            <p id="masaJabatan">2025 - 2026</p>
+            <span>Periode kepengurusan OSIS</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <div class="hero-btn">
+        <a href="program-kerja-osis.html">
+          Lihat Program Kerja
         </a>
-        </div>
-      <div>
-        <iframe allowfullscreen="" height="100" loading="lazy" src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" style="border:0;border-radius:10px;" width="200"></iframe>
       </div>
+
     </div>
+
   </div>
+
+</section>
+
+<!-- =========================
+     PROGRAM
+========================= -->
+
+<section id="program">
+
+<div class="section-title">
+<h2>Program Kesiswaan</h2>
+
+<p>
+Program pembinaan dan pengembangan
+potensi siswa SMPN 20 Konawe Selatan.
+</p>
+</div>
+
+<div class="program-grid">
+
+<div class="program-card">
+<i class="fas fa-user-shield"></i>
+<h3>Pembinaan Disiplin</h3>
+<p>
+Membentuk karakter disiplin dan
+tanggung jawab siswa.
+</p>
+</div>
+
+<div class="program-card">
+<i class="fas fa-trophy"></i>
+<h3>Prestasi Akademik</h3>
+<p>
+Pembinaan olimpiade dan lomba akademik.
+</p>
+</div>
+
+<div class="program-card">
+<i class="fas fa-users"></i>
+<h3>Organisasi Siswa</h3>
+<p>
+Mengembangkan jiwa kepemimpinan siswa.
+</p>
+</div>
+
+<div class="program-card">
+<i class="fas fa-heart"></i>
+<h3>Pendidikan Karakter</h3>
+<p>
+Menanamkan nilai religius dan sosial.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     EKSKUL
+========================= -->
+
+<section class="ekskul-section" id="ekskul">
+
+<div class="section-title">
+
+<h2>Ekstrakurikuler Sekolah</h2>
+
+<p>
+Wadah pengembangan bakat, kreativitas,
+dan potensi siswa.
+</p>
+
+</div>
+
+<!-- WRAPPER SLIDER -->
+<div class="ekskul-slider">
+
+<!-- TRACK -->
+<div class="ekskul-grid" id="ekskulTrack">
+
+<!-- PRAMUKA -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-campground"></i>
+</div>
+
+<h3>Pramuka</h3>
+
+<p>
+Melatih kedisiplinan dan kepemimpinan siswa.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Rahmat Hidayat, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Jumat • 14.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+<!-- ================= PMR ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-heartbeat"></i>
+</div>
+
+<h3>PMR</h3>
+
+<p>
+Membina kepedulian sosial dan kesehatan siswa.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Sri Wahyuni, S.Kep</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Rabu • 14.30 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= FUTSAL ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-futbol"></i>
+</div>
+
+<h3>Futsal</h3>
+
+<p>
+Mengembangkan sportivitas dan kerja sama tim.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Andi Saputra, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Selasa • 15.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BOLA VOLI ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-volleyball-ball"></i>
+</div>
+
+<h3>Bola Voli</h3>
+
+<p>
+Meningkatkan kekompakan dan keterampilan bermain voli.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Rudi Hartono, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Kamis • 15.30 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= SEPAK TAKRAW ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-futbol"></i>
+</div>
+
+<h3>Sepak Takraw</h3>
+
+<p>
+Melatih kelincahan dan koordinasi tubuh siswa.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Hasan Basri, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Senin • 15.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= SEPAK BOLA ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-football-ball"></i>
+</div>
+
+<h3>Sepak Bola</h3>
+
+<p>
+Mengembangkan kemampuan bermain sepak bola.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Arman Yusuf, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Sabtu • 07.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= KARATE ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-fist-raised"></i>
+</div>
+
+<h3>Karate</h3>
+
+<p>
+Melatih disiplin, fokus, dan bela diri.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Deni Kurniawan</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Rabu • 16.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= WUSHU ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-dragon"></i>
+</div>
+
+<h3>Wushu</h3>
+
+<p>
+Mengembangkan seni bela diri dan ketangkasan.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Fajar Nugroho</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Jumat • 16.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ATLETIK ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-running"></i>
+</div>
+
+<h3>Atletik</h3>
+
+<p>
+Melatih kekuatan fisik dan daya tahan tubuh.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Ridwan, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Selasa • 16.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BASKET ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-basketball-ball"></i>
+</div>
+
+<h3>Basket</h3>
+
+<p>
+Meningkatkan kerja sama dan kemampuan bermain basket.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Agus Salim, S.Pd</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Kamis • 16.00 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= BADMINTON ================= -->
+<div class="ekskul-card">
+
+<div class="ekskul-image">
+<img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="ekskul-content">
+
+<div class="ekskul-icon">
+<i class="fas fa-table-tennis"></i>
+</div>
+
+<h3>Badminton / Bulu Tangkis</h3>
+
+<p>
+Melatih refleks, fokus, dan sportivitas.
+</p>
+
+<div class="info-box">
+<span>
+<i class="fas fa-user"></i>
+Pembina
+</span>
+
+<p>Joko Prasetyo</p>
+</div>
+
+<div class="info-box">
+<span>
+<i class="fas fa-clock"></i>
+Jadwal
+</span>
+
+<p>Senin • 15.30 WIB</p>
+</div>
+
+<button class="btn-ekskul">
+Lihat Galeri
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- END SLIDER -->
+
+<!-- CONTROL -->
+<div class="slider-controls">
+
+<button class="slider-btn" id="prevBtn">
+<i class="fas fa-chevron-left"></i>
+</button>
+
+<div class="slider-dots" id="dots"></div>
+
+<button class="slider-btn" id="nextBtn">
+<i class="fas fa-chevron-right"></i>
+</button>
+
+</div>
+
+</section>
+
+<!-- =========================
+     TENTANG BK
+========================= -->
+
+<section id="tentang-bk">
+
+  <div class="section-title">
+
+    <h2>Tentang Bimbingan & Konseling</h2>
+
+    <p>
+      Layanan pendampingan siswa untuk membentuk karakter,
+      disiplin, dan perkembangan akademik yang lebih baik.
+    </p>
+
+  </div>
+
+  <div class="about-bk">
+
+    <!-- FOTO -->
+    <div class="about-bk-image">
+
+      <img
+        src="image/kesiswaan/bk.jpg"
+        alt="Bimbingan Konseling">
+
+    </div>
+
+    <!-- KONTEN -->
+    <div class="about-bk-content">
+
+      <h3>
+        Membantu Siswa Menjadi Pribadi Unggul
+      </h3>
+
+      <p>
+        Bimbingan dan Konseling (BK) merupakan layanan sekolah
+        yang membantu peserta didik dalam mengembangkan
+        kemampuan pribadi, sosial, belajar, dan karier.
+      </p>
+
+      <p>
+        Melalui layanan BK, siswa dapat memperoleh arahan,
+        motivasi, dan solusi terhadap berbagai permasalahan
+        akademik maupun non akademik secara bijaksana dan terarah.
+      </p>
+
+      <!-- LIST -->
+      <div class="bk-list">
+
+        <div class="bk-item">
+          <i class="fas fa-user-check"></i>
+          <span>Pembinaan Karakter Siswa</span>
+        </div>
+
+        <div class="bk-item">
+          <i class="fas fa-book-open"></i>
+          <span>Pendampingan Akademik</span>
+        </div>
+
+        <div class="bk-item">
+          <i class="fas fa-users"></i>
+          <span>Konseling Individu & Kelompok</span>
+        </div>
+
+        <div class="bk-item">
+          <i class="fas fa-lightbulb"></i>
+          <span>Pengembangan Potensi Diri</span>
+        </div>
+
+      <!-- BUTTON -->
+      <div class="hero-btn">
+        <a href="bk.html">
+          Tengtang Program Kerja BK
+        </a>
+      </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     STATISTIK
+========================= -->
+
+<section id="statistik">
+
+<div class="section-title">
+
+<h2>Statistik Kesiswaan</h2>
+
+<p>
+Data kegiatan dan peserta didik sekolah.
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+  <h1 id="jumlahSiswa">0</h1>
+  <p>Siswa Aktif</p>
+</div>
+
+<div class="stat-card">
+<h1>25+</h1>
+<p>Prestasi</p>
+</div>
+
+<div class="stat-card">
+<h1>11</h1>
+<p>Ekstrakurikuler</p>
+</div>
+
+<div class="stat-card">
+<h1>34+</h1>
+<p>Kegiatan Tahunan</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h2>SMPN 20 Konawe Selatan</h2>
+
+<p>
+Website Bidang Kesiswaan © 2026
+</p>
+
 </footer>
 
-<div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
-  © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.cm
-</div>
-<script type="module">
+<!-- =========================
+     JS ANIMASI
+========================= -->
+<script>
 
-import { db } from "./assets/js/firebase.js";
+/* =========================
+   EFEK HOVER CARD
+========================= */
 
-import {
+const cardHover =
+document.querySelectorAll(".ekskul-card");
 
-  collection,
-  getDocs,
-  query,
-  orderBy
+cardHover.forEach(card=>{
 
-} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+  card.addEventListener("mousemove",(e)=>{
 
-const tableOsisPublik =
-document.getElementById("tableOsisPublik");
+    const rect =
+    card.getBoundingClientRect();
 
-async function loadPengurusOsisPublik(){
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-  tableOsisPublik.innerHTML = `
-    <tr>
-      <td colspan="6"
-      style="
-      padding:20px;
-      text-align:center;
-      border:1px solid #ddd;
-      ">
-      Memuat data...
-      </td>
-    </tr>
-  `;
+    card.style.background =
+    `
+    radial-gradient(
+      circle at ${x}px ${y}px,
+      rgba(0,180,255,.15),
+      white 40%
+    )
+    `;
+  });
 
-  try{
+  card.addEventListener("mouseleave",()=>{
 
-    const q = query(
-      collection(db,"pengurus_osis"),
-      orderBy("createdAt","asc")
-    );
+    card.style.background = "#fff";
 
-    const snap = await getDocs(q);
+  });
 
-    if(snap.empty){
+});
 
-      tableOsisPublik.innerHTML = `
-        <tr>
-          <td colspan="6"
-          style="
-          padding:20px;
-          text-align:center;
-          border:1px solid #ddd;
-          ">
-            Belum ada data pengurus OSIS
-          </td>
-        </tr>
-      `;
 
-      return;
+/* =========================
+   SLIDER EKSKUL
+========================= */
 
+const track =
+document.getElementById("ekskulTrack");
+
+const cards =
+document.querySelectorAll(".ekskul-card");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const prevBtn =
+document.getElementById("prevBtn");
+
+const dotsContainer =
+document.getElementById("dots");
+
+let index = 0;
+
+
+/* =========================
+   CEK JUMLAH CARD TAMPIL
+========================= */
+
+function getVisibleCards(){
+
+  if(window.innerWidth <= 768){
+    return 1;
+  }
+
+  if(window.innerWidth <= 1100){
+    return 2;
+  }
+
+  return 4;
+
+}
+
+
+/* =========================
+   BUAT DOTS
+========================= */
+
+function createDots(){
+
+  dotsContainer.innerHTML = "";
+
+  const visible =
+  getVisibleCards();
+
+  const totalSlides =
+  cards.length - visible + 1;
+
+  for(let i = 0; i < totalSlides; i++){
+
+    const dot =
+    document.createElement("span");
+
+    if(i === index){
+      dot.classList.add("active");
     }
 
-    tableOsisPublik.innerHTML = "";
+    dot.addEventListener("click",()=>{
 
-    let no = 1;
+      index = i;
 
-    snap.forEach(docu => {
-
-      const d = docu.data();
-
-      tableOsisPublik.innerHTML += `
-
-        <tr>
-
-          <td style="
-            padding:10px;
-            border:1px solid #ddd;
-            text-align:center;
-          ">
-            ${no++}
-          </td>
-
-          <td style="
-            padding:10px;
-            border:1px solid #ddd;
-            text-align:center;
-          ">
-
-            <img
-            src="../image/siswa/${d.nis}.jpg"
-            class="preview"
-              onerror="
-              this.src='image/siswa/user.png'
-              "
-              style="
-                width:55px;
-                height:70px;
-                object-fit:cover;
-                border-radius:8px;
-                border:1px solid #ccc;
-              "
-            >
-
-          </td>
-
-          <td style="
-            padding:10px;
-            border:1px solid #ddd;
-          ">
-            ${d.nama || '-'}
-          </td>
-
-          <td style="
-            padding:10px;
-            border:1px solid #ddd;
-            text-align:center;
-          ">
-            ${d.kelas || '-'}
-          </td>
-
-          <td style="
-            padding:10px;
-            border:1px solid #ddd;
-          ">
-            ${d.jabatan || '-'}
-          </td>
-
-          <td style="
-            padding:10px;
-            border:1px solid #ddd;
-            text-align:center;
-          ">
-            ${d.periode || '-'}
-          </td>
-
-        </tr>
-
-      `;
+      updateSlider();
 
     });
 
-  }catch(err){
-
-    console.log(err);
-
-    tableOsisPublik.innerHTML = `
-      <tr>
-        <td colspan="6"
-        style="
-        padding:20px;
-        text-align:center;
-        color:red;
-        border:1px solid #ddd;
-        ">
-          Gagal memuat data OSIS
-        </td>
-      </tr>
-    `;
+    dotsContainer.appendChild(dot);
 
   }
 
 }
 
-loadPengurusOsisPublik();
+
+/* =========================
+   UPDATE SLIDER
+========================= */
+
+function updateSlider(){
+
+  const gap = 25;
+
+  const cardWidth =
+  cards[0].offsetWidth + gap;
+
+  track.style.transform =
+  `translateX(-${index * cardWidth}px)`;
+
+  const dots =
+  document.querySelectorAll(".slider-dots span");
+
+  dots.forEach(dot =>
+    dot.classList.remove("active")
+  );
+
+  if(dots[index]){
+    dots[index].classList.add("active");
+  }
+
+}
+
+
+/* =========================
+   NEXT
+========================= */
+
+nextBtn.addEventListener("click",()=>{
+
+  const visible =
+  getVisibleCards();
+
+  const maxIndex =
+  cards.length - visible;
+
+  if(index < maxIndex){
+
+    index++;
+
+    updateSlider();
+
+  }
+
+});
+
+
+/* =========================
+   PREV
+========================= */
+
+prevBtn.addEventListener("click",()=>{
+
+  if(index > 0){
+
+    index--;
+
+    updateSlider();
+
+  }
+
+});
+
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener("resize",()=>{
+
+  index = 0;
+
+  createDots();
+
+  updateSlider();
+
+});
+
+
+/* =========================
+   START
+========================= */
+
+createDots();
+
+updateSlider();
+
+</script>
+<script type="module">
+import { db } from "./assets/js/firebase.js";
+
+import {
+  collection,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+const jumlahSiswa =
+document.getElementById("jumlahSiswa");
+
+onSnapshot(
+  collection(db, "siswa"),
+  (snapshot) => {
+
+    // hitung jumlah dokumen siswa
+    const totalSiswa = snapshot.size;
+
+    // tampilkan ke HTML
+    jumlahSiswa.innerHTML =
+    totalSiswa + "+";
+
+  }
+);
+</script>
+<!-- =========================
+     FIREBASE OSIS
+========================= -->
+<script type="module">
+
+/* =========================
+   FIREBASE
+========================= */
+import { db } from "./assets/js/firebase.js";
+
+import {
+  doc,
+  getDoc,
+  collection,
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+
+/* =========================
+   ELEMENT KETUA
+========================= */
+const ketuaNama =
+document.getElementById("ketuaNama");
+
+const ketuaKelas =
+document.getElementById("ketuaKelas");
+
+const ketuaFoto =
+document.getElementById("ketuaFoto");
+
+
+/* =========================
+   ELEMENT WAKIL
+========================= */
+const wakilNama =
+document.getElementById("wakilNama");
+
+const wakilKelas =
+document.getElementById("wakilKelas");
+
+const wakilFoto =
+document.getElementById("wakilFoto");
+
+
+/* =========================
+   ELEMENT SEKRETARIS
+========================= */
+const sekretarisNama =
+document.getElementById("sekretarisNama");
+
+const sekretarisKelas =
+document.getElementById("sekretarisKelas");
+
+const sekretarisFoto =
+document.getElementById("sekretarisFoto");
+
+
+/* =========================
+   ELEMENT BENDAHARA
+========================= */
+const bendaharaNama =
+document.getElementById("bendaharaNama");
+
+const bendaharaKelas =
+document.getElementById("bendaharaKelas");
+
+const bendaharaFoto =
+document.getElementById("bendaharaFoto");
+
+
+/* =========================
+   ELEMENT BIDANG
+========================= */
+const totalBidang =
+document.getElementById("totalBidang");
+
+
+/* =========================
+   ELEMENT PERIODE
+========================= */
+const masaJabatan =
+document.getElementById("masaJabatan");
+
+
+/* =========================
+   DEFAULT DATA
+========================= */
+function setKosong(nama,kelas,foto){
+
+  nama.innerText = "-";
+
+  kelas.innerText = "-";
+
+  foto.src =
+  "image/siswa/user.png";
+
+}
+
+
+/* =========================
+   LOAD KETUA
+========================= */
+async function loadKetua(){
+
+  try{
+
+    const snap = await getDoc(
+
+      doc(db,"pengurus_osis","ketua_osis")
+
+    );
+
+    if(snap.exists()){
+
+      const d = snap.data();
+
+      ketuaNama.innerText =
+      d.nama || "-";
+
+      ketuaKelas.innerText =
+      d.kelas || "-";
+
+      ketuaFoto.src =
+      d.nis
+      ? `image/siswa/${d.nis}.jpg`
+      : "image/siswa/user.png";
+
+      masaJabatan.innerText =
+      d.periode || "-";
+
+    }else{
+
+      setKosong(
+        ketuaNama,
+        ketuaKelas,
+        ketuaFoto
+      );
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+    setKosong(
+      ketuaNama,
+      ketuaKelas,
+      ketuaFoto
+    );
+
+  }
+
+}
+
+
+/* =========================
+   LOAD WAKIL
+========================= */
+async function loadWakil(){
+
+  try{
+
+    const snap = await getDoc(
+
+      doc(db,"pengurus_osis","wakil_ketua")
+
+    );
+
+    if(snap.exists()){
+
+      const d = snap.data();
+
+      wakilNama.innerText =
+      d.nama || "-";
+
+      wakilKelas.innerText =
+      d.kelas || "-";
+
+      wakilFoto.src =
+      d.nis
+      ? `image/siswa/${d.nis}.jpg`
+      : "image/siswa/user.png";
+
+    }else{
+
+      setKosong(
+        wakilNama,
+        wakilKelas,
+        wakilFoto
+      );
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+    setKosong(
+      wakilNama,
+      wakilKelas,
+      wakilFoto
+    );
+
+  }
+
+}
+
+
+/* =========================
+   LOAD SEKRETARIS
+========================= */
+async function loadSekretaris(){
+
+  try{
+
+    const snap = await getDoc(
+
+      doc(db,"pengurus_osis","sekretaris")
+
+    );
+
+    if(snap.exists()){
+
+      const d = snap.data();
+
+      sekretarisNama.innerText =
+      d.nama || "-";
+
+      sekretarisKelas.innerText =
+      d.kelas || "-";
+
+      sekretarisFoto.src =
+      d.nis
+      ? `image/siswa/${d.nis}.jpg`
+      : "image/siswa/user.png";
+
+    }else{
+
+      setKosong(
+        sekretarisNama,
+        sekretarisKelas,
+        sekretarisFoto
+      );
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+    setKosong(
+      sekretarisNama,
+      sekretarisKelas,
+      sekretarisFoto
+    );
+
+  }
+
+}
+
+
+/* =========================
+   LOAD BENDAHARA
+========================= */
+async function loadBendahara(){
+
+  try{
+
+    const snap = await getDoc(
+
+      doc(db,"pengurus_osis","bendahara")
+
+    );
+
+    if(snap.exists()){
+
+      const d = snap.data();
+
+      bendaharaNama.innerText =
+      d.nama || "-";
+
+      bendaharaKelas.innerText =
+      d.kelas || "-";
+
+      bendaharaFoto.src =
+      d.nis
+      ? `image/siswa/${d.nis}.jpg`
+      : "image/siswa/user.png";
+
+    }else{
+
+      setKosong(
+        bendaharaNama,
+        bendaharaKelas,
+        bendaharaFoto
+      );
+
+    }
+
+  }catch(err){
+
+    console.log(err);
+
+    setKosong(
+      bendaharaNama,
+      bendaharaKelas,
+      bendaharaFoto
+    );
+
+  }
+
+}
+
+
+/* =========================
+   LOAD TOTAL BIDANG
+========================= */
+async function loadBidangKerja(){
+
+  try{
+
+    const snap = await getDocs(
+
+      collection(db,"pengurus_osis")
+
+    );
+
+    let total = 0;
+
+    snap.forEach((docu)=>{
+
+      const d = docu.data();
+
+      if(d.jabatan === "Bidang Kerja"){
+
+        total++;
+
+      }
+
+    });
+
+    totalBidang.innerText =
+    total > 0
+    ? total + " Siswa"
+    : "-";
+
+  }catch(err){
+
+    console.log(err);
+
+    totalBidang.innerText = "-";
+
+  }
+
+}
+
+
+/* =========================
+   DEFAULT PERIODE
+========================= */
+masaJabatan.innerText = "-";
+
+
+/* =========================
+   JALANKAN
+========================= */
+loadKetua();
+
+loadWakil();
+
+loadSekretaris();
+
+loadBendahara();
+
+loadBidangKerja();
 
 </script>
 </body>

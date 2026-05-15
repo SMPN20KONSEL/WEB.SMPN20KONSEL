@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lihat Program OSIS</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+body{
+  background:#071426;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  width:100%;
+  min-height:70vh;
+
+  background:
+  linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:100px 8%;
+}
+
+.hero-content h1{
+  font-size:70px;
+  margin-bottom:20px;
+}
+
+.hero-content h1 span{
+  color:#00b4ff;
+}
+
+.hero-content p{
+  max-width:800px;
+  margin:auto;
+  line-height:2;
+  color:#ddd;
+  font-size:20px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:100px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:46px;
+  margin-bottom:15px;
+}
+
+.section-title p{
+  color:#cfd9e6;
+  line-height:1.8;
+}
+
+/* =========================
+   FILTER
+========================= */
+
+.filter-buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:50px;
+}
+
+.filter-btn{
+  padding:14px 28px;
+  border:none;
+  border-radius:50px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  cursor:pointer;
+  transition:.4s;
+  font-weight:bold;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+  background:linear-gradient(135deg,#00b4ff,#0077b6);
+}
+
+/* =========================
+   PROGRAM GRID
+========================= */
+
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+}
+
+.program-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+  overflow:hidden;
+
+  transition:.5s;
+  position:relative;
+}
+
+.program-card:hover{
+  transform:translateY(-10px);
+  border-color:#00b4ff;
+}
+
+.program-image{
+  height:230px;
+  overflow:hidden;
+}
+
+.program-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.program-card:hover img{
+  transform:scale(1.1);
+}
+
+.program-content{
+  padding:30px;
+}
+
+.program-badge{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:30px;
+  background:#00b4ff;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.program-content h3{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.program-content p{
+  color:#cfd9e6;
+  line-height:1.9;
+  margin-bottom:25px;
+}
+
+.program-info{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.program-info span{
+  color:#00b4ff;
+  font-size:14px;
+}
+
+.program-btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:18px;
+
+  background:linear-gradient(135deg,#00b4ff,#0077b6);
+
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.program-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================
+   STATISTIK
+========================= */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.stat-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+  text-align:center;
+  padding:40px;
+}
+
+.stat-card h1{
+  font-size:60px;
+  color:#00b4ff;
+  margin-bottom:10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#04101d;
+  text-align:center;
+  padding:40px 20px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer p{
+  color:#cfd9e6;
+  margin-top:10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .menu{
+    display:none;
+  }
+
+  .hero-content h1{
+    font-size:46px;
+  }
+
+  .hero-content p{
+    font-size:16px;
+  }
+
+  .section-title h2{
+    font-size:34px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+  <div class="top-bar">
+
+    <div>
+      <i class="fas fa-phone"></i> -
+      &nbsp;&nbsp;
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </div>
+
+    <div class="social-icons">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+  <nav>
+
+    <div class="logo">
+
+      <img src="image/Logo_transparent.png" alt="Logo">
+
+      <h2>
+        SMPN20KONSEL
+        <br>
+        <small>
+          Tempat menimba ilmu, tumbuh berprestasi
+        </small>
+      </h2>
+
+    </div>
+
+    <div class="nav-toggle">
+      ☰
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <!-- PROFIL -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Profil ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+
+      </div>
+
+      <!-- MANAJEMEN -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Manajemen ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpras</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+      <a href="galeri.html"> Galeri </a>
+      <a href="kontak.html">Kontak</a>
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<div class="hero-content" data-aos="zoom-in">
+
+<h1>
+Lihat <span>Program</span>
+</h1>
+
+<p>
+Program kegiatan OSIS SMPN 20 Konawe Selatan
+dalam membangun siswa yang aktif,
+kreatif, disiplin, dan berprestasi.
+</p>
+
+</div>
+
+</section>
+
+<!-- =========================
+     PROGRAM
+========================= -->
+
+<section id="program">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Daftar Program OSIS</h2>
+
+<p>
+Berbagai program kerja dan kegiatan siswa sekolah.
+</p>
+
+</div>
+
+<!-- FILTER -->
+
+<div class="filter-buttons" data-aos="fade-up">
+
+<button class="filter-btn active">
+Semua
+</button>
+
+<button class="filter-btn">
+Akademik
+</button>
+
+<button class="filter-btn">
+Sosial
+</button>
+
+<button class="filter-btn">
+Kebersihan
+</button>
+
+<button class="filter-btn">
+Olahraga
+</button>
+
+</div>
+
+<!-- GRID -->
+
+<div class="program-grid">
+
+<!-- CARD -->
+
+<div class="program-card" data-aos="zoom-in">
+
+<div class="program-image">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="program-content">
+
+<div class="program-badge">
+Akademik
+</div>
+
+<h3>Literasi Pagi</h3>
+
+<p>
+Program pembiasaan membaca sebelum pembelajaran dimulai.
+</p>
+
+<div class="program-info">
+
+<span>
+<i class="fas fa-calendar"></i>
+Setiap Hari
+</span>
+
+<span>
+<i class="fas fa-users"></i>
+Semua Siswa
+</span>
+
+</div>
+
+<button class="program-btn">
+Lihat Detail
+</button>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="program-card" data-aos="zoom-in">
+
+<div class="program-image">
+
+<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="program-content">
+
+<div class="program-badge">
+Kebersihan
+</div>
+
+<h3>Jumat Bersih</h3>
+
+<p>
+Program kebersihan lingkungan sekolah setiap hari Jumat.
+</p>
+
+<div class="program-info">
+
+<span>
+<i class="fas fa-calendar"></i>
+Hari Jumat
+</span>
+
+<span>
+<i class="fas fa-users"></i>
+Seluruh Kelas
+</span>
+
+</div>
+
+<button class="program-btn">
+Lihat Detail
+</button>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="program-card" data-aos="zoom-in">
+
+<div class="program-image">
+
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="program-content">
+
+<div class="program-badge">
+Olahraga
+</div>
+
+<h3>Class Meeting</h3>
+
+<p>
+Kegiatan lomba olahraga dan seni antar kelas.
+</p>
+
+<div class="program-info">
+
+<span>
+<i class="fas fa-calendar"></i>
+Semester Akhir
+</span>
+
+<span>
+<i class="fas fa-users"></i>
+Siswa Aktif
+</span>
+
+</div>
+
+<button class="program-btn">
+Lihat Detail
+</button>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="program-card" data-aos="zoom-in">
+
+<div class="program-image">
+
+<img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div class="program-content">
+
+<div class="program-badge">
+Sosial
+</div>
+
+<h3>Bakti Sosial</h3>
+
+<p>
+Program kepedulian sosial dan berbagi kepada masyarakat.
+</p>
+
+<div class="program-info">
+
+<span>
+<i class="fas fa-calendar"></i>
+Tahunan
+</span>
+
+<span>
+<i class="fas fa-users"></i>
+Pengurus OSIS
+</span>
+
+</div>
+
+<button class="program-btn">
+Lihat Detail
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     STATISTIK
+========================= -->
+
+<section id="statistik">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Statistik Program</h2>
+
+<p>
+Data kegiatan dan partisipasi siswa sekolah.
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>20+</h1>
+<p>Program Aktif</p>
+</div>
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>100%</h1>
+<p>Siswa Terlibat</p>
+</div>
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>15+</h1>
+<p>Kegiatan Tahunan</p>
+</div>
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>10+</h1>
+<p>Prestasi</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h2>OSIS SMPN 20 Konawe Selatan</h2>
+
+<p>
+Website Program Kerja OSIS © 2026
+</p>
+
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+  duration:1000,
+  once:true
+});
+
+// FILTER ACTIVE
+
+const buttons =
+document.querySelectorAll(".filter-btn");
+
+buttons.forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    buttons.forEach(b=>{
+      b.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>

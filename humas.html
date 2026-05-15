@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Humas - SMPN 20 Konawe Selatan</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    
+
+    /* ================= HERO ================= */
+    body{
+      background:#071426;
+      color:white;
+      overflow-x:hidden;
+    }
+    .hero{
+      height:85vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      font-size:20px;
+      max-width:800px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    .hero-btn{
+      margin-top:30px;
+    }
+
+    .hero-btn a{
+      background:#ff9800;
+      color:white;
+      padding:14px 30px;
+      border-radius:30px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .hero-btn a:hover{
+      background:#fb8c00;
+    }
+
+    /* ================= SECTION ================= */
+
+    section{
+      padding:80px 7%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-size:40px;
+      color:#0d47a1;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#666;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .about-text h3{
+      font-size:30px;
+      margin-bottom:20px;
+      color:#0d47a1;
+    }
+
+    .about-text p{
+      line-height:1.9;
+      margin-bottom:15px;
+    }
+
+    /* ================= TUGAS ================= */
+
+    .card-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:white;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.3s;
+      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card i{
+      font-size:45px;
+      color:#0d47a1;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+    }
+
+    .card p{
+      line-height:1.7;
+      color:#555;
+    }
+
+    /* ================= GALERI ================= */
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      height:250px;
+      object-fit:cover;
+      border-radius:15px;
+      transition:0.3s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.04);
+    }
+
+    /* ================= BERITA ================= */
+
+    .news-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .news-card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .news-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .news-card img{
+      height:220px;
+      object-fit:cover;
+    }
+
+    .news-content{
+      padding:25px;
+    }
+
+    .news-content h3{
+      margin-bottom:15px;
+      color:#0d47a1;
+    }
+
+    .news-content p{
+      line-height:1.7;
+      color:#555;
+    }
+
+    .news-content a{
+      display:inline-block;
+      margin-top:15px;
+      color:#0d47a1;
+      font-weight:bold;
+    }
+
+    /* ================= STRUKTUR ================= */
+.team{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+}
+
+.team-card{
+  width:350px;
+  background:white;
+  border-radius:25px;
+  overflow:hidden;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:0.3s;
+  padding:25px 20px;
+}
+
+.team-card:hover{
+  transform:translateY(-8px);
+}
+
+.team-card img{
+  width:170px;
+  height:170px;
+  object-fit:cover;
+  border-radius:50%;
+  margin:0 auto 20px;
+  display:block;
+  border:6px solid #f1f5f9;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.team-card h3{
+  font-size:24px;
+  color:#0d47a1;
+  margin-bottom:10px;
+  line-height:1.4;
+}
+
+.team-card p{
+  color:#000000;
+  font-size:32px;
+  font-weight:500;
+}
+
+    /* ================= KONTAK ================= */
+
+    .contact{
+      background:#0d47a1;
+      color:white;
+      border-radius:25px;
+      text-align:center;
+      padding:50px;
+    }
+
+    .contact h2{
+      margin-bottom:20px;
+      font-size:38px;
+    }
+
+    .contact p{
+      margin:10px 0;
+      font-size:18px;
+    }
+
+    .socials{
+      margin-top:25px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+    }
+
+    .socials a{
+      width:50px;
+      height:50px;
+      background:white;
+      color:#0d47a1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      border-radius:50%;
+      font-size:22px;
+      transition:0.3s;
+    }
+
+    .socials a:hover{
+      background:#ff9800;
+      color:white;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:900px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:40px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .hero{
+        height:70vh;
+      }
+
+      .hero-content h1{
+        font-size:32px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .section-title h2{
+        font-size:30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+<header>
+
+  <div class="top-bar">
+
+    <div>
+      <i class="fas fa-phone"></i> -
+      &nbsp;&nbsp;
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </div>
+
+    <div class="social-icons">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+  <nav>
+
+    <div class="logo">
+
+      <img src="image/Logo_transparent.png" alt="Logo">
+
+      <h2>
+        SMPN20KONSEL
+        <br>
+        <small>
+          Tempat menimba ilmu, tumbuh berprestasi
+        </small>
+      </h2>
+
+    </div>
+
+    <div class="nav-toggle">
+      ☰
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <!-- PROFIL -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Profil ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+
+      </div>
+
+      <!-- MANAJEMEN -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Manajemen ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpas</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+      <a href="galeri.html"> Galeri </a>
+      <a href="kontak.html">Kontak</a>
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <h1>BIDANG HUMAS SEKOLAH</h1>
+
+      <p>
+        Menjalin komunikasi yang baik antara sekolah,
+        masyarakat, orang tua, dan seluruh warga sekolah
+        demi terciptanya pendidikan yang berkualitas.
+      </p>
+
+      <div class="hero-btn">
+        <a href="#tentang">Selengkapnya</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TENTANG -->
+
+  <section id="tentang">
+
+    <div class="section-title">
+      <h2>Tentang Humas</h2>
+      <p>Hubungan Masyarakat SMPN 20 Konawe Selatan</p>
+    </div>
+
+    <div class="about">
+
+      <img src="image/humas/1.jpeg" alt="Humas Sekolah">
+
+      <div class="about-text">
+
+        <h3>Membangun Komunikasi Sekolah</h3>
+
+        <p>
+          Humas sekolah memiliki peran penting dalam membangun
+          citra positif sekolah serta menjalin hubungan yang
+          harmonis dengan masyarakat.
+        </p>
+
+        <p>
+          Bidang humas bertanggung jawab dalam penyebaran informasi,
+          dokumentasi kegiatan sekolah, pengelolaan media sosial,
+          dan kerja sama dengan berbagai pihak.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROGRAM -->
+
+  <section id="program">
+
+    <div class="section-title">
+      <h2>Program Humas</h2>
+      <p>Program kerja bidang humas sekolah</p>
+    </div>
+
+    <div class="card-container">
+
+      <div class="card">
+        <i class="fas fa-bullhorn"></i>
+        <h3>Publikasi Sekolah</h3>
+        <p>
+          Menyampaikan informasi kegiatan dan prestasi sekolah.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-camera"></i>
+        <h3>Dokumentasi</h3>
+        <p>
+          Mendokumentasikan kegiatan sekolah dalam bentuk foto dan video.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-users"></i>
+        <h3>Kerja Sama</h3>
+        <p>
+          Menjalin kerja sama dengan masyarakat dan instansi.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-globe"></i>
+        <h3>Media Informasi</h3>
+        <p>
+          Mengelola website dan media sosial sekolah.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALERI -->
+
+  <section id="galeri">
+
+    <div class="section-title">
+      <h2>Galeri Kegiatan</h2>
+      <p>Dokumentasi kegiatan sekolah</p>
+    </div>
+
+    <div class="gallery">
+
+      <img src="image/humas/1.jpeg" alt="Galeri Kegiatan 1">
+
+      <img src="image/humas/2.jpeg" alt="Galeri Kegiatan 2">
+
+      <img src="image/humas/3.jpeg" alt="Galeri Kegiatan 3">
+
+      <img src="image/humas/4.jpeg" alt="Galeri Kegiatan 4">
+
+    </div>
+
+  </section>
+
+  <!-- BERITA -->
+
+  <section id="berita">
+
+    <div class="section-title">
+      <h2>Berita Terbaru</h2>
+      <p>Informasi dan kegiatan terbaru sekolah</p>
+    </div>
+
+    <div class="news-container">
+
+      <div class="news-card">
+
+        <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200">
+
+        <div class="news-content">
+          <h3>Kegiatan Pramuka Sekolah</h3>
+
+          <p>
+            SMPN 20 Konawe Selatan melaksanakan kegiatan
+            pembinaan karakter melalui kegiatan pramuka.
+          </p>
+
+          <a href="#">Baca Selengkapnya</a>
+        </div>
+
+      </div>
+
+      <div class="news-card">
+
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200">
+
+        <div class="news-content">
+          <h3>Prestasi Siswa</h3>
+
+          <p>
+            Siswa berhasil meraih prestasi dalam lomba
+            matematika tingkat kabupaten.
+          </p>
+
+          <a href="#">Baca Selengkapnya</a>
+        </div>
+
+      </div>
+
+      <div class="news-card">
+
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200">
+
+        <div class="news-content">
+          <h3>Kegiatan Sosial</h3>
+
+          <p>
+            Sekolah mengadakan kegiatan bakti sosial bersama
+            masyarakat sekitar.
+          </p>
+
+          <a href="#">Baca Selengkapnya</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STRUKTUR -->
+<section>
+
+  <div class="section-title">
+    <h2>Tim Humas</h2>
+    <p>Struktur bidang hubungan masyarakat</p>
+  </div>
+
+  <div class="team" id="teamContainer">
+    <!-- DATA DARI FIREBASE MUNCUL DI SINI -->
+  </div>
+
+</section>
+  <!-- KONTAK -->
+
+ <section id="kontak">
+
+  <div class="contact">
+
+    <h2>Kontak Humas</h2>
+
+    <p>
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </p>
+
+    <p id="kontakHumas">
+      <i class="fas fa-phone"></i>
+      Memuat nomor...
+    </p>
+
+    <p>
+      <i class="fas fa-map-marker-alt"></i>
+      Konawe Selatan, Sulawesi Tenggara
+    </p>
+
+  </div>
+
+</section>
+
+  <!-- FOOTER -->
+
+<section class="footer-banner">
+
+  <div class="footer-banner-overlay"></div>
+
+  <h1>
+    Learn Today, Lead Tomorrow, Be The Best !
+  </h1>
+
+</section>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- KOLOM 1 -->
+    <div class="footer-column">
+
+      <div class="footer-card">
+
+        <div class="footer-logo">
+
+          <img src="image/Logo_transparent.png" alt="Logo">
+
+          <div>
+            <h2>SMPN20KONSEL</h2>
+            <span>Website Portal Sekolah</span>
+          </div>
+
+        </div>
+
+        <p>
+          SMPN 20 Konawe Selatan merupakan
+          sekolah yang berkomitmen mencetak
+          generasi unggul, berprestasi,
+          dan berkarakter.
+        </p>
+
+<div class="footer-social">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <!-- KOLOM 2 -->
+    <div class="footer-column">
+
+  <h3>Data Sekolah</h3>
+
+  <ul class="footer-links">
+
+    <li>
+      <i class="fas fa-user-graduate"></i>
+      Alumni : <span id="totalAlumni">840</span>
+    </li>
+
+    <li>
+      <i class="fas fa-users"></i>
+      Siswa : <span id="totalSiswa">0</span>
+    </li>
+
+    <li>
+      <i class="fas fa-chalkboard-teacher"></i>
+      Guru&TU : <span id="totalGuru">0</span>
+    </li>
+
+  </ul>
+
+</div>
+
+    <!-- KOLOM 3 -->
+    <div class="footer-column">
+
+      <h3>Temukan Kami</h3>
+
+      <iframe
+        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
+        loading="lazy"
+        allowfullscreen="">
+      </iframe>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    © 2026 SMPN 20 Konawe Selatan
+  </div>
+
+</footer>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/index.js"></script>
+<script type="module" src="assets/js/humas.js"></script>
+</body>
+</html>

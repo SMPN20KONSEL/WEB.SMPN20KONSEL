@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Struktur Sekolah</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+<style>
+
+/* ================= MAIN ================= */
+
+.main{
+  margin-left:260px;
+  width:100%;
+  padding:30px;
+}
+
+/* ================= FORM ================= */
+
+.box{
+  max-width:550px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 5px 25px rgba(0,0,0,0.08);
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:#0d6efd;
+}
+/* =========================
+   DROPDOWN JABATAN
+========================= */
+
+#judul{
+  width:100%;
+  padding:14px 16px;
+  border:2px solid #1e88e5;
+  border-radius:12px;
+  background:#fff;
+  font-size:16px;
+  font-weight:500;
+  color:#222;
+  outline:none;
+  transition:0.3s;
+  cursor:pointer;
+  box-sizing:border-box;
+}
+
+#judul:focus{
+  border-color:#1565c0;
+  box-shadow:0 0 10px rgba(30,136,229,.25);
+}
+
+#judul option{
+  padding:10px;
+  font-size:15px;
+}
+input,
+select,
+button{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  margin-top:12px;
+  font-size:15px;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#0d6efd;
+}
+
+button{
+  background:#0d6efd;
+  color:white;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#0b5ed7;
+  transform:translateY(-2px);
+}
+
+/* ================= PREVIEW ================= */
+
+.preview{
+  margin-top:20px;
+  text-align:center;
+  background:#f8fafc;
+  padding:20px;
+  border-radius:15px;
+}
+
+.preview img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #0d6efd;
+}
+
+.preview h3{
+  margin-top:10px;
+  margin-bottom:5px;
+}
+
+.preview p{
+  color:#666;
+}
+
+/* ================= OUTPUT ================= */
+
+.output{
+  max-width:1100px;
+  margin:40px auto;
+}
+
+.section-title{
+  margin-top:40px;
+  margin-bottom:12px;
+  color:#0d6efd;
+  font-size:24px;
+  font-weight:bold;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+th,
+td{
+  padding:14px;
+  border-bottom:1px solid #eee;
+  text-align:left;
+}
+
+th{
+  background:#0d6efd;
+  color:white;
+}
+
+td img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+table tr:hover{
+  background:#f9fafb;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  body{
+    display:block;
+    padding:0;
+  }
+
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+
+  .main{
+    margin-left:0;
+    padding:15px;
+  }
+
+  .box{
+    padding:20px;
+  }
+
+  table{
+    font-size:13px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="../image/Logo_transparent.png">
+    <h2>SMPN 20 KONSEL</h2>
+  </div>
+
+  <!-- MENU -->
+  <div class="menu-title">
+    Menu Utama
+  </div>
+
+  <!-- DASHBOARD -->
+  <a class="active" href="dashboard.html">
+    <i class="fas fa-home"></i>
+    Dashboard
+  </a>
+
+  <!-- DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-school"></i>
+      Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="siswa.html">
+        <i class="fas fa-users"></i>
+        Data Siswa
+      </a>
+
+      <a href="guru.html">
+        <i class="fas fa-chalkboard-teacher"></i>
+        Data Guru
+      </a>
+
+      <a href="osis.html">
+        <i class="fas fa-user-group"></i>
+        Data OSIS
+      </a>
+
+      <a href="profil.html">
+        <i class="fas fa-pen"></i>
+        Edit Profil
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BUAT DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-folder-plus"></i>
+      Buat Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="berita.html">
+        <i class="fas fa-newspaper"></i>
+        Berita
+      </a>
+
+      <a href="galeri.html">
+        <i class="fas fa-image"></i>
+        Galeri
+      </a>
+
+      <a href="slider.html">
+        <i class="fas fa-users-gear"></i>
+        Input Pengurus
+      </a>
+
+      <a href="sambutan.html">
+        <i class="fas fa-comment"></i>
+        Sambutan
+      </a>
+
+      <a href="pendaftaran.html">
+        <i class="fas fa-user-plus"></i>
+        Info SPMB
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- MENU LAIN -->
+  <a href="statistik.html">
+    <i class="fas fa-chart-bar"></i>
+    Statistik
+  </a>
+
+  <a href="pengumuman.html">
+    <i class="fas fa-bullhorn"></i>
+    Pengumuman
+  </a>
+
+  <a href="pengaturan.html">
+    <i class="fas fa-cog"></i>
+    Pengaturan
+  </a>
+
+  <a href="login.html">
+    <i class="fas fa-right-from-bracket"></i>
+    Logout
+  </a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+<!-- ================= FORM ================= -->
+
+<div class="box">
+
+  <h2>Input Struktur Sekolah</h2>
+
+ <select id="judul">
+  <option value="">-- Pilih Jabatan --</option>
+
+  <option>Kepala Sekolah</option>
+  <option>Wakil Kepala Sekolah Bidang Kurikulum</option>
+  <option>Wakil Kepala Sekolah Bidang Kesiswaan</option>
+  <option>Wakil Kepala Sekolah Bidang Sarana dan Prasarana</option>
+  <option>Wakil Kepala Sekolah Bidang Humas</option>
+  <option>Wali Kelas</option>
+  <option>Guru BK / Konselor</option>
+  <option>Kepala Tata Usaha</option>
+  <option>Staff Tata Usaha</option>
+  <option>Operator Sekolah</option>
+  <option>Operator Dapodik</option>
+  <option>Bendahara BOS</option>
+  <option>Bendahara Sekolah</option>
+  <option>Bendahara Gaji</option>
+  <option>Kepala Perpustakaan</option>
+  <option>Pustakawan</option>
+  <option>Kepala Laboratorium IPA</option>
+  <option>Kepala Laboratorium Komputer</option>
+  <option>Laboran</option>
+  <option>Teknisi Laboratorium</option>
+  <option>Admin Website Sekolah</option>
+  <option>Admin Media Sosial Sekolah</option>
+  <option>Tim IT Sekolah</option>
+  <option>Koordinator Kurikulum</option>
+  <option>Tim Pengembang Kurikulum</option>
+  <option>Koordinator Penilaian</option>
+  <option>Koordinator Literasi</option>
+  <option>Koordinator Numerasi</option>
+  <option>Koordinator Projek P5</option>
+  <option>Tim Penjamin Mutu Pendidikan</option>
+  <option>Ketua MGMP Sekolah</option>
+  <option>Koordinator Mata Pelajaran</option>
+  <option>Pembina Olimpiade</option>
+  <option>Pembina KSN</option>
+  <option>Pembina OSN</option>
+  <option>Pembina OSIS</option>
+  <option>Pembina Pramuka</option>
+  <option>Pembina PMR</option>
+  <option>Pembina UKS</option>
+  <option>Pembina Rohani Islam</option>
+  <option>Pembina Rohani Kristen</option>
+  <option>Pembina Seni</option>
+  <option>Pembina Tari</option>
+  <option>Pembina Musik</option>
+  <option>Pembina Paskibra</option>
+  <option>Pembina Drum Band</option>
+  <option>Pembina Futsal</option>
+  <option>Pembina Sepak Bola</option>
+  <option>Pembina Bola Voli</option>
+  <option>Pembina Basket</option>
+  <option>Pembina Badminton</option>
+  <option>Pembina Atletik</option>
+  <option>Pembina Karate</option>
+  <option>Pembina Pencak Silat</option>
+  <option>Pembina English Club</option>
+  <option>Pembina KIR</option>
+  <option>Pembina Multimedia</option>
+  <option>Pembina Jurnalistik</option>
+  <option>Pembina Adiwiyata</option>
+  <option>Pembina Dokter Kecil</option>
+  <option>Pembina Koperasi Sekolah</option>
+  <option>Koordinator Disiplin</option>
+  <option>Koordinator Kebersihan</option>
+  <option>Koordinator Keamanan Sekolah</option>
+  <option>Pengelola Inventaris Barang</option>
+  <option>Pengelola Arsip Sekolah</option>
+  <option>Pengelola Aset Sekolah</option>
+  <option>Pengelola Ruang Multimedia</option>
+  <option>Pengelola Website Sekolah</option>
+  <option>Pengelola Data Siswa</option>
+  <option>Pengelola E-Rapor</option>
+  <option>Pengelola ANBK</option>
+  <option>Proktor ANBK</option>
+  <option>Teknisi ANBK</option>
+  <option>Koordinator PPDB</option>
+  <option>Panitia PPDB</option>
+  <option>Ketua Panitia MPLS</option>
+  <option>Panitia MPLS</option>
+  <option>Ketua Panitia Ujian Sekolah</option>
+  <option>Panitia Ujian Sekolah</option>
+  <option>Ketua Panitia Class Meeting</option>
+  <option>Panitia Class Meeting</option>
+  <option>Ketua Panitia Perpisahan</option>
+  <option>Panitia Perpisahan</option>
+  <option>Ketua Panitia Hari Besar Nasional</option>
+  <option>Ketua Panitia Hari Besar Keagamaan</option>
+  <option>Pembina Alumni</option>
+  <option>Koordinator Hubungan Industri</option>
+  <option>Koordinator Kemitraan Sekolah</option>
+  <option>Koordinator Humas Sekolah</option>
+  <option>Koordinator Kehadiran Guru</option>
+  <option>Koordinator Jadwal Pelajaran</option>
+  <option>Koordinator Kesiswaan</option>
+  <option>Koordinator Sarpras</option>
+  <option>Tim Dokumentasi Sekolah</option>
+  <option>Fotografer Sekolah</option>
+  <option>Videografer Sekolah</option>
+  <option>Tim Kreatif Sekolah</option>
+  <option>Tim Publikasi Sekolah</option>
+  <option>Tim Konten Digital Sekolah</option>
+  <option>Pengelola Podcast Sekolah</option>
+  <option>Pengelola Radio Sekolah</option>
+  <option>Pengelola Mading Sekolah</option>
+
+</select>
+
+  <select id="guruSelect">
+
+    <option value="">
+      -- Pilih Guru --
+    </option>
+
+  </select>
+
+<select id="jabatan">
+
+  <option value="">
+    -- Pilih Jabatan --
+  </option>
+
+  <option>Ketua</option>
+  <option>Wakil Ketua</option>
+  <option>Sekretaris</option>
+  <option>Wakil Sekretaris</option>
+  <option>Bendahara</option>
+  <option>Wakil Bendahara</option>
+  <option>Koordinator</option>
+  <option>Anggota</option>
+  <option>Pembina</option>
+  <option>Ketua Bidang</option>
+  <option>Staff</option>
+
+</select>
+
+  <!-- PREVIEW -->
+
+  <div class="preview" id="preview">
+
+    <p>Pilih guru untuk melihat data</p>
+
+  </div>
+
+  <button onclick="simpan()">
+    Simpan Data
+  </button>
+
+</div>
+
+<!-- ================= OUTPUT ================= -->
+
+<div class="output" id="output"></div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+ <script type="module" src="../assets/js/admin.js"></script>
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+
+  collection,
+  getDocs,
+  onSnapshot,
+  doc,
+  setDoc,
+  deleteDoc
+
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= ELEMENT ================= */
+
+const guruSelect =
+document.getElementById("guruSelect");
+
+const preview =
+document.getElementById("preview");
+
+const output =
+document.getElementById("output");
+
+/* ================= DATA ================= */
+
+let guruList = [];
+
+let selectedGuru = null;
+
+/* ================= LOAD GURU ================= */
+
+async function loadGuru(){
+
+  try{
+
+    const snap = await getDocs(
+      collection(db, "guru")
+    );
+
+    guruSelect.innerHTML = `
+
+      <option value="">
+        -- Pilih Guru --
+      </option>
+
+    `;
+
+    guruList = [];
+
+    snap.forEach((docSnap)=>{
+
+      const data = docSnap.data();
+
+      const guru = {
+
+        uid: docSnap.id,
+
+        nama: data.nama || "-",
+
+        nip: data.nip || "-",
+
+        nohp: data.nohp || "-",
+
+        foto:
+          data.foto ||
+          `../image/guru/${data.nip}.jpg`
+
+      };
+
+      guruList.push(guru);
+
+      guruSelect.innerHTML += `
+
+        <option value="${docSnap.id}">
+          ${data.nama}
+        </option>
+
+      `;
+
+    });
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "ERROR LOAD GURU:\n" +
+      err.message
+    );
+
+  }
+
+}
+
+/* ================= PILIH GURU ================= */
+
+guruSelect.addEventListener("change", ()=>{
+
+  const uid = guruSelect.value;
+
+  selectedGuru = guruList.find(
+    g => g.uid === uid
+  );
+
+  if(selectedGuru){
+
+    preview.innerHTML = `
+
+      <img
+        src="${selectedGuru.foto}"
+        onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"
+      >
+
+      <h3>${selectedGuru.nama}</h3>
+
+      <p>${selectedGuru.nip}</p>
+
+      <p>${selectedGuru.nohp}</p>
+
+    `;
+
+  }else{
+
+    preview.innerHTML = `
+      <p>Pilih guru untuk melihat data</p>
+    `;
+
+  }
+
+});
+
+/* ================= SIMPAN ================= */
+
+window.simpan = async function(){
+
+  try{
+
+    const judul =
+      document.getElementById("judul")
+      .value;
+
+    const jabatan =
+      document.getElementById("jabatan")
+      .value;
+
+    if(
+      judul === "" ||
+      jabatan === "" ||
+      !selectedGuru
+    ){
+
+      alert("Lengkapi data!");
+      return;
+
+    }
+
+    const idDoc =
+      judul
+      .toLowerCase()
+      .replace(/\s+/g,"-");
+
+    await setDoc(
+
+      doc(
+        db,
+        "jabatan",
+        idDoc
+      ),
+
+      {
+
+        judul: judul,
+
+        uid: selectedGuru.uid,
+
+        nama: selectedGuru.nama,
+
+        nip: selectedGuru.nip,
+
+        nohp: selectedGuru.nohp,
+
+        foto: selectedGuru.foto,
+
+        jabatan: jabatan
+
+      }
+
+    );
+
+    alert("Data berhasil disimpan");
+
+    /* RESET */
+
+    document.getElementById(
+      "judul"
+    ).selectedIndex = 0;
+
+    document.getElementById(
+      "jabatan"
+    ).selectedIndex = 0;
+
+    guruSelect.selectedIndex = 0;
+
+    selectedGuru = null;
+
+    preview.innerHTML = `
+      <p>Pilih guru untuk melihat data</p>
+    `;
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Gagal menyimpan:\n" +
+      err.message
+    );
+
+  }
+
+};
+
+/* ================= HAPUS ================= */
+
+window.hapusData = async function(id){
+
+  const konfirmasi =
+  confirm("Yakin ingin menghapus data?");
+
+  if(!konfirmasi) return;
+
+  try{
+
+    await deleteDoc(
+
+      doc(db, "jabatan", id)
+
+    );
+
+    alert("Data berhasil dihapus");
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Gagal menghapus:\n" +
+      err.message
+    );
+
+  }
+
+};
+
+/* ================= RENDER ================= */
+
+function renderData(){
+
+  onSnapshot(
+
+    collection(db, "jabatan"),
+
+    (snap)=>{
+
+      output.innerHTML = "";
+
+      if(snap.empty){
+
+        output.innerHTML = `
+          <p>Belum ada data</p>
+        `;
+
+        return;
+
+      }
+
+      snap.forEach((docSnap)=>{
+
+        const d = docSnap.data();
+
+        const judul =
+          d.judul || "-";
+
+        output.innerHTML += `
+
+          <div class="section-title">
+            ${judul.toUpperCase()}
+          </div>
+
+          <table>
+
+            <tr>
+              <th>Foto</th>
+              <th>Nama</th>
+              <th>NIP</th>
+              <th>No HP</th>
+              <th>Jabatan</th>
+              <th>Aksi</th>
+            </tr>
+
+            <tr>
+
+              <td>
+
+                <img
+                  src="${d.foto}"
+                  onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"
+                >
+
+              </td>
+
+              <td>
+                ${d.nama || "-"}
+              </td>
+
+              <td>
+                ${d.nip || "-"}
+              </td>
+
+              <td>
+                ${d.nohp || "-"}
+              </td>
+
+              <td>
+                ${d.jabatan || "-"}
+              </td>
+
+              <td>
+
+                <button
+                  onclick="hapusData('${docSnap.id}')"
+                  style="
+                    background:red;
+                    color:white;
+                    border:none;
+                    padding:8px 12px;
+                    border-radius:8px;
+                    cursor:pointer;
+                  "
+                >
+                  Hapus
+                </button>
+
+              </td>
+
+            </tr>
+
+          </table>
+
+        `;
+
+      });
+
+    }
+
+  );
+
+}
+
+/* ================= LOAD ================= */
+
+loadGuru();
+
+renderData();
+
+</script>
+
+</body>
+</html>

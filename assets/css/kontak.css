@@ -1,0 +1,261 @@
+/* =========================
+   KONTAK SECTION
+========================= */
+
+.kontak-section{
+  max-width:1100px;
+
+  /* JARAK DARI HEADER */
+  margin:200px auto 60px;
+
+  padding:50px;
+
+  background:#ffffff;
+
+  border-radius:20px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+  border-top:6px solid #09038b;
+}
+
+/* =========================
+   JUDUL
+========================= */
+
+.kontak-section h2{
+  font-size:38px;
+  color:#09038b;
+  margin-bottom:35px;
+  text-align:center;
+  font-weight:700;
+}
+
+.kontak-section h3{
+  font-size:26px;
+  color:#1f2937;
+
+  margin-top:45px;
+  margin-bottom:20px;
+
+  padding-bottom:10px;
+
+  border-bottom:2px solid #e5e7eb;
+}
+
+/* =========================
+   INFO SEKOLAH
+========================= */
+
+.kontak-section .info{
+  background:#f9fafb;
+
+  padding:30px;
+
+  border-radius:15px;
+
+  border:1px solid #e5e7eb;
+}
+
+.kontak-section .info p{
+  margin-bottom:18px;
+  line-height:1.9;
+  font-size:17px;
+  color:#374151;
+}
+
+/* =========================
+   SOCIAL MEDIA
+========================= */
+
+.kontak-section .social{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:20px;
+}
+
+.kontak-section .social a{
+  background:#09038b;
+  color:white;
+
+  padding:12px 22px;
+
+  border-radius:10px;
+
+  text-decoration:none;
+
+  font-size:15px;
+  font-weight:600;
+
+  transition:0.3s ease;
+}
+
+.kontak-section .social a:hover{
+  background:#1407c7;
+  transform:translateY(-3px);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.kontak-section form{
+  margin-top:25px;
+}
+
+.kontak-section label{
+  display:block;
+
+  margin-top:22px;
+  margin-bottom:8px;
+
+  font-weight:600;
+  color:#111827;
+
+  font-size:15px;
+}
+
+.kontak-section input,
+.kontak-section textarea{
+  width:100%;
+
+  padding:14px 16px;
+
+  border:1px solid #d1d5db;
+  border-radius:10px;
+
+  font-size:15px;
+  font-family:inherit;
+
+  background:#ffffff;
+
+  outline:none;
+
+  transition:0.3s ease;
+}
+
+.kontak-section input:focus,
+.kontak-section textarea:focus{
+  border-color:#09038b;
+
+  box-shadow:
+    0 0 0 4px rgba(9,3,139,0.10);
+}
+
+.kontak-section textarea{
+  resize:vertical;
+  min-height:140px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.kontak-section button{
+  margin-top:25px;
+
+  padding:14px 24px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#16a34a;
+  color:#ffffff;
+
+  font-size:16px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+}
+
+.kontak-section button:hover{
+  background:#15803d;
+}
+
+/* =========================
+   MAPS
+========================= */
+
+.kontak-section iframe{
+  width:100%;
+  height:350px;
+
+  border:none;
+  border-radius:15px;
+
+  margin-top:25px;
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+@media (max-width:992px){
+
+  .kontak-section{
+    max-width:92%;
+    padding:35px 25px;
+  }
+
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  .kontak-section{
+    margin:200px 12px 40px;
+    padding:25px 18px;
+    border-radius:15px;
+  }
+
+  .kontak-section h2{
+    font-size:28px;
+    margin-bottom:25px;
+  }
+
+  .kontak-section h3{
+    font-size:21px;
+    margin-top:35px;
+  }
+
+  .kontak-section .info{
+    padding:18px;
+  }
+
+  .kontak-section .info p{
+    font-size:15px;
+    line-height:1.8;
+  }
+
+  .kontak-section .social{
+    flex-direction:column;
+  }
+
+  .kontak-section .social a{
+    width:100%;
+    text-align:center;
+  }
+
+  .kontak-section input,
+  .kontak-section textarea{
+    font-size:14px;
+    padding:12px 14px;
+  }
+
+  .kontak-section button{
+    width:100%;
+    font-size:15px;
+  }
+
+  .kontak-section iframe{
+    height:250px;
+  }
+
+}

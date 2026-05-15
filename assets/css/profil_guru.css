@@ -1,0 +1,275 @@
+/* ================= RESET ================= */
+
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  height:75vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url('../../image/upacara.jpg');
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  position:relative;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:55px;
+}
+
+.logo h2{
+  font-size:24px;
+}
+
+.navbar ul{
+  display:flex;
+  list-style:none;
+  gap:25px;
+}
+
+.navbar ul li a{
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.navbar ul li a:hover{
+  color:#ffd43b;
+}
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:80%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-content h1{
+  font-size:65px;
+  margin-bottom:15px;
+}
+
+.hero-content p{
+  font-size:22px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  padding:70px 8%;
+}
+
+.stat-card{
+  background:white;
+  padding:35px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  transition:.4s;
+}
+
+.stat-card:hover{
+  transform:translateY(-10px);
+}
+
+.stat-card i{
+  font-size:45px;
+  color:#0d6efd;
+  margin-bottom:15px;
+}
+
+.stat-card h2{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-section{
+  padding:20px 8%;
+  text-align:center;
+}
+
+.search-section h2{
+  font-size:38px;
+  margin-bottom:25px;
+}
+
+.search-section input{
+  width:100%;
+  max-width:600px;
+  padding:17px;
+  border:none;
+  outline:none;
+  border-radius:50px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  font-size:16px;
+}
+
+/* ================= GURU CARD (FIXED CLEAN) ================= */
+
+.guru-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:30px;
+  padding:60px 8%;
+}
+
+.guru-card{
+  background: white;
+  border-radius: 25px;
+
+  /* 🔵 garis pinggir biru */
+  border: 2px solid #0d6efd;
+
+  /* 🔥 bayangan halus */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  /* 📏 dibuat lebih lebar */
+  width: 100%;
+  max-width: 350px;
+
+  margin: auto;
+
+  padding: 30px 25px;
+
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+.guru-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.guru-card:hover{
+  transform:translateY(-8px);
+}
+
+/* FOTO */
+.guru-card img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 4px solid #0d6efd;
+
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.guru-card h3{
+  font-size: 20px;
+
+  /* 🔥 penting untuk nama panjang */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  max-width: 100%;
+}
+.guru-card p{
+  text-align: left;
+  padding-left: 50px;   /* jarak dari kiri */
+  padding-right: 10px;
+}
+.guru-card p{
+  margin: 6px 0;
+  font-size: 14px;
+  color: #000000;
+
+  /* biar tidak keluar */
+  word-break: break-word;
+}
+
+/* ICON STYLE */
+.guru-card p i{
+  color:#0d6efd;
+  margin-right:6px;
+}
+
+/* ================= STATUS BADGE (OPTIONAL) ================= */
+
+.badge{
+  display:inline-block;
+  margin-top:8px;
+  padding:5px 12px;
+  border-radius:20px;
+  background:#0d6efd;
+  color:white;
+  font-size:12px;
+}
+
+
+/* ================= LOADING / ERROR ================= */
+
+.loading,
+.error-box,
+.empty{
+  text-align:center;
+  padding:40px;
+}
+
+.loading i{
+  font-size:35px;
+  color:#0d6efd;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .navbar{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .navbar ul{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero-content h1{
+    font-size:45px;
+  }
+
+  .hero-content p{
+    font-size:18px;
+  }
+
+}

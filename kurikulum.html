@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kurikulum - SMPN 20 Konawe Selatan</title>
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    body{
+      background:#071426;
+      color:white;
+      overflow-x:hidden;
+      transition:0.4s;
+    }
+
+    body.light{
+      background:#f4f7fb;
+      color:#222;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      height:95vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:65px;
+      color:#ffd54f;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      max-width:850px;
+      margin:auto;
+      line-height:1.9;
+      font-size:20px;
+    }
+
+    .hero-btn{
+      margin-top:35px;
+    }
+
+    .hero-btn a{
+      background:#ffd54f;
+      color:#071426;
+      padding:15px 35px;
+      border-radius:40px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .hero-btn a:hover{
+      background:white;
+    }
+
+    /* ================= SECTION ================= */
+
+    section{
+      padding:90px 7%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      color:#ffd54f;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#ccc;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      border-radius:25px;
+    }
+
+    .about-text h3{
+      color:#ffd54f;
+      font-size:34px;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      line-height:1.9;
+      color:#ddd;
+      margin-bottom:15px;
+    }
+
+    /* ================= CARD ================= */
+
+    .card-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#102846;
+      padding:35px 25px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    body.light .card{
+      background:white;
+      color:#222;
+    }
+
+    .card:hover{
+      transform:translateY(-12px);
+    }
+
+    .card i{
+      font-size:50px;
+      color:#ffd54f;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .card p{
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    body.light .card p{
+      color:#555;
+    }
+
+    /* ================= TABLE ================= */
+
+    .table-container{
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:#102846;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    body.light table{
+      background:white;
+      color:#222;
+    }
+
+    table th{
+      background:#ffd54f;
+      color:#071426;
+      padding:18px;
+      text-align:left;
+    }
+
+    table td{
+      padding:18px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    table tr:hover{
+      background:#16345c;
+    }
+
+    /* ================= STATISTIK ================= */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .stat-box{
+      background:#102846;
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+    }
+
+    .stat-box h2{
+      color:#ffd54f;
+      font-size:45px;
+      margin-bottom:10px;
+    }
+
+    /* ================= GURU ================= */
+
+    .teacher-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .teacher-card{
+      background:#102846;
+      border-radius:25px;
+      overflow:hidden;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .teacher-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .teacher-card img{
+      height:300px;
+      object-fit:cover;
+    }
+
+    .teacher-card h3{
+      margin-top:20px;
+      color:#ffd54f;
+    }
+
+    .teacher-card p{
+      margin:10px 0 20px;
+      color:#ddd;
+    }
+
+    /* ================= DOWNLOAD ================= */
+
+    .download-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .download-card{
+      background:#102846;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .download-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .download-card i{
+      font-size:50px;
+      color:#ffd54f;
+      margin-bottom:20px;
+    }
+
+    .download-card a{
+      display:inline-block;
+      margin-top:18px;
+      background:#ffd54f;
+      color:#071426;
+      padding:12px 25px;
+      border-radius:30px;
+      font-weight:bold;
+    }
+
+    /* ================= FAQ ================= */
+
+    .faq-container{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .faq{
+      background:#102846;
+      margin-bottom:20px;
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .faq-question{
+      padding:20px;
+      cursor:pointer;
+      font-weight:bold;
+      position:relative;
+    }
+
+    .faq-question::after{
+      content:"+";
+      position:absolute;
+      right:20px;
+      font-size:22px;
+    }
+
+    .faq-answer{
+      max-height:0;
+      overflow:hidden;
+      transition:0.4s;
+      padding:0 20px;
+      color:#ddd;
+    }
+
+    .faq.active .faq-answer{
+      max-height:200px;
+      padding:20px;
+    }
+
+    /* ================= SLIDER ================= */
+
+    .slider{
+      overflow:hidden;
+      border-radius:25px;
+    }
+
+    .slide-track{
+      display:flex;
+      width:calc(320px * 10);
+      gap:20px;
+      animation:scroll 25s linear infinite;
+    }
+
+    .slide{
+      min-width:320px;
+      height:220px;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .slide img{
+      height:100%;
+      object-fit:cover;
+    }
+
+    @keyframes scroll{
+
+      0%{
+        transform:translateX(0);
+      }
+
+      100%{
+        transform:translateX(calc(-320px * 5));
+      }
+
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#06111f;
+      padding:30px;
+      text-align:center;
+      color:#ccc;
+      margin-top:80px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:900px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .hero-content h1{
+        font-size:34px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .section-title h2{
+        font-size:30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <div class="top-bar">
+
+    <div>
+      <i class="fas fa-phone"></i> -
+      &nbsp;&nbsp;
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </div>
+
+    <div class="social-icons">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+  <nav>
+
+    <div class="logo">
+
+      <img src="image/Logo_transparent.png" alt="Logo">
+
+      <h2>
+        SMPN20KONSEL
+        <br>
+        <small>
+          Tempat menimba ilmu, tumbuh berprestasi
+        </small>
+      </h2>
+
+    </div>
+
+    <div class="nav-toggle">
+      ☰
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <!-- PROFIL -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Profil ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+
+      </div>
+
+      <!-- MANAJEMEN -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Manajemen ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpas</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+      <a href="galeri.html"> Galeri </a>
+      <a href="kontak.html">Kontak</a>
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>BIDANG KURIKULUM</h1>
+
+      <p>
+        Mengembangkan sistem pembelajaran yang aktif,
+        inovatif, dan berkualitas untuk menciptakan
+        generasi unggul dan berkarakter.
+      </p>
+
+      <div class="hero-btn">
+        <a href="#tentang">Pelajari Lebih Lanjut</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="tentang">
+
+    <div class="section-title">
+      <h2>Tentang Kurikulum</h2>
+      <p>Informasi akademik sekolah</p>
+    </div>
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200">
+
+      <div class="about-text">
+
+        <h3>Pendidikan Berkualitas</h3>
+
+        <p>
+          Bidang kurikulum bertanggung jawab dalam pengelolaan
+          kegiatan pembelajaran dan pengembangan mutu akademik sekolah.
+        </p>
+
+        <p>
+          SMPN 20 Konawe Selatan menerapkan pembelajaran modern
+          berbasis Kurikulum Merdeka yang mendukung kreativitas,
+          karakter, dan kompetensi siswa.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROGRAM -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>Program Akademik</h2>
+      <p>Program unggulan kurikulum sekolah</p>
+    </div>
+
+    <div class="card-container">
+
+      <div class="card">
+        <i class="fas fa-book"></i>
+        <h3>Literasi Sekolah</h3>
+        <p>Meningkatkan budaya membaca dan menulis siswa.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-laptop"></i>
+        <h3>Kelas Digital</h3>
+        <p>Pembelajaran berbasis teknologi modern.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-flask"></i>
+        <h3>STEM Education</h3>
+        <p>Pembelajaran sains dan teknologi kreatif.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-trophy"></i>
+        <h3>Olimpiade</h3>
+        <p>Pembinaan siswa berprestasi tingkat kompetisi.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- JADWAL -->
+
+  <section id="jadwal">
+
+    <div class="section-title">
+      <h2>Jadwal Pelajaran</h2>
+      <p>Jadwal pembelajaran siswa</p>
+    </div>
+
+    <div class="table-container">
+
+      <table>
+
+        <tr>
+          <th>Hari</th>
+          <th>Mata Pelajaran</th>
+          <th>Jam</th>
+        </tr>
+
+        <tr>
+          <td>Senin</td>
+          <td>Matematika</td>
+          <td>07.30 - 09.00</td>
+        </tr>
+
+        <tr>
+          <td>Selasa</td>
+          <td>IPA</td>
+          <td>08.00 - 09.30</td>
+        </tr>
+
+        <tr>
+          <td>Rabu</td>
+          <td>Bahasa Indonesia</td>
+          <td>09.00 - 10.30</td>
+        </tr>
+
+        <tr>
+          <td>Kamis</td>
+          <td>IPS</td>
+          <td>07.30 - 09.00</td>
+        </tr>
+
+        <tr>
+          <td>Jumat</td>
+          <td>Bahasa Inggris</td>
+          <td>08.00 - 09.30</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </section>
+
+  <!-- STATISTIK -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>Statistik Akademik</h2>
+      <p>Data akademik sekolah</p>
+    </div>
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <h2>45</h2>
+        <p>Guru</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>780</h2>
+        <p>Siswa</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>32</h2>
+        <p>Prestasi</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>100%</h2>
+        <p>Kelulusan</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GURU -->
+
+  <section id="guru">
+
+    <div class="section-title">
+      <h2>Guru Mata Pelajaran</h2>
+      <p>Tenaga pendidik profesional</p>
+    </div>
+
+    <div class="teacher-container">
+
+      <div class="teacher-card">
+
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+        <h3>Bapak Ahmad</h3>
+
+        <p>Guru Matematika</p>
+
+      </div>
+
+      <div class="teacher-card">
+
+        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+        <h3>Ibu Siti</h3>
+
+        <p>Guru IPA</p>
+
+      </div>
+
+      <div class="teacher-card">
+
+        <img src="https://randomuser.me/api/portraits/men/55.jpg">
+
+        <h3>Bapak Rian</h3>
+
+        <p>Guru Bahasa Inggris</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DOWNLOAD -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>Download Dokumen</h2>
+      <p>File akademik sekolah</p>
+    </div>
+
+    <div class="download-container">
+
+      <div class="download-card">
+
+        <i class="fas fa-file-pdf"></i>
+
+        <h3>Kalender Akademik</h3>
+
+        <a href="#">Download</a>
+
+      </div>
+
+      <div class="download-card">
+
+        <i class="fas fa-file-alt"></i>
+
+        <h3>Jadwal Pelajaran</h3>
+
+        <a href="#">Download</a>
+
+      </div>
+
+      <div class="download-card">
+
+        <i class="fas fa-book"></i>
+
+        <h3>Modul Pembelajaran</h3>
+
+        <a href="#">Download</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SLIDER -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>Galeri Pembelajaran</h2>
+      <p>Kegiatan belajar siswa</p>
+    </div>
+
+    <div class="slider">
+
+      <div class="slide-track">
+
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200">
+        </div>
+
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200">
+        </div>
+
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200">
+        </div>
+
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+
+  <section id="faq">
+
+    <div class="section-title">
+      <h2>FAQ Akademik</h2>
+      <p>Pertanyaan umum siswa</p>
+    </div>
+
+    <div class="faq-container">
+
+      <div class="faq">
+
+        <div class="faq-question">
+          Kapan jadwal ujian semester?
+        </div>
+
+        <div class="faq-answer">
+          Jadwal ujian semester diumumkan melalui wali kelas dan website sekolah.
+        </div>
+
+      </div>
+
+      <div class="faq">
+
+        <div class="faq-question">
+          Bagaimana sistem remedial?
+        </div>
+
+        <div class="faq-answer">
+          Remedial diberikan kepada siswa yang belum mencapai nilai ketuntasan.
+        </div>
+
+      </div>
+
+      <div class="faq">
+
+        <div class="faq-question">
+          Bagaimana cara download jadwal?
+        </div>
+
+        <div class="faq-answer">
+          Klik tombol download pada bagian dokumen akademik.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+<!-- =========================
+     FOOTER BANNER
+========================= -->
+
+<section class="footer-banner">
+
+  <div class="footer-banner-overlay"></div>
+
+  <h1>
+    Learn Today, Lead Tomorrow, Be The Best !
+  </h1>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- KOLOM 1 -->
+    <div class="footer-column">
+
+      <div class="footer-card">
+
+        <div class="footer-logo">
+
+          <img src="image/Logo_transparent.png"
+               alt="Logo SMPN 20 Konawe Selatan">
+
+          <div>
+
+            <h2>
+              SMPN20KONSEL
+            </h2>
+
+            <span>
+              Website Portal Sekolah
+            </span>
+
+          </div>
+
+        </div>
+
+        <p>
+          SMPN 20 Konawe Selatan merupakan
+          sekolah yang berkomitmen mencetak
+          generasi unggul, berprestasi,
+          dan berkarakter.
+        </p>
+
+        <!-- SOCIAL FOOTER -->
+<div class="footer-social">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <!-- KOLOM 2 -->
+    <div class="footer-column">
+
+      <h3>Data Sekolah</h3>
+
+      <ul class="footer-links">
+
+        <li>
+
+          <i class="fas fa-user-graduate"></i>
+
+          Alumni :
+          <span id="totalAlumni">
+            840
+          </span>
+
+        </li>
+
+        <li>
+
+          <i class="fas fa-users"></i>
+
+          Siswa :
+          <span id="totalSiswa">
+            0
+          </span>
+
+        </li>
+
+        <li>
+
+          <i class="fas fa-chalkboard-teacher"></i>
+
+          Guru & TU :
+          <span id="totalGuru">
+            0
+          </span>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- KOLOM 3 -->
+    <div class="footer-column">
+
+      <h3>Temukan Kami</h3>
+
+      <iframe
+        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
+        loading="lazy"
+        allowfullscreen=""
+        height="250">
+
+      </iframe>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="footer-bottom">
+
+    © 2026 SMPN 20 Konawe Selatan
+
+  </div>
+
+</footer>
+
+<!-- JS -->
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/index.js"></script>
+
+  <script>
+
+    // DARK MODE
+
+    function toggleMode(){
+      document.body.classList.toggle("light");
+    }
+
+    // FAQ
+
+    const faq = document.querySelectorAll(".faq");
+
+    faq.forEach(item=>{
+
+      item.addEventListener("click", ()=>{
+        item.classList.toggle("active");
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

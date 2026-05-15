@@ -9,79 +9,8 @@
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <link rel="stylesheet" href="../assets/css/admin.css">
 <style>
-
-/* ================= GLOBAL ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
-}
-
-body{
-  background:#f3f4f6;
-  display:flex;
-}
-
-/* ================= SIDEBAR FIXED ================= */
-.sidebar{
-  width:250px;
-  height:100vh;
-  background:#111827;
-  color:white;
-  position:fixed;
-  left:0;
-  top:0;
-  padding:20px;
-  overflow-y:auto;
-}
-
-/* LOGO FIX */
-.sidebar .logo{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  margin-bottom:25px;
-}
-
-.sidebar .logo img{
-  width:70px;
-  height:70px;
-  object-fit:contain;
-}
-
-.sidebar .logo h2{
-  font-size:16px;
-  text-align:center;
-}
-
-/* MENU TITLE */
-.menu-title{
-  font-size:12px;
-  color:#9ca3af;
-  margin:15px 0 10px;
-}
-
-/* MENU */
-.sidebar a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:white;
-  text-decoration:none;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:8px;
-  transition:0.3s;
-  font-size:14px;
-}
-
-.sidebar a:hover{
-  background:#2563eb;
-}
 
 /* ================= MAIN ================= */
 .main{
@@ -230,23 +159,116 @@ textarea{
 <!-- ================= SIDEBAR ================= -->
 <div class="sidebar">
 
+  <!-- LOGO -->
   <div class="logo">
     <img src="../image/Logo_transparent.png">
     <h2>SMPN 20 KONSEL</h2>
   </div>
 
-  <div class="menu-title">Menu Utama</div>
+  <!-- MENU -->
+  <div class="menu-title">
+    Menu Utama
+  </div>
 
-  <a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a>
-  <a href="siswa.html"><i class="fas fa-users"></i>Data Siswa</a>
-  <a href="guru.html"><i class="fas fa-chalkboard-teacher"></i>Data Guru</a>
-  <a href="berita.html"><i class="fas fa-newspaper"></i>Berita</a>
-  <a href="galeri.html"><i class="fas fa-image"></i>Galeri</a>
-  <a href="slider.html"><i class="fas fa-images"></i>Slider</a>
-  <a href="statistik.html"><i class="fas fa-chart-bar"></i>Statistik</a>
-  <a href="pengumuman.html"><i class="fas fa-bullhorn"></i>Pengumuman</a>
-  <a href="pengaturan.html"><i class="fas fa-cog"></i>Pengaturan</a>
-  <a href="login.html"><i class="fas fa-right-from-bracket"></i>Logout</a>
+  <!-- DASHBOARD -->
+  <a class="active" href="dashboard.html">
+    <i class="fas fa-home"></i>
+    Dashboard
+  </a>
+
+  <!-- DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-school"></i>
+      Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="siswa.html">
+        <i class="fas fa-users"></i>
+        Data Siswa
+      </a>
+
+      <a href="guru.html">
+        <i class="fas fa-chalkboard-teacher"></i>
+        Data Guru
+      </a>
+
+      <a href="osis.html">
+        <i class="fas fa-user-group"></i>
+        Data OSIS
+      </a>
+
+      <a href="profil.html">
+        <i class="fas fa-pen"></i>
+        Edit Profil
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BUAT DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-folder-plus"></i>
+      Buat Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="berita.html">
+        <i class="fas fa-newspaper"></i>
+        Berita
+      </a>
+
+      <a href="galeri.html">
+        <i class="fas fa-image"></i>
+        Galeri
+      </a>
+
+      <a href="slider.html">
+        <i class="fas fa-users-gear"></i>
+        Input Pengurus
+      </a>
+
+      <a href="sambutan.html">
+        <i class="fas fa-comment"></i>
+        Sambutan
+      </a>
+
+      <a href="pendaftaran.html">
+        <i class="fas fa-user-plus"></i>
+        Info SPMB
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- MENU LAIN -->
+  <a href="statistik.html">
+    <i class="fas fa-chart-bar"></i>
+    Statistik
+  </a>
+
+  <a href="pengumuman.html">
+    <i class="fas fa-bullhorn"></i>
+    Pengumuman
+  </a>
+
+  <a href="pengaturan.html">
+    <i class="fas fa-cog"></i>
+    Pengaturan
+  </a>
+
+  <a href="login.html">
+    <i class="fas fa-right-from-bracket"></i>
+    Logout
+  </a>
 
 </div>
 
@@ -380,6 +402,6 @@ window.hapus = async function(id){
 loadData();
 
 </script>
-
+ <script type="module" src="../assets/js/admin.js"></script>
 </body>
 </html>

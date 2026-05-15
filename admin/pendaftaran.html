@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin PPDB</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+  margin-left:260px;
+  width:100%;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+  background:#fff;
+  padding:20px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.header h2{
+  font-size:22px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+  padding:25px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.main-card{
+  background:#fff;
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 2px 15px rgba(0,0,0,.05);
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.badge{
+  display:inline-block;
+  background:#2563eb;
+  color:#fff;
+  padding:12px 25px;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:35px;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title-box{
+  margin-bottom:30px;
+}
+
+.title-view{
+  font-size:55px;
+  font-weight:900;
+  line-height:1.2;
+  white-space:pre-line;
+}
+
+.desc-view{
+  font-size:22px;
+  color:#4b5563;
+  margin-top:25px;
+  line-height:1.7;
+  white-space:pre-line;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.edit-input{
+  width:100%;
+  padding:15px;
+  border:1px solid #d1d5db;
+  border-radius:15px;
+  display:none;
+  outline:none;
+  font-size:18px;
+}
+
+textarea.edit-input{
+  min-height:150px;
+  resize:vertical;
+}
+
+.edit-input:focus{
+  border-color:#2563eb;
+}
+
+/* =========================
+   STATUS BOX
+========================= */
+
+.status-box{
+  margin-bottom:35px;
+}
+
+.status-card{
+  background:#f9fafb;
+  border-radius:25px;
+  padding:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.status-left{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.status-icon{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#2563eb;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+}
+
+.status-title{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.status-text{
+  font-size:16px;
+  color:#4b5563;
+}
+
+.status-right{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* =========================
+   SWITCH
+========================= */
+
+.switch{
+  display:none;
+  align-items:center;
+  gap:12px;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.switch input{
+  width:22px;
+  height:22px;
+  cursor:pointer;
+}
+
+/* =========================
+   DATE INPUT
+========================= */
+
+.edit-input-box{
+  display:none;
+  flex-direction:column;
+  gap:8px;
+}
+
+.date-input{
+  padding:12px 15px;
+  border:1px solid #d1d5db;
+  border-radius:12px;
+  font-size:16px;
+  outline:none;
+}
+
+.date-input:focus{
+  border-color:#2563eb;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline-box{
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  margin-top:40px;
+}
+
+.timeline-card{
+  background:#f9fafb;
+  border-radius:25px;
+  padding:25px;
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.icon-box{
+  width:85px;
+  height:85px;
+  min-width:85px;
+  border-radius:50%;
+  background:#2563eb;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+}
+
+.timeline-content{
+  flex:1;
+}
+
+.timeline-title{
+  font-size:32px;
+  font-weight:bold;
+}
+
+.timeline-date{
+  font-size:24px;
+  color:#4b5563;
+  margin-top:8px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn-edit,
+.btn-save{
+  border:none;
+  padding:14px 22px;
+  border-radius:12px;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.btn-edit{
+  background:#2563eb;
+}
+
+.btn-save{
+  background:#16a34a;
+  display:none;
+}
+
+.action{
+  margin-top:35px;
+  display:flex;
+  gap:15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    position:relative;
+    height:auto;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .title-view{
+    font-size:35px;
+  }
+
+  .desc-view{
+    font-size:18px;
+  }
+
+  .timeline-title{
+    font-size:22px;
+  }
+
+  .timeline-date{
+    font-size:16px;
+  }
+
+  .status-card{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+<div class="sidebar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="../image/Logo_transparent.png">
+    <h2>SMPN 20 KONSEL</h2>
+  </div>
+
+  <!-- MENU -->
+  <div class="menu-title">
+    Menu Utama
+  </div>
+
+  <!-- DASHBOARD -->
+  <a class="active" href="dashboard.html">
+    <i class="fas fa-home"></i>
+    Dashboard
+  </a>
+
+  <!-- DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-school"></i>
+      Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="siswa.html">
+        <i class="fas fa-users"></i>
+        Data Siswa
+      </a>
+
+      <a href="guru.html">
+        <i class="fas fa-chalkboard-teacher"></i>
+        Data Guru
+      </a>
+
+      <a href="osis.html">
+        <i class="fas fa-user-group"></i>
+        Data OSIS
+      </a>
+
+      <a href="profil.html">
+        <i class="fas fa-pen"></i>
+        Edit Profil
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BUAT DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-folder-plus"></i>
+      Buat Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="berita.html">
+        <i class="fas fa-newspaper"></i>
+        Berita
+      </a>
+
+      <a href="galeri.html">
+        <i class="fas fa-image"></i>
+        Galeri
+      </a>
+
+      <a href="slider.html">
+        <i class="fas fa-users-gear"></i>
+        Input Pengurus
+      </a>
+
+      <a href="sambutan.html">
+        <i class="fas fa-comment"></i>
+        Sambutan
+      </a>
+
+      <a href="pendaftaran.html">
+        <i class="fas fa-user-plus"></i>
+        Info SPMB
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- MENU LAIN -->
+  <a href="statistik.html">
+    <i class="fas fa-chart-bar"></i>
+    Statistik
+  </a>
+
+  <a href="pengumuman.html">
+    <i class="fas fa-bullhorn"></i>
+    Pengumuman
+  </a>
+
+  <a href="pengaturan.html">
+    <i class="fas fa-cog"></i>
+    Pengaturan
+  </a>
+
+  <a href="login.html">
+    <i class="fas fa-right-from-bracket"></i>
+    Logout
+  </a>
+
+</div>
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="main">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <h2>Admin PPDB</h2>
+
+    <div>
+      <i class="fas fa-user-circle"></i>
+      Administrator
+    </div>
+
+  </div>
+
+  <!-- CONTAINER -->
+
+  <div class="container">
+
+    <div class="main-card">
+
+      <!-- BADGE -->
+
+      <div class="badge">
+        PENERIMAAN PESERTA DIDIK BARU
+      </div>
+
+      <!-- TITLE -->
+
+      <div class="title-box">
+
+        <div
+        class="title-view view"
+        id="v_title"></div>
+
+        <textarea
+        class="edit-input"
+        id="e_title"></textarea>
+
+        <div
+        class="desc-view view"
+        id="v_desc"></div>
+
+        <textarea
+        class="edit-input"
+        id="e_desc"></textarea>
+
+      </div>
+
+      <!-- STATUS PPDB -->
+
+      <div class="status-box">
+
+        <div class="status-card">
+
+          <div class="status-left">
+
+            <div class="status-icon">
+              <i class="fas fa-power-off"></i>
+            </div>
+
+            <div>
+
+              <div class="status-title">
+                Status PPDB
+              </div>
+
+              <div
+              class="status-text"
+              id="v_status_text">
+                PPDB Sedang Dibuka
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="status-right">
+
+            <!-- SWITCH -->
+
+            <label class="switch">
+
+              <input
+              type="checkbox"
+              id="e_is_active">
+
+              <span>
+                Aktifkan PPDB
+              </span>
+
+            </label>
+
+            <!-- DATE -->
+
+            <div
+            class="edit-input-box">
+
+              <label>
+                Tanggal Penutupan
+              </label>
+
+              <input
+              type="date"
+              class="date-input"
+              id="e_close_date">
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- TIMELINE -->
+
+      <div class="timeline-box">
+
+        <!-- CARD 1 -->
+
+        <div class="timeline-card">
+
+          <div class="icon-box">
+            <i class="fas fa-calendar-days"></i>
+          </div>
+
+          <div class="timeline-content">
+
+            <div
+            class="timeline-title view"
+            id="v_title1"></div>
+
+            <input
+            class="edit-input"
+            id="e_title1">
+
+            <div
+            class="timeline-date view"
+            id="v_date1"></div>
+
+            <input
+            class="edit-input"
+            id="e_date1">
+
+          </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="timeline-card">
+
+          <div class="icon-box">
+            <i class="fas fa-user-check"></i>
+          </div>
+
+          <div class="timeline-content">
+
+            <div
+            class="timeline-title view"
+            id="v_title2"></div>
+
+            <input
+            class="edit-input"
+            id="e_title2">
+
+            <div
+            class="timeline-date view"
+            id="v_date2"></div>
+
+            <input
+            class="edit-input"
+            id="e_date2">
+
+          </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="timeline-card">
+
+          <div class="icon-box">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+
+          <div class="timeline-content">
+
+            <div
+            class="timeline-title view"
+            id="v_title3"></div>
+
+            <input
+            class="edit-input"
+            id="e_title3">
+
+            <div
+            class="timeline-date view"
+            id="v_date3"></div>
+
+            <input
+            class="edit-input"
+            id="e_date3">
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+
+      <div class="action">
+
+        <button
+        class="btn-edit"
+        onclick="toggleEdit()">
+
+          <i class="fas fa-pen"></i>
+          Edit Data
+
+        </button>
+
+        <button
+        class="btn-save"
+        id="btnSave"
+        onclick="simpanPPDB()">
+
+          <i class="fas fa-save"></i>
+          Simpan Data
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     SCRIPT
+========================= -->
+
+<script type="module">
+
+import { db }
+from "../assets/js/firebase.js";
+
+import {
+  doc,
+  getDoc,
+  setDoc
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+   EDIT MODE
+========================= */
+
+let editMode = false;
+
+window.toggleEdit = () => {
+
+  editMode = !editMode;
+
+  /* VIEW */
+
+  document
+  .querySelectorAll(".view")
+  .forEach(el => {
+
+    el.style.display =
+    editMode ? "none" : "block";
+
+  });
+
+  /* INPUT */
+
+  document
+  .querySelectorAll(".edit-input")
+  .forEach(el => {
+
+    el.style.display =
+    editMode ? "block" : "none";
+
+  });
+
+  /* SWITCH */
+
+  document
+  .querySelectorAll(".switch")
+  .forEach(el => {
+
+    el.style.display =
+    editMode ? "flex" : "none";
+
+  });
+
+  /* DATE */
+
+  document
+  .querySelectorAll(".edit-input-box")
+  .forEach(el => {
+
+    el.style.display =
+    editMode ? "flex" : "none";
+
+  });
+
+  /* BUTTON */
+
+  document.getElementById("btnSave")
+  .style.display =
+  editMode ? "inline-block" : "none";
+
+};
+
+/* =========================
+   SIMPAN DATA
+========================= */
+
+window.simpanPPDB = async () => {
+
+  try{
+
+    const data = {
+
+      /* STATUS */
+
+      is_active:
+      document.getElementById(
+      "e_is_active"
+      ).checked,
+
+      close_date:
+      document.getElementById(
+      "e_close_date"
+      ).value,
+
+      /* TITLE */
+
+      title:
+      document.getElementById(
+      "e_title"
+      ).value,
+
+      /* DESC */
+
+      desc:
+      document.getElementById(
+      "e_desc"
+      ).value,
+
+      /* TIMELINE */
+
+      timeline:[
+
+        {
+          title:
+          document.getElementById(
+          "e_title1"
+          ).value,
+
+          date:
+          document.getElementById(
+          "e_date1"
+          ).value,
+
+          icon:"calendar"
+        },
+
+        {
+          title:
+          document.getElementById(
+          "e_title2"
+          ).value,
+
+          date:
+          document.getElementById(
+          "e_date2"
+          ).value,
+
+          icon:"user"
+        },
+
+        {
+          title:
+          document.getElementById(
+          "e_title3"
+          ).value,
+
+          date:
+          document.getElementById(
+          "e_date3"
+          ).value,
+
+          icon:"bullhorn"
+        }
+
+      ]
+
+    };
+
+    await setDoc(
+      doc(db,"website","ppdb"),
+      data
+    );
+
+    alert(
+      "Data PPDB berhasil disimpan"
+    );
+
+    loadPPDB();
+
+    toggleEdit();
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Gagal menyimpan data"
+    );
+
+  }
+
+};
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadPPDB(){
+
+  try{
+
+    const ref =
+    doc(db,"website","ppdb");
+
+    const snap =
+    await getDoc(ref);
+
+    let d = {};
+
+    /* DEFAULT DATA */
+
+    if(snap.exists()){
+
+      d = snap.data();
+
+    }else{
+
+      d = {
+
+        is_active:true,
+
+        close_date:"2026-06-20",
+
+        title:
+`SPMB SMPN 20 KONAWE SELATAN
+TAHUN AJARAN 2026/2027`,
+
+        desc:
+`SMP Negeri 20 Konawe Selatan membuka pendaftaran peserta didik baru Tahun Ajaran 2026/2027.`,
+
+        timeline:[
+
+          {
+            title:
+            "Pembukaan Pendaftaran",
+
+            date:
+            "01 Juni 2026",
+
+            icon:"calendar"
+          },
+
+          {
+            title:
+            "Seleksi & Verifikasi",
+
+            date:
+            "10 - 15 Juni 2026",
+
+            icon:"user"
+          },
+
+          {
+            title:
+            "Pengumuman",
+
+            date:
+            "20 Juni 2026",
+
+            icon:"bullhorn"
+          }
+
+        ]
+
+      };
+
+      await setDoc(
+        doc(db,"website","ppdb"),
+        d
+      );
+
+    }
+
+    /* TITLE */
+
+    document.getElementById(
+    "v_title"
+    ).innerText =
+    d.title || "-";
+
+    document.getElementById(
+    "e_title"
+    ).value =
+    d.title || "";
+
+    /* DESC */
+
+    document.getElementById(
+    "v_desc"
+    ).innerText =
+    d.desc || "-";
+
+    document.getElementById(
+    "e_desc"
+    ).value =
+    d.desc || "";
+
+    /* =========================
+       AUTO STATUS
+    ========================= */
+
+    const today =
+    new Date();
+
+    let isActive =
+    d.is_active ?? true;
+
+    /* TANGGAL TUTUP */
+
+    if(d.close_date){
+
+      const closeDate =
+      new Date(d.close_date);
+
+      closeDate.setHours(
+        23,59,59,999
+      );
+
+      if(today > closeDate){
+
+        isActive = false;
+
+      }
+
+    }
+
+    /* CHECKBOX */
+
+    document.getElementById(
+    "e_is_active"
+    ).checked =
+    isActive;
+
+    /* DATE */
+
+    document.getElementById(
+    "e_close_date"
+    ).value =
+    d.close_date || "";
+
+    /* STATUS TEXT */
+
+    document.getElementById(
+    "v_status_text"
+    ).innerText =
+    isActive
+    ? "PPDB Sedang Dibuka"
+    : "PPDB Sudah Ditutup";
+
+    /* TIMELINE */
+
+    const timeline =
+    d.timeline || [];
+
+    timeline.forEach((item,index)=>{
+
+      const no =
+      index + 1;
+
+      /* VIEW */
+
+      const vTitle =
+      document.getElementById(
+      "v_title" + no
+      );
+
+      const vDate =
+      document.getElementById(
+      "v_date" + no
+      );
+
+      /* INPUT */
+
+      const eTitle =
+      document.getElementById(
+      "e_title" + no
+      );
+
+      const eDate =
+      document.getElementById(
+      "e_date" + no
+      );
+
+      /* TITLE */
+
+      if(vTitle){
+
+        vTitle.innerText =
+        item.title || "-";
+
+      }
+
+      if(eTitle){
+
+        eTitle.value =
+        item.title || "";
+
+      }
+
+      /* DATE */
+
+      if(vDate){
+
+        vDate.innerText =
+        item.date || "-";
+
+      }
+
+      if(eDate){
+
+        eDate.value =
+        item.date || "";
+
+      }
+
+    });
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Gagal load data"
+    );
+
+  }
+
+}
+
+/* =========================
+   INIT
+========================= */
+
+loadPPDB();
+
+</script>
+ <script type="module" src="../assets/js/admin.js"></script>
+</body>
+</html>

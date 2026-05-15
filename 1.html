@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Profil - SMPN 20 Konawe Selatan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="top-bar" style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background-color:#eee;color:rgb(0, 0, 0);">
+    <div><i class="fas fa-phone"></i> - &nbsp;&nbsp; <i class="fas fa-envelope"></i> smpn20konsel96@gmail.com</div>
+    <div class="social-icons">
+          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <nav>
+<div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+  &#9776;
+</div>
+    <div class="logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="image/Logo_transparent.png" alt="Logo" style="width:50px; background-color:white;">
+      <h2 style="margin:0; font-size:20px; color:white;">SMPN20KONSEL<br><small style="font-size:12px; font-weight:normal; color:white;"> Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.</small>
+      </h2>
+    </div>
+    <div class="nav-links" style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:white;text-decoration:none;">Home</a>
+      <a href="profil.html" style="color:white;text-decoration:none;">Profil</a>
+      <a href="kesiswaan.html" style="color:white;text-decoration:none;">Kesiswaan</a>
+      <a href="informasi.html" style="color:white;text-decoration:none;">Informasi</a>
+      <a href="galeri.html" style="color:white;text-decoration:none;">Galeri</a>
+      <a href="kontak.html" style="color:white;text-decoration:none;">Kontak</a>
+      <a class="login-btn" href="daftar_spmb.html" style="background-color:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">Daftar SPMB <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </nav>
+</header>
+
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    #kesiswaan-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #kesiswaan-container > h2 {
+      font-size: 26px;
+      color: #2c3e50;
+      margin: 0 0 30px;
+      padding: 12px 0;
+      border-top: 4px solid #3498db;
+      border-bottom: 4px solid #3498db;
+      text-align: center;
+      background-color: #f5faff;
+      border-radius: 6px;
+    }
+
+    .kesiswaan-section {
+      margin-bottom: 40px;
+    }
+
+    .kesiswaan-section h3 {
+      font-size: 20px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .kesiswaan-section h4 {
+      font-size: 17px;
+      color: #34495e;
+      margin-top: 18px;
+    }
+
+    .kesiswaan-section p, .kesiswaan-section ul {
+      margin-top: 8px;
+      margin-left: 15px;
+    }
+
+    .kesiswaan-section ul {
+      padding-left: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 120px;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<!-- =========================
+     HEADER
+========================= -->
+<header>
+
+  <div class="top-bar">
+
+    <div>
+      <i class="fas fa-phone"></i> -
+      &nbsp;&nbsp;
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </div>
+
+    <div class="social-icons">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+  <nav>
+
+    <div class="logo">
+
+      <img src="image/Logo_transparent.png" alt="Logo">
+
+      <h2>
+        SMPN20KONSEL
+        <br>
+        <small>
+          Tempat menimba ilmu, tumbuh berprestasi
+        </small>
+      </h2>
+
+    </div>
+
+    <div class="nav-toggle">
+      ☰
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <!-- PROFIL -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Profil ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+
+      </div>
+
+      <!-- MANAJEMEN -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Manajemen ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpas</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+      <a href="galeri.html"> Galeri </a>
+      <a href="kontak.html">Kontak</a>
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+<section id="kesiswaan-container">
+  <h2>Kesiswaan</h2>
+
+  <div class="kesiswaan-section">
+    <h3>Informasi OSIS</h3>
+
+    <h4 style="margin-top:20px; color:black;">Profil OSIS</h4>
+    <p><strong>OSIS SMPN 20 Konawe Selatan</strong> adalah wadah siswa untuk mengembangkan potensi kepemimpinan, kreativitas, dan tanggung jawab.</p>
+    <p>OSIS mendukung siswa dalam berorganisasi, berdiskusi, dan menyelenggarakan berbagai kegiatan sekolah dan sosial.</p>
+
+    <h4 style="margin-top:20px; color:black;">Kegiatan OSIS</h4>
+    <ul>
+      <li>Pelantikan Pengurus OSIS</li>
+      <li>Bakti Sosial</li>
+      <li>Peringatan Hari Besar Nasional</li>
+      <li>Lomba dan Ekstrakurikuler</li>
+    </ul>
+
+    <h4 style="margin-top:20px; color:black;">Struktur Organisasi</h4>
+    <ul>
+      <li>Ketua</li>
+      <li>Wakil Ketua</li>
+      <li>Sekretaris</li>
+      <li>Bendahara</li>
+      <li>Bidang-bidang kerja</li>
+    </ul>
+
+<h4 style="margin-top:20px; color:black;">Pengurus OSIS</h4>
+
+<section>
+
+  <h2 style="
+    text-align:center;
+    margin-bottom:15px;
+    font-size:18px;
+  ">
+    Daftar Pengurus OSIS Aktif
+  </h2>
+
+  <div style="overflow-x:auto;">
+
+    <table style="
+      width:100%;
+      border-collapse:collapse;
+      font-family:sans-serif;
+      background:white;
+    ">
+
+<thead>
+
+  <tr style="
+    background:#3498db;
+    color:white;
+  ">
+
+    <th style="
+      padding:8px 4px;
+      border:1px solid #ddd;
+      width:45px;
+      text-align:center;
+    ">
+      No
+    </th>
+
+<th style="
+  padding:8px 30px;
+  border:1px solid #ddd;
+  width:80px;
+  text-align:center;
+">
+  Foto
+</th>
+
+    <th style="
+      padding:8px;
+      border:1px solid #ddd;
+      text-align:left;
+    ">
+      Nama
+    </th>
+
+    <th style="
+      padding:8px;
+      border:1px solid #ddd;
+      width:70px;
+      text-align:center;
+    ">
+      Kelas
+    </th>
+
+    <th style="
+      padding:8px;
+      border:1px solid #ddd;
+      width:170px;
+    ">
+      Jabatan
+    </th>
+
+    <th style="
+      padding:8px;
+      border:1px solid #ddd;
+      width:120px;
+      text-align:center;
+    ">
+      Periode
+    </th>
+
+  </tr>
+
+</thead>
+
+      <tbody id="tableOsisPublik">
+
+        <tr>
+
+          <td colspan="6" style="
+            padding:20px;
+            text-align:center;
+            border:1px solid #ddd;
+          ">
+            Memuat data...
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+    <p>Daftar pengurus aktif tersedia di <a href="#">halaman OSIS</a>.</p>
+  </div>
+
+  <div class="kesiswaan-section">
+  <h3>Kegiatan Ekstrakurikuler</h3>
+  <p>Berikut adalah daftar kegiatan ekstrakurikuler yang tersedia di sekolah:</p>
+  <ul style="columns:2; -webkit-columns:2; -moz-columns:2; list-style:disc; padding-left:20px;">
+    <li>Pramuka</li>
+    <li>PMR</li>a
+    <li>Futsal</li>
+    <li>Bola Voli</li>
+    <li>Sepak Takraw</li>
+    <li>Sepak Bola</li>
+    <li>Karate</li>
+    <li>Wushu</li>
+    <li>Atletik</li>
+    <li>Basket</li>
+    <li>Badminton / Bulu Tangkis</li>
+    <li>Tenis Meja</li>
+    <li>Catur</li>
+    <li>KIR</li>
+    <li>Bahasa Inggris</li>
+    <li>Seni Tari dan Musik</li>
+    <li>Padus (Paduan Suara)</li>
+    <li>Coding</li>
+    <li>OSIS</li>
+    <li>Pesantren Kilat</li>
+    <li>Pasraman</li>
+  </ul>
+  <p>Informasi lebih lengkap tersedia di <a href="#">halaman ekstrakurikuler</a>.</p>
+</div>
+
+  <div class="kesiswaan-section">
+  <h3>Lomba dan Kompetisi</h3>
+  <p style="text-align:justify;">
+    Siswa-siswi SMPN 20 Konawe Selatan secara aktif mengikuti berbagai lomba dan kompetisi di tingkat kecamatan, kabupaten, hingga nasional. 
+    Kegiatan ini mencakup bidang akademik, seni, olahraga, teknologi, serta keterampilan lainnya. 
+    Melalui partisipasi ini, para siswa tidak hanya mengasah kemampuan, tetapi juga membawa nama baik sekolah di berbagai ajang bergengsi.</p>
+    <p>Lihat info lomba di <a href="#">halaman lomba</a>.</p>
+  </div>
+
+  <div class="kesiswaan-section">
+  <h3>Bimbingan dan Konseling (BK)</h3>
+  <p>
+    Layanan BK (Bimbingan dan Konseling) mendampingi siswa dalam perkembangan akademik, sosial, pribadi, dan karier. BK bertujuan membantu siswa mengenali potensi diri, menyelesaikan masalah, serta merencanakan masa depan secara lebih baik.
+  </p>
+
+  <h4 style="margin-top:20px; color:black;">Jadwal Layanan BK</h4>
+  <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+    <thead style="background-color:#f0f0f0;">
+      <tr>
+        <th style="padding:10px; border:1px solid #ccc;">Hari</th>
+        <th style="padding:10px; border:1px solid #ccc;">Waktu</th>
+        <th style="padding:10px; border:1px solid #ccc;">Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px; border:1px solid #ccc;">Senin - Kamis</td>
+        <td style="padding:10px; border:1px solid #ccc;">08.00 – 13.00</td>
+        <td style="padding:10px; border:1px solid #ccc;">Sesi konsultasi individu & kelompok</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ccc;">Jumat</td>
+        <td style="padding:10px; border:1px solid #ccc;">08.00 – 11.00</td>
+        <td style="padding:10px; border:1px solid #ccc;">Layanan motivasi & bimbingan karier</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 style="margin-top:20px; color:black;">Kontak BK</h4>
+  <ul style="list-style:none; padding-left:0;">
+    <li><strong>Nama:</strong> Bapak Jusman Paduay, S.Pd.I.</li>
+    <li><strong>Ruang BK:</strong> Gedung Utama Samping Ruang Guru</li>
+    <li><strong>Email:</strong> jusmanpaduay2020@gmail.com</li>
+    <li><strong>Telp/WA:</strong> 082228244075</li>
+  </ul>
+</div>
+
+  <div class="kesiswaan-section">
+  <h3>Kegiatan Kesiswaan Lainnya</h3>
+  <p style="text-align:justify;">
+    Selain kegiatan OSIS dan ekstrakurikuler, sekolah juga menyelenggarakan berbagai kegiatan pendukung yang bertujuan untuk membentuk karakter, memperkuat nilai-nilai spiritual, dan mengembangkan kepemimpinan siswa.
+  </p>
+
+  <h4 style="margin-top:20px; color:black;">1. Kegiatan Sosial</h4>
+  <p style="text-align:justify;">
+    Kegiatan sosial bertujuan menumbuhkan empati dan kepedulian sosial siswa terhadap masyarakat. Beberapa kegiatan yang rutin dilaksanakan antara lain:
+  </p>
+  <ul>
+    <li>Donor darah kerja sama dengan PMI</li>
+    <li>Penggalangan dana bencana alam</li>
+    <li>Kunjungan ke panti asuhan dan panti jompo</li>
+    <li>Bakti sosial menjelang hari besar nasional atau keagamaan</li>
+  </ul>
+
+  <h4 style="margin-top:20px; color:black;">2. Kegiatan Keagamaan</h4>
+  <p style="text-align:justify;">
+    Sekolah memberikan ruang bagi penguatan karakter religius melalui kegiatan keagamaan, seperti:
+  </p>
+  <ul>
+    <li>Peringatan hari besar keagamaan (Maulid Nabi, Isra Mi'raj, dll.)</li>
+    <li>Pesantren Kilat saat Ramadhan</li>
+    <li>Pasraman untuk siswa beragama Hindu</li>
+    <li>Kajian Jumat dan tadarus bersama</li>
+    <li>Doa bersama awal dan akhir semester</li>
+  </ul>
+
+  <h4 style="margin-top:20px; color:black;">3. Pelatihan Kepemimpinan</h4>
+  <p style="text-align:justify;">
+    Untuk membentuk karakter pemimpin masa depan, sekolah mengadakan:
+  </p>
+  <ul>
+    <li>Latihan Dasar Kepemimpinan Siswa (LDKS)</li>
+    <li>Workshop pengembangan diri dan public speaking</li>
+    <li>Pelatihan OSIS dan organisasi siswa lainnya</li>
+    <li>Studi lapangan dan kunjungan ke instansi</li>
+  </ul>
+</div>
+
+
+  <div class="kesiswaan-section">
+    <h3>Galeri Foto</h3>
+    <div class="gallery">
+      <a href="galeri Lengkap.html" target="_blank"><img src="Galeri/IMG-20250613-WA0052.jpg" /></a>
+      <a href="galeri Lengkap.html" target="_blank"><img src="Galeri/IMG-20250613-WA0060.jpg" /></a>
+      <a href="galeri Lengkap.html" target="_blank"><img src="Galeri/IMG-20250613-WA0066.jpg" /></a>
+    </div>
+  </div>
+
+ <div class="kesiswaan-section">
+  <h3>Agenda Kegiatan</h3>
+  <p style="text-align:justify;">
+    Agenda kegiatan OSIS dan ekstrakurikuler diperbarui secara berkala sebagai bentuk transparansi dan informasi kepada seluruh warga sekolah. Agenda mencakup kegiatan rutin maupun insidental yang mendukung pengembangan karakter dan prestasi siswa.
+  </p>
+
+  <table style="width:100%; border-collapse:collapse; margin-top:20px;">
+    <thead style="background-color:#f0f0f0;">
+      <tr>
+        <th style="padding:10px; border:1px solid #ccc;">Tanggal</th>
+        <th style="padding:10px; border:1px solid #ccc;">Kegiatan</th>
+        <th style="padding:10px; border:1px solid #ccc;">Tempat</th>
+        <th style="padding:10px; border:1px solid #ccc;">Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:10px; border:1px solid #ccc;">15 Juli 2025</td>
+        <td style="padding:10px; border:1px solid #ccc;">Masa Pengenalan Lingkungan Sekolah (MPLS)</td>
+        <td style="padding:10px; border:1px solid #ccc;">Aula Sekolah</td>
+        <td style="padding:10px; border:1px solid #ccc;">Untuk siswa baru</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ccc;">28 Agustus 2025</td>
+        <td style="padding:10px; border:1px solid #ccc;">Lomba 17 Agustus</td>
+        <td style="padding:10px; border:1px solid #ccc;">Lapangan Sekolah</td>
+        <td style="padding:10px; border:1px solid #ccc;">Perlombaan antar kelas</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ccc;">10 Oktober 2025</td>
+        <td style="padding:10px; border:1px solid #ccc;">Pelatihan Kepemimpinan OSIS</td>
+        <td style="padding:10px; border:1px solid #ccc;">Ruang BK</td>
+        <td style="padding:10px; border:1px solid #ccc;">Untuk pengurus OSIS</td>
+      </tr>
+      <tr>
+        <td style="padding:10px; border:1px solid #ccc;">5 Desember 2025</td>
+        <td style="padding:10px; border:1px solid #ccc;">Pentas Seni dan Ekstrakurikuler</td>
+        <td style="padding:10px; border:1px solid #ccc;">Halaman Sekolah</td>
+        <td style="padding:10px; border:1px solid #ccc;">Akhir semester</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:20px;">Lihat pembaruan agenda secara lengkap di <a href="#">halaman agenda sekolah</a>.</p>
+</div>
+</section>
+
+<section class="footer-banner">
+
+  <div class="footer-banner-overlay"></div>
+
+  <h1>
+    Learn Today, Lead Tomorrow, Be The Best !
+  </h1>
+
+</section>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- KOLOM 1 -->
+    <div class="footer-column">
+
+      <div class="footer-card">
+
+        <div class="footer-logo">
+
+          <img src="image/Logo_transparent.png" alt="Logo">
+
+          <div>
+            <h2>SMPN20KONSEL</h2>
+            <span>Website Portal Sekolah</span>
+          </div>
+
+        </div>
+
+        <p>
+          SMPN 20 Konawe Selatan merupakan
+          sekolah yang berkomitmen mencetak
+          generasi unggul, berprestasi,
+          dan berkarakter.
+        </p>
+<div class="footer-social">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <!-- KOLOM 2 -->
+    <div class="footer-column">
+
+  <h3>Data Sekolah</h3>
+
+  <ul class="footer-links">
+
+    <li>
+      <i class="fas fa-user-graduate"></i>
+      Alumni : <span id="totalAlumni">840</span>
+    </li>
+
+    <li>
+      <i class="fas fa-users"></i>
+      Siswa : <span id="totalSiswa">0</span>
+    </li>
+
+    <li>
+      <i class="fas fa-chalkboard-teacher"></i>
+      Guru&TU : <span id="totalGuru">0</span>
+    </li>
+
+  </ul>
+
+</div>
+
+    <!-- KOLOM 3 -->
+    <div class="footer-column">
+
+      <h3>Temukan Kami</h3>
+
+      <iframe
+        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
+        loading="lazy"
+        allowfullscreen="">
+      </iframe>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    © 2026 SMPN 20 Konawe Selatan
+  </div>
+
+</footer>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/index.js"></script>
+<script type="module">
+
+import { db } from "./assets/js/firebase.js";
+
+import {
+
+  collection,
+  getDocs,
+  query,
+  orderBy
+
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+const tableOsisPublik =
+document.getElementById("tableOsisPublik");
+
+async function loadPengurusOsisPublik(){
+
+  tableOsisPublik.innerHTML = `
+    <tr>
+      <td colspan="6"
+      style="
+      padding:20px;
+      text-align:center;
+      border:1px solid #ddd;
+      ">
+      Memuat data...
+      </td>
+    </tr>
+  `;
+
+  try{
+
+    const q = query(
+      collection(db,"pengurus_osis"),
+      orderBy("createdAt","asc")
+    );
+
+    const snap = await getDocs(q);
+
+    if(snap.empty){
+
+      tableOsisPublik.innerHTML = `
+        <tr>
+          <td colspan="6"
+          style="
+          padding:20px;
+          text-align:center;
+          border:1px solid #ddd;
+          ">
+            Belum ada data pengurus OSIS
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+    tableOsisPublik.innerHTML = "";
+
+    let no = 1;
+
+    snap.forEach(docu => {
+
+      const d = docu.data();
+
+      tableOsisPublik.innerHTML += `
+
+        <tr>
+
+          <td style="
+            padding:10px;
+            border:1px solid #ddd;
+            text-align:center;
+          ">
+            ${no++}
+          </td>
+
+          <td style="
+            padding:10px;
+            border:1px solid #ddd;
+            text-align:center;
+          ">
+
+            <img
+            src="../image/siswa/${d.nis}.jpg"
+            class="preview"
+              onerror="
+              this.src='image/siswa/user.png'
+              "
+              style="
+                width:55px;
+                height:70px;
+                object-fit:cover;
+                border-radius:8px;
+                border:1px solid #ccc;
+              "
+            >
+
+          </td>
+
+          <td style="
+            padding:10px;
+            border:1px solid #ddd;
+          ">
+            ${d.nama || '-'}
+          </td>
+
+          <td style="
+            padding:10px;
+            border:1px solid #ddd;
+            text-align:center;
+          ">
+            ${d.kelas || '-'}
+          </td>
+
+          <td style="
+            padding:10px;
+            border:1px solid #ddd;
+          ">
+            ${d.jabatan || '-'}
+          </td>
+
+          <td style="
+            padding:10px;
+            border:1px solid #ddd;
+            text-align:center;
+          ">
+            ${d.periode || '-'}
+          </td>
+
+        </tr>
+
+      `;
+
+    });
+
+  }catch(err){
+
+    console.log(err);
+
+    tableOsisPublik.innerHTML = `
+      <tr>
+        <td colspan="6"
+        style="
+        padding:20px;
+        text-align:center;
+        color:red;
+        border:1px solid #ddd;
+        ">
+          Gagal memuat data OSIS
+        </td>
+      </tr>
+    `;
+
+  }
+
+}
+
+loadPengurusOsisPublik();
+
+</script>
+</body>
+</html>

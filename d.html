@@ -1,0 +1,622 @@
+<!-- =========================================
+     TAMBAHKAN DI ATAS </body>
+========================================= -->
+
+<!-- LOADING SCREEN -->
+
+<div id="loader">
+
+  <div class="loader-content">
+
+    <img src="image/Logo_transparent.png" alt="Logo">
+
+    <h2>SMPN 20 KONAWE SELATAN</h2>
+
+    <div class="loading-bar">
+      <span></span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- DARK MODE BUTTON -->
+
+<button id="darkModeToggle">
+  <i class="fas fa-moon"></i>
+</button>
+
+<!-- BACK TO TOP -->
+
+<button id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- FLOATING WHATSAPP -->
+
+<a href="https://wa.me/qr/AXZTONE55Z4YK1"
+class="floating-wa">
+
+  <i class="fab fa-whatsapp"></i>
+
+</a>
+
+<!-- BREAKING NEWS -->
+
+<div class="breaking-news">
+
+  <div class="breaking-track">
+
+    🔥 SELAMAT DATANG DI WEBSITE RESMI SMPN 20 KONAWE SELATAN •
+    PENDAFTARAN SPMB 2026 TELAH DIBUKA •
+    SEKOLAH UNGGUL BERPRESTASI •
+    MENUJU GENERASI CERDAS DAN BERKARAKTER •
+
+  </div>
+
+</div>
+
+<!-- STATISTIK -->
+
+<section class="stats-section">
+
+  <div class="stats-container">
+
+    <div class="stat-card">
+
+      <i class="fas fa-user-graduate"></i>
+
+      <h2 class="counter" data-target="850">0</h2>
+
+      <p>Siswa</p>
+
+    </div>
+
+    <div class="stat-card">
+
+      <i class="fas fa-chalkboard-teacher"></i>
+
+      <h2 class="counter" data-target="45">0</h2>
+
+      <p>Guru & TU</p>
+
+    </div>
+
+    <div class="stat-card">
+
+      <i class="fas fa-award"></i>
+
+      <h2 class="counter" data-target="120">0</h2>
+
+      <p>Prestasi</p>
+
+    </div>
+
+    <div class="stat-card">
+
+      <i class="fas fa-school"></i>
+
+      <h2 class="counter" data-target="15">0</h2>
+
+      <p>Fasilitas</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PRESTASI -->
+
+<section class="prestasi-section">
+
+  <div class="section-title">
+
+    <h2>Prestasi Sekolah</h2>
+
+    <p>
+      Prestasi akademik dan non akademik siswa
+    </p>
+
+  </div>
+
+  <div class="prestasi-container">
+
+    <div class="prestasi-card">
+
+      <img src="image/Kegiatan 1.jpg">
+
+      <div class="prestasi-content">
+
+        <span>Akademik</span>
+
+        <h3>Juara Olimpiade Matematika</h3>
+
+        <p>
+          Siswa berhasil meraih juara tingkat kabupaten.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="prestasi-card">
+
+      <img src="image/SEKOLAH.jpg">
+
+      <div class="prestasi-content">
+
+        <span>Pramuka</span>
+
+        <h3>Juara Lomba Pramuka</h3>
+
+        <p>
+          Prestasi luar biasa dalam kegiatan kepramukaan.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="prestasi-card">
+
+      <img src="Galeri/Gambar 3.jpg">
+
+      <div class="prestasi-content">
+
+        <span>Olahraga</span>
+
+        <h3>Juara Futsal Antar Sekolah</h3>
+
+        <p>
+          Tim futsal sekolah meraih kemenangan gemilang.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- VIDEO PROFIL -->
+
+<section class="video-section">
+
+  <div class="section-title">
+
+    <h2>Video Profil Sekolah</h2>
+
+    <p>
+      Mengenal lebih dekat SMPN 20 Konawe Selatan
+    </p>
+
+  </div>
+
+  <div class="video-wrapper">
+
+    <iframe
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+      title="Video Profil"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+     CSS TAMBAHAN
+========================================= -->
+
+<style>
+
+  /* LOADER */
+
+  #loader{
+    position:fixed;
+    inset:0;
+    background:#071426;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:0.5s;
+  }
+
+  .loader-content{
+    text-align:center;
+    color:white;
+  }
+
+  .loader-content img{
+    width:120px;
+    margin:auto;
+    animation:spin 3s linear infinite;
+  }
+
+  .loader-content h2{
+    margin-top:20px;
+    color:#ffd54f;
+  }
+
+  .loading-bar{
+    width:250px;
+    height:8px;
+    background:#1e3550;
+    border-radius:30px;
+    overflow:hidden;
+    margin-top:20px;
+  }
+
+  .loading-bar span{
+    display:block;
+    width:0%;
+    height:100%;
+    background:#ffd54f;
+    animation:loading 3s forwards;
+  }
+
+  @keyframes loading{
+    100%{
+      width:100%;
+    }
+  }
+
+  @keyframes spin{
+    100%{
+      transform:rotate(360deg);
+    }
+  }
+
+  /* DARK MODE */
+
+  #darkModeToggle{
+    position:fixed;
+    right:25px;
+    bottom:110px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#ffd54f;
+    color:#071426;
+    font-size:22px;
+    cursor:pointer;
+    z-index:999;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  body.dark{
+    background:#071426;
+    color:white;
+  }
+
+  /* BACK TO TOP */
+
+  #backToTop{
+    position:fixed;
+    right:25px;
+    bottom:40px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#0d6efd;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+    z-index:999;
+  }
+
+  /* WHATSAPP */
+
+  .floating-wa{
+    position:fixed;
+    left:25px;
+    bottom:40px;
+    width:60px;
+    height:60px;
+    background:#25d366;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    z-index:999;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    animation:pulse 2s infinite;
+  }
+
+  @keyframes pulse{
+
+    0%{
+      transform:scale(1);
+    }
+
+    50%{
+      transform:scale(1.1);
+    }
+
+    100%{
+      transform:scale(1);
+    }
+
+  }
+
+  /* BREAKING NEWS */
+
+  .breaking-news{
+    background:#ffd54f;
+    color:#071426;
+    padding:12px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    font-weight:bold;
+  }
+
+  .breaking-track{
+    display:inline-block;
+    padding-left:100%;
+    animation:marquee 20s linear infinite;
+  }
+
+  @keyframes marquee{
+
+    0%{
+      transform:translateX(0);
+    }
+
+    100%{
+      transform:translateX(-100%);
+    }
+
+  }
+
+  /* STATISTIK */
+
+  .stats-section{
+    padding:90px 7%;
+    background:#071426;
+  }
+
+  .stats-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+  }
+
+  .stat-card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+    padding:40px;
+    text-align:center;
+    transition:0.4s;
+  }
+
+  .stat-card:hover{
+    transform:translateY(-10px);
+  }
+
+  .stat-card i{
+    font-size:50px;
+    color:#ffd54f;
+    margin-bottom:20px;
+  }
+
+  .stat-card h2{
+    font-size:45px;
+    color:white;
+    margin-bottom:10px;
+  }
+
+  .stat-card p{
+    color:#ccc;
+  }
+
+  /* PRESTASI */
+
+  .prestasi-section{
+    padding:100px 7%;
+    background:#0b1f39;
+  }
+
+  .section-title{
+    text-align:center;
+    margin-bottom:60px;
+  }
+
+  .section-title h2{
+    font-size:42px;
+    color:#ffd54f;
+    margin-bottom:15px;
+  }
+
+  .prestasi-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+  }
+
+  .prestasi-card{
+    background:rgba(255,255,255,0.05);
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.4s;
+    backdrop-filter:blur(10px);
+  }
+
+  .prestasi-card:hover{
+    transform:translateY(-12px);
+  }
+
+  .prestasi-card img{
+    height:240px;
+    object-fit:cover;
+  }
+
+  .prestasi-content{
+    padding:25px;
+  }
+
+  .prestasi-content span{
+    background:#ffd54f;
+    color:#071426;
+    padding:7px 15px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+  }
+
+  .prestasi-content h3{
+    margin:20px 0 15px;
+    color:white;
+  }
+
+  .prestasi-content p{
+    color:#ccc;
+    line-height:1.8;
+  }
+
+  /* VIDEO */
+
+  .video-section{
+    padding:100px 7%;
+    background:#071426;
+  }
+
+  .video-wrapper{
+    max-width:1000px;
+    margin:auto;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+  }
+
+  .video-wrapper iframe{
+    width:100%;
+    height:550px;
+    border:none;
+  }
+
+  /* RESPONSIVE */
+
+  @media(max-width:768px){
+
+    .section-title h2{
+      font-size:30px;
+    }
+
+    .video-wrapper iframe{
+      height:300px;
+    }
+
+  }
+
+</style>
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+  // LOADING SCREEN
+
+  window.addEventListener("load", ()=>{
+
+    setTimeout(()=>{
+
+      document.getElementById("loader").style.opacity="0";
+
+      setTimeout(()=>{
+
+        document.getElementById("loader").style.display="none";
+
+      },500);
+
+    },2500);
+
+  });
+
+  // DARK MODE
+
+  const darkBtn =
+  document.getElementById("darkModeToggle");
+
+  darkBtn.onclick = ()=>{
+
+    document.body.classList.toggle("dark");
+
+  };
+
+  // BACK TO TOP
+
+  const topBtn =
+  document.getElementById("backToTop");
+
+  window.onscroll = ()=>{
+
+    if(window.scrollY > 300){
+
+      topBtn.style.display="block";
+
+    }else{
+
+      topBtn.style.display="none";
+
+    }
+
+  };
+
+  topBtn.onclick = ()=>{
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  };
+
+  // COUNTER
+
+  const counters =
+  document.querySelectorAll(".counter");
+
+  counters.forEach(counter=>{
+
+    counter.innerText="0";
+
+    const updateCounter = ()=>{
+
+      const target = +counter.getAttribute("data-target");
+
+      const c = +counter.innerText;
+
+      const increment = target / 100;
+
+      if(c < target){
+
+        counter.innerText =
+        `${Math.ceil(c + increment)}`;
+
+        setTimeout(updateCounter,20);
+
+      }else{
+
+        counter.innerText = target;
+
+      }
+
+    };
+
+    updateCounter();
+
+  });
+
+</script>

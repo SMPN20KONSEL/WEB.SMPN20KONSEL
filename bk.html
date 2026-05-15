@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bimbingan dan Konseling - SMPN 20 Konawe Selatan</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#071426;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#00b4ff;
+  border-radius:20px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+  width:100%;
+  padding:18px 8%;
+  position:fixed;
+  top:0;
+  z-index:999;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#00b4ff;
+}
+
+.menu{
+  display:flex;
+  gap:28px;
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.menu a:hover{
+  color:#00b4ff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  width:100%;
+  min-height:100vh;
+
+  background:
+  linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:100px 8%;
+}
+
+.hero-content h1{
+  font-size:78px;
+  margin-bottom:20px;
+}
+
+.hero-content h1 span{
+  color:#00b4ff;
+}
+
+.hero-content p{
+  max-width:850px;
+  margin:auto;
+  line-height:2;
+  color:#ddd;
+  font-size:20px;
+}
+
+.hero-btn{
+  margin-top:40px;
+}
+
+.hero-btn a{
+  display:inline-block;
+  padding:18px 40px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#00b4ff,#0077b6);
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.4s;
+}
+
+.hero-btn a:hover{
+  transform:translateY(-5px);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  padding:100px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.section-title h2{
+  font-size:46px;
+  margin-bottom:15px;
+}
+
+.section-title p{
+  color:#cfd9e6;
+  max-width:700px;
+  margin:auto;
+  line-height:1.9;
+}
+
+/* =========================
+   ABOUT BK
+========================= */
+
+.about-bk{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.about-bk img{
+  width:450px;
+  max-width:100%;
+  border-radius:30px;
+  box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.about-text{
+  flex:1;
+}
+
+.about-text h3{
+  font-size:40px;
+  margin-bottom:25px;
+}
+
+.about-text p{
+  color:#cfd9e6;
+  line-height:2;
+  margin-bottom:20px;
+}
+
+/* =========================
+   LAYANAN BK
+========================= */
+
+.layanan-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:35px;
+}
+
+.layanan-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+
+  padding:35px;
+  border-radius:30px;
+
+  transition:.4s;
+}
+
+.layanan-card:hover{
+  transform:translateY(-10px);
+  border-color:#00b4ff;
+}
+
+.layanan-icon{
+  width:80px;
+  height:80px;
+
+  border-radius:22px;
+
+  background:linear-gradient(135deg,#00b4ff,#0077b6);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:25px;
+}
+
+.layanan-icon i{
+  font-size:34px;
+}
+
+.layanan-card h3{
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+.layanan-card p{
+  color:#cfd9e6;
+  line-height:1.9;
+}
+
+/* =========================
+   GURU BK
+========================= */
+
+.guru-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:35px;
+}
+
+.guru-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+  overflow:hidden;
+
+  transition:.4s;
+}
+
+.guru-card:hover{
+  transform:translateY(-10px);
+}
+
+.guru-card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+}
+
+.guru-content{
+  padding:30px;
+  text-align:center;
+}
+
+.guru-content h3{
+  margin-bottom:10px;
+}
+
+.guru-content p{
+  color:#00b4ff;
+}
+
+/* =========================
+   FORM BK
+========================= */
+
+.form-container{
+  max-width:800px;
+  margin:auto;
+
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+
+  padding:40px;
+  border-radius:30px;
+}
+
+.form-group{
+  margin-bottom:25px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:10px;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:18px;
+  border:none;
+  outline:none;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,.08);
+  color:white;
+}
+
+.form-group textarea{
+  height:160px;
+  resize:none;
+}
+
+.form-btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:20px;
+
+  background:linear-gradient(135deg,#00b4ff,#0077b6);
+
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+
+  cursor:pointer;
+  transition:.4s;
+}
+
+.form-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================
+   STATISTIK
+========================= */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+
+.stat-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+  padding:40px;
+  text-align:center;
+}
+
+.stat-card h1{
+  font-size:60px;
+  color:#00b4ff;
+  margin-bottom:10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#04101d;
+  padding:40px 20px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer p{
+  color:#cfd9e6;
+  margin-top:10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .menu{
+    display:none;
+  }
+
+  .hero-content h1{
+    font-size:50px;
+  }
+
+  .hero-content p{
+    font-size:16px;
+  }
+
+  .about-bk{
+    flex-direction:column;
+  }
+
+  .section-title h2{
+    font-size:34px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+<div class="logo">
+BK<span>.</span>
+</div>
+
+<div class="menu">
+<a href="#">Beranda</a>
+<a href="#tentang">Tentang</a>
+<a href="#layanan">Layanan</a>
+<a href="#guru">Guru BK</a>
+<a href="#konsultasi">Konsultasi</a>
+</div>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<div class="hero-content" data-aos="zoom-in">
+
+<h1>
+Bimbingan & <span>Konseling</span>
+</h1>
+
+<p>
+Membantu siswa berkembang secara pribadi,
+sosial, belajar, dan karier melalui layanan
+bimbingan dan konseling sekolah.
+</p>
+
+<div class="hero-btn">
+<a href="#layanan">
+Lihat Layanan
+</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     TENTANG BK
+========================= -->
+
+<section id="tentang">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Tentang BK</h2>
+
+<p>
+Bidang Bimbingan dan Konseling
+SMPN 20 Konawe Selatan.
+</p>
+
+</div>
+
+<div class="about-bk">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+data-aos="fade-right">
+
+<div class="about-text" data-aos="fade-left">
+
+<h3>Mendampingi dan Membina Siswa</h3>
+
+<p>
+Bimbingan dan Konseling memiliki peran penting
+dalam membantu siswa mengembangkan potensi,
+membentuk karakter, dan mengatasi berbagai
+permasalahan belajar maupun sosial.
+</p>
+
+<p>
+Melalui layanan BK, siswa mendapatkan pendampingan,
+motivasi, konsultasi belajar, dan pembinaan karakter
+agar mampu berkembang secara optimal.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     LAYANAN BK
+========================= -->
+
+<section id="layanan">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Layanan BK</h2>
+
+<p>
+Berbagai layanan pendampingan siswa sekolah.
+</p>
+
+</div>
+
+<div class="layanan-grid">
+
+<div class="layanan-card" data-aos="zoom-in">
+
+<div class="layanan-icon">
+<i class="fas fa-user"></i>
+</div>
+
+<h3>Konseling Individu</h3>
+
+<p>
+Pendampingan pribadi siswa dalam menyelesaikan masalah.
+</p>
+
+</div>
+
+<div class="layanan-card" data-aos="zoom-in">
+
+<div class="layanan-icon">
+<i class="fas fa-users"></i>
+</div>
+
+<h3>Konseling Kelompok</h3>
+
+<p>
+Layanan diskusi dan pembinaan kelompok siswa.
+</p>
+
+</div>
+
+<div class="layanan-card" data-aos="zoom-in">
+
+<div class="layanan-icon">
+<i class="fas fa-book"></i>
+</div>
+
+<h3>Bimbingan Belajar</h3>
+
+<p>
+Pendampingan siswa dalam meningkatkan prestasi belajar.
+</p>
+
+</div>
+
+<div class="layanan-card" data-aos="zoom-in">
+
+<div class="layanan-icon">
+<i class="fas fa-heart"></i>
+</div>
+
+<h3>Pembinaan Karakter</h3>
+
+<p>
+Pembentukan sikap disiplin dan karakter positif siswa.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     GURU BK
+========================= -->
+
+<section id="guru">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Guru BK</h2>
+
+<p>
+Guru pembimbing dan konselor sekolah.
+</p>
+
+</div>
+
+<div class="guru-grid">
+
+<div class="guru-card" data-aos="zoom-in">
+
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+
+<div class="guru-content">
+<h3>Rahmawati, S.Pd</h3>
+<p>Guru BK</p>
+</div>
+
+</div>
+
+<div class="guru-card" data-aos="zoom-in">
+
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+
+<div class="guru-content">
+<h3>Andi Saputra, S.Pd</h3>
+<p>Konselor Sekolah</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FORM KONSULTASI
+========================= -->
+
+<section id="konsultasi">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Konsultasi Online</h2>
+
+<p>
+Sampaikan pertanyaan atau konsultasi kepada guru BK.
+</p>
+
+</div>
+
+<div class="form-container" data-aos="zoom-in">
+
+<form>
+
+<div class="form-group">
+<label>Nama Siswa</label>
+<input type="text" placeholder="Masukkan nama">
+</div>
+
+<div class="form-group">
+<label>Kelas</label>
+<input type="text" placeholder="Masukkan kelas">
+</div>
+
+<div class="form-group">
+<label>Pesan Konsultasi</label>
+<textarea placeholder="Tuliskan konsultasi..."></textarea>
+</div>
+
+<button type="submit" class="form-btn">
+Kirim Konsultasi
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- =========================
+     STATISTIK
+========================= -->
+
+<section id="statistik">
+
+<div class="section-title" data-aos="fade-up">
+
+<h2>Statistik BK</h2>
+
+<p>
+Data layanan dan kegiatan BK sekolah.
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>500+</h1>
+<p>Siswa Dibimbing</p>
+</div>
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>20+</h1>
+<p>Program BK</p>
+</div>
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>50+</h1>
+<p>Kegiatan Konseling</p>
+</div>
+
+<div class="stat-card" data-aos="zoom-in">
+<h1>100%</h1>
+<p>Layanan Aktif</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h2>BK SMPN 20 Konawe Selatan</h2>
+
+<p>
+Website Bimbingan dan Konseling © 2026
+</p>
+
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+  duration:1000,
+  once:true
+});
+
+</script>
+
+</body>
+</html>

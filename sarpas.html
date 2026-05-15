@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarana & Prasarana - SMPN 20 Konawe Selatan</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+
+  <style>
+
+   
+    body{
+      background:#071426;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+
+
+    /* ================= HERO ================= */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1497486751825-1233686d5d80?q=80&w=1600');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:65px;
+      color:#ffd54f;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      font-size:20px;
+      max-width:850px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    .hero-btn{
+      margin-top:35px;
+    }
+
+    .hero-btn a{
+      background:#ffd54f;
+      color:#081b33;
+      padding:15px 35px;
+      border-radius:40px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .hero-btn a:hover{
+      background:white;
+    }
+
+    /* ================= SECTION ================= */
+
+    section{
+      padding:90px 7%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      color:#ffd54f;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#ccc;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .about img{
+      border-radius:25px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .about-text h3{
+      font-size:34px;
+      color:#ffd54f;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      line-height:1.9;
+      margin-bottom:15px;
+      color:#ddd;
+    }
+
+    /* ================= CARD ================= */
+
+    .facility-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .facility-card{
+      background:#102846;
+      padding:35px 25px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .facility-card:hover{
+      transform:translateY(-12px);
+      background:#16345c;
+    }
+
+    .facility-card i{
+      font-size:50px;
+      color:#ffd54f;
+      margin-bottom:20px;
+    }
+
+    .facility-card h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .facility-card p{
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    /* ================= SLIDER ================= */
+.slider{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  border-radius:25px;
+  scroll-behavior:smooth;
+  cursor:grab;
+}
+
+.slide-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  padding:10px;
+}
+
+.slide{
+  flex:0 0 auto;
+  width:300px;
+  height:220px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .slide{width:240px;height:170px;}
+}
+
+@media(max-width:480px){
+  .slide{width:200px;height:150px;}
+}
+
+    /* ================= TABLE ================= */
+
+    .table-container{
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:#102846;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    table th{
+      background:#ffd54f;
+      color:#081b33;
+      padding:18px;
+      text-align:left;
+    }
+
+    table td{
+      padding:18px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      color:#eee;
+    }
+
+    table tr:hover{
+      background:#16345c;
+    }
+
+    /* ================= GALERI ================= */
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      height:250px;
+      object-fit:cover;
+      border-radius:20px;
+      transition:0.4s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.05);
+    }
+
+/* ================= CONTACT ================= */
+.contact{
+  background:#102846;
+  padding:55px;
+  border-radius:35px;
+
+  max-width:850px;
+  width:100%;
+  margin:auto;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* JUDUL */
+.contact h2{
+  color:#ffd54f;
+  font-size:48px;
+  text-align:center;
+  margin-bottom:45px;
+  font-weight:800;
+}
+
+/* WRAPPER */
+.contact-body{
+  display:flex;
+  align-items:center;
+  gap:45px;
+}
+
+/* FOTO */
+.contact-body img{
+  width:170px;
+  height:170px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #ffd54f;
+  flex-shrink:0;
+
+  background:#0b2240;
+}
+
+/* KONTEN */
+.contact-content{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* TEXT */
+.contact-content p{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  font-size:22px;
+  color:#e5e5e5;
+  margin:0;
+}
+
+/* ICON */
+.contact-content i{
+  color:#d9d9d9;
+  width:28px;
+  text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  .contact{
+    padding:35px 25px;
+  }
+
+  .contact h2{
+    font-size:34px;
+  }
+
+  .contact-body{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .contact-content p{
+    justify-content:center;
+    font-size:19px;
+  }
+
+  .contact-body img{
+    width:150px;
+    height:150px;
+  }
+
+}
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:900px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .hero-content h1{
+        font-size:34px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .section-title h2{
+        font-size:30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+<header>
+
+  <div class="top-bar">
+
+    <div>
+      <i class="fas fa-phone"></i> -
+      &nbsp;&nbsp;
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </div>
+
+    <div class="social-icons">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+
+    </div>
+
+  </div>
+
+  <nav>
+
+    <div class="logo">
+
+      <img src="image/Logo_transparent.png" alt="Logo">
+
+      <h2>
+        SMPN20KONSEL
+        <br>
+        <small>
+          Tempat menimba ilmu, tumbuh berprestasi
+        </small>
+      </h2>
+
+    </div>
+
+    <div class="nav-toggle">
+      ☰
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <!-- PROFIL -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Profil ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+
+      </div>
+
+      <!-- MANAJEMEN -->
+      <div class="dropdown">
+
+        <button class="dropbtn">
+          Manajemen ▾
+        </button>
+
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpas</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+      <a href="galeri.html"> Galeri </a>
+      <a href="kontak.html">Kontak</a>
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>SARANA & PRASARANA</h1>
+
+      <p>
+        Fasilitas modern dan lingkungan sekolah yang nyaman
+        untuk mendukung proses pembelajaran yang aktif,
+        kreatif, dan berkualitas.
+      </p>
+
+      <div class="hero-btn">
+        <a href="#fasilitas">Lihat Fasilitas</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="tentang">
+
+    <div class="section-title">
+      <h2>Tentang Sarpas</h2>
+      <p>Informasi fasilitas sekolah</p>
+    </div>
+
+    <div class="about">
+
+      <img src="image/sarpas/sarpas.jpeg" alt="Sarana Prasarana">
+
+      <div class="about-text">
+
+        <h3>Lingkungan Belajar Modern</h3>
+
+        <p>
+          Sarana dan prasarana sekolah merupakan salah satu
+          faktor penting dalam mendukung kualitas pendidikan
+          dan kenyamanan belajar siswa.
+        </p>
+
+        <p>
+          SMPN 20 Konawe Selatan terus berupaya meningkatkan
+          fasilitas sekolah agar proses pembelajaran menjadi
+          lebih efektif, aman, dan menyenangkan.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FASILITAS -->
+
+  <section id="fasilitas">
+
+    <div class="section-title">
+      <h2>Fasilitas Sekolah</h2>
+      <p>Berbagai fasilitas pendukung pembelajaran</p>
+    </div>
+
+    <div class="facility-container">
+
+      <div class="facility-card">
+        <i class="fas fa-school"></i>
+        <h3>Ruang Kelas</h3>
+        <p>Ruang belajar nyaman dengan fasilitas lengkap.</p>
+      </div>
+
+      <div class="facility-card">
+        <i class="fas fa-computer"></i>
+        <h3>Lab Komputer</h3>
+        <p>Laboratorium komputer modern untuk pembelajaran digital.</p>
+      </div>
+
+      <div class="facility-card">
+        <i class="fas fa-book"></i>
+        <h3>Perpustakaan</h3>
+        <p>Perpustakaan dengan koleksi buku pendidikan lengkap.</p>
+      </div>
+
+      <div class="facility-card">
+        <i class="fas fa-flask"></i>
+        <h3>Lab IPA</h3>
+        <p>Fasilitas praktikum sains yang memadai.</p>
+      </div>
+
+      <div class="facility-card">
+        <i class="fas fa-futbol"></i>
+        <h3>Lapangan</h3>
+        <p>Lapangan olahraga untuk kegiatan siswa.</p>
+      </div>
+
+      <div class="facility-card">
+        <i class="fas fa-wifi"></i>
+        <h3>Wifi Sekolah</h3>
+        <p>Akses internet untuk mendukung pembelajaran online.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SLIDER -->
+
+<section>
+  <div class="section-title">
+    <h2>Fasilitas Unggulan</h2>
+    <p>Dokumentasi fasilitas sekolah</p>
+  </div>
+
+  <div class="slider">
+    <div class="slide-track">
+
+      <div class="slide"><img src="image/sarpas/sarpas.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas2.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas3.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas4.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas5.jpeg" alt=""></div>
+
+      <!-- DUPLIKAT (WAJIB BIAR LOOP PANJANG) -->
+      <div class="slide"><img src="image/sarpas/sarpas.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas2.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas3.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas4.jpeg" alt=""></div>
+      <div class="slide"><img src="image/sarpas/sarpas5.jpeg" alt=""></div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- TABLE -->
+
+  <section id="data">
+
+    <div class="section-title">
+      <h2>Data Fasilitas</h2>
+      <p>Jumlah sarana dan prasarana sekolah</p>
+    </div>
+
+    <div class="table-container">
+
+      <table>
+
+        <tr>
+          <th>Fasilitas</th>
+          <th>Jumlah</th>
+          <th>Kondisi</th>
+        </tr>
+
+        <tr>
+          <td>Ruang Kelas</td>
+          <td>12</td>
+          <td>Baik</td>
+        </tr>
+
+        <tr>
+          <td>Laboratorium Komputer</td>
+          <td>1</td>
+          <td>Sangat Baik</td>
+        </tr>
+
+        <tr>
+          <td>Perpustakaan</td>
+          <td>1</td>
+          <td>Baik</td>
+        </tr>
+
+        <tr>
+          <td>Lapangan Olahraga</td>
+          <td>2</td>
+          <td>Baik</td>
+        </tr>
+
+        <tr>
+          <td>Toilet</td>
+          <td>8</td>
+          <td>Baik</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </section>
+
+  <!-- GALERI -->
+
+  <section id="galeri">
+
+    <div class="section-title">
+      <h2>Galeri Sekolah</h2>
+      <p>Foto sarana dan prasarana sekolah</p>
+    </div>
+
+    <div class="gallery">
+
+      <img src="image/sarpas/sarpas1.jpeg" alt="Fasilitas Unggulan 1">
+
+      <img src="image/sarpas/sarpas2.jpeg" alt="Fasilitas Unggulan 2">
+
+      <img src="image/sarpas/sarpas3.jpeg" alt="Fasilitas Unggulan 3">
+
+      <img src="image/sarpas/sarpas4.jpeg" alt="Fasilitas Unggulan 4">
+
+      <img src="image/sarpas/sarpas5.jpeg" alt="Fasilitas Unggulan 5">
+
+    </div>
+
+  </section>
+
+ 
+<section id="kontak">
+
+  <div class="contact">
+
+    <h2>Kontak Bagian Sarpras</h2>
+
+    <div class="contact-body">
+
+      <!-- FOTO -->
+<img
+  id="fotoKepala"
+  src="image/default.png"
+  alt="Foto Kepala Sarpras"
+  onerror="this.src='image/default.png'"
+>
+
+      <!-- DATA -->
+      <div class="contact-content">
+
+        <p>
+          <i class="fas fa-user"></i>
+          Kepala Sarpras :
+          <span id="nama">Loading...</span>
+        </p>
+
+        <p>
+          <i class="fas fa-phone"></i>
+          <span id="hp">Loading...</span>
+        </p>
+
+        <p>
+          <i class="fas fa-envelope"></i>
+          <span id="email">
+            smpn20konsel96@gmail.com
+          </span>
+        </p>
+
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          Konawe Selatan
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+  <!-- FOOTER -->
+
+<section class="footer-banner">
+
+  <div class="footer-banner-overlay"></div>
+
+  <h1>
+    Learn Today, Lead Tomorrow, Be The Best !
+  </h1>
+
+</section>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- KOLOM 1 -->
+    <div class="footer-column">
+
+      <div class="footer-card">
+
+        <div class="footer-logo">
+
+          <img src="image/Logo_transparent.png" alt="Logo">
+
+          <div>
+            <h2>SMPN20KONSEL</h2>
+            <span>Website Portal Sekolah</span>
+          </div>
+
+        </div>
+
+        <p>
+          SMPN 20 Konawe Selatan merupakan
+          sekolah yang berkomitmen mencetak
+          generasi unggul, berprestasi,
+          dan berkarakter.
+        </p>
+
+<div class="footer-social">
+
+      <a href="https://web.facebook.com/profile.php?id=61577266951408">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@smpn20konsel7">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/smpn20konsel">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="https://youtube.com/@smpn20konsel">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <!-- KOLOM 2 -->
+    <div class="footer-column">
+
+  <h3>Data Sekolah</h3>
+
+  <ul class="footer-links">
+
+    <li>
+      <i class="fas fa-user-graduate"></i>
+      Alumni : <span id="totalAlumni">840</span>
+    </li>
+
+    <li>
+      <i class="fas fa-users"></i>
+      Siswa : <span id="totalSiswa">0</span>
+    </li>
+
+    <li>
+      <i class="fas fa-chalkboard-teacher"></i>
+      Guru&TU : <span id="totalGuru">0</span>
+    </li>
+
+  </ul>
+
+</div>
+
+    <!-- KOLOM 3 -->
+    <div class="footer-column">
+
+      <h3>Temukan Kami</h3>
+
+      <iframe
+        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
+        loading="lazy"
+        allowfullscreen="">
+      </iframe>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    © 2026 SMPN 20 Konawe Selatan
+  </div>
+
+</footer>
+
+<!-- JS -->
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/index.js"></script>
+<script type="module" src="assets/js/sarpras.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".slider");
+
+  if (!slider) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX;
+    scrollLeft = slider.scrollLeft;
+    slider.style.cursor = "grabbing";
+  });
+
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+    slider.style.cursor = "grab";
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+    slider.style.cursor = "grab";
+  });
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+
+    const x = e.pageX;
+    const walk = (x - startX) * 1.5;
+
+    slider.scrollLeft = scrollLeft - walk;
+  });
+});
+</script>
+</body>
+</html>

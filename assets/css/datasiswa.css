@@ -1,0 +1,688 @@
+/* =========================
+   BODY
+========================= */
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#f3f4f6;
+  color:#111827;
+  overflow-x:hidden;
+}
+
+.hero{
+  position:relative;
+  height:75vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url('../../image/upacara.jpg');
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  position:relative;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:55px;
+}
+
+.logo h2{
+  font-size:24px;
+}
+
+.navbar ul{
+  display:flex;
+  list-style:none;
+  gap:25px;
+}
+
+.navbar ul li a{
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.navbar ul li a:hover{
+  color:#ffd43b;
+}
+
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:80%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-content h1{
+  font-size:65px;
+  margin-bottom:15px;
+}
+
+.hero-content p{
+  font-size:22px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+  max-width:1300px;
+  margin:20px auto 50px;
+  padding:20px;
+  position:relative;
+  z-index:5;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header{
+  margin-top:100px;
+  padding:100px 20px 40px;
+
+  text-align:center;
+
+  background:
+  linear-gradient(
+    135deg,
+    #2563eb 0%,
+    #1d4ed8 100%
+  );
+
+  color:white;
+
+  border-radius:
+  0 0 40px 40px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+/* EFFECT */
+
+.page-header::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:320px;
+  height:320px;
+
+  background:
+  rgba(255,255,255,.08);
+
+  border-radius:50%;
+
+  top:-120px;
+  right:-100px;
+}
+
+.page-header::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  background:
+  rgba(255,255,255,.05);
+
+  border-radius:50%;
+
+  bottom:-100px;
+  left:-60px;
+}
+
+/* TITLE */
+
+.page-header h1{
+
+  font-size:38px;
+  margin-bottom:10px;
+  font-weight:700;
+
+  position:relative;
+  z-index:2;
+}
+
+.page-header h1 i{
+  margin-right:10px;
+}
+
+.page-header p{
+
+  color:rgba(255,255,255,.88);
+
+  font-size:15px;
+
+  position:relative;
+  z-index:2;
+}
+
+/* =========================
+   FILTER
+========================= */
+
+.filter-card{
+
+  background:white;
+
+  border-radius:22px;
+
+  padding:16px;
+
+  display:flex;
+  gap:15px;
+
+  margin-top:-5px;
+  margin-bottom:30px;
+
+  position:relative;
+  z-index:20;
+
+  box-shadow:
+  0 12px 30px rgba(0,0,0,.08);
+
+  border:1px solid #eef0f3;
+
+  flex-wrap:wrap;
+}
+
+/* SEARCH */
+
+.search-box{
+  flex:1;
+  position:relative;
+}
+
+.search-box i{
+
+  position:absolute;
+
+  left:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#9ca3af;
+
+  font-size:15px;
+}
+
+.search-box input,
+#filterKelas{
+
+  width:100%;
+
+  height:55px;
+
+  border-radius:14px;
+
+  border:1px solid #dbe1ea;
+
+  font-size:15px;
+
+  outline:none;
+
+  transition:.3s;
+
+  background:#f9fafb;
+
+  box-sizing:border-box;
+}
+
+.search-box input{
+
+  padding:
+  0 18px 0 48px;
+}
+
+#filterKelas{
+
+  width:210px;
+
+  padding:0 15px;
+}
+
+/* FOCUS */
+
+.search-box input:focus,
+#filterKelas:focus{
+
+  border-color:#2563eb;
+
+  background:white;
+
+  box-shadow:
+  0 0 0 4px rgba(37,99,235,.10);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(230px,1fr));
+
+  gap:22px;
+
+  margin-bottom:35px;
+}
+
+.stat-card{
+
+  background:white;
+
+  border-radius:22px;
+
+  padding:24px;
+
+  text-align:center;
+
+  box-shadow:
+  0 8px 20px rgba(0,0,0,.05);
+
+  border:1px solid #e5e7eb;
+
+  transition:.3s ease;
+}
+
+.stat-card:hover{
+
+  transform:translateY(-5px);
+
+  box-shadow:
+  0 15px 30px rgba(0,0,0,.08);
+}
+
+.stat-card i{
+
+  font-size:30px;
+
+  color:#2563eb;
+
+  margin-bottom:12px;
+}
+
+.stat-card h2{
+
+  margin:0;
+
+  font-size:32px;
+
+  color:#111827;
+
+  font-weight:700;
+}
+
+.stat-card p{
+
+  margin-top:10px;
+
+  color:#6b7280;
+
+  font-size:15px;
+}
+
+/* =========================
+   SISWA WRAPPER
+========================= */
+
+.siswa-wrapper{
+  margin-top:10px;
+}
+
+/* =========================
+   HEADER SISWA
+========================= */
+
+.siswa-header{
+  margin-bottom:40px;
+}
+
+.siswa-header h1{
+
+  font-size:34px;
+  margin-top:50px;
+  margin-bottom:10px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+}Profil Peserta Didik
+
+.siswa-header h1 i{
+  color:#2563eb;
+}
+
+.siswa-header p{
+  color:#6b7280;
+}
+
+/* =========================
+   KELAS SECTION
+========================= */
+
+.kelas-section{
+  margin-bottom:45px;
+}
+
+.kelas-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:22px;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+}
+
+.kelas-header h2{
+
+  margin:0;
+
+  font-size:28px;
+
+  color:#111827;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+.kelas-header h2 i{
+  color:#2563eb;
+}
+
+.kelas-header span{
+
+  background:#dbeafe;
+
+  color:#1d4ed8;
+
+  padding:8px 16px;
+
+  border-radius:999px;
+
+  font-size:14px;
+
+  font-weight:600;
+}
+
+/* =========================
+   GRID SISWA
+========================= */
+
+.siswa-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fill,minmax(320px,1fr));
+
+  gap:24px;
+}
+
+/* =========================
+   CARD SISWA
+========================= */
+
+.siswa-card{
+
+  background:white;
+
+  border-radius:24px;
+
+  overflow:hidden;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,.06);
+
+  border:1px solid #e5e7eb;
+
+  transition:.3s ease;
+}
+
+.siswa-card:hover{
+
+  transform:translateY(-5px);
+
+  box-shadow:
+  0 18px 35px rgba(0,0,0,.10);
+}
+
+/* =========================
+   FOTO BOX
+========================= */
+
+.siswa-foto-box{
+
+  background:
+  linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  padding:30px;
+
+  text-align:center;
+}
+
+/* =========================
+   FOTO
+========================= */
+
+.siswa-foto{
+
+  width:120px;
+  height:120px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:5px solid white;
+
+  box-shadow:
+  0 5px 20px rgba(0,0,0,.15);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.siswa-content{
+  padding:24px;
+}
+
+.siswa-content h3{
+
+  margin:0 0 18px;
+
+  font-size:22px;
+
+  color:#111827;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.siswa-info{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  margin-bottom:14px;
+
+  font-size:15px;
+
+  color:#4b5563;
+}
+
+.siswa-info i{
+
+  width:22px;
+
+  color:#2563eb;
+
+  font-size:15px;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading-box{
+
+  background:white;
+
+  border-radius:24px;
+
+  padding:50px;
+
+  text-align:center;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,.05);
+
+  border:1px solid #e5e7eb;
+}
+
+.loading-box i{
+
+  font-size:38px;
+
+  color:#2563eb;
+
+  margin-bottom:15px;
+}
+
+.loading-box p{
+
+  color:#6b7280;
+
+  margin:0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .container{
+    padding:15px;
+    margin-top:0;
+  }
+
+  .page-header{
+
+    margin-top:90px;
+
+    padding:
+    45px 15px 80px;
+  }
+
+  .page-header h1{
+    font-size:30px;
+  }
+
+  .page-header p{
+    font-size:14px;
+  }
+
+  .filter-card{
+
+    flex-direction:column;
+
+    padding:15px;
+
+    margin-top:-40px;
+  }
+
+  #filterKelas{
+    width:100%;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .kelas-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+  .kelas-header h2{
+    font-size:24px;
+  }
+
+  .siswa-grid{
+    grid-template-columns:1fr;
+  }
+
+  .siswa-content{
+    padding:20px;
+  }
+
+  .siswa-content h3{
+    font-size:20px;
+  }
+
+}

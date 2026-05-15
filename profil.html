@@ -1,148 +1,33 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Profil - SMPN 20 Konawe Selatan</title>
 
+  <!-- SEO -->
+  <meta name="description" content="Website resmi SMP Negeri 20 Konawe Selatan">
+  <meta name="keywords" content="SMPN 20 Konawe Selatan, Sekolah, SMP">
+  <meta name="author" content="SMPN 20 Konawe Selatan">
+
+  <link rel="icon" href="image/Logo_transparent.png">
+
+  <!-- FONT AWESOME -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <link href="assets/css/style.css" rel="stylesheet" />
-
-  <style>
-
-    body{
-      margin:0;
-      padding:0;
-      font-family:Arial,sans-serif;
-      background:#f0f2f5;
-      line-height:1.7;
-    }
-
-    .container{
-      max-width:1000px;
-      margin:30px auto;
-      padding:20px;
-    }
-
-    .main-card{
-      background:white;
-      border-radius:20px;
-      padding:30px;
-      box-shadow:0 5px 20px rgba(0,0,0,.08);
-    }
-
-    .profil-header{
-      display:flex;
-      align-items:center;
-      gap:25px;
-      margin-bottom:30px;
-      flex-wrap:wrap;
-    }
-
-    .profil-header img{
-      width:140px;
-      height:170px;
-      object-fit:cover;
-      border-radius:15px;
-      border:4px solid #2563eb;
-    }
-
-    .profil-header h2{
-      margin:0;
-      font-size:30px;
-      color:#111827;
-    }
-
-    .profil-header p{
-      color:#666;
-      margin-top:8px;
-    }
-
-    .card-section{
-      background:#f9fafb;
-      border-radius:16px;
-      padding:25px;
-      margin-bottom:25px;
-      border:1px solid #e5e7eb;
-    }
-
-    .section-title{
-      font-size:24px;
-      font-weight:bold;
-      color:#111827;
-      margin-bottom:20px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-    }
-
-    table th,
-    table td{
-      padding:14px;
-      border-bottom:1px solid #ddd;
-      text-align:left;
-    }
-
-    table th{
-      width:280px;
-      background:#f3f4f6;
-      color:#111827;
-    }
-
-    h3{
-      margin-top:20px;
-      color:#111827;
-    }
-
-    ul{
-      padding-left:25px;
-    }
-
-    p{
-      text-align:justify;
-    }
-
-    @media(max-width:768px){
-
-      .profil-header{
-        flex-direction:column;
-        text-align:center;
-      }
-
-      table th{
-        width:180px;
-      }
-
-    }
-footer{
-  gap:30px;
-}
-
-footer .column{
-  flex:1;
-  min-width:250px;
-}
-  </style>
-
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/profil.css">
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
-
 <header>
-
-  <div class="top-bar"
-  style="display:flex;justify-content:space-between;align-items:center;padding:5px 20px;font-size:14px;background:#eee;color:#000;flex-wrap:wrap;gap:10px;">
-
+  <div class="top-bar">
     <div>
       <i class="fas fa-phone"></i> -
       &nbsp;&nbsp;
@@ -151,496 +36,232 @@ footer .column{
     </div>
 
     <div class="social-icons">
-
-      <a href="https://web.facebook.com/profile.php?id=61577266951408">
-        <i class="fab fa-facebook"></i>
-      </a>
-
-      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1">
-        <i class="fab fa-tiktok"></i>
-      </a>
-
-      <a href="https://www.instagram.com/smpn20konsel">
-        <i class="fab fa-instagram"></i>
-      </a>
-
-      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9">
-        <i class="fab fa-youtube"></i>
-      </a>
-
-      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-
+      <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.tiktok.com/@smpn20konsel7"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@smpn20konsel"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
     </div>
-
   </div>
 
   <nav>
-
-    <div class="nav-toggle"
-    onclick="document.querySelector('.nav-links').classList.toggle('active')">
-
-      &#9776;
-
-    </div>
-
-    <div class="logo"
-    style="display:flex;align-items:center;gap:10px;">
-
-      <img
-      src="image/Logo_transparent.png"
-      alt="Logo"
-      style="width:50px;background:white;">
-
-      <h2 style="margin:0;font-size:20px;color:white;">
-
+    <div class="logo">
+      <img src="image/Logo_transparent.png" alt="Logo">
+      <h2>
         SMPN20KONSEL
-
         <br>
-
-        <small style="font-size:12px;font-weight:normal;color:white;">
-
-          Tempat menimba ilmu, tumbuh berprestasi dengan hati yang teguh dan bersatu.
-
-        </small>
-
+        <small>Tempat menimba ilmu, tumbuh berprestasi</small>
       </h2>
-
     </div>
 
-    <div class="nav-links"
-    style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+    <div class="nav-toggle">☰</div>
 
-      <a href="index.html" style="color:white;text-decoration:none;">
-        Home
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">Profil ▾</button>
+        <div class="dropdown-content">
+          <a href="profil.html">Profil Sekolah</a>
+          <a href="data_siswa.html">Data Siswa</a>
+          <a href="profil_guru.html">Data Guru</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Manajemen ▾</button>
+        <div class="dropdown-content">
+          <a href="humas.html">Humas</a>
+          <a href="sarpas.html">Sarpas</a>
+          <a href="kesiswaan.html">Kesiswaan</a>
+          <a href="berita.html">Berita</a>
+          <a href="kurikulum.html">Kurikulum</a>
+          <a href="informasi.html">Informasi</a>
+        </div>
+      </div>
+
+      <a href="galeri.html">Galeri</a>
+      <a href="kontak.html">Kontak</a>
+
+      <a href="daftar_spmb.html" class="login-btn">
+        Daftar SPMB <i class="fas fa-arrow-right"></i>
       </a>
-
-      <a href="profil.html" style="color:white;text-decoration:none;">
-        Profil
-      </a>
-
-      <a href="kesiswaan.html" style="color:white;text-decoration:none;">
-        Kesiswaan
-      </a>
-
-      <a href="informasi.html" style="color:white;text-decoration:none;">
-        Informasi
-      </a>
-
-      <a href="galeri.html" style="color:white;text-decoration:none;">
-        Galeri
-      </a>
-
-      <a href="kontak.html" style="color:white;text-decoration:none;">
-        Kontak
-      </a>
-
-      <a class="login-btn"
-      href="daftar_spmb.html"
-      style="background:orange;color:white;padding:5px 15px;border-radius:20px;text-decoration:none;">
-
-        Daftar SPMB
-        <i class="fas fa-arrow-right"></i>
-
-      </a>
-
     </div>
-
   </nav>
-
 </header>
 
-<!-- ================= CONTENT ================= -->
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>PROFIL SEKOLAH</h1>
+    <p>
+      Sekolah unggul, berkarakter, dan berprestasi.
+    </p>
 
-<div class="container">
-
-  <div class="main-card">
-
-    <!-- ================= HEADER PROFIL ================= -->
-
-    <div class="profil-header">
-
-      <img
-      src="image/Profil SMP.jpg"
-      alt="Foto Sekolah">
-
-      <div>
-
-        <h2 id="judulSekolah">
-          SMP Negeri 20 Konawe Selatan
-        </h2>
-
-        <p id="alamatHeader">
-          Jln. Poros Sabulakoa
-        </p>
-
-      </div>
-
+    <div class="hero-btn">
+      <a href="#">Selengkapnya</a>
     </div>
+  </div>
+</section>
 
-    <!-- ================= IDENTITAS ================= -->
+<!-- ================= TENTANG ================= -->
+<section id="tentang">
+  <div class="section-title">
+  <h2>Tentang Profil Sekolah</h2>
+  <p>Membangun generasi unggul, berkarakter, dan berdaya saing</p>
+</div>
 
-    <div class="card-section">
+  <div class="about">
+    <img src="image/Profil SMP.jpg" alt="Profil Sekolah">
 
-      <div class="section-title">
+    <div class="about-text">
+      <h3>Membangun Komunikasi Sekolah</h3>
 
-        <i class="fas fa-school"></i>
-        Identitas Sekolah
+      <p>
+        SMP Negeri 20 Konawe Selatan merupakan salah satu satuan pendidikan tingkat menengah pertama yang berkomitmen dalam meningkatkan mutu pendidikan, karakter, dan prestasi peserta didik.
+      </p>
 
-      </div>
+      <p>
+        Sekolah ini berperan aktif dalam mencetak generasi yang beriman, berilmu, berakhlak mulia, serta memiliki keterampilan abad 21.
+      </p>
 
-      <table>
-
-        <tr>
-          <th>Nama</th>
-          <td id="namaSekolahText"></td>
-        </tr>
-
-        <tr>
-          <th>NPSN</th>
-          <td id="npsnText"></td>
-        </tr>
-
-        <tr>
-          <th>Alamat</th>
-          <td id="alamatText"></td>
-        </tr>
-
-        <tr>
-          <th>Kode Pos</th>
-          <td id="kodeposText"></td>
-        </tr>
-
-        <tr>
-          <th>Desa / Kelurahan</th>
-          <td id="desaText"></td>
-        </tr>
-
-        <tr>
-          <th>Kecamatan</th>
-          <td id="kecamatanText"></td>
-        </tr>
-
-        <tr>
-          <th>Kabupaten</th>
-          <td id="kabupatenText"></td>
-        </tr>
-
-        <tr>
-          <th>Provinsi</th>
-          <td id="provinsiText"></td>
-        </tr>
-
-        <tr>
-          <th>Status Sekolah</th>
-          <td id="statusText"></td>
-        </tr>
-
-        <tr>
-          <th>Waktu Penyelenggaraan</th>
-          <td id="waktuText"></td>
-        </tr>
-
-        <tr>
-          <th>Jenjang Pendidikan</th>
-          <td id="jenjangText"></td>
-        </tr>
-
-      </table>
-
+      <p>Jln. Poros Sabulakoa</p>
     </div>
+  </div>
+</section>
 
-    <!-- ================= DOKUMEN ================= -->
-
-    <div class="card-section">
-
-      <div class="section-title">
-
-        <i class="fas fa-file-alt"></i>
-        Dokumen dan Perizinan
-
-      </div>
-
-      <table>
-
-        <tr>
-          <th>Naungan</th>
-          <td id="naunganText"></td>
-        </tr>
-
-        <tr>
-          <th>No. SK. Pendirian</th>
-          <td id="skPendirianText"></td>
-        </tr>
-
-        <tr>
-          <th>Tanggal SK. Pendirian</th>
-          <td id="tglPendirianText"></td>
-        </tr>
-
-        <tr>
-          <th>No. SK. Operasional</th>
-          <td id="skOperasionalText"></td>
-        </tr>
-
-        <tr>
-          <th>Tanggal SK. Operasional</th>
-          <td id="tglOperasionalText"></td>
-        </tr>
-
-        <tr>
-          <th>Akreditasi</th>
-          <td id="akreditasiText"></td>
-        </tr>
-
-        <tr>
-          <th>No. SK. Akreditasi</th>
-          <td id="skAkreditasiText"></td>
-        </tr>
-
-        <tr>
-          <th>Tanggal SK. Akreditasi</th>
-          <td id="tglAkreditasiText"></td>
-        </tr>
-
-        <tr>
-          <th>No. Sertifikasi ISO</th>
-          <td id="isoText"></td>
-        </tr>
-
-      </table>
-
-    </div>
-
-    <!-- ================= SEJARAH ================= -->
-
-    <div class="card-section">
-
-      <div class="section-title">
-
-        <i class="fas fa-book"></i>
-        Sejarah Sekolah
-
-      </div>
-
-      <p id="sejarahText"></p>
-
-    </div>
-
-    <!-- ================= VISI MISI ================= -->
-
-    <div class="card-section">
-
-      <div class="section-title">
-
-        <i class="fas fa-bullseye"></i>
-        Visi Misi dan Tujuan
-
-      </div>
-
-      <h3>Visi</h3>
-
-      <p id="visiText"></p>
-
-      <h3>Misi</h3>
-
-      <div id="misiText"></div>
-
-      <h3>Tujuan</h3>
-
-      <p id="tujuanText"></p>
-
-    </div>
-
+<!-- ================= IDENTITAS ================= -->
+<div class="card-section">
+  <div class="section-title">
+    <i class="fas fa-school"></i> Identitas Sekolah
   </div>
 
+  <div class="table-wrapper">
+    <table>
+      <tr><th>Nama</th><td id="namaSekolahText"></td></tr>
+      <tr><th>NPSN</th><td id="npsnText"></td></tr>
+      <tr><th>Alamat</th><td id="alamatText"></td></tr>
+      <tr><th>Kode Pos</th><td id="kodeposText"></td></tr>
+      <tr><th>Desa / Kelurahan</th><td id="desaText"></td></tr>
+      <tr><th>Kecamatan</th><td id="kecamatanText"></td></tr>
+      <tr><th>Kabupaten</th><td id="kabupatenText"></td></tr>
+      <tr><th>Provinsi</th><td id="provinsiText"></td></tr>
+      <tr><th>Status Sekolah</th><td id="statusText"></td></tr>
+      <tr><th>Waktu Penyelenggaraan</th><td id="waktuText"></td></tr>
+      <tr><th>Jenjang Pendidikan</th><td id="jenjangText"></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================= DOKUMEN ================= -->
+<div class="card-section">
+  <div class="section-title">
+    <i class="fas fa-file-alt"></i> Dokumen dan Perizinan
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <tr><th>Naungan</th><td id="naunganText"></td></tr>
+      <tr><th>No. SK Pendirian</th><td id="skPendirianText"></td></tr>
+      <tr><th>Tanggal SK Pendirian</th><td id="tglPendirianText"></td></tr>
+      <tr><th>No. SK Operasional</th><td id="skOperasionalText"></td></tr>
+      <tr><th>Tanggal SK Operasional</th><td id="tglOperasionalText"></td></tr>
+      <tr><th>Akreditasi</th><td id="akreditasiText"></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ================= SEJARAH ================= -->
+<div class="card-section">
+  <div class="section-title">
+    <i class="fas fa-book"></i> Sejarah Sekolah
+  </div>
+
+  <p id="sejarahText"></p>
+</div>
+
+<!-- ================= VISI MISI ================= -->
+<div class="card-section">
+  <div class="section-title">
+    <i class="fas fa-bullseye"></i> Visi, Misi dan Tujuan
+  </div>
+
+  <h3>Visi</h3>
+  <p id="visiText"></p>
+
+  <h3>Misi</h3>
+  <div id="misiText"></div>
+
+  <h3>Tujuan</h3>
+  <p id="tujuanText"></p>
 </div>
 
 <!-- ================= FOOTER ================= -->
+<section class="footer-banner">
+  <div class="footer-banner-overlay"></div>
+  <h1>Learn Today, Lead Tomorrow, Be The Best !</h1>
+</section>
 
-<footer style="background-color:#000000;color:white;padding:8px 20px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;">
-  <div class="column">
-    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
-      <img src="image/Logo_transparent.png" alt="Logo" style="width:100px; background-color:white; padding:0.5px; border-radius:4px;">
-      <h2 style="margin: 0; font-size: 32px; color: white; text-align: center;">SMPN20KONSEL</h2>
-    </div>
-    <p>SMPN 20 Konsel, semangat berkarya, berprestasi tanpa henti!</p>
-  </div>
-  <div class="column">
-    <div class="counter-section" style="display:flex;justify-content:center;gap:40px;">
-      <div class="counter-box">
-        <div class="icon-text"><i class="fas fa-user-graduate fa-2x"></i><p>Alumni</p></div>
-        <span>840</span>
-      </div>
-      <div class="counter-box">
-        <div class="icon-text"><i class="fas fa-users fa-2x"></i><p>Siswa</p></div>
-        <span>122</span>
-      </div>
-      <div class="counter-box">
-        <div class="icon-text"><i class="fas fa-chalkboard-teacher fa-2x"></i><p>Guru</p></div>
-        <span>15</span>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <strong>Temukan Kami</strong>
-    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:10px;">
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div class="footer-icons" style="display:flex;gap:10px;">
-          <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.tiktok.com/@smpn20konsel7?_t=ZS-8x9scy9msHE&_r=1"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
-      <a href="https://youtube.com/@smpn20konsel?si=oKW9ZhK5vXB6r5w9"><i class="fab fa-youtube"></i></a>
-      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-column">
+      <div class="footer-card">
+        <div class="footer-logo">
+          <img src="image/Logo_transparent.png" alt="Logo">
+          <div>
+            <h2>SMPN20KONSEL</h2>
+            <span>Website Portal Sekolah</span>
+          </div>
         </div>
-        <p><i class="fab fa-google-play"></i> Download Aplikasi</p>
-        <a href="https://play.google.com/store/apps" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" style="width:140px;">
-        </a>
+
+        <p>
+          SMPN 20 Konawe Selatan merupakan sekolah yang berkomitmen mencetak generasi unggul, berprestasi, dan berkarakter.
+        </p>
+
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
-      <div>
-        <iframe allowfullscreen="" height="100" loading="lazy" src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&amp;output=embed" style="border:0;border-radius:10px;" width="200"></iframe>
       </div>
     </div>
+
+    <div class="footer-column">
+      <h3>Data Sekolah</h3>
+      <ul class="footer-links">
+        <li><i class="fas fa-user-graduate"></i> Alumni : <span id="totalAlumni">840</span></li>
+        <li><i class="fas fa-users"></i> Siswa : <span id="totalSiswa">0</span></li>
+        <li><i class="fas fa-chalkboard-teacher"></i> Guru & TU : <span id="totalGuru">0</span></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Temukan Kami</h3>
+      <iframe
+        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 SMPN 20 Konawe Selatan
   </div>
 </footer>
 
-<div class="bottom-bar" style="background-color:#f7df09;text-align:center;padding:10px;font-size:14px;">
-  © 2025 SMPN 20 Konawe Selatan <span style="color:red">❤</span> Email: smpn20konsel96@gmail.com
-</div>
+<!-- ================= SCRIPT ================= -->
+<button id="scrollTopBtn">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
-<!-- ================= FIREBASE ================= -->
-
-<script type="module">
-
-import { db } from "./assets/js/firebase.js";
-
-import {
-  doc,
-  getDoc
-}
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-
-/* ================= LOAD PROFIL ================= */
-
-async function loadProfil(){
-
-  const ref =
-  doc(db,"website","profil");
-
-  const snap =
-  await getDoc(ref);
-
-  if(!snap.exists()) return;
-
-  const d = snap.data();
-
-  /* ================= HEADER ================= */
-
-  judulSekolah.innerText =
-  d.nama || "-";
-
-  alamatHeader.innerText =
-  d.alamat || "-";
-
-  /* ================= IDENTITAS ================= */
-
-  namaSekolahText.innerText =
-  d.nama || "-";
-
-  npsnText.innerText =
-  d.npsn || "-";
-
-  alamatText.innerText =
-  d.alamat || "-";
-
-  kodeposText.innerText =
-  d.kodepos || "-";
-
-  desaText.innerText =
-  d.desa || "-";
-
-  kecamatanText.innerText =
-  d.kecamatan || "-";
-
-  kabupatenText.innerText =
-  d.kabupaten || "-";
-
-  provinsiText.innerText =
-  d.provinsi || "-";
-
-  statusText.innerText =
-  d.status || "-";
-
-  waktuText.innerText =
-  d.waktu || "-";
-
-  jenjangText.innerText =
-  d.jenjang || "-";
-
-  /* ================= DOKUMEN ================= */
-
-  naunganText.innerText =
-  d.naungan || "-";
-
-  skPendirianText.innerText =
-  d.sk_pendirian || "-";
-
-  tglPendirianText.innerText =
-  d.tgl_pendirian || "-";
-
-  skOperasionalText.innerText =
-  d.sk_operasional || "-";
-
-  tglOperasionalText.innerText =
-  d.tgl_operasional || "-";
-
-  akreditasiText.innerText =
-  d.akreditasi || "-";
-
-  skAkreditasiText.innerText =
-  d.sk_akreditasi || "-";
-
-  tglAkreditasiText.innerText =
-  d.tgl_akreditasi || "-";
-
-  isoText.innerText =
-  d.iso || "-";
-
-  /* ================= SEJARAH ================= */
-
-  sejarahText.innerHTML =
-  (d.sejarah || "-")
-  .replace(/\n/g,"<br><br>");
-
-  /* ================= VISI ================= */
-
-  visiText.innerHTML =
-  "<strong>" +
-  (d.visi || "-") +
-  "</strong>";
-
-  /* ================= MISI ================= */
-
-  misiText.innerHTML =
-  "<ul>" +
-  (d.misi || "")
-  .split("\n")
-  .map(item => `<li>${item}</li>`)
-  .join("") +
-  "</ul>";
-
-  /* ================= TUJUAN ================= */
-
-  tujuanText.innerText =
-  d.tujuan || "-";
-
-}
-
-loadProfil();
-
-</script>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/profil.js"></script>
+<script type="module" src="assets/js/index.js"></script>
 
 </body>
 </html>

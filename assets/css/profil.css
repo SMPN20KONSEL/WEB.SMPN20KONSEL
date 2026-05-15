@@ -1,0 +1,275 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+    body{
+      background:#071426;
+      color:white;
+      overflow-x:hidden;
+      transition:0.4s;
+    }
+
+/* =========================
+   HERO
+========================= */
+.hero{
+  height:60vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("../../../image/Profil SMP.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+}
+
+.hero-content h1{
+  font-size:40px;
+  letter-spacing:2px;
+}
+
+.hero-content p{
+  margin-top:10px;
+  font-size:18px;
+  opacity:.9;
+}
+
+.hero-btn{
+  margin-top:20px;
+}
+
+.hero-btn a{
+  padding:12px 25px;
+  background:#1e88e5;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  transition:.3s;
+}
+
+.hero-btn a:hover{
+  background:#0d47a1;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+.section-title{
+  text-align:center;
+  margin:50px 16px 20px;
+}
+
+.section-title h2{
+  font-size:32px;
+  margin-bottom:5px;
+}
+
+.section-title p{
+  color:#edca01;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+.about{
+  width:90%;
+  margin:120px 130px 60px;
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
+.about img{
+  width:800px;
+  height:550px;
+  border-radius:22px;
+  object-fit:cover;
+}
+
+.about-text{
+  width:50%;
+}
+
+.about-text h3{
+  font-size:38px;
+  margin-bottom:28px;
+  color:#1e88e5;
+  line-height:1.3;
+}
+
+.about-text p{
+  font-size:22px;
+  margin-bottom:5px;
+  color:#ffffff;
+  line-height:1.9;
+}
+
+/* ===================================================
+   CARD SECTION
+   => Kotak isi utama
+=================================================== */
+
+.card-section{
+  width:90%;
+  margin:40px auto;
+
+  /* warna card lebih elegan */
+  background:rgba(255,255,255,0.08);
+
+  /* efek blur kaca */
+  backdrop-filter:blur(10px);
+
+  padding:60px;
+  border-radius:20px;
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+/* ===================================================
+   JUDUL SECTION
+=================================================== */
+
+.card-section .section-title{
+  margin:0 0 25px;
+
+  font-size:36px;
+  font-weight:800;
+
+  color:#4fc3f7;
+
+  letter-spacing:1px;
+}
+/* ===================================================
+   TABLE
+=================================================== */
+
+table{
+  width:72%;
+  margin-left:350px;
+}
+
+
+/* ===================================================
+   ISI TABLE
+=================================================== */
+
+table th,
+table td{
+  padding:15px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  text-align:left;
+}
+
+
+/* ===================================================
+   HEADER TABLE KIRI
+=================================================== */
+
+table th{
+  width:25%;
+
+  background:rgba(79,195,247,0.18);
+
+  color:#81d4fa;
+
+  font-weight:bold;
+
+}
+
+
+/* ===================================================
+   ISI TABLE KANAN
+=================================================== */
+
+table td{
+  color:#f1f1f1;
+
+  padding-left:35px;
+}
+
+/* ===================================================
+   JUDUL VISI MISI
+=================================================== */
+
+.card-section h3{
+  margin-top:25px;
+  margin-bottom:10px;
+
+  color:#4fc3f7;
+
+  font-size:28px;
+}
+
+
+/* ===================================================
+   TEXT VISI TUJUAN SEJARAH
+=================================================== */
+
+#visiText,
+#tujuanText,
+#sejarahText{
+  margin-top:10px;
+
+  color:#e0e0e0;
+
+  line-height:1.9;
+}
+
+
+/* ===================================================
+   MISI CONTAINER
+=================================================== */
+
+#misiText{
+  margin-top:10px;
+  padding-left:25px;
+}
+
+
+/* ===================================================
+   LIST MISI
+=================================================== */
+
+#misiText ul{
+  list-style:disc;
+}
+
+
+/* ===================================================
+   ITEM MISI
+=================================================== */
+
+#misiText li{
+  margin-bottom:12px;
+  line-height:1.8;
+  color:#f5f5f5;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+
+  .hero-content h1{
+    font-size:28px;
+  }
+
+  .about{
+    flex-direction:column;
+  }
+
+  .about img,
+  .about-text{
+    width:100%;
+  }
+
+  table th{
+    width:45%;
+  }
+}

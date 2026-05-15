@@ -8,90 +8,10 @@
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <link rel="stylesheet" href="../assets/css/admin.css">
 <style>
 
 /* ================= ROOT ================= */
-:root{
-  --primary:#2563eb;
-  --dark:#0f172a;
-  --sidebar:#111827;
-  --bg:#f4f6f9;
-  --card:#ffffff;
-  --text:#1f2937;
-  --muted:#6b7280;
-}
-
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:system-ui, Arial, sans-serif;
-}
-
-body{
-  background:var(--bg);
-  display:flex;
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar{
-  width:260px;
-  height:100vh;
-  background:linear-gradient(180deg,var(--sidebar),#0b1220);
-  color:white;
-  position:fixed;
-  left:0;
-  top:0;
-  padding:20px;
-  overflow-y:auto;
-}
-
-.logo{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.logo img{
-  width:75px;
-  background:white;
-  padding:5px;
-  border-radius:12px;
-}
-
-.logo h2{
-  margin-top:10px;
-  font-size:18px;
-}
-
-.menu-title{
-  margin:20px 0 10px;
-  font-size:12px;
-  color:#9ca3af;
-}
-
-.sidebar a{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 14px;
-  margin-bottom:8px;
-  border-radius:10px;
-  color:#e5e7eb;
-  text-decoration:none;
-  transition:0.25s;
-  font-size:14px;
-}
-
-.sidebar a:hover{
-  background:var(--primary);
-  transform:translateX(5px);
-}
-
-.sidebar a.active{
-  background:var(--primary);
-}
 
 /* ================= MAIN ================= */
 .main{
@@ -310,48 +230,97 @@ tr:hover{
 <!-- ================= SIDEBAR ================= -->
 <div class="sidebar">
 
+  <!-- LOGO -->
   <div class="logo">
     <img src="../image/Logo_transparent.png">
     <h2>SMPN 20 KONSEL</h2>
   </div>
 
-  <div class="menu-title">Menu Utama</div>
+  <!-- MENU -->
+  <div class="menu-title">
+    Menu Utama
+  </div>
 
-  <a href="dashboard.html">
+  <!-- DASHBOARD -->
+  <a class="active" href="dashboard.html">
     <i class="fas fa-home"></i>
     Dashboard
   </a>
 
-  <a href="siswa.html">
-    <i class="fas fa-users"></i>
-    Data Siswa
-  </a>
+  <!-- DATA SEKOLAH -->
+  <div class="dropdown">
 
-  <a href="guru.html">
-    <i class="fas fa-chalkboard-teacher"></i>
-    Data Guru
-  </a>
+    <button class="dropbtn">
+      <i class="fas fa-school"></i>
+      Data Sekolah ▾
+    </button>
 
-  <a href="berita.html">
-    <i class="fas fa-newspaper"></i>
-    Berita
-  </a>
+    <div class="dropdown-content">
 
-  <a href="galeri.html">
-    <i class="fas fa-image"></i>
-    Galeri
-  </a>
+      <a href="siswa.html">
+        <i class="fas fa-users"></i>
+        Data Siswa
+      </a>
 
-  <a href="profil.html">
-    <i class="fas fa-images"></i>
-    Edit Profil
-  </a>
+      <a href="guru.html">
+        <i class="fas fa-chalkboard-teacher"></i>
+        Data Guru
+      </a>
 
-  <a class="active" href="osis.html">
-    <i class="fas fa-user-tie"></i>
-    Data OSIS
-  </a>
+      <a href="osis.html">
+        <i class="fas fa-user-group"></i>
+        Data OSIS
+      </a>
 
+      <a href="profil.html">
+        <i class="fas fa-pen"></i>
+        Edit Profil
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BUAT DATA SEKOLAH -->
+  <div class="dropdown">
+
+    <button class="dropbtn">
+      <i class="fas fa-folder-plus"></i>
+      Buat Data Sekolah ▾
+    </button>
+
+    <div class="dropdown-content">
+
+      <a href="berita.html">
+        <i class="fas fa-newspaper"></i>
+        Berita
+      </a>
+
+      <a href="galeri.html">
+        <i class="fas fa-image"></i>
+        Galeri
+      </a>
+
+      <a href="slider.html">
+        <i class="fas fa-users-gear"></i>
+        Input Pengurus
+      </a>
+
+      <a href="sambutan.html">
+        <i class="fas fa-comment"></i>
+        Sambutan
+      </a>
+
+      <a href="pendaftaran.html">
+        <i class="fas fa-user-plus"></i>
+        Info SPMB
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- MENU LAIN -->
   <a href="statistik.html">
     <i class="fas fa-chart-bar"></i>
     Statistik
@@ -432,7 +401,8 @@ tr:hover{
             <option>Wakil Ketua</option>
             <option>Sekretaris</option>
             <option>Bendahara</option>
-            <option>Seksi Bidang</option>
+            <option>Koordinator Bidang Kerja</option>
+            <option>Bidang Kerja</option>
             <option>Anggota</option>
 
           </select>
@@ -509,7 +479,7 @@ readonly>
   </div>
 
 </div>
-
+ <script type="module" src="../assets/js/admin.js"></script>
 <!-- ================= SCRIPT ================= -->
 <script type="module">
 
@@ -519,7 +489,7 @@ from "../assets/js/firebase.js";
 import {
 
   collection,
-  addDoc,
+  setDoc,
   getDocs,
   deleteDoc,
   doc,
@@ -693,34 +663,59 @@ window.tambahPengurusOsis = async () => {
 
     /* ================= SIMPAN ================= */
 
-    await addDoc(
+let idDoc;
 
-      collection(db,"pengurus_osis"),
+if(
+  jabatan === "Ketua OSIS" ||
+  jabatan === "Wakil Ketua" ||
+  jabatan === "Sekretaris" ||
+  jabatan === "Bendahara" ||
+  jabatan === "Koordinator Bidang Kerja"
+){
 
-      {
+  // hanya 1 orang
+  idDoc = jabatan
+  .toLowerCase()
+  .replace(/\s+/g,"_");
 
-        siswaId : siswaId,
+}else{
 
-        nama : siswa.nama || "",
+  // boleh banyak orang
+  idDoc =
+  jabatan
+  .toLowerCase()
+  .replace(/\s+/g,"_")
+  + "_" + siswa.nis;
 
-        nis : siswa.nis || "",
+}
 
-        nisn : siswa.nisn || "",
+await setDoc(
 
-        kelas : siswa.kelas || "",
+  doc(db, "pengurus_osis", idDoc),
 
-        foto : siswa.foto || "",
+  {
 
-        jabatan : jabatan,
+    siswaId : siswaId,
 
-        periode : periode,
+    nama : siswa.nama || "",
 
-        createdAt : Date.now()
+    nis : siswa.nis || "",
 
-      }
+    nisn : siswa.nisn || "",
 
-    );
+    kelas : siswa.kelas || "",
 
+    foto : siswa.foto || "",
+
+    jabatan : jabatan,
+
+    periode : periode,
+
+    createdAt : Date.now()
+
+  }
+
+);
     alert("Pengurus berhasil ditambahkan");
 
     /* RESET FORM */
