@@ -125,17 +125,16 @@ function renderSiswa(data){
       <div class="siswa-card">
 
         <!-- FOTO -->
-
-        <div class="siswa-foto-box">
-
-<img
-  src="${siswa.foto ? siswa.foto : `image/siswa/${siswa.nis}.jpg`}"
-  class="siswa-foto"
-  onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"
->
-
-        </div>
-
+<div class="siswa-foto-box">
+  <img
+    src="${siswa.foto || `../image/siswa/${siswa.nis}.jpg`}"
+    class="siswa-foto"
+    onerror="
+      this.onerror=null;
+      this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+    "
+  >
+</div>
         <!-- CONTENT -->
 
         <div class="siswa-content">
