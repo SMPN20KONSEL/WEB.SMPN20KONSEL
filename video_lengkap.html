@@ -384,14 +384,18 @@ body{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:768px){
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:992px){
 
   .hero{
-    padding:100px 20px 70px;
+    padding:110px 20px 70px;
   }
 
   .hero h1{
-    font-size:38px;
+    font-size:42px;
   }
 
   .hero p{
@@ -399,15 +403,192 @@ body{
   }
 
   .section-title h2{
-    font-size:30px;
+    font-size:32px;
   }
 
   .video-grid{
-    grid-template-columns:1fr;
+    width:92%;
+    gap:25px;
   }
 
 }
 
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .back-btn{
+    top:15px;
+    right:15px;
+
+    padding:10px 15px;
+
+    font-size:14px;
+  }
+
+  .hero{
+    padding:100px 18px 60px;
+  }
+
+  .hero h1{
+    font-size:32px;
+    line-height:1.4;
+  }
+
+  .hero p{
+    font-size:15px;
+    line-height:1.8;
+  }
+
+  .hero::after{
+    width:90px;
+  }
+
+  .stats{
+    width:92%;
+    gap:20px;
+  }
+
+  .stat-card{
+    padding:25px 20px;
+    border-radius:20px;
+  }
+
+  .stat-card i{
+    font-size:34px;
+  }
+
+  .stat-card h2{
+    font-size:30px;
+  }
+
+  .section-title{
+    margin-bottom:35px;
+    padding:0 20px;
+  }
+
+  .section-title h2{
+    font-size:28px;
+    line-height:1.4;
+  }
+
+  .section-title p{
+    font-size:15px;
+  }
+
+  .video-grid{
+
+    width:92%;
+
+    grid-template-columns:1fr;
+
+    gap:25px;
+  }
+
+  .video-card{
+    border-radius:22px;
+  }
+
+  .video-card video,
+  .video-card iframe{
+    height:220px;
+  }
+
+  .video-content{
+    padding:20px;
+  }
+
+  .video-content h3{
+    font-size:21px;
+    line-height:1.5;
+  }
+
+  .video-content p{
+    font-size:14px;
+  }
+
+  .footer{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+}
+
+/* =========================
+   MOBILE KECIL
+========================= */
+
+@media(max-width:480px){
+
+  .hero{
+    padding:90px 15px 50px;
+  }
+
+  .hero h1{
+    font-size:26px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .stats{
+    width:94%;
+  }
+
+  .stat-card{
+    padding:22px 15px;
+  }
+
+  .stat-card h2{
+    font-size:26px;
+  }
+
+  .section-title h2{
+    font-size:24px;
+  }
+
+  .video-card video,
+  .video-card iframe{
+    height:200px;
+  }
+
+  .video-content{
+    padding:18px;
+  }
+
+  .video-content h3{
+    font-size:18px;
+  }
+
+  .badge{
+    font-size:12px;
+    padding:5px 12px;
+  }
+
+  .back-btn{
+
+    width:42px;
+    height:42px;
+
+    padding:0;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+  }
+
+  .back-btn span{
+    display:none;
+  }
+
+}
 </style>
 </head>
 

@@ -682,64 +682,222 @@ body{
   background:#2563eb;
   border-radius:20px;
 }
-
 /* =========================
-   MOBILE
+   RESPONSIVE TABLET
 ========================= */
 
-@media(max-width:768px){
+@media(max-width:992px){
 
-  .container{
-    padding:15px;
-    margin-top:0;
+  /* HERO */
+  .hero{
+    height:65vh;
   }
 
+  .hero-content h1{
+    font-size:50px;
+  }
+
+  .hero-content p{
+    font-size:18px;
+  }
+
+  /* NAVBAR */
+  .navbar{
+    padding:18px 5%;
+  }
+
+  .navbar ul{
+    gap:18px;
+  }
+
+  .logo h2{
+    font-size:20px;
+  }
+
+  /* PAGE HEADER */
   .page-header{
-
-    margin-top:90px;
-
-    padding:
-    45px 15px 80px;
+    padding:90px 20px 35px;
   }
 
   .page-header h1{
-    font-size:30px;
+    font-size:32px;
   }
 
-  .page-header p{
-    font-size:14px;
-  }
-
+  /* FILTER */
   .filter-card{
-
     flex-direction:column;
-
-    padding:15px;
-
-    margin-top:-40px;
   }
 
   #filterKelas{
     width:100%;
   }
 
-  .stats-grid{
-    grid-template-columns:1fr;
+  /* GRID */
+  .siswa-grid{
+    grid-template-columns:
+    repeat(auto-fill,minmax(280px,1fr));
   }
 
-  .kelas-header{
+}
 
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* HERO */
+  .hero{
+    height:55vh;
+    background-position:center;
+  }
+
+  .hero-content{
+    padding:0 20px;
+  }
+
+  .hero-content h1{
+    font-size:34px;
+    line-height:1.3;
+    margin-bottom:12px;
+  }
+
+  .hero-content p{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  /* NAVBAR */
+  .navbar{
     flex-direction:column;
+    gap:15px;
+    padding:15px 5%;
+  }
 
+  .logo{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .logo img{
+    width:50px;
+  }
+
+  .logo h2{
+    font-size:18px;
+  }
+
+  .navbar ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    padding:0;
+  }
+
+  .navbar ul li a{
+    font-size:14px;
+  }
+
+  /* CONTAINER */
+  .container{
+    padding:15px;
+    margin-top:10px;
+  }
+
+  /* PAGE HEADER */
+  .page-header{
+    margin-top:60px;
+    padding:80px 15px 30px;
+    border-radius:0 0 25px 25px;
+  }
+
+  .page-header h1{
+    font-size:26px;
+    line-height:1.4;
+  }
+
+  .page-header p{
+    font-size:14px;
+    line-height:1.7;
+  }
+
+  /* FILTER */
+  .filter-card{
+    padding:14px;
+    gap:12px;
+    border-radius:18px;
+  }
+
+  .search-box input,
+  #filterKelas{
+    height:50px;
+    font-size:14px;
+  }
+
+  /* STATS */
+  .stats-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .stat-card{
+    padding:20px;
+  }
+
+  .stat-card h2{
+    font-size:28px;
+  }
+
+  .stat-card p{
+    font-size:14px;
+  }
+
+  /* SISWA HEADER */
+  .siswa-header h1{
+    font-size:28px;
+    margin-top:30px;
+  }
+
+  .siswa-header p{
+    font-size:14px;
+  }
+
+  /* KELAS */
+  .kelas-header{
+    flex-direction:column;
     align-items:flex-start;
   }
 
   .kelas-header h2{
-    font-size:24px;
+    font-size:22px;
   }
 
+  .kelas-header span{
+    font-size:13px;
+  }
+
+  /* GRID */
   .siswa-grid{
     grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  /* CARD */
+  .siswa-card{
+    border-radius:20px;
+  }
+
+  .siswa-foto-box{
+    padding:25px;
+  }
+
+  .siswa-foto{
+    width:95px;
+    height:95px;
   }
 
   .siswa-content{
@@ -750,12 +908,92 @@ body{
     font-size:20px;
   }
 
+  .siswa-info{
+    font-size:14px;
+    gap:10px;
+  }
+
+  /* LOADING */
+  .loading-box{
+    padding:35px 20px;
+  }
+
+  .loading-box i{
+    font-size:30px;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  /* HERO */
+  .hero{
+    height:50vh;
+  }
+
   .hero-content h1{
-    font-size:42px;
+    font-size:28px;
   }
 
   .hero-content p{
+    font-size:13px;
+  }
+
+  /* NAVBAR */
+  .navbar{
+    padding:12px 4%;
+  }
+
+  .navbar ul{
+    gap:10px;
+  }
+
+  .navbar ul li a{
+    font-size:13px;
+  }
+
+  .logo h2{
+    font-size:15px;
+  }
+
+  /* HEADER */
+  .page-header h1{
+    font-size:22px;
+  }
+
+  .page-header p{
+    font-size:13px;
+  }
+
+  /* STATS */
+  .stat-card h2{
+    font-size:24px;
+  }
+
+  /* SISWA */
+  .siswa-header h1{
+    font-size:24px;
+  }
+
+  .kelas-header h2{
+    font-size:20px;
+  }
+
+  .siswa-content h3{
     font-size:18px;
+  }
+
+  .siswa-info{
+    font-size:13px;
+  }
+
+  .siswa-foto{
+    width:85px;
+    height:85px;
   }
 
 }

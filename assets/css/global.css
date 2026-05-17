@@ -364,3 +364,223 @@ section{
   }
 
 }
+/* =========================================
+   GLOBAL RESPONSIVE IMPROVED
+========================================= */
+
+/* =========================
+   LARGE TABLET
+========================= */
+
+@media(max-width:992px){
+
+  /* SECTION */
+  section{
+    padding:80px 5%;
+  }
+
+  /* CONTAINER */
+  .container{
+    width:94%;
+  }
+
+  /* TITLE */
+  .section-title{
+    margin-bottom:50px;
+  }
+
+  .section-title h2{
+    font-size:34px;
+    line-height:1.3;
+  }
+
+  .section-title p{
+    font-size:17px;
+  }
+
+  /* GRID */
+  .grid{
+    gap:20px;
+  }
+
+  /* BUTTON */
+  .btn{
+    padding:13px 24px;
+    font-size:15px;
+  }
+
+}
+
+/* =========================
+   TABLET & MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  html,
+  body{
+    overflow-x:hidden;
+  }
+
+  /* SECTION */
+  section{
+    padding:70px 5%;
+  }
+
+  /* CONTAINER */
+  .container{
+    width:100%;
+  }
+
+  /* TITLE */
+  .section-title{
+    margin-bottom:40px;
+  }
+
+  .section-title h2{
+    font-size:28px;
+    line-height:1.4;
+  }
+
+  .section-title p{
+    font-size:15px;
+    line-height:1.8;
+  }
+
+  /* FLEX */
+  .flex,
+  .flex-between{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .flex-center{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  /* GRID */
+  .grid{
+    grid-template-columns:1fr !important;
+    gap:18px;
+  }
+
+  /* CARD */
+  .card{
+    border-radius:16px;
+  }
+
+  /* BUTTON */
+  .btn{
+    padding:12px 20px;
+    font-size:14px;
+    border-radius:40px;
+  }
+
+  /* IMAGE */
+  img{
+    max-width:100%;
+    height:auto;
+  }
+
+  /* TEXT */
+  body{
+    font-size:15px;
+    line-height:1.8;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  /* SECTION */
+  section{
+    padding:60px 4%;
+  }
+
+  /* TITLE */
+  .section-title h2{
+    font-size:23px;
+  }
+
+  .section-title p{
+    font-size:14px;
+  }
+
+  /* BUTTON */
+  .btn{
+    width:100%;
+    justify-content:center;
+    padding:12px 18px;
+    font-size:13px;
+  }
+
+  /* CARD */
+  .card{
+    border-radius:14px;
+  }
+
+  /* TEXT */
+  body{
+    font-size:14px;
+  }
+
+}
+
+/* =========================
+   EXTRA UTILITIES
+========================= */
+
+/* IMAGE RESPONSIVE */
+.img-cover{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* HIDE MOBILE */
+@media(max-width:768px){
+
+  .hide-mobile{
+    display:none !important;
+  }
+
+}
+
+/* HIDE DESKTOP */
+@media(min-width:769px){
+
+  .hide-desktop{
+    display:none !important;
+  }
+
+}
+
+/* RESPONSIVE TABLE */
+.table-responsive{
+  width:100%;
+  overflow-x:auto;
+}
+
+/* RESPONSIVE VIDEO */
+.video-responsive{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.video-responsive iframe,
+.video-responsive video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}

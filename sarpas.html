@@ -322,16 +322,65 @@
   width:28px;
   text-align:center;
 }
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-/* RESPONSIVE */
-@media(max-width:768px){
+/* =========================
+   LAPTOP
+========================= */
+
+@media(max-width:1200px){
+
+  .hero-content h1{
+    font-size:55px;
+  }
+
+  .section-title h2{
+    font-size:38px;
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:992px){
+
+  section{
+    padding:80px 6%;
+  }
+
+  .hero{
+    height:auto;
+    min-height:100vh;
+    padding:120px 20px 80px;
+  }
+
+  .hero-content h1{
+    font-size:48px;
+  }
+
+  .hero-content p{
+    font-size:18px;
+  }
+
+  .about{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .about-text{
+    text-align:center;
+  }
 
   .contact{
-    padding:35px 25px;
+    padding:45px;
   }
 
   .contact h2{
-    font-size:34px;
+    font-size:40px;
   }
 
   .contact-body{
@@ -341,54 +390,225 @@
 
   .contact-content p{
     justify-content:center;
-    font-size:19px;
-  }
-
-  .contact-body img{
-    width:150px;
-    height:150px;
   }
 
 }
-    /* ================= RESPONSIVE ================= */
 
-    @media(max-width:900px){
+/* =========================
+   MOBILE
+========================= */
 
-      header{
-        flex-direction:column;
-        gap:15px;
-      }
+@media(max-width:768px){
 
-      nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-      }
+  section{
+    padding:70px 5%;
+  }
 
-      .hero-content h1{
-        font-size:45px;
-      }
+  .hero{
+    padding:110px 20px 70px;
+    height:auto;
+  }
 
-      .about{
-        grid-template-columns:1fr;
-      }
+  .hero-content h1{
+    font-size:38px;
+    line-height:1.3;
+  }
 
-    }
+  .hero-content p{
+    font-size:16px;
+    line-height:1.8;
+  }
 
-    @media(max-width:600px){
+  .hero-btn a{
+    display:inline-block;
+    padding:14px 28px;
+    font-size:15px;
+  }
 
-      .hero-content h1{
-        font-size:34px;
-      }
+  .section-title{
+    margin-bottom:45px;
+  }
 
-      .hero-content p{
-        font-size:16px;
-      }
+  .section-title h2{
+    font-size:32px;
+    line-height:1.4;
+  }
 
-      .section-title h2{
-        font-size:30px;
-      }
+  .section-title p{
+    font-size:15px;
+  }
 
-    }
+  .about img{
+    border-radius:20px;
+  }
+
+  .about-text h3{
+    font-size:28px;
+  }
+
+  .about-text p{
+    font-size:15px;
+    line-height:1.9;
+  }
+
+  .facility-container{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .facility-card{
+    padding:30px 20px;
+    border-radius:20px;
+  }
+
+  .facility-card i{
+    font-size:42px;
+  }
+
+  .facility-card h3{
+    font-size:22px;
+  }
+
+  .slide{
+    width:240px;
+    height:170px;
+  }
+
+  table th,
+  table td{
+    padding:15px;
+    font-size:14px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery img{
+    height:220px;
+  }
+
+  .contact{
+    padding:35px 25px;
+    border-radius:28px;
+  }
+
+  .contact h2{
+    font-size:32px;
+    margin-bottom:35px;
+  }
+
+  .contact-body img{
+    width:140px;
+    height:140px;
+  }
+
+  .contact-content{
+    gap:16px;
+  }
+
+  .contact-content p{
+    font-size:18px;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    line-height:1.7;
+  }
+
+}
+
+/* =========================
+   MOBILE KECIL
+========================= */
+
+@media(max-width:480px){
+
+  .hero{
+    padding:100px 15px 60px;
+  }
+
+  .hero-content h1{
+    font-size:30px;
+  }
+
+  .hero-content p{
+    font-size:14px;
+  }
+
+  .hero-btn{
+    margin-top:28px;
+  }
+
+  .hero-btn a{
+    width:100%;
+    display:block;
+    text-align:center;
+    padding:14px 20px;
+    border-radius:16px;
+  }
+
+  .section-title h2{
+    font-size:26px;
+  }
+
+  .about-text h3{
+    font-size:24px;
+  }
+
+  .facility-card{
+    padding:25px 18px;
+  }
+
+  .facility-card h3{
+    font-size:20px;
+  }
+
+  .facility-card p{
+    font-size:14px;
+  }
+
+  .slide{
+    width:200px;
+    height:150px;
+  }
+
+  table th,
+  table td{
+    padding:12px;
+    font-size:13px;
+  }
+
+  .gallery img{
+    height:190px;
+  }
+
+  .contact{
+    padding:28px 18px;
+  }
+
+  .contact h2{
+    font-size:26px;
+  }
+
+  .contact-body{
+    gap:25px;
+  }
+
+  .contact-body img{
+    width:110px;
+    height:110px;
+  }
+
+  .contact-content p{
+    font-size:15px;
+    gap:10px;
+  }
+
+  .contact-content i{
+    width:22px;
+    font-size:14px;
+  }
+
+}
 
   </style>
 </head>
