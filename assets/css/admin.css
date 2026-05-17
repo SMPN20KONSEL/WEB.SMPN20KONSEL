@@ -1,9 +1,8 @@
-
 /* ================= ROOT ================= */
 :root{
   --primary:#2563eb;
   --dark:#0f172a;
-  --sidebar:#111827;
+  --sidebar:#081b33;
   --bg:#f4f6f9;
   --card:#ffffff;
   --text:#1f2937;
@@ -18,22 +17,29 @@
   font-family:system-ui, Arial, sans-serif;
 }
 
+/* ================= BODY ================= */
 body{
   background:var(--bg);
   display:flex;
 }
 
+/* ================= SIDEBAR ================= */
 .sidebar{
   width:260px;
   height:100vh;
-  background:#081b33;
+
+  background:var(--sidebar);
+
   position:fixed;
   left:0;
   top:0;
+
   padding:20px;
+
   overflow-y:auto;
 }
 
+/* ================= LOGO ================= */
 .logo{
   text-align:center;
   margin-bottom:30px;
@@ -47,18 +53,24 @@ body{
 .logo h2{
   color:white;
   font-size:20px;
+  line-height:1.4;
 }
 
+/* ================= MENU TITLE ================= */
 .menu-title{
   color:#9ca3af;
   margin-bottom:15px;
-  font-size:14px;
+  font-size:13px;
   text-transform:uppercase;
+  letter-spacing:1px;
 }
 
+/* ================= MENU ================= */
 .sidebar a,
 .dropbtn{
+
   width:100%;
+
   display:flex;
   align-items:center;
   gap:12px;
@@ -80,29 +92,73 @@ body{
   font-size:15px;
 }
 
+/* ================= HOVER ================= */
 .sidebar a:hover,
 .dropbtn:hover{
   background:#1877f2;
 }
 
+/* ================= ACTIVE ================= */
 .sidebar a.active{
   background:#1877f2;
 }
 
+/* ================= DROPDOWN ================= */
 .dropdown{
   margin-bottom:10px;
 }
 
+/* tombol dropdown */
+.dropbtn{
+  justify-content:flex-start;
+}
+
+/* isi dropdown */
 .dropdown-content{
+
   display:none;
+
   padding-left:15px;
+
+  margin-top:6px;
 }
 
+/* link dropdown */
 .dropdown-content a{
+
   font-size:14px;
+
   margin-top:5px;
+
+  background:rgba(255,255,255,0.03);
 }
 
+/* saat aktif */
 .dropdown.active .dropdown-content{
   display:block;
+}
+
+/* ================= SCROLLBAR ================= */
+.sidebar::-webkit-scrollbar{
+  width:6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,0.2);
+  border-radius:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+
 }

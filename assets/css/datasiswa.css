@@ -5,19 +5,34 @@
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:#f3f4f6;
-  color:#111827;
+
+  background:
+  linear-gradient(
+    180deg,
+    #081b33 0%,
+    #0d2342 50%,
+    #081b33 100%
+  );
+
+  color:white;
   overflow-x:hidden;
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   position:relative;
   height:75vh;
+
   background:
-    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
     url('../../image/upacara.jpg');
+
   background-size:cover;
   background-position:center;
+
   color:white;
 }
 
@@ -32,9 +47,11 @@ body{
 .navbar{
   position:relative;
   z-index:10;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:20px 8%;
 }
 
@@ -50,6 +67,7 @@ body{
 
 .logo h2{
   font-size:24px;
+  color:white;
 }
 
 .navbar ul{
@@ -66,30 +84,34 @@ body{
 }
 
 .navbar ul li a:hover{
-  color:#ffd43b;
+  color:#60a5fa;
 }
-
 
 /* ================= HERO CONTENT ================= */
 
 .hero-content{
   position:relative;
   z-index:2;
+
   height:80%;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+
   text-align:center;
 }
 
 .hero-content h1{
   font-size:65px;
   margin-bottom:15px;
+  color:white;
 }
 
 .hero-content p{
   font-size:22px;
+  color:#dbeafe;
 }
 
 /* =========================
@@ -100,6 +122,7 @@ body{
   max-width:1300px;
   margin:20px auto 50px;
   padding:20px;
+
   position:relative;
   z-index:5;
 }
@@ -109,7 +132,9 @@ body{
 ========================= */
 
 .page-header{
+
   margin-top:100px;
+
   padding:100px 20px 40px;
 
   text-align:center;
@@ -117,9 +142,11 @@ body{
   background:
   linear-gradient(
     135deg,
-    #2563eb 0%,
-    #1d4ed8 100%
+    rgba(37,99,235,.25),
+    rgba(29,78,216,.18)
   );
+
+  backdrop-filter:blur(14px);
 
   color:white;
 
@@ -129,6 +156,9 @@ body{
   position:relative;
 
   overflow:hidden;
+
+  border:
+  1px solid rgba(255,255,255,.08);
 }
 
 /* EFFECT */
@@ -143,7 +173,7 @@ body{
   height:320px;
 
   background:
-  rgba(255,255,255,.08);
+  rgba(255,255,255,.06);
 
   border-radius:50%;
 
@@ -161,7 +191,7 @@ body{
   height:220px;
 
   background:
-  rgba(255,255,255,.05);
+  rgba(255,255,255,.04);
 
   border-radius:50%;
 
@@ -187,7 +217,7 @@ body{
 
 .page-header p{
 
-  color:rgba(255,255,255,.88);
+  color:rgba(255,255,255,.82);
 
   font-size:15px;
 
@@ -201,7 +231,9 @@ body{
 
 .filter-card{
 
-  background:white;
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
 
   border-radius:22px;
 
@@ -217,9 +249,9 @@ body{
   z-index:20;
 
   box-shadow:
-  0 12px 30px rgba(0,0,0,.08);
+  0 12px 30px rgba(0,0,0,.18);
 
-  border:1px solid #eef0f3;
+  border:1px solid rgba(255,255,255,.08);
 
   flex-wrap:wrap;
 }
@@ -240,7 +272,7 @@ body{
 
   transform:translateY(-50%);
 
-  color:#9ca3af;
+  color:#cbd5e1;
 
   font-size:15px;
 }
@@ -254,7 +286,7 @@ body{
 
   border-radius:14px;
 
-  border:1px solid #dbe1ea;
+  border:1px solid rgba(255,255,255,.08);
 
   font-size:15px;
 
@@ -262,7 +294,9 @@ body{
 
   transition:.3s;
 
-  background:#f9fafb;
+  background:rgba(255,255,255,.05);
+
+  color:white;
 
   box-sizing:border-box;
 }
@@ -271,6 +305,10 @@ body{
 
   padding:
   0 18px 0 48px;
+}
+
+.search-box input::placeholder{
+  color:#cbd5e1;
 }
 
 #filterKelas{
@@ -285,12 +323,12 @@ body{
 .search-box input:focus,
 #filterKelas:focus{
 
-  border-color:#2563eb;
+  border-color:#3b82f6;
 
-  background:white;
+  background:rgba(255,255,255,.08);
 
   box-shadow:
-  0 0 0 4px rgba(37,99,235,.10);
+  0 0 0 4px rgba(37,99,235,.15);
 }
 
 /* =========================
@@ -311,7 +349,9 @@ body{
 
 .stat-card{
 
-  background:white;
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
 
   border-radius:22px;
 
@@ -320,9 +360,9 @@ body{
   text-align:center;
 
   box-shadow:
-  0 8px 20px rgba(0,0,0,.05);
+  0 8px 20px rgba(0,0,0,.18);
 
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.08);
 
   transition:.3s ease;
 }
@@ -332,14 +372,14 @@ body{
   transform:translateY(-5px);
 
   box-shadow:
-  0 15px 30px rgba(0,0,0,.08);
+  0 15px 30px rgba(0,0,0,.25);
 }
 
 .stat-card i{
 
   font-size:30px;
 
-  color:#2563eb;
+  color:#60a5fa;
 
   margin-bottom:12px;
 }
@@ -350,7 +390,7 @@ body{
 
   font-size:32px;
 
-  color:#111827;
+  color:white;
 
   font-weight:700;
 }
@@ -359,7 +399,7 @@ body{
 
   margin-top:10px;
 
-  color:#6b7280;
+  color:#dbeafe;
 
   font-size:15px;
 }
@@ -391,14 +431,16 @@ body{
   align-items:center;
 
   gap:12px;
-}Profil Peserta Didik
+
+  color:white;
+}
 
 .siswa-header h1 i{
-  color:#2563eb;
+  color:#60a5fa;
 }
 
 .siswa-header p{
-  color:#6b7280;
+  color:#dbeafe;
 }
 
 /* =========================
@@ -430,7 +472,7 @@ body{
 
   font-size:28px;
 
-  color:#111827;
+  color:white;
 
   display:flex;
 
@@ -440,14 +482,14 @@ body{
 }
 
 .kelas-header h2 i{
-  color:#2563eb;
+  color:#60a5fa;
 }
 
 .kelas-header span{
 
-  background:#dbeafe;
+  background:rgba(59,130,246,.15);
 
-  color:#1d4ed8;
+  color:#93c5fd;
 
   padding:8px 16px;
 
@@ -456,6 +498,8 @@ body{
   font-size:14px;
 
   font-weight:600;
+
+  border:1px solid rgba(255,255,255,.08);
 }
 
 /* =========================
@@ -478,16 +522,18 @@ body{
 
 .siswa-card{
 
-  background:white;
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
 
   border-radius:24px;
 
   overflow:hidden;
 
   box-shadow:
-  0 10px 25px rgba(0,0,0,.06);
+  0 10px 25px rgba(0,0,0,.18);
 
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.08);
 
   transition:.3s ease;
 }
@@ -497,7 +543,7 @@ body{
   transform:translateY(-5px);
 
   box-shadow:
-  0 18px 35px rgba(0,0,0,.10);
+  0 18px 35px rgba(0,0,0,.28);
 }
 
 /* =========================
@@ -534,7 +580,7 @@ body{
   border:5px solid white;
 
   box-shadow:
-  0 5px 20px rgba(0,0,0,.15);
+  0 5px 20px rgba(0,0,0,.2);
 }
 
 /* =========================
@@ -551,7 +597,7 @@ body{
 
   font-size:22px;
 
-  color:#111827;
+  color:white;
 }
 
 /* =========================
@@ -570,14 +616,14 @@ body{
 
   font-size:15px;
 
-  color:#4b5563;
+  color:#dbeafe;
 }
 
 .siswa-info i{
 
   width:22px;
 
-  color:#2563eb;
+  color:#60a5fa;
 
   font-size:15px;
 }
@@ -588,7 +634,9 @@ body{
 
 .loading-box{
 
-  background:white;
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
 
   border-radius:24px;
 
@@ -597,25 +645,42 @@ body{
   text-align:center;
 
   box-shadow:
-  0 10px 25px rgba(0,0,0,.05);
+  0 10px 25px rgba(0,0,0,.18);
 
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.08);
 }
 
 .loading-box i{
 
   font-size:38px;
 
-  color:#2563eb;
+  color:#60a5fa;
 
   margin-bottom:15px;
 }
 
 .loading-box p{
 
-  color:#6b7280;
+  color:#dbeafe;
 
   margin:0;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#081b33;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#2563eb;
+  border-radius:20px;
 }
 
 /* =========================
@@ -683,6 +748,14 @@ body{
 
   .siswa-content h3{
     font-size:20px;
+  }
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .hero-content p{
+    font-size:18px;
   }
 
 }

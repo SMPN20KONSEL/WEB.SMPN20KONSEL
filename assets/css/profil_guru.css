@@ -1,23 +1,50 @@
 /* ================= RESET ================= */
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+
+  background:
+  linear-gradient(
+    180deg,
+    #061426 0%,
+    #0b1f3a 50%,
+    #061426 100%
+  );
+
+  color:white;
+  overflow-x:hidden;
+}
 
 /* ================= HERO ================= */
 
 .hero{
   position:relative;
+
   height:75vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   background:
-    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)),
     url('../../image/upacara.jpg');
+
   background-size:cover;
   background-position:center;
+
   color:white;
 }
 
 .overlay{
   position:absolute;
-  width:100%;
-  height:100%;
+  inset:0;
 }
 
 /* ================= NAVBAR ================= */
@@ -25,9 +52,11 @@
 .navbar{
   position:relative;
   z-index:10;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:20px 8%;
 }
 
@@ -43,6 +72,7 @@
 
 .logo h2{
   font-size:24px;
+  color:white;
 }
 
 .navbar ul{
@@ -59,7 +89,7 @@
 }
 
 .navbar ul li a:hover{
-  color:#ffd43b;
+  color:#60a5fa;
 }
 
 /* ================= HERO CONTENT ================= */
@@ -67,54 +97,89 @@
 .hero-content{
   position:relative;
   z-index:2;
-  height:80%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+
   text-align:center;
+
+  padding:20px;
 }
 
 .hero-content h1{
   font-size:65px;
   margin-bottom:15px;
+  color:white;
+
+  text-shadow:
+  0 5px 15px rgba(0,0,0,.4);
 }
 
 .hero-content p{
   font-size:22px;
+  color:#dbeafe;
+
+  max-width:700px;
+  margin:auto;
+
+  line-height:1.7;
 }
 
 /* ================= STATS ================= */
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
   gap:25px;
+
   padding:70px 8%;
 }
 
 .stat-card{
-  background:white;
+
+  background:
+  rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
+
   padding:35px;
+
   border-radius:25px;
+
   text-align:center;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+  0 8px 25px rgba(0,0,0,.18);
+
   transition:.4s;
 }
 
 .stat-card:hover{
-  transform:translateY(-10px);
+
+  transform:
+  translateY(-10px);
+
+  box-shadow:
+  0 15px 35px rgba(0,0,0,.28);
 }
 
 .stat-card i{
   font-size:45px;
-  color:#0d6efd;
+  color:#60a5fa;
   margin-bottom:15px;
 }
 
 .stat-card h2{
   font-size:38px;
   margin-bottom:10px;
+  color:white;
+}
+
+.stat-card p{
+  color:#dbeafe;
 }
 
 /* ================= SEARCH ================= */
@@ -127,127 +192,267 @@
 .search-section h2{
   font-size:38px;
   margin-bottom:25px;
+  color:white;
 }
 
 .search-section input{
+
   width:100%;
   max-width:600px;
-  padding:17px;
+
+  padding:17px 25px;
+
   border:none;
   outline:none;
+
   border-radius:50px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+  background:
+  rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+  0 5px 20px rgba(0,0,0,.18);
+
   font-size:16px;
+
+  color:white;
+
+  transition:.3s;
 }
 
-/* ================= GURU CARD (FIXED CLEAN) ================= */
+.search-section input::placeholder{
+  color:#cbd5e1;
+}
+
+.search-section input:hover{
+  border:1px solid rgba(96,165,250,.4);
+}
+
+.search-section input:focus{
+
+  border:
+  1px solid #3b82f6;
+
+  box-shadow:
+  0 0 0 4px rgba(37,99,235,.15);
+}
+
+/* ================= GURU CONTAINER ================= */
 
 .guru-container{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(270px,1fr));
+
   gap:30px;
+
   padding:60px 8%;
 }
 
+/* ================= GURU CARD ================= */
+
 .guru-card{
-  background: white;
-  border-radius: 25px;
 
-  /* 🔵 garis pinggir biru */
-  border: 2px solid #0d6efd;
+  background:
+  rgba(255,255,255,.08);
 
-  /* 🔥 bayangan halus */
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  backdrop-filter:blur(14px);
 
-  /* 📏 dibuat lebih lebar */
-  width: 100%;
-  max-width: 350px;
+  border-radius:25px;
 
-  margin: auto;
+  border:
+  1px solid rgba(255,255,255,.08);
 
-  padding: 30px 25px;
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.18);
 
-  text-align: center;
+  width:100%;
+  max-width:350px;
 
-  transition: 0.3s;
+  margin:auto;
+
+  padding:30px 25px;
+
+  text-align:center;
+
+  transition:.35s;
+
+  animation:fadeUp .5s ease;
 }
 
 .guru-card:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+
+  transform:
+  translateY(-8px);
+
+  box-shadow:
+  0 18px 40px rgba(0,0,0,.28);
 }
 
-.guru-card:hover{
-  transform:translateY(-8px);
-}
+/* ================= FOTO ================= */
 
-/* FOTO */
 .guru-card img{
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
 
-  border: 4px solid #0d6efd;
+  width:120px;
+  height:120px;
 
-  margin-bottom: 10px;
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:
+  4px solid #60a5fa;
+
+  margin-bottom:15px;
+
+  box-shadow:
+  0 8px 25px rgba(0,0,0,.2);
+
+  transition:.4s;
 }
 
-/* TEXT */
+.guru-card:hover img{
+  transform:scale(1.08);
+}
+
+/* ================= TEXT ================= */
+
 .guru-card h3{
-  font-size: 20px;
 
-  /* 🔥 penting untuk nama panjang */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  font-size:22px;
 
-  max-width: 100%;
+  color:white;
+
+  margin-bottom:12px;
+
+  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
+
+.guru-card span{
+
+  display:inline-block;
+
+  margin-bottom:14px;
+
+  padding:6px 14px;
+
+  border-radius:20px;
+
+  background:
+  rgba(96,165,250,.15);
+
+  color:#93c5fd;
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
 .guru-card p{
-  text-align: left;
-  padding-left: 50px;   /* jarak dari kiri */
-  padding-right: 10px;
-}
-.guru-card p{
-  margin: 6px 0;
-  font-size: 14px;
-  color: #000000;
 
-  /* biar tidak keluar */
-  word-break: break-word;
+  margin:8px 0;
+
+  font-size:14px;
+
+  color:#dbeafe;
+
+  line-height:1.7;
+
+  word-break:break-word;
+
+  text-align:center;
 }
 
-/* ICON STYLE */
+/* ================= ICON ================= */
+
 .guru-card p i{
-  color:#0d6efd;
-  margin-right:6px;
+  color:#60a5fa;
+  margin-right:8px;
 }
 
-/* ================= STATUS BADGE (OPTIONAL) ================= */
+/* ================= STATUS BADGE ================= */
 
 .badge{
-  display:inline-block;
-  margin-top:8px;
-  padding:5px 12px;
-  border-radius:20px;
-  background:#0d6efd;
-  color:white;
-  font-size:12px;
-}
 
+  display:inline-block;
+
+  margin-top:12px;
+
+  padding:6px 14px;
+
+  border-radius:20px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  color:white;
+
+  font-size:12px;
+
+  box-shadow:
+  0 5px 15px rgba(37,99,235,.3);
+}
 
 /* ================= LOADING / ERROR ================= */
 
 .loading,
 .error-box,
 .empty{
+
   text-align:center;
+
   padding:40px;
+
+  color:#dbeafe;
 }
 
 .loading i{
+
   font-size:35px;
-  color:#0d6efd;
+
+  color:#60a5fa;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#081b33;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#2563eb;
+  border-radius:20px;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
 }
 
 /* ================= RESPONSIVE ================= */
@@ -264,12 +469,48 @@
     justify-content:center;
   }
 
+  .hero{
+    height:60vh;
+  }
+
   .hero-content h1{
-    font-size:45px;
+    font-size:42px;
   }
 
   .hero-content p{
-    font-size:18px;
+    font-size:17px;
+  }
+
+  .search-section h2{
+    font-size:30px;
+  }
+
+  .guru-card{
+    max-width:100%;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .hero-content h1{
+    font-size:34px;
+  }
+
+  .hero-content p{
+    font-size:15px;
+  }
+
+  .stat-card{
+    padding:25px;
+  }
+
+  .stat-card h2{
+    font-size:30px;
+  }
+
+  .guru-card{
+    padding:25px 20px;
   }
 
 }

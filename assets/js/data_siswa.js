@@ -1,5 +1,6 @@
-import { db } from "./firebase.js";
 
+import { db }
+from "./firebase.js";
 import {
   collection,
   onSnapshot
@@ -131,14 +132,14 @@ function renderSiswa(data){
           <img
           src="${
             siswa.foto ||
-            `../image/siswa/${siswa.nis}.jpg`
+            `image/siswa/${siswa.nis}.jpg`
           }"
 
           class="siswa-foto"
 
           onerror="
           this.onerror=null;
-          this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+          this.src='image/siswa/user.jpg';
           ">
 
         </div>

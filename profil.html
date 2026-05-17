@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8" />
@@ -10,6 +11,7 @@
   <meta name="keywords" content="SMPN 20 Konawe Selatan, Sekolah, SMP">
   <meta name="author" content="SMPN 20 Konawe Selatan">
 
+  <!-- ICON -->
   <link rel="icon" href="image/Logo_transparent.png">
 
   <!-- FONT AWESOME -->
@@ -18,250 +20,293 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/header-footer.css">
   <link rel="stylesheet" href="assets/css/profil.css">
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
-<header>
-  <div class="top-bar">
-    <div>
-      <i class="fas fa-phone"></i> -
-      &nbsp;&nbsp;
-      <i class="fas fa-envelope"></i>
-      smpn20konsel96@gmail.com
-    </div>
-
-    <div class="social-icons">
-      <a href="https://web.facebook.com/profile.php?id=61577266951408"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.tiktok.com/@smpn20konsel7"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/smpn20konsel"><i class="fab fa-instagram"></i></a>
-      <a href="https://youtube.com/@smpn20konsel"><i class="fab fa-youtube"></i></a>
-      <a href="https://wa.me/qr/AXZTONE55Z4YK1"><i class="fab fa-whatsapp"></i></a>
-    </div>
-  </div>
-
-  <nav>
-    <div class="logo">
-      <img src="image/Logo_transparent.png" alt="Logo">
-      <h2>
-        SMPN20KONSEL
-        <br>
-        <small>Tempat menimba ilmu, tumbuh berprestasi</small>
-      </h2>
-    </div>
-
-    <div class="nav-toggle">☰</div>
-
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-
-      <div class="dropdown">
-        <button class="dropbtn">Profil ▾</button>
-        <div class="dropdown-content">
-          <a href="profil.html">Profil Sekolah</a>
-          <a href="data_siswa.html">Data Siswa</a>
-          <a href="profil_guru.html">Data Guru</a>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">Manajemen ▾</button>
-        <div class="dropdown-content">
-          <a href="humas.html">Humas</a>
-          <a href="sarpas.html">Sarpas</a>
-          <a href="kesiswaan.html">Kesiswaan</a>
-          <a href="berita.html">Berita</a>
-          <a href="kurikulum.html">Kurikulum</a>
-          <a href="informasi.html">Informasi</a>
-        </div>
-      </div>
-
-      <a href="galeri.html">Galeri</a>
-      <a href="kontak.html">Kontak</a>
-
-      <a href="daftar_spmb.html" class="login-btn">
-        Daftar SPMB <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-  </nav>
-</header>
+<div id="header"></div>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
+
+  <div class="hero-overlay"></div>
+
   <div class="hero-content">
+
     <h1>PROFIL SEKOLAH</h1>
+
     <p>
-      Sekolah unggul, berkarakter, dan berprestasi.
+      Sekolah unggul, berkarakter, berprestasi,
+      dan siap mencetak generasi masa depan.
     </p>
 
     <div class="hero-btn">
-      <a href="#">Selengkapnya</a>
+      <a href="#tentang">
+        <i class="fas fa-arrow-down"></i>
+        Selengkapnya
+      </a>
     </div>
   </div>
+
 </section>
 
 <!-- ================= TENTANG ================= -->
-<section id="tentang">
+<section id="tentang" class="section-space">
+
   <div class="section-title">
-  <h2>Tentang Profil Sekolah</h2>
-  <p>Membangun generasi unggul, berkarakter, dan berdaya saing</p>
-</div>
+    <span>Profil Sekolah</span>
+    <h2>Tentang SMP Negeri 20 Konawe Selatan</h2>
+
+    <p>
+      Membangun generasi unggul, berkarakter,
+      dan berdaya saing global.
+    </p>
+  </div>
 
   <div class="about">
-    <img src="image/Profil SMP.jpg" alt="Profil Sekolah">
 
-    <div class="about-text">
-      <h3>Membangun Komunikasi Sekolah</h3>
+    <div class="about-image">
+      <img src="image/Profil SMP.jpg" alt="Profil Sekolah">
 
-      <p>
-        SMP Negeri 20 Konawe Selatan merupakan salah satu satuan pendidikan tingkat menengah pertama yang berkomitmen dalam meningkatkan mutu pendidikan, karakter, dan prestasi peserta didik.
-      </p>
-
-      <p>
-        Sekolah ini berperan aktif dalam mencetak generasi yang beriman, berilmu, berakhlak mulia, serta memiliki keterampilan abad 21.
-      </p>
-
-      <p>Jln. Poros Sabulakoa</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= IDENTITAS ================= -->
-<div class="card-section">
-  <div class="section-title">
-    <i class="fas fa-school"></i> Identitas Sekolah
-  </div>
-
-  <div class="table-wrapper">
-    <table>
-      <tr><th>Nama</th><td id="namaSekolahText"></td></tr>
-      <tr><th>NPSN</th><td id="npsnText"></td></tr>
-      <tr><th>Alamat</th><td id="alamatText"></td></tr>
-      <tr><th>Kode Pos</th><td id="kodeposText"></td></tr>
-      <tr><th>Desa / Kelurahan</th><td id="desaText"></td></tr>
-      <tr><th>Kecamatan</th><td id="kecamatanText"></td></tr>
-      <tr><th>Kabupaten</th><td id="kabupatenText"></td></tr>
-      <tr><th>Provinsi</th><td id="provinsiText"></td></tr>
-      <tr><th>Status Sekolah</th><td id="statusText"></td></tr>
-      <tr><th>Waktu Penyelenggaraan</th><td id="waktuText"></td></tr>
-      <tr><th>Jenjang Pendidikan</th><td id="jenjangText"></td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- ================= DOKUMEN ================= -->
-<div class="card-section">
-  <div class="section-title">
-    <i class="fas fa-file-alt"></i> Dokumen dan Perizinan
-  </div>
-
-  <div class="table-wrapper">
-    <table>
-      <tr><th>Naungan</th><td id="naunganText"></td></tr>
-      <tr><th>No. SK Pendirian</th><td id="skPendirianText"></td></tr>
-      <tr><th>Tanggal SK Pendirian</th><td id="tglPendirianText"></td></tr>
-      <tr><th>No. SK Operasional</th><td id="skOperasionalText"></td></tr>
-      <tr><th>Tanggal SK Operasional</th><td id="tglOperasionalText"></td></tr>
-      <tr><th>Akreditasi</th><td id="akreditasiText"></td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- ================= SEJARAH ================= -->
-<div class="card-section">
-  <div class="section-title">
-    <i class="fas fa-book"></i> Sejarah Sekolah
-  </div>
-
-  <p id="sejarahText"></p>
-</div>
-
-<!-- ================= VISI MISI ================= -->
-<div class="card-section">
-  <div class="section-title">
-    <i class="fas fa-bullseye"></i> Visi, Misi dan Tujuan
-  </div>
-
-  <h3>Visi</h3>
-  <p id="visiText"></p>
-
-  <h3>Misi</h3>
-  <div id="misiText"></div>
-
-  <h3>Tujuan</h3>
-  <p id="tujuanText"></p>
-</div>
-
-<!-- ================= FOOTER ================= -->
-<section class="footer-banner">
-  <div class="footer-banner-overlay"></div>
-  <h1>Learn Today, Lead Tomorrow, Be The Best !</h1>
-</section>
-
-<footer class="footer">
-  <div class="footer-container">
-
-    <div class="footer-column">
-      <div class="footer-card">
-        <div class="footer-logo">
-          <img src="image/Logo_transparent.png" alt="Logo">
-          <div>
-            <h2>SMPN20KONSEL</h2>
-            <span>Website Portal Sekolah</span>
-          </div>
-        </div>
-
-        <p>
-          SMPN 20 Konawe Selatan merupakan sekolah yang berkomitmen mencetak generasi unggul, berprestasi, dan berkarakter.
-        </p>
-
-        <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
-        </div>
+      <div class="about-badge">
+        <i class="fas fa-graduation-cap"></i>
+        Sekolah Berkarakter
       </div>
     </div>
 
-    <div class="footer-column">
-      <h3>Data Sekolah</h3>
-      <ul class="footer-links">
-        <li><i class="fas fa-user-graduate"></i> Alumni : <span id="totalAlumni">840</span></li>
-        <li><i class="fas fa-users"></i> Siswa : <span id="totalSiswa">0</span></li>
-        <li><i class="fas fa-chalkboard-teacher"></i> Guru & TU : <span id="totalGuru">0</span></li>
-      </ul>
-    </div>
+    <div class="about-text">
 
-    <div class="footer-column">
-      <h3>Temukan Kami</h3>
-      <iframe
-        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
+      <h3>Membangun Komunikasi dan Pendidikan Berkualitas</h3>
+
+      <p>
+        SMP Negeri 20 Konawe Selatan merupakan salah satu satuan
+        pendidikan tingkat menengah pertama yang berkomitmen
+        dalam meningkatkan mutu pendidikan, karakter,
+        dan prestasi peserta didik.
+      </p>
+
+      <p>
+        Sekolah ini berperan aktif dalam mencetak generasi
+        yang beriman, berilmu, berakhlak mulia,
+        serta memiliki keterampilan abad 21.
+      </p>
+
+      <div class="about-info">
+
+        <div class="info-item">
+          <i class="fas fa-location-dot"></i>
+          <span>Jln. Poros Sabulakoa</span>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-users"></i>
+          <span>Lingkungan Belajar Nyaman</span>
+        </div>
+
+        <div class="info-item">
+          <i class="fas fa-medal"></i>
+          <span>Berprestasi dan Aktif</span>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
 
-  <div class="footer-bottom">
-    © 2026 SMPN 20 Konawe Selatan
+</section>
+
+<!-- ================= IDENTITAS ================= -->
+<section class="card-section">
+
+  <div class="section-heading">
+    <i class="fas fa-school"></i>
+    <h2>Identitas Sekolah</h2>
   </div>
-</footer>
 
-<!-- ================= SCRIPT ================= -->
-<button id="scrollTopBtn">
-  <i class="fas fa-arrow-up"></i>
-</button>
+  <div class="table-wrapper">
+    <table>
 
-<script type="module" src="assets/js/main.js"></script>
+      <tr>
+        <th>Nama</th>
+        <td id="namaSekolahText"></td>
+      </tr>
+
+      <tr>
+        <th>NPSN</th>
+        <td id="npsnText"></td>
+      </tr>
+
+      <tr>
+        <th>Alamat</th>
+        <td id="alamatText"></td>
+      </tr>
+
+      <tr>
+        <th>Kode Pos</th>
+        <td id="kodeposText"></td>
+      </tr>
+
+      <tr>
+        <th>Desa / Kelurahan</th>
+        <td id="desaText"></td>
+      </tr>
+
+      <tr>
+        <th>Kecamatan</th>
+        <td id="kecamatanText"></td>
+      </tr>
+
+      <tr>
+        <th>Kabupaten</th>
+        <td id="kabupatenText"></td>
+      </tr>
+
+      <tr>
+        <th>Provinsi</th>
+        <td id="provinsiText"></td>
+      </tr>
+
+      <tr>
+        <th>Status Sekolah</th>
+        <td id="statusText"></td>
+      </tr>
+
+      <tr>
+        <th>Waktu Penyelenggaraan</th>
+        <td id="waktuText"></td>
+      </tr>
+
+      <tr>
+        <th>Jenjang Pendidikan</th>
+        <td id="jenjangText"></td>
+      </tr>
+
+    </table>
+  </div>
+
+</section>
+
+<!-- ================= DOKUMEN ================= -->
+<section class="card-section">
+
+  <div class="section-heading">
+    <i class="fas fa-file-alt"></i>
+    <h2>Dokumen dan Perizinan</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+
+      <tr>
+        <th>Naungan</th>
+        <td id="naunganText"></td>
+      </tr>
+
+      <tr>
+        <th>No. SK Pendirian</th>
+        <td id="skPendirianText"></td>
+      </tr>
+
+      <tr>
+        <th>Tanggal SK Pendirian</th>
+        <td id="tglPendirianText"></td>
+      </tr>
+
+      <tr>
+        <th>No. SK Operasional</th>
+        <td id="skOperasionalText"></td>
+      </tr>
+
+      <tr>
+        <th>Tanggal SK Operasional</th>
+        <td id="tglOperasionalText"></td>
+      </tr>
+
+      <tr>
+        <th>Akreditasi</th>
+        <td id="akreditasiText"></td>
+      </tr>
+
+    </table>
+  </div>
+
+</section>
+
+<!-- ================= SEJARAH ================= -->
+<section class="card-section">
+
+  <div class="section-heading">
+    <i class="fas fa-book-open"></i>
+    <h2>Sejarah Sekolah</h2>
+  </div>
+
+  <div class="content-box">
+    <p id="sejarahText"></p>
+  </div>
+
+</section>
+
+<!-- ================= VISI MISI ================= -->
+<section class="card-section">
+
+  <div class="section-heading">
+    <i class="fas fa-bullseye"></i>
+    <h2>Visi, Misi dan Tujuan</h2>
+  </div>
+
+  <div class="visi-misi-grid">
+
+    <!-- VISI -->
+    <div class="vm-card">
+
+      <div class="vm-title">
+        <i class="fas fa-eye"></i>
+        <h3>Visi</h3>
+      </div>
+
+      <p id="visiText"></p>
+
+    </div>
+
+    <!-- MISI -->
+    <div class="vm-card">
+
+      <div class="vm-title">
+        <i class="fas fa-list-check"></i>
+        <h3>Misi</h3>
+      </div>
+
+      <div id="misiText"></div>
+
+    </div>
+
+    <!-- TUJUAN -->
+    <div class="vm-card">
+
+      <div class="vm-title">
+        <i class="fas fa-flag-checkered"></i>
+        <h3>Tujuan</h3>
+      </div>
+
+      <p id="tujuanText"></p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<div id="footer"></div>
+
+<!-- ================= JS ================= -->
+<script type="module" src="assets/js/include.js"></script>
 <script type="module" src="assets/js/profil.js"></script>
-<script type="module" src="assets/js/index.js"></script>
 
 </body>
 </html>

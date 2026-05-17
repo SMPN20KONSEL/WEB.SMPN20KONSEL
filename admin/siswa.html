@@ -165,125 +165,21 @@ th{
 }
 
 </style>
+<style>
+body{
+  display:none;
+}
+</style>
+
+<script type="module"
+src="../assets/js/auth-guard.js">
+</script>
 </head>
 
 <body>
 
 <!-- ================= SIDEBAR ================= -->
-<div class="sidebar">
-
-  <!-- LOGO -->
-  <div class="logo">
-    <img src="../image/Logo_transparent.png">
-    <h2>SMPN 20 KONSEL</h2>
-  </div>
-
-  <!-- MENU -->
-  <div class="menu-title">
-    Menu Utama
-  </div>
-
-  <!-- DASHBOARD -->
-  <a class="active" href="dashboard.html">
-    <i class="fas fa-home"></i>
-    Dashboard
-  </a>
-
-  <!-- DATA SEKOLAH -->
-  <div class="dropdown">
-
-    <button class="dropbtn">
-      <i class="fas fa-school"></i>
-      Data Sekolah ▾
-    </button>
-
-    <div class="dropdown-content">
-
-      <a href="siswa.html">
-        <i class="fas fa-users"></i>
-        Data Siswa
-      </a>
-
-      <a href="guru.html">
-        <i class="fas fa-chalkboard-teacher"></i>
-        Data Guru
-      </a>
-
-      <a href="osis.html">
-        <i class="fas fa-user-group"></i>
-        Data OSIS
-      </a>
-
-      <a href="profil.html">
-        <i class="fas fa-pen"></i>
-        Edit Profil
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- BUAT DATA SEKOLAH -->
-  <div class="dropdown">
-
-    <button class="dropbtn">
-      <i class="fas fa-folder-plus"></i>
-      Buat Data Sekolah ▾
-    </button>
-
-    <div class="dropdown-content">
-
-      <a href="berita.html">
-        <i class="fas fa-newspaper"></i>
-        Berita
-      </a>
-
-      <a href="galeri.html">
-        <i class="fas fa-image"></i>
-        Galeri
-      </a>
-
-      <a href="slider.html">
-        <i class="fas fa-users-gear"></i>
-        Input Pengurus
-      </a>
-
-      <a href="sambutan.html">
-        <i class="fas fa-comment"></i>
-        Sambutan
-      </a>
-
-      <a href="pendaftaran.html">
-        <i class="fas fa-user-plus"></i>
-        Info SPMB
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- MENU LAIN -->
-  <a href="statistik.html">
-    <i class="fas fa-chart-bar"></i>
-    Statistik
-  </a>
-
-  <a href="pengumuman.html">
-    <i class="fas fa-bullhorn"></i>
-    Pengumuman
-  </a>
-
-  <a href="pengaturan.html">
-    <i class="fas fa-cog"></i>
-    Pengaturan
-  </a>
-
-  <a href="login.html">
-    <i class="fas fa-right-from-bracket"></i>
-    Logout
-  </a>
-
-</div>
+<div id="sidebar"></div>
 <!-- ================= MAIN ================= -->
 <div class="main">
 
@@ -307,9 +203,6 @@ th{
 
       <input id="nis"
       placeholder="NIS">
-
-      <input id="nisn"
-      placeholder="NISN">
 
       <input id="nama"
       placeholder="Nama Lengkap">
@@ -344,9 +237,6 @@ th{
       <input id="kelas"
       placeholder="Kelas">
 
-      <input id="wali"
-      placeholder="Wali Kelas">
-
     </div>
 
     <br>
@@ -362,13 +252,25 @@ th{
 
     <hr style="margin:25px 0; border:none; border-top:1px solid #eee;">
 
-    <h3 style="margin-bottom:15px;">
-      Import CSV
-    </h3>
+<h3 style="margin-bottom:15px;">
+  Import Excel XLSX
+</h3>
 
-    <input type="file" id="fileCSV">
+<input
+  type="file"
+  id="fileCSV"
+  accept=".xlsx,.xls">
 
-    <br><br>
+<br><br>
+
+<button
+class="btn btn-import"
+onclick="downloadTemplate()">
+
+  <i class="fas fa-download"></i>
+  Unduh Template XLSX
+
+</button>
 
     <button
     class="btn btn-import"
@@ -417,12 +319,10 @@ th{
           <tr>
             <th>Foto</th>
             <th>NIS</th>
-            <th>NISN</th>
             <th>Nama</th>
             <th>JK</th>
             <th>Agama</th>
             <th>Kelas</th>
-            <th>Wali</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -446,7 +346,14 @@ th{
 </div>
 
 <!-- ================= FIREBASE ================= -->
-  <script type="module" src="../assets/js/admin.js"></script>
+<!-- ================= FIREBASE ================= -->
+<script src="../assets/js/sidebar.js"></script>
+
+<!-- XLSX STYLE -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style/dist/xlsx.bundle.js"></script>
+
+<script type="module" src="../assets/js/admin.js"></script>
+
 <script type="module">
 
 import { db } from "../assets/js/firebase.js";
@@ -459,71 +366,72 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-/* ================= URL FOTO GITHUB ================= */
+/* ================= URL FOTO ================= */
 
 const FOTO_BASE =
-"https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/siswa/";
+"../image/siswa/";
 
 /* ================= TAMBAH SISWA ================= */
 
 window.tambahSiswa = async () => {
 
   const nis =
-  document.getElementById("nis").value;
-
-  const nisn =
-  document.getElementById("nisn").value;
+  document.getElementById("nis").value.trim();
 
   const nama =
-  document.getElementById("nama").value;
+  document.getElementById("nama").value.trim();
 
   const jk =
   document.getElementById("jk").value;
 
   const kelas =
-  document.getElementById("kelas").value;
-
-  const wali =
-  document.getElementById("wali").value;
+  document.getElementById("kelas").value.trim();
 
   const agama =
   document.getElementById("agama").value;
 
-  if(!nis || !nisn || !nama){
+  if(!nis || !nama){
 
     alert("Lengkapi data");
 
     return;
   }
 
-  await setDoc(doc(db,"siswa",nis),{
+  try{
 
-    nis,
-    nisn,
-    nama,
-    jk,
-    kelas,
-    wali,
-    agama,
+    await setDoc(doc(db,"siswa",nis),{
 
-    status:"aktif",
+      nis,
+      nama,
+      jk,
+      kelas,
+      agama,
 
-    createdAt:new Date()
+      status:"aktif",
 
-  });
+      createdAt:new Date()
 
-  alert("Siswa berhasil ditambahkan");
+    });
 
-  // reset form
-  document.getElementById("nis").value = "";
-  document.getElementById("nisn").value = "";
-  document.getElementById("nama").value = "";
-  document.getElementById("kelas").value = "";
-  document.getElementById("wali").value = "";
+    alert("Siswa berhasil ditambahkan");
+
+    // reset form
+    document.getElementById("nis").value = "";
+    document.getElementById("nama").value = "";
+    document.getElementById("kelas").value = "";
+    document.getElementById("agama").value = "Islam";
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("Gagal menambahkan siswa");
+
+  }
 
 };
 
-/* ================= IMPORT CSV ================= */
+/* ================= IMPORT EXCEL XLSX ================= */
 
 window.importCSV = async () => {
 
@@ -532,55 +440,212 @@ window.importCSV = async () => {
 
   if(!file){
 
-    alert("Pilih file CSV");
+    alert("Pilih file Excel (.xlsx)");
 
     return;
   }
 
-  const text =
-  await file.text();
+  try{
 
-  const rows =
-  text.split("\n");
-
-  for(let r of rows){
-
+    // baca file
     const data =
-    r.split(",");
+    await file.arrayBuffer();
 
-    const nis   = data[0]?.trim();
-    const nisn  = data[1]?.trim();
-    const nama  = data[2]?.trim();
-    const jk    = data[3]?.trim();
-    const agama = data[4]?.trim();
-    const kelas = data[5]?.trim();
-    const wali  = data[6]?.trim();
-
-    if(!nis) continue;
-
-    await setDoc(doc(db,"siswa",nis),{
-
-      nis,
-      nisn,
-      nama,
-      jk,
-      agama,
-      kelas,
-      wali,
-
-      status:"aktif",
-
-      createdAt:new Date()
-
+    // workbook
+    const workbook =
+    XLSX.read(data,{
+      type:"array"
     });
+
+    // sheet pertama
+    const sheetName =
+    workbook.SheetNames[0];
+
+    const sheet =
+    workbook.Sheets[sheetName];
+
+    // convert json
+    const rows =
+    XLSX.utils.sheet_to_json(sheet,{
+      defval:""
+    });
+
+    let total = 0;
+
+    for(let s of rows){
+
+      if(!s.nis) continue;
+
+      await setDoc(doc(db,"siswa",String(s.nis)),{
+
+        nis:
+        String(s.nis).trim(),
+
+        nama:
+        String(s.nama).trim(),
+
+        jk:
+        String(s.jk).trim(),
+
+        agama:
+        String(s.agama).trim(),
+
+        kelas:
+        String(s.kelas).trim(),
+
+        status:"aktif",
+
+        createdAt:new Date()
+
+      });
+
+      total++;
+
+    }
+
+    alert(
+      `Import berhasil (${total} siswa)`
+    );
+
+    document.getElementById("fileCSV").value = "";
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("Gagal import Excel");
 
   }
 
-  alert("Import CSV berhasil");
+};
+
+/* ================= DOWNLOAD TEMPLATE XLSX ================= */
+
+window.downloadTemplate = () => {
+
+  const data = [
+
+    {
+      nis:"24001",
+      nama:"Ahmad Saputra",
+      jk:"Laki-laki",
+      agama:"Islam",
+      kelas:"7A"
+    },
+
+    {
+      nis:"24002",
+      nama:"Siti Aulia",
+      jk:"Perempuan",
+      agama:"Islam",
+      kelas:"7A"
+    }
+
+  ];
+
+  // worksheet
+  const ws =
+  XLSX.utils.json_to_sheet(data);
+
+  // ukuran kolom
+  ws["!cols"] = [
+
+    { wch:12 },
+    { wch:30 },
+    { wch:18 },
+    { wch:18 },
+    { wch:12 }
+
+  ];
+
+  // freeze header
+  ws["!freeze"] = {
+    xSplit:0,
+    ySplit:1
+  };
+
+  // autofilter
+  ws["!autofilter"] = {
+    ref:"A1:E1"
+  };
+
+  // style header
+  const range =
+  XLSX.utils.decode_range(ws["!ref"]);
+
+  for(let C = range.s.c; C <= range.e.c; ++C){
+
+    const cell =
+    XLSX.utils.encode_cell({
+      r:0,
+      c:C
+    });
+
+    if(!ws[cell]) continue;
+
+    ws[cell].s = {
+
+      font:{
+        bold:true,
+        color:{
+          rgb:"FFFFFF"
+        }
+      },
+
+      fill:{
+        patternType:"solid",
+        fgColor:{
+          rgb:"2563EB"
+        }
+      },
+
+      alignment:{
+        horizontal:"center",
+        vertical:"center"
+      },
+
+      border:{
+        top:{
+          style:"thin",
+          color:{ rgb:"D1D5DB" }
+        },
+        bottom:{
+          style:"thin",
+          color:{ rgb:"D1D5DB" }
+        },
+        left:{
+          style:"thin",
+          color:{ rgb:"D1D5DB" }
+        },
+        right:{
+          style:"thin",
+          color:{ rgb:"D1D5DB" }
+        }
+      }
+
+    };
+
+  }
+
+  // workbook
+  const wb =
+  XLSX.utils.book_new();
+
+  XLSX.utils.book_append_sheet(
+    wb,
+    ws,
+    "Data Siswa"
+  );
+
+  // download
+  XLSX.writeFile(
+    wb,
+    "template-data-siswa.xlsx"
+  );
 
 };
 
-/* ================= REALTIME ================= */
+/* ================= REALTIME DATA ================= */
 
 onSnapshot(collection(db,"siswa"),(snap)=>{
 
@@ -590,23 +655,24 @@ onSnapshot(collection(db,"siswa"),(snap)=>{
 
     const s = d.data();
 
-    const foto =
-    `${FOTO_BASE}${s.nisn}.jpg`;
-
     html += `
 
       <tr>
-<td>
-<img
-  class="foto"
-  src="../image/siswa/${s.nis}.jpg"
-  onerror="this.onerror=null;
-  this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
-</td>
+
+        <td>
+
+          <img
+            class="foto"
+            src="${FOTO_BASE}${s.nis}.jpg"
+
+            onerror="
+            this.onerror=null;
+            this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+            ">
+
+        </td>
 
         <td>${s.nis || "-"}</td>
-
-        <td>${s.nisn || "-"}</td>
 
         <td>${s.nama || "-"}</td>
 
@@ -615,8 +681,6 @@ onSnapshot(collection(db,"siswa"),(snap)=>{
         <td>${s.agama || "-"}</td>
 
         <td>${s.kelas || "-"}</td>
-
-        <td>${s.wali || "-"}</td>
 
         <td>
 
@@ -631,15 +695,25 @@ onSnapshot(collection(db,"siswa"),(snap)=>{
       </tr>
 
     `;
+
   });
 
   document.getElementById("dataSiswa").innerHTML =
-  html || `
+
+  html ||
+
+  `
+
     <tr>
-      <td colspan="8">
+
+      <td colspan="7">
+
         Tidak ada data siswa
+
       </td>
+
     </tr>
+
   `;
 
 });

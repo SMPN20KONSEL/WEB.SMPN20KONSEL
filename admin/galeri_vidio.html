@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+<title>Admin Video Sekolah</title>
+
+<!-- FONT AWESOME -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="../assets/css/admin.css">
+
+<style>
+
+/* ================= MAIN ================= */
+
+.main{
+  margin-left:260px;
+  width:100%;
+  min-height:100vh;
+  background:#f4f6f9;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+  background:white;
+
+  padding:20px 25px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.topbar h1{
+  font-size:24px;
+  color:#111827;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+  padding:25px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  background:white;
+
+  border-radius:20px;
+
+  padding:25px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* ================= FORM ================= */
+
+.form-group{
+  margin-bottom:20px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+
+  font-size:15px;
+  font-weight:600;
+
+  color:#374151;
+}
+
+.form-group input,
+.form-group textarea{
+
+  width:100%;
+
+  padding:14px;
+
+  border:1px solid #d1d5db;
+
+  border-radius:12px;
+
+  outline:none;
+
+  font-size:15px;
+}
+
+.form-group textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+/* ================= BUTTON ================= */
+
+button{
+  border:none;
+
+  padding:14px 20px;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  font-size:15px;
+
+  transition:0.3s;
+}
+
+.btn-simpan{
+  background:#2563eb;
+  color:white;
+  width:100%;
+  font-weight:600;
+}
+
+.btn-simpan:hover{
+  background:#1d4ed8;
+}
+
+.btn-hapus{
+  background:#ef4444;
+  color:white;
+  padding:10px 14px;
+}
+
+.btn-hapus:hover{
+  background:#dc2626;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrapper{
+  margin-top:40px;
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+table thead{
+  background:#f3f4f6;
+}
+
+table th,
+table td{
+  padding:16px;
+  text-align:left;
+  border-bottom:1px solid #e5e7eb;
+}
+
+table th{
+  color:#374151;
+  font-size:14px;
+}
+
+table td{
+  color:#4b5563;
+  font-size:14px;
+}
+
+table tr:hover{
+  background:#f9fafb;
+}
+
+/* ================= LINK ================= */
+
+.link-video{
+  color:#2563eb;
+  text-decoration:none;
+  font-weight:500;
+}
+
+.link-video:hover{
+  text-decoration:underline;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#6b7280;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  table th,
+  table td{
+    padding:12px;
+    font-size:13px;
+  }
+
+}
+
+</style>
+<style>
+body{
+  display:none;
+}
+</style>
+
+<script type="module"
+src="../assets/js/auth-guard.js">
+</script>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div id="sidebar"></div>
+
+<!-- ================= MAIN ================= -->
+<div class="main">
+
+  <!-- ================= TOPBAR ================= -->
+  <div class="topbar">
+
+    <h1>
+      Video Sekolah
+    </h1>
+
+    <span>
+      <i class="fa-solid fa-video"></i>
+      Admin Video
+    </span>
+
+  </div>
+
+  <!-- ================= CONTENT ================= -->
+  <div class="content">
+
+    <div class="card">
+
+      <!-- ================= FORM ================= -->
+
+      <div class="form-group">
+
+        <label>
+          Judul Video
+        </label>
+
+        <input
+          type="text"
+          id="judulVideo"
+          placeholder="Masukkan judul video">
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          Link YouTube
+        </label>
+
+        <input
+          type="text"
+          id="linkVideo"
+          placeholder="https://youtu.be/...">
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          Deskripsi Video
+        </label>
+
+        <textarea
+          id="deskripsiVideo"
+          placeholder="Masukkan deskripsi video"></textarea>
+
+      </div>
+
+      <button
+        class="btn-simpan"
+        id="btnSimpan">
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        Simpan Video
+
+      </button>
+
+      <!-- ================= TABLE ================= -->
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th width="60">
+                No
+              </th>
+
+              <th>
+                Judul
+              </th>
+
+              <th>
+                Link
+              </th>
+
+              <th width="120">
+                Aksi
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="tbodyVideo">
+
+            <tr>
+
+              <td colspan="4">
+
+                <div class="empty">
+
+                  Belum ada video
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================= SIDEBAR ================= -->
+<script src="../assets/js/sidebar.js"></script>
+
+<!-- ================= VIDEO ================= -->
+<script type="module" src="../assets/js/galeri_vidio.js"></script>
+
+</body>
+</html>
