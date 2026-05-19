@@ -179,10 +179,10 @@ Object.keys(kelompokKelas)
 
 <img
 
-  src="${
-    siswa.foto ||
-    `https://raw.githubusercontent.com/SMPN20KONSEL/WEB.SMPN20KONSEL/main/image/siswa/${siswa.nis}.jpg`
-  }"
+            src="${
+              siswa.foto ||
+              `../image/siswa/${siswa.nis}.jpg`
+            }"
 
   class="siswa-foto"
 
