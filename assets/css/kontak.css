@@ -1,261 +1,277 @@
-/* =========================
-   KONTAK SECTION
-========================= */
-
-.kontak-section{
-  max-width:1100px;
-
-  /* JARAK DARI HEADER */
-  margin:200px auto 60px;
-
-  padding:50px;
-
-  background:#ffffff;
-
-  border-radius:20px;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.08);
-
-  border-top:6px solid #09038b;
+/* =========================================================
+   RESET
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* =========================
-   JUDUL
-========================= */
+/* =========================================================
+   BODY
+========================================================= */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+  overflow-x: hidden;
 
-.kontak-section h2{
-  font-size:38px;
-  color:#09038b;
-  margin-bottom:35px;
-  text-align:center;
-  font-weight:700;
+  background: linear-gradient(
+    180deg,
+    #061426 0%,
+    #0b1f3a 50%,
+    #061426 100%
+  );
 }
 
-.kontak-section h3{
-  font-size:26px;
-  color:#1f2937;
+/* =========================================================
+   HERO SECTION
+========================================================= */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 8%;
 
-  margin-top:45px;
-  margin-bottom:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
-  padding-bottom:10px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop");
 
-  border-bottom:2px solid #e5e7eb;
+  background-size: cover;
+  background-position: center;
 }
 
-/* =========================
-   INFO SEKOLAH
-========================= */
-
-.kontak-section .info{
-  background:#f9fafb;
-
-  padding:30px;
-
-  border-radius:15px;
-
-  border:1px solid #e5e7eb;
+.hero-content h1 {
+  color: #fff;
+  font-size: 72px;
+  margin-bottom: 20px;
 }
 
-.kontak-section .info p{
-  margin-bottom:18px;
-  line-height:1.9;
-  font-size:17px;
-  color:#374151;
+.hero-content h1 span {
+  color: #00b4ff;
 }
 
-/* =========================
-   SOCIAL MEDIA
-========================= */
+.hero-content p {
+  max-width: 800px;
+  margin: auto;
 
-.kontak-section .social{
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-  margin-top:20px;
+  color: #ddd;
+  font-size: 20px;
+  line-height: 1.9;
 }
 
-.kontak-section .social a{
-  background:#09038b;
-  color:white;
-
-  padding:12px 22px;
-
-  border-radius:10px;
-
-  text-decoration:none;
-
-  font-size:15px;
-  font-weight:600;
-
-  transition:0.3s ease;
+/* =========================================================
+   CONTAINER
+========================================================= */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px 20px;
 }
 
-.kontak-section .social a:hover{
-  background:#1407c7;
-  transform:translateY(-3px);
+/* =========================================================
+   CARD
+========================================================= */
+.card {
+  margin-bottom: 25px;
+  padding: 25px;
+
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* =========================
+/* =========================================================
+   GRID
+========================================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* =========================================================
+   INFO
+========================================================= */
+.info p {
+  margin: 10px 0;
+}
+
+.info i {
+  margin-right: 10px;
+  color: #0b48ac;
+}
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.social a {
+  padding: 10px 15px;
+
+  text-decoration: none;
+  color: #fff;
+
+  background: #0b48ac;
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+
+.social a:hover {
+  background: #08337c;
+}
+
+/* =========================================================
    FORM
-========================= */
-
-.kontak-section form{
-  margin-top:25px;
+========================================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.kontak-section label{
-  display:block;
+input,
+textarea {
+  padding: 12px;
 
-  margin-top:22px;
-  margin-bottom:8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 
-  font-weight:600;
-  color:#111827;
-
-  font-size:15px;
+  font-size: 14px;
 }
 
-.kontak-section input,
-.kontak-section textarea{
-  width:100%;
-
-  padding:14px 16px;
-
-  border:1px solid #d1d5db;
-  border-radius:10px;
-
-  font-size:15px;
-  font-family:inherit;
-
-  background:#ffffff;
-
-  outline:none;
-
-  transition:0.3s ease;
+textarea {
+  min-height: 100px;
 }
 
-.kontak-section input:focus,
-.kontak-section textarea:focus{
-  border-color:#09038b;
+button {
+  padding: 12px;
 
-  box-shadow:
-    0 0 0 4px rgba(9,3,139,0.10);
+  background: #0b48ac;
+  color: #fff;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  font-size: 15px;
+
+  transition: 0.3s;
 }
 
-.kontak-section textarea{
-  resize:vertical;
-  min-height:140px;
+button:hover {
+  background: #08337c;
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* =========================================================
+   MAP
+========================================================= */
+iframe {
+  width: 100%;
 
-.kontak-section button{
-  margin-top:25px;
-
-  padding:14px 24px;
-
-  border:none;
-  border-radius:10px;
-
-  background:#16a34a;
-  color:#ffffff;
-
-  font-size:16px;
-  font-weight:600;
-
-  cursor:pointer;
-
-  transition:0.3s ease;
+  border: none;
+  border-radius: 12px;
 }
 
-.kontak-section button:hover{
-  background:#15803d;
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* TABLET */
+@media (max-width: 992px) {
+  .hero {
+    padding: 80px 6%;
+  }
+
+  .hero-content h1 {
+    font-size: 54px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .container {
+    padding: 25px 18px;
+  }
 }
 
-/* =========================
-   MAPS
-========================= */
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 90vh;
+    padding: 70px 5%;
+  }
 
-.kontak-section iframe{
-  width:100%;
-  height:350px;
+  .hero-content h1 {
+    font-size: 42px;
+    line-height: 1.2;
+  }
 
-  border:none;
-  border-radius:15px;
+  .hero-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
 
-  margin-top:25px;
+  .card {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social {
+    flex-direction: column;
+  }
+
+  .social a {
+    width: 100%;
+    text-align: center;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: 14px;
+  }
 }
 
-/* =========================
-   RESPONSIVE TABLET
-========================= */
-
-@media (max-width:992px){
-
-  .kontak-section{
-    max-width:92%;
-    padding:35px 25px;
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 20px;
   }
 
-}
-
-/* =========================
-   RESPONSIVE MOBILE
-========================= */
-
-@media (max-width:768px){
-
-  .kontak-section{
-    margin:200px 12px 40px;
-    padding:25px 18px;
-    border-radius:15px;
+  .hero-content h1 {
+    font-size: 32px;
   }
 
-  .kontak-section h2{
-    font-size:28px;
-    margin-bottom:25px;
+  .hero-content p {
+    font-size: 15px;
   }
 
-  .kontak-section h3{
-    font-size:21px;
-    margin-top:35px;
+  .container {
+    padding: 20px 15px;
   }
 
-  .kontak-section .info{
-    padding:18px;
+  .card {
+    padding: 18px;
+    border-radius: 12px;
   }
 
-  .kontak-section .info p{
-    font-size:15px;
-    line-height:1.8;
+  button {
+    padding: 11px;
   }
-
-  .kontak-section .social{
-    flex-direction:column;
-  }
-
-  .kontak-section .social a{
-    width:100%;
-    text-align:center;
-  }
-
-  .kontak-section input,
-  .kontak-section textarea{
-    font-size:14px;
-    padding:12px 14px;
-  }
-
-  .kontak-section button{
-    width:100%;
-    font-size:15px;
-  }
-
-  .kontak-section iframe{
-    height:250px;
-  }
-
 }

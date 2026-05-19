@@ -1,527 +1,296 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Profil - SMPN 20 Konawe Selatan</title>
-  <!-- FONT AWESOME -->
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0"/>
+
+<title>SPMB - SMPN 20 Konawe Selatan</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet"
+href="assets/css/global.css">
+
+<link rel="stylesheet"
+href="assets/css/header-footer.css">
+<link rel="stylesheet"
+href="assets/css/daftar.css">
+
 </head>
+
 <body>
-<style>
-  .container {
-    max-width: 900px;
-    margin: 60px auto; /* Batas atas dan bawah tetap */
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
 
-  .container::before,
-  .container::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background-color: transparent;
-  }
-
-  h1 {
-    color: #2c3e50;
-    border-top: 4px solid #3498db;
-    border-bottom: 4px solid #3498db;
-    padding: 15px 0;
-    margin-bottom: 25px;
-    text-align: center;
-  }
-
- h2 {
-  border: none !important;
-  box-shadow: none !important;
-    color: #000;
-    margin-top: 25px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #3498db;
-  }
-  
-
-  h3 {
-    color: #000;
-    margin-top: 20px;
-  }
-
-  ul {
-    margin-top: 0;
-    padding-left: 20px;
-    color: #000;
-  }
-
-  li {
-    margin-bottom: 10px;
-  }
-
-  p {
-    color: #000;
-    margin-top: 10px;
-  }
-
-  .arrow-box {
-    display: inline-block;
-    border: 2px solid #3498db;
-    padding: 10px 15px;
-    margin-top: 10px;
-    background-color: #ecf6fd;
-    border-radius: 8px;
-    position: relative;
-    font-weight: bold;
-  }
-
-  .arrow-box::after {
-    content: "➤";
-    color: #3498db;
-    font-size: 18px;
-    position: absolute;
-    right: -25px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .arrow-box a {
-    color: #3498db;
-    text-decoration: none;
-  }
-
-  .arrow-box a:hover {
-    text-decoration: underline;
-  }
-  /* ================= RESPONSIVE ================= */
-
-@media(max-width:992px){
-
-  .container{
-    margin:40px 20px;
-    padding:25px;
-  }
-
-  .footer-container{
-    grid-template-columns:1fr;
-    gap:30px;
-  }
-
-}
-
-@media(max-width:768px){
-
-  .container{
-    margin:30px 15px;
-    padding:20px;
-    border-radius:15px;
-  }
-
-  h1{
-    font-size:28px;
-    line-height:1.4;
-  }
-
-  h2{
-    font-size:22px;
-  }
-
-  h3{
-    font-size:20px;
-  }
-
-  p,
-  li{
-    font-size:15px;
-    line-height:1.8;
-  }
-
-  .arrow-box{
-    display:block;
-    width:100%;
-    padding:15px;
-    text-align:center;
-  }
-
-  .arrow-box::after{
-    display:none;
-  }
-
-  .footer-banner{
-    padding:70px 20px;
-    text-align:center;
-  }
-
-  .footer-banner h1{
-    font-size:30px;
-    line-height:1.5;
-  }
-
-}
-
-@media(max-width:600px){
-
-  .top-bar{
-    flex-direction:column;
-    gap:10px;
-    text-align:center;
-    padding:12px;
-  }
-
-  .social-icons{
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-
-  nav{
-    padding:15px;
-  }
-
-  .logo{
-    gap:10px;
-  }
-
-  .logo img{
-    width:55px;
-  }
-
-  .logo h2{
-    font-size:18px;
-  }
-
-  .logo small{
-    font-size:11px;
-  }
-
-  .nav-links{
-    width:100%;
-  }
-
-  .container{
-    margin-top:20px;
-  }
-
-  iframe{
-    height:250px;
-  }
-
-}
-
-@media(max-width:480px){
-
-  h1{
-    font-size:24px;
-  }
-
-  h2{
-    font-size:20px;
-  }
-
-  h3{
-    font-size:18px;
-  }
-
-  .container{
-    padding:18px;
-  }
-
-  .arrow-box a{
-    font-size:14px;
-    word-break:break-word;
-  }
-
-  .footer-banner h1{
-    font-size:24px;
-  }
-
-  .footer-bottom{
-    font-size:13px;
-    padding:15px;
-  }
-
-}
-</style>
 <!-- =========================
      HEADER
 ========================= -->
-<header>
 
-  <div class="top-bar">
+<div id="header"></div>
 
-    <div>
-      <i class="fas fa-phone"></i> -
-      &nbsp;&nbsp;
-      <i class="fas fa-envelope"></i>
-      smpn20konsel96@gmail.com
-    </div>
+<!-- =========================
+     HERO
+========================= -->
 
-    <div class="social-icons">
+<section class="hero">
 
-      <a href="https://web.facebook.com/profile.php?id=61577266951408">
-        <i class="fab fa-facebook"></i>
-      </a>
+  <div class="hero-content">
 
-      <a href="https://www.tiktok.com/@smpn20konsel7">
-        <i class="fab fa-tiktok"></i>
-      </a>
+    <h1>
+      Bidang Pendaftaran Siswa
+    </h1>
 
-      <a href="https://www.instagram.com/smpn20konsel">
-        <i class="fab fa-instagram"></i>
-      </a>
-
-      <a href="https://youtube.com/@smpn20konsel">
-        <i class="fab fa-youtube"></i>
-      </a>
-
-      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-
-    </div>
+    <p>
+      Sistem Penerimaan Peserta Didik Baru
+      (SPMB) SMPN 20 Konawe Selatan
+    </p>
 
   </div>
-
-  <nav>
-
-    <div class="logo">
-
-      <img src="image/Logo_transparent.png" alt="Logo">
-
-      <h2>
-        SMPN20KONSEL
-        <br>
-        <small>
-          Tempat menimba ilmu, tumbuh berprestasi
-        </small>
-      </h2>
-
-    </div>
-
-    <div class="nav-toggle">
-      ☰
-    </div>
-
-    <div class="nav-links">
-
-      <a href="index.html">Home</a>
-
-      <!-- PROFIL -->
-      <div class="dropdown">
-
-        <button class="dropbtn">
-          Profil ▾
-        </button>
-
-        <div class="dropdown-content">
-          <a href="profil.html">Profil Sekolah</a>
-          <a href="data_siswa.html">Data Siswa</a>
-          <a href="profil_guru.html">Data Guru</a>
-        </div>
-
-      </div>
-
-      <!-- MANAJEMEN -->
-      <div class="dropdown">
-
-        <button class="dropbtn">
-          Manajemen ▾
-        </button>
-
-        <div class="dropdown-content">
-          <a href="humas.html">Humas</a>
-          <a href="sarpas.html">Sarpas</a>
-          <a href="kesiswaan.html">Kesiswaan</a>
-          <a href="berita.html">Berita</a>
-          <a href="kurikulum.html">Kurikulum</a>
-          <a href="informasi.html">Informasi</a>
-        </div>
-      </div>
-      <a href="galeri.html"> Galeri </a>
-      <a href="kontak.html">Kontak</a>
-      <a href="daftar_spmb.html" class="login-btn">
-        Daftar SPMB
-        <i class="fas fa-arrow-right"></i>
-      </a>
-
-    </div>
-
-  </nav>
-
-</header>
-
-<div class="container">
-  <h1>Informasi Pendaftaran Sekolah</h1>
-
-  <h2>Persyaratan Administrasi</h2>
-  <ul>
-    <li><strong>Akte Kelahiran:</strong> Dokumen yang membuktikan usia dan identitas calon siswa.</li>
-    <li><strong>Kartu Keluarga (KK):</strong> Dokumen yang membuktikan hubungan keluarga dan domisili calon siswa.</li>
-    <li><strong>Ijazah atau Surat Keterangan Lulus (SKL):</strong> Dokumen yang membuktikan kelulusan dari jenjang pendidikan sebelumnya.</li>
-    <li><strong>Data Diri Calon Siswa:</strong> Informasi pribadi seperti nama lengkap, alamat, nomor telepon, dan email.</li>
-  </ul>
-
-  <h2>Persyaratan Tambahan</h2>
-  <ul>
-    <li><strong>Jalur Prestasi:</strong> Bukti prestasi akademik dan non-akademik seperti piagam, sertifikat lomba, atau keikutsertaan kegiatan ekstrakurikuler.</li>
-    <li><strong>Jalur Afirmasi:</strong> Dokumen yang membuktikan kondisi sosial ekonomi atau disabilitas, seperti surat keterangan miskin atau disabilitas.</li>
-    <li><strong>Jalur Zonasi:</strong> Dokumen yang menunjukkan domisili di zona sekolah.</li>
-  </ul>
-
-  <h2>Proses Pendaftaran</h2>
-  <ul></ul>
-  <h3>Pendaftaran Online</h3>
-  <ul>
-    <li><strong>Pengumuman Penerimaan:</strong> Jadwal dan tata cara pendaftaran diumumkan di website resmi atau platform SPMB daerah.</li>
-    <li><strong>Akses Situs Pendaftaran:</strong> Calon siswa mengunjungi situs resmi SPMB atau website sekolah.</li>
-    <li><strong>Pengisian Formulir:</strong> Formulir diisi secara online dengan data diri lengkap dan pilihan jalur masuk.</li>
-    <li><strong>Upload Dokumen:</strong> Dokumen seperti KK, akta kelahiran, dan lainnya diunggah dalam format digital (PDF/JPG).</li>
-    <li><strong>Verifikasi Data:</strong> Sekolah memverifikasi kelengkapan dan keaslian berkas digital.</li>
-    <li><strong>Seleksi:</strong> Jika diperlukan, seleksi dilakukan berdasarkan jalur zonasi, prestasi, afirmasi, atau tes tambahan.</li>
-    <li><strong>Pengumuman Hasil:</strong> Hasil seleksi diumumkan secara daring.</li>
-    <li><strong>Daftar Ulang:</strong> Siswa yang diterima mencetak bukti penerimaan dan melakukan registrasi ulang.</li>
-  </ul>
-
-  <h3>Pendaftaran Offline (Manual)</h3>
-  <ul>
-    <li><strong>Pengumuman Penerimaan:</strong> Informasi tersedia di papan pengumuman sekolah atau brosur resmi.</li>
-    <li><strong>Pengambilan Formulir:</strong> Formulir diambil langsung di sekolah oleh calon siswa atau orang tua.</li>
-    <li><strong>Pengisian dan Penyerahan Formulir:</strong> Formulir diisi manual dan dikembalikan bersama dokumen persyaratan.</li>
-    <li><strong>Verifikasi dan Seleksi:</strong> Panitia memeriksa dokumen dan melaksanakan proses seleksi bila diperlukan.</li>
-    <li><strong>Pengumuman Hasil:</strong> Hasil seleksi diumumkan langsung di sekolah atau surat pemberitahuan.</li>
-    <li><strong>Registrasi Ulang:</strong> Siswa yang diterima melakukan daftar ulang dan menerima info awal masuk.</li>
-  </ul>
-
-  <p>Dengan memahami informasi ini, calon siswa dan orang tua dapat mempersiapkan diri dengan baik dan memastikan kelancaran proses pendaftaran.</p>
-
-  <h2>Daftar SPMB</h2>
-  <p>Klik tautan berikut untuk mendaftar:</p>
-
-  <div class="arrow-box">
-    <a href="https://forms.gle/xF78GtXE1wgZqchDA" target="_blank">Formulir Pendaftaran Online SPMB</a>
-  </div>
-</div>
-
-
-<section class="footer-banner">
-
-  <div class="footer-banner-overlay"></div>
-
-  <h1>
-    Learn Today, Lead Tomorrow, Be The Best !
-  </h1>
 
 </section>
-<footer class="footer">
 
-  <div class="footer-container">
+<!-- =========================
+     TENTANG
+========================= -->
 
-    <!-- KOLOM 1 -->
-    <div class="footer-column">
+<section class="section">
 
-      <div class="footer-card">
+  <div class="section-title">
 
-        <div class="footer-logo">
+    <h2>Tentang SPMB</h2>
 
-          <img src="image/Logo_transparent.png" alt="Logo">
+    <p>
+      Sistem Penerimaan Peserta Didik Baru
+      SMPN 20 Konawe Selatan
+    </p>
 
-          <div>
-            <h2>SMPN20KONSEL</h2>
-            <span>Website Portal Sekolah</span>
-          </div>
+  </div>
 
-        </div>
+  <div class="about">
 
-        <p>
-          SMPN 20 Konawe Selatan merupakan
-          sekolah yang berkomitmen mencetak
-          generasi unggul, berprestasi,
-          dan berkarakter.
-        </p>
+    <img src="image/humas/1.jpeg"
+    alt="SPMB">
 
-<div class="footer-social">
+    <div class="about-text">
 
-      <a href="https://web.facebook.com/profile.php?id=61577266951408">
-        <i class="fab fa-facebook"></i>
-      </a>
+      <h3>SPMB</h3>
 
-      <a href="https://www.tiktok.com/@smpn20konsel7">
-        <i class="fab fa-tiktok"></i>
-      </a>
-
-      <a href="https://www.instagram.com/smpn20konsel">
-        <i class="fab fa-instagram"></i>
-      </a>
-
-      <a href="https://youtube.com/@smpn20konsel">
-        <i class="fab fa-youtube"></i>
-      </a>
-
-      <a href="https://wa.me/qr/AXZTONE55Z4YK1">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-</div>
-
-      </div>
+      <p>
+        Sistem Penerimaan Peserta Didik Baru
+        (SPMB) adalah proses seleksi dan
+        penerimaan siswa baru yang dilakukan
+        sekolah secara adil, transparan,
+        dan sesuai dengan ketentuan pendidikan.
+      </p>
 
     </div>
 
-    <!-- KOLOM 2 -->
-    <div class="footer-column">
+  </div>
 
-  <h3>Data Sekolah</h3>
+</section>
 
-  <ul class="footer-links">
+<!-- =========================
+     PERSYARATAN
+========================= -->
 
-    <li>
-      <i class="fas fa-user-graduate"></i>
-      Alumni : <span id="totalAlumni">840</span>
-    </li>
+<section class="section">
 
-    <li>
+  <div class="section-title">
+
+    <h2>Persyaratan Administrasi</h2>
+
+  </div>
+
+  <div class="info-grid">
+
+    <div class="info-card">
+
+      <i class="fas fa-file-alt"></i>
+
+      <h4>Akte Kelahiran</h4>
+
+      <p>
+        Dokumen identitas resmi
+        calon siswa.
+      </p>
+
+    </div>
+
+    <div class="info-card">
+
       <i class="fas fa-users"></i>
-      Siswa : <span id="totalSiswa">0</span>
-    </li>
 
-    <li>
-      <i class="fas fa-chalkboard-teacher"></i>
-      Guru&TU : <span id="totalGuru">0</span>
-    </li>
+      <h4>Kartu Keluarga</h4>
 
-  </ul>
+      <p>
+        Bukti hubungan keluarga
+        dan domisili.
+      </p>
 
-</div>
+    </div>
 
-    <!-- KOLOM 3 -->
-    <div class="footer-column">
+    <div class="info-card">
 
-      <h3>Temukan Kami</h3>
+      <i class="fas fa-graduation-cap"></i>
 
-      <iframe
-        src="https://www.google.com/maps?q=SMPN%2020%20Konawe%20Selatan&output=embed"
-        loading="lazy"
-        allowfullscreen="">
-      </iframe>
+      <h4>Ijazah / SKL</h4>
+
+      <p>
+        Bukti kelulusan dari
+        sekolah sebelumnya.
+      </p>
 
     </div>
 
   </div>
 
-  <!-- BOTTOM -->
-  <div class="footer-bottom">
-    © 2026 SMPN 20 Konawe Selatan
+</section>
+
+<!-- =========================
+     PERSYARATAN TAMBAHAN
+========================= -->
+
+<section class="section">
+
+  <div class="list-box">
+
+    <h3>Persyaratan Tambahan</h3>
+
+    <ul>
+
+      <li>
+        Jalur Prestasi wajib
+        melampirkan piagam
+        atau sertifikat lomba.
+      </li>
+
+      <li>
+        Jalur Afirmasi wajib
+        melampirkan surat
+        keterangan ekonomi.
+      </li>
+
+      <li>
+        Jalur Zonasi wajib
+        melampirkan bukti domisili.
+      </li>
+
+    </ul>
+
   </div>
 
-</footer>
-<script type="module" src="assets/js/main.js"></script>
-<script type="module" src="assets/js/index.js"></script>
+</section>
+
+<!-- =========================
+     ONLINE
+========================= -->
+
+<section class="section">
+
+  <div class="list-box">
+
+    <h3>Pendaftaran Online</h3>
+
+    <ul>
+
+      <li>Mengakses website SPMB sekolah.</li>
+
+      <li>Mengisi formulir online.</li>
+
+      <li>Upload dokumen persyaratan.</li>
+
+      <li>Verifikasi data oleh sekolah.</li>
+
+      <li>Pengumuman hasil seleksi.</li>
+
+      <li>Daftar ulang siswa diterima.</li>
+
+    </ul>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     OFFLINE
+========================= -->
+
+<section class="section">
+
+  <div class="list-box">
+
+    <h3>Pendaftaran Offline</h3>
+
+    <ul>
+
+      <li>Mengambil formulir di sekolah.</li>
+
+      <li>Mengisi data secara manual.</li>
+
+      <li>Menyerahkan dokumen persyaratan.</li>
+
+      <li>Verifikasi dan seleksi.</li>
+
+      <li>Pengumuman hasil penerimaan.</li>
+
+    </ul>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     BUTTON
+========================= -->
+
+<section class="section">
+
+  <div class="button-box">
+
+    <h3>Daftar SPMB</h3>
+
+    <p>
+      Klik tombol berikut untuk
+      melakukan pendaftaran online.
+    </p>
+
+    <a href="https://forms.gle/xF78GtXE1wgZqchDA"
+    target="_blank"
+    class="spmb-btn">
+
+      Formulir Pendaftaran Online
+
+      <i class="fas fa-arrow-right"></i>
+
+    </a>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<div id="footer"></div>
+
+<script type="module"
+src="assets/js/include.js"></script>
+
 </body>
 </html>

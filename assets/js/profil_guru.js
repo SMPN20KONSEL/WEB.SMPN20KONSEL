@@ -1,14 +1,9 @@
+import { db } from "./firebase.js";
 
-import { db }
-from "./firebase.js";
 import {
-  getFirestore,
   collection,
   getDocs
-}
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-
-/* ================= CONFIG FIREBASE ================= */
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 /* ================= ELEMENT ================= */
 
@@ -42,16 +37,9 @@ async function loadGuru() {
 
   try {
 
-    console.log("Ambil data guru...");
-
     const snapshot =
     await getDocs(
       collection(db, "guru")
-    );
-
-    console.log(
-      "Jumlah data:",
-      snapshot.size
     );
 
     guruContainer.innerHTML = "";
@@ -65,10 +53,7 @@ async function loadGuru() {
 
     snapshot.forEach((doc) => {
 
-      const guru =
-      doc.data();
-
-      console.log(guru);
+      const guru = doc.data();
 
       /* ================= STATUS ================= */
 
@@ -87,30 +72,21 @@ async function loadGuru() {
         p3kpw++;
       }
 
-      if (
-        status === "HONORER"
-      ) {
+      if (status === "HONORER") {
         honorer++;
       }
-
-      /* ================= FOTO ================= */
-
-      const foto =
-      guru.foto ||
-      "image/guru/user.png";
 
       /* ================= CARD ================= */
 
       guruContainer.innerHTML += `
 
         <div class="guru-card">
-
-          <img
-           <img 
+<img 
   src="${guru.foto || `image/guru/${guru.nip.trim()}.jpg`}"
   onerror="this.onerror=null;this.src='image/guru/user.png'"
   alt="foto guru"
->
+/>
+
           <div class="guru-info">
 
             <h3>
@@ -128,11 +104,6 @@ async function loadGuru() {
             </p>
 
             <p>
-              <i class="fa-solid fa-id-card"></i>
-              ${guru.nip || "-"}
-            </p>
-
-            <p>
               <i class="fa-solid fa-briefcase"></i>
               ${guru.statusKepegawaian || "-"}
             </p>
@@ -146,14 +117,11 @@ async function loadGuru() {
 
     /* ================= UPDATE STAT ================= */
 
-    guruASN.innerHTML =
-    asn;
+    guruASN.innerHTML = asn;
 
-    guruP3KPW.innerHTML =
-    p3kpw;
+    guruP3KPW.innerHTML = p3kpw;
 
-    guruHonorer.innerHTML =
-    honorer;
+    guruHonorer.innerHTML = honorer;
 
   } catch (err) {
 
@@ -197,7 +165,7 @@ searchInput.addEventListener(
       ) {
 
         card.style.display =
-        "block";
+        "flex";
 
       } else {
 

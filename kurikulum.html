@@ -12,461 +12,9 @@
   <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/header-footer.css">
+  <link rel="stylesheet" href="assets/css/kurikulum.css">
 
-  <style>
-    body{
-      background:#071426;
-      color:white;
-      overflow-x:hidden;
-      transition:0.4s;
-    }
-
-    body.light{
-      background:#f4f7fb;
-      color:#222;
-    }
-
-    img{
-      width:100%;
-      display:block;
-    }
-
-    a{
-      text-decoration:none;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero{
-      height:95vh;
-      background:
-      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-      url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600');
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:20px;
-    }
-
-    .hero-content h1{
-      font-size:65px;
-      color:#ffd54f;
-      margin-bottom:20px;
-    }
-
-    .hero-content p{
-      max-width:850px;
-      margin:auto;
-      line-height:1.9;
-      font-size:20px;
-    }
-
-    .hero-btn{
-      margin-top:35px;
-    }
-
-    .hero-btn a{
-      background:#ffd54f;
-      color:#071426;
-      padding:15px 35px;
-      border-radius:40px;
-      font-weight:bold;
-      transition:0.3s;
-    }
-
-    .hero-btn a:hover{
-      background:white;
-    }
-
-    /* ================= SECTION ================= */
-
-    section{
-      padding:90px 7%;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:60px;
-    }
-
-    .section-title h2{
-      font-size:42px;
-      color:#ffd54f;
-      margin-bottom:15px;
-    }
-
-    .section-title p{
-      color:#ccc;
-    }
-
-    /* ================= ABOUT ================= */
-
-    .about{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-    }
-
-    .about img{
-      border-radius:25px;
-    }
-
-    .about-text h3{
-      color:#ffd54f;
-      font-size:34px;
-      margin-bottom:20px;
-    }
-
-    .about-text p{
-      line-height:1.9;
-      color:#ddd;
-      margin-bottom:15px;
-    }
-
-    /* ================= CARD ================= */
-
-    .card-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-
-    .card{
-      background:#102846;
-      padding:35px 25px;
-      border-radius:25px;
-      text-align:center;
-      transition:0.4s;
-    }
-
-    body.light .card{
-      background:white;
-      color:#222;
-    }
-
-    .card:hover{
-      transform:translateY(-12px);
-    }
-
-    .card i{
-      font-size:50px;
-      color:#ffd54f;
-      margin-bottom:20px;
-    }
-
-    .card h3{
-      margin-bottom:15px;
-      font-size:24px;
-    }
-
-    .card p{
-      line-height:1.8;
-      color:#ddd;
-    }
-
-    body.light .card p{
-      color:#555;
-    }
-
-    /* ================= TABLE ================= */
-
-    .table-container{
-      overflow-x:auto;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      background:#102846;
-      border-radius:20px;
-      overflow:hidden;
-    }
-
-    body.light table{
-      background:white;
-      color:#222;
-    }
-
-    table th{
-      background:#ffd54f;
-      color:#071426;
-      padding:18px;
-      text-align:left;
-    }
-
-    table td{
-      padding:18px;
-      border-bottom:1px solid rgba(255,255,255,0.1);
-    }
-
-    table tr:hover{
-      background:#16345c;
-    }
-
-    /* ================= STATISTIK ================= */
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:25px;
-    }
-
-    .stat-box{
-      background:#102846;
-      padding:40px;
-      border-radius:25px;
-      text-align:center;
-    }
-
-    .stat-box h2{
-      color:#ffd54f;
-      font-size:45px;
-      margin-bottom:10px;
-    }
-
-    /* ================= GURU ================= */
-
-    .teacher-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-
-    .teacher-card{
-      background:#102846;
-      border-radius:25px;
-      overflow:hidden;
-      text-align:center;
-      transition:0.4s;
-    }
-
-    .teacher-card:hover{
-      transform:translateY(-10px);
-    }
-
-    .teacher-card img{
-      height:300px;
-      object-fit:cover;
-    }
-
-    .teacher-card h3{
-      margin-top:20px;
-      color:#ffd54f;
-    }
-
-    .teacher-card p{
-      margin:10px 0 20px;
-      color:#ddd;
-    }
-
-    /* ================= DOWNLOAD ================= */
-
-    .download-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-
-    .download-card{
-      background:#102846;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-      transition:0.4s;
-    }
-
-    .download-card:hover{
-      transform:translateY(-10px);
-    }
-
-    .download-card i{
-      font-size:50px;
-      color:#ffd54f;
-      margin-bottom:20px;
-    }
-
-    .download-card a{
-      display:inline-block;
-      margin-top:18px;
-      background:#ffd54f;
-      color:#071426;
-      padding:12px 25px;
-      border-radius:30px;
-      font-weight:bold;
-    }
-
-    /* ================= FAQ ================= */
-
-    .faq-container{
-      max-width:900px;
-      margin:auto;
-    }
-
-    .faq{
-      background:#102846;
-      margin-bottom:20px;
-      border-radius:18px;
-      overflow:hidden;
-    }
-
-    .faq-question{
-      padding:20px;
-      cursor:pointer;
-      font-weight:bold;
-      position:relative;
-    }
-
-    .faq-question::after{
-      content:"+";
-      position:absolute;
-      right:20px;
-      font-size:22px;
-    }
-
-    .faq-answer{
-      max-height:0;
-      overflow:hidden;
-      transition:0.4s;
-      padding:0 20px;
-      color:#ddd;
-    }
-
-    .faq.active .faq-answer{
-      max-height:200px;
-      padding:20px;
-    }
-
-    /* ================= SLIDER ================= */
-
-    .slider{
-      overflow:hidden;
-      border-radius:25px;
-    }
-
-    .slide-track{
-      display:flex;
-      width:calc(320px * 10);
-      gap:20px;
-      animation:scroll 25s linear infinite;
-    }
-
-    .slide{
-      min-width:320px;
-      height:220px;
-      border-radius:20px;
-      overflow:hidden;
-    }
-
-    .slide img{
-      height:100%;
-      object-fit:cover;
-    }
-
-    @keyframes scroll{
-
-      0%{
-        transform:translateX(0);
-      }
-
-      100%{
-        transform:translateX(calc(-320px * 5));
-      }
-
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer{
-      background:#06111f;
-      padding:30px;
-      text-align:center;
-      color:#ccc;
-      margin-top:80px;
-    }
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:992px){
-
-  .hero-content h1{
-    font-size:50px;
-  }
-
-  .about{
-    grid-template-columns:1fr;
-  }
-
-  .about-text{
-    text-align:center;
-  }
-
-}
-
-@media(max-width:768px){
-
-  section{
-    padding:70px 5%;
-  }
-
-  .hero{
-    height:75vh;
-  }
-
-  .hero-content h1{
-    font-size:38px;
-  }
-
-  .hero-content p{
-    font-size:16px;
-  }
-
-  .section-title h2{
-    font-size:32px;
-  }
-
-  .slide{
-    min-width:250px;
-    height:180px;
-  }
-
-  .slide-track{
-    width:max-content;
-  }
-
-  .teacher-card img{
-    height:240px;
-  }
-
-}
-
-@media(max-width:480px){
-
-  .hero-content h1{
-    font-size:30px;
-  }
-
-  .hero-btn a{
-    padding:12px 24px;
-    font-size:14px;
-  }
-
-  .card,
-  .download-card,
-  .stat-box{
-    padding:25px 18px;
-  }
-
-}
-  </style>
 </head>
-
 <body>
 
 <div id="header"></div>
@@ -830,93 +378,55 @@
     </div>
 
   </section>
+<section id="kontak">
+  <div class="contact">
+    <h2>Kontak Bagian Kurikulum</h2>
 
+    <div class="contact-body">
+
+      <!-- FOTO -->
+      <img
+        id="fotoKepala"
+        src="image/default.png"
+        alt="Foto Kepala Kurikulum"
+        onerror="this.src='image/default.png'"
+      >
+
+      <!-- DATA -->
+      <div class="contact-content">
+
+        <p>
+          <i class="fas fa-user"></i>
+          <strong>Kepala Kurikulum :</strong>
+          <span id="nama">Loading...</span>
+        </p>
+
+        <p>
+          <i class="fas fa-phone"></i>
+          <span id="hp">Loading...</span>
+        </p>
+
+        <p>
+          <i class="fas fa-envelope"></i>
+          <span id="email">smpn20konsel96@gmail.com</span>
+        </p>
+
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Konawe Selatan</span>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
   <!-- FOOTER -->
 
 <div id="footer"></div>
 
 <!-- JS -->
 <script type="module" src="assets/js/include.js"></script>
-<script type="module" src="assets/js/index.js"></script>
-<script>
+<script type="module" src="assets/js/kurikulum.js"></script>
 
-/* ================= FAQ ================= */
-
-const faqItems =
-document.querySelectorAll(".faq");
-
-faqItems.forEach((faq)=>{
-
-  faq.addEventListener("click",()=>{
-
-    faq.classList.toggle("active");
-
-  });
-
-});
-
-/* ================= SLIDER PAUSE ================= */
-
-const sliderTrack =
-document.querySelector(".slide-track");
-
-sliderTrack.addEventListener("mouseenter",()=>{
-
-  sliderTrack.style.animationPlayState =
-  "paused";
-
-});
-
-sliderTrack.addEventListener("mouseleave",()=>{
-
-  sliderTrack.style.animationPlayState =
-  "running";
-
-});
-
-/* ================= LIGHT MODE ================= */
-
-const btn =
-document.createElement("button");
-
-btn.innerHTML =
-'<i class="fas fa-moon"></i>';
-
-btn.style.position = "fixed";
-btn.style.right = "20px";
-btn.style.bottom = "20px";
-btn.style.width = "55px";
-btn.style.height = "55px";
-btn.style.borderRadius = "50%";
-btn.style.border = "none";
-btn.style.cursor = "pointer";
-btn.style.background = "#ffd54f";
-btn.style.color = "#071426";
-btn.style.fontSize = "22px";
-btn.style.zIndex = "999";
-
-document.body.appendChild(btn);
-
-btn.onclick = ()=>{
-
-  document.body.classList.toggle("light");
-
-  if(
-    document.body.classList.contains("light")
-  ){
-
-    btn.innerHTML =
-    '<i class="fas fa-sun"></i>';
-
-  }else{
-
-    btn.innerHTML =
-    '<i class="fas fa-moon"></i>';
-
-  }
-
-};
-
-</script>
 </body>
 </html>

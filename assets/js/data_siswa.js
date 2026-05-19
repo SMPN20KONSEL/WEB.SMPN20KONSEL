@@ -1,11 +1,13 @@
+/* =========================================
+   IMPORT FIREBASE
+========================================= */
 
-import { db }
-from "./firebase.js";
+import { db } from "./firebase.js";
+
 import {
   collection,
   onSnapshot
-}
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 /* =========================================
    ELEMENT
@@ -43,6 +45,8 @@ let semuaData = [];
 ========================================= */
 
 function renderSiswa(data){
+
+  /* ================= KOSONG ================= */
 
   if(data.length === 0){
 
@@ -82,11 +86,27 @@ function renderSiswa(data){
 
   });
 
-  /* ================= SORT ================= */
+  /* ================= SORT KELAS ================= */
 
   const urutanKelas =
   Object.keys(kelompokKelas)
-  .sort();
+  .sort((a,b)=>{
+
+    const angkaA =
+    parseInt(a);
+
+    const angkaB =
+    parseInt(b);
+
+    if(angkaA !== angkaB){
+
+      return angkaA - angkaB;
+
+    }
+
+    return a.localeCompare(b);
+
+  });
 
   /* ================= HTML ================= */
 
@@ -97,6 +117,8 @@ function renderSiswa(data){
     html += `
 
     <div class="kelas-section">
+
+      <!-- HEADER -->
 
       <div class="kelas-header">
 
@@ -114,9 +136,13 @@ function renderSiswa(data){
 
       </div>
 
+      <!-- GRID -->
+
       <div class="siswa-grid">
 
     `;
+
+    /* ================= SISWA ================= */
 
     kelompokKelas[kelas]
     .forEach((siswa)=>{
@@ -130,17 +156,20 @@ function renderSiswa(data){
         <div class="siswa-foto-box">
 
           <img
-          src="${
-            siswa.foto ||
-            `../image/siswa/${siswa.nis}.jpg`
-          }"
 
-          class="siswa-foto"
+            src="${
+              siswa.foto ||
+              `../image/siswa/${siswa.nis}.jpg`
+            }"
 
-          onerror="
-          this.onerror=null;
-          this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-          ">
+            class="siswa-foto"
+
+            onerror="
+              this.onerror=null;
+              this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+            "
+
+          >
 
         </div>
 
@@ -181,17 +210,6 @@ function renderSiswa(data){
             <span>
               Gender :
               ${siswa.jk || "-"}
-            </span>
-
-          </div>
-
-          <div class="siswa-info">
-
-            <i class="fas fa-mosque"></i>
-
-            <span>
-              Agama :
-              ${siswa.agama || "-"}
             </span>
 
           </div>
@@ -312,7 +330,9 @@ function filterData(){
 ========================================= */
 
 onSnapshot(
+
   collection(db, "siswa"),
+
   (snap)=>{
 
     semuaData = [];
@@ -332,8 +352,10 @@ onSnapshot(
     /* ================= SORT NAMA ================= */
 
     semuaData.sort((a,b)=>
+
       (a.nama || "")
       .localeCompare(b.nama || "")
+
     );
 
     renderSiswa(semuaData);
@@ -345,6 +367,7 @@ onSnapshot(
     );
 
   },
+
   (err)=>{
 
     console.error(
@@ -353,6 +376,7 @@ onSnapshot(
     );
 
   }
+
 );
 
 /* =========================================

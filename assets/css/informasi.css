@@ -1,0 +1,423 @@
+/* =========================================================
+   RESET
+========================================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+
+  background:
+  linear-gradient(
+    180deg,
+    #061426 0%,
+    #0b1f3a 50%,
+    #061426 100%
+  );
+
+  color:#fff;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+.hero{
+  width:100%;
+  min-height:85vh;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.6),
+    rgba(0,0,0,.6)
+  ),
+  url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:100px 8%;
+}
+
+.hero-content{
+  max-width:900px;
+
+  animation:fadeUp .8s ease;
+}
+
+.hero-content h1{
+  font-size:clamp(45px,8vw,75px);
+
+  margin-bottom:20px;
+
+  line-height:1.2;
+}
+
+.hero-content h1 span{
+  color:#00b4ff;
+}
+
+.hero-content p{
+  color:#e8e8e8;
+
+  font-size:20px;
+
+  line-height:1.9;
+
+  max-width:800px;
+
+  margin:auto;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+.hero-btn{
+  margin-top:40px;
+}
+
+.hero-btn a{
+  display:inline-block;
+
+  padding:17px 38px;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00b4ff,
+    #0077b6
+  );
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  transition:.3s ease;
+
+  box-shadow:
+  0 10px 30px rgba(0,180,255,.3);
+}
+
+.hero-btn a:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 18px 40px rgba(0,180,255,.4);
+}
+
+/* =========================================================
+   SECTION GLOBAL
+========================================================= */
+section{
+  padding:90px 8%;
+}
+
+.section-title{
+  text-align:center;
+
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:42px;
+
+  color:#ffd54f;
+
+  margin-bottom:15px;
+}
+
+.section-title p{
+  color:#ddd;
+
+  max-width:700px;
+
+  margin:auto;
+}
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+.about-kesiswaan{
+  display:flex;
+  align-items:center;
+  gap:50px;
+
+  max-width:1150px;
+
+  margin:auto;
+
+  flex-wrap:wrap;
+}
+
+.about-kesiswaan img{
+  width:420px;
+
+  border-radius:25px;
+
+  object-fit:cover;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.35);
+}
+
+.about-text{
+  flex:1;
+}
+
+.about-text h3{
+  font-size:34px;
+
+  color:#00b4ff;
+
+  margin-bottom:20px;
+}
+
+.about-text p{
+  color:#f1f1f1;
+
+  margin-bottom:16px;
+
+  text-align:justify;
+}
+
+/* =========================================================
+   CARD SECTION
+========================================================= */
+.card{
+  background:
+  linear-gradient(
+    145deg,
+    #ffffff,
+    #f5f7fb
+  );
+
+  color:#222;
+
+  max-width:1150px;
+
+  margin:45px auto;
+
+  padding:40px;
+
+  border-radius:28px;
+
+  box-shadow:
+  0 8px 25px rgba(0,0,0,.08);
+
+  transition:.35s ease;
+
+  animation:fadeUp .8s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card h2,
+.card h3{
+  color:#0b48ac;
+
+  margin-bottom:18px;
+
+  font-size:30px;
+}
+
+.card p{
+  color:#555;
+
+  line-height:1.9;
+}
+
+/* =========================================================
+   TABLE SECTION
+========================================================= */
+.table-wrapper{
+  overflow-x:auto;
+
+  margin-top:25px;
+
+  border-radius:22px;
+}
+
+/* TABLE DASAR */
+table{
+  width:100%;
+
+  min-width:700px;
+
+  border-collapse:collapse;
+
+  background:#fff;
+
+  overflow:hidden;
+
+  border-radius:22px;
+
+  box-shadow:
+  0 4px 20px rgba(0,0,0,.06);
+}
+
+/* HEADER */
+thead{
+  background:
+  linear-gradient(
+    135deg,
+    #0b48ac,
+    #1565c0
+  );
+}
+
+thead th{
+  color:#fff;
+
+  padding:18px 16px;
+
+  text-align:center;
+
+  font-weight:700;
+
+  font-size:15px;
+
+  border:none;
+}
+
+/* BODY */
+tbody td{
+  padding:17px 14px;
+
+  color:#444;
+
+  border-bottom:
+  1px solid #edf1f7;
+
+  text-align:center;
+
+  font-size:15px;
+}
+
+/* ROW STYLE */
+tbody tr:nth-child(even){
+  background:#f8fbff;
+}
+
+tbody tr:nth-child(odd){
+  background:#ffffff;
+}
+
+/* HOVER */
+tbody tr:hover{
+  background:#eaf3ff;
+
+  transition:.3s ease;
+
+  transform:scale(1.002);
+}
+
+/* =========================================================
+   LINK
+========================================================= */
+.link-utama{
+  color:#0b48ac;
+
+  font-weight:700;
+
+  text-decoration:none;
+}
+
+.link-utama:hover{
+  text-decoration:underline;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media(max-width:992px){
+
+  .about-kesiswaan{
+    flex-direction:column;
+  }
+
+  .about-text{
+    text-align:left;
+  }
+
+  .hero-content p{
+    font-size:18px;
+  }
+}
+
+@media(max-width:768px){
+
+  section{
+    padding:70px 20px;
+  }
+
+  .hero{
+    min-height:70vh;
+
+    padding:80px 20px;
+  }
+
+  .hero-content h1{
+    font-size:45px;
+  }
+
+  .hero-content p{
+    font-size:16px;
+  }
+
+  .hero-btn a{
+    width:100%;
+  }
+
+  .about-kesiswaan img{
+    width:100%;
+  }
+
+  .card{
+    padding:28px;
+  }
+
+  table{
+    min-width:650px;
+  }
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
