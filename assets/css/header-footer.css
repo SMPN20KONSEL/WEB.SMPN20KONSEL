@@ -8,6 +8,7 @@ header{
   left:0;
   width:100%;
   z-index:999;
+
   background:rgba(0,0,0,0.4);
   backdrop-filter:blur(10px);
 }
@@ -19,10 +20,13 @@ header{
 .top-bar{
   background:#021427;
   color:white;
+
   padding:10px 5%;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   font-size:14px;
 }
 
@@ -33,7 +37,7 @@ header{
 
 .social-icons a{
   color:white;
-  transition:0.3s;
+  transition:.3s;
 }
 
 .social-icons a:hover{
@@ -48,6 +52,7 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:18px 5%;
 }
 
@@ -88,33 +93,50 @@ nav{
   display:flex;
   align-items:center;
   gap:28px;
+
+  flex-wrap:wrap;
 }
 
 .nav-links a,
 .dropbtn{
+
   color:#eeb108;
-  font-size:28px;
+
+  font-size:22px;
   font-weight:600;
+
   background:none;
   border:none;
+
   cursor:pointer;
+
   position:relative;
-  transition:0.3s;
+
+  transition:.3s;
+
   text-decoration:none;
 }
 
-/* HOVER LINE */
+/* =========================
+   HOVER LINE
+========================= */
 
 .nav-links a::after,
 .dropbtn::after{
+
   content:'';
+
   position:absolute;
+
   left:0;
   bottom:-6px;
+
   width:0%;
   height:2px;
+
   background:var(--primary);
-  transition:0.3s;
+
+  transition:.3s;
 }
 
 .nav-links a:hover::after,
@@ -132,16 +154,21 @@ nav{
 ========================= */
 
 .login-btn{
+
   background:var(--primary);
-  color:#d49c02 !important;
-  padding:12px 22px;
+
+  color:#fff !important;
+
+  padding:12px 20px;
+
   border-radius:40px;
+
   font-weight:bold;
-  transition:0.3s;
+
+  transition:.3s;
 }
 
 .login-btn:hover{
-  background:var(--secondary);
   transform:translateY(-2px);
 }
 
@@ -154,22 +181,40 @@ nav{
 }
 
 .dropdown-content{
+
   position:absolute;
+
   top:40px;
   left:0;
+
   background:white;
+
   min-width:230px;
+
   border-radius:15px;
+
   overflow:hidden;
+
   display:none;
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+/* ACTIVE */
+
+.dropdown.active .dropdown-content{
+  display:block;
 }
 
 .dropdown-content a{
+
   display:block;
+
   padding:14px 18px;
+
   color:#222;
-  transition:0.3s;
+
+  transition:.3s;
 }
 
 .dropdown-content a:hover{
@@ -177,19 +222,12 @@ nav{
   color:var(--primary);
 }
 
-.dropdown:hover .dropdown-content{
-  display:block;
-}
-
 /* =========================
-   MOBILE MENU
+   TOGGLE
 ========================= */
 
 .nav-toggle{
   display:none;
-  font-size:30px;
-  color:var(--primary);
-  cursor:pointer;
 }
 
 /* =========================
@@ -197,57 +235,76 @@ nav{
 ========================= */
 
 footer{
-  background: #04101d;
-  text-align: center;
-  padding: 40px 20px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
 
-/* SOSIAL MEDIA */
-.footer-social{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
+  background:#04101d;
 
-.footer-social a{
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.08);
-  color: #fff;
+  text-align:center;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding:40px 20px;
 
-  text-decoration: none;
-  font-size: 18px;
-
-  transition: .3s;
-}
-
-.footer-social a:hover{
-  background: #2563eb;
-  transform: translateY(-4px);
-}
-
-/* COPYRIGHT */
-footer p{
-  color: #cfd9e6;
-  margin-top: 10px;
-  font-size: 14px;
+  border-top:1px solid rgba(255,255,255,.08);
 }
 
 /* =========================
-   RESPONSIVE FIX
+   FOOTER SOCIAL
 ========================= */
 
-/* TABLET */
-@media (max-width: 1024px){
+.footer-social{
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  gap:14px;
+
+  margin-bottom:18px;
+
+  flex-wrap:wrap;
+}
+
+.footer-social a{
+
+  width:45px;
+  height:45px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.08);
+
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  font-size:18px;
+
+  transition:.3s;
+}
+
+.footer-social a:hover{
+  background:#2563eb;
+  transform:translateY(-4px);
+}
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+footer p{
+  color:#cfd9e6;
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1024px){
 
   .nav-links{
     gap:18px;
@@ -255,7 +312,11 @@ footer p{
 
   .nav-links a,
   .dropbtn{
-    font-size:20px;
+    font-size:18px;
+  }
+
+  .logo img{
+    width:70px;
   }
 
   .logo h2{
@@ -263,7 +324,7 @@ footer p{
   }
 
   .logo small{
-    font-size:16px;
+    font-size:15px;
   }
 
 }
@@ -271,119 +332,127 @@ footer p{
 /* =========================
    MOBILE
 ========================= */
-@media (max-width: 768px){
 
-  /* HEADER jadi lebih ringan */
+@media(max-width:768px){
+
+  /* HEADER */
+
   header{
-    backdrop-filter: blur(8px);
+    backdrop-filter:blur(8px);
   }
 
-  /* TOP BAR jadi kecil */
+  /* TOP BAR */
+
   .top-bar{
-    flex-direction:column;
-    gap:8px;
-    text-align:center;
-    font-size:12px;
+    padding:8px 4%;
+    font-size:11px;
   }
 
-  /* NAVBAR MOBILE */
+  /* NAVBAR */
+
   nav{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:15px;
+    padding:12px 4%;
   }
 
-  /* MENU LINK jadi vertical */
+  /* LOGO */
+
+  .logo{
+    gap:10px;
+  }
+
+  .logo img{
+    width:58px;
+  }
+
+  .logo h2{
+    font-size:18px;
+  }
+
+  .logo small{
+    font-size:11px;
+  }
+
+  /* MENU */
+
   .nav-links{
-    flex-direction:column;
-    align-items:flex-start;
-    width:100%;
     gap:12px;
-    display:none; /* default disembunyikan */
-  }
-
-  .nav-links.active{
-    display:flex;
   }
 
   .nav-links a,
   .dropbtn{
-    font-size:18px;
-    width:100%;
-  }
-
-  /* DROPDOWN MOBILE */
-  .dropdown-content{
-    position:relative;
-    top:0;
-    left:0;
-    width:100%;
-    box-shadow:none;
-    border-radius:10px;
-  }
-
-  /* HAMBURGER MENU */
-  .nav-toggle{
-    display:block;
-  }
-
-  /* LOGO */
-  .logo img{
-    width:65px;
-  }
-
-  .logo h2{
-    font-size:20px;
-  }
-
-  .logo small{
     font-size:14px;
   }
 
+  /* BUTTON */
+
+  .login-btn{
+    padding:10px 15px;
+    font-size:13px;
+  }
+
+  /* DROPDOWN */
+
+  .dropdown-content{
+    min-width:180px;
+  }
+
+  .dropdown-content a{
+    font-size:13px;
+    padding:12px 14px;
+  }
+
   /* FOOTER */
+
+  footer{
+    padding:30px 15px;
+  }
+
   .footer-social{
     gap:10px;
   }
 
   .footer-social a{
-    width:42px;
-    height:42px;
-    font-size:16px;
+    width:40px;
+    height:40px;
+    font-size:15px;
   }
 
   footer p{
-    font-size:13px;
+    font-size:12px;
   }
+
 }
 
 /* =========================
-   HP KECIL
+   SMALL MOBILE
 ========================= */
-@media (max-width: 480px){
+
+@media(max-width:480px){
+
+  .logo img{
+    width:50px;
+  }
 
   .logo h2{
-    font-size:18px;
+    font-size:15px;
   }
 
   .logo small{
-    font-size:12px;
+    font-size:10px;
+  }
+
+  .nav-links{
+    gap:10px;
   }
 
   .nav-links a,
   .dropbtn{
-    font-size:16px;
-  }
-
-  .footer-social{
-    gap:8px;
-  }
-
-  .footer-social a{
-    width:40px;
-    height:40px;
-  }
-
-  footer p{
     font-size:12px;
   }
+
+  .login-btn{
+    padding:8px 12px;
+    font-size:12px;
+  }
+
 }
