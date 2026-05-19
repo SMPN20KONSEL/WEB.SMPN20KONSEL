@@ -159,7 +159,7 @@ function renderSiswa(data){
 
             src="${
               siswa.foto ||
-              `../image/siswa/${siswa.nis}.jpg`
+              `image/siswa/${siswa.nis}.jpg`
             }"
 
             class="siswa-foto"
