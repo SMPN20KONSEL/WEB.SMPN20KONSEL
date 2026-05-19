@@ -88,25 +88,47 @@ function renderSiswa(data){
 
   /* ================= SORT KELAS ================= */
 
-  const urutanKelas =
-  Object.keys(kelompokKelas)
-  .sort((a,b)=>{
+const romawiMap = {
+  "VII": 7,
+  "VIII": 8,
+  "IX": 9
+};
 
-    const angkaA =
-    parseInt(a);
+const urutanKelas =
+Object.keys(kelompokKelas)
+.sort((a,b)=>{
 
-    const angkaB =
-    parseInt(b);
+  // ambil kata pertama
+  const romawiA =
+  a.split(" ")[0];
 
-    if(angkaA !== angkaB){
+  const romawiB =
+  b.split(" ")[0];
 
-      return angkaA - angkaB;
+  const angkaA =
+  romawiMap[romawiA] || 0;
 
+  const angkaB =
+  romawiMap[romawiB] || 0;
+
+  // urut kelas
+  if(angkaA !== angkaB){
+
+    return angkaA - angkaB;
+
+  }
+
+  // urut abjad
+  return a.localeCompare(
+    b,
+    undefined,
+    {
+      numeric:true,
+      sensitivity:"base"
     }
+  );
 
-    return a.localeCompare(b);
-
-  });
+});
 
   /* ================= HTML ================= */
 
@@ -155,21 +177,21 @@ function renderSiswa(data){
 
         <div class="siswa-foto-box">
 
-          <img
+<img
 
-            src="${
-              siswa.foto ||
-              `../image/siswa/${siswa.nis}.jpg`
-            }"
+  src="${
+    siswa.foto ||
+    `https://raw.githubusercontent.com/SMPN20KONSEL/WEB.SMPN20KONSEL/main/image/siswa/${siswa.nis}.jpg`
+  }"
 
-            class="siswa-foto"
+  class="siswa-foto"
 
-            onerror="
-              this.onerror=null;
-              this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-            "
+  onerror="
+    this.onerror=null;
+    this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+  "
 
-          >
+>
 
         </div>
 
@@ -209,7 +231,7 @@ function renderSiswa(data){
 
             <span>
               Gender :
-              ${siswa.jk || "-"}
+              ${siswa.gender || "-"}
             </span>
 
           </div>
@@ -247,12 +269,12 @@ function updateStatistik(data){
 
   const jumlahLaki =
   data.filter(
-    s => s.jk === "Laki-laki"
+    s => s.gender === "Laki-laki"
   ).length;
 
   const jumlahPerempuan =
   data.filter(
-    s => s.jk === "Perempuan"
+    s => s.gender === "Perempuan"
   ).length;
 
   /* ================= SET ================= */

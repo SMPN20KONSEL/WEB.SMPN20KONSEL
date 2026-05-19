@@ -141,6 +141,20 @@ th{
   line-height:1.7;
 }
 
+.btn-hapus{
+  background:#dc2626;
+  color:#fff;
+  border:none;
+  padding:7px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.btn-hapus:hover{
+  opacity:.9;
+}
+
 /* RESPONSIVE */
 @media(max-width:768px){
 
@@ -217,23 +231,6 @@ src="../assets/js/auth-guard.js">
         </option>
       </select>
 
-<select id="agama">
-        <option value="Islam">
-          Islam
-        </option>
-        <option value="Kristen">
-          Kristen
-        </option>
-        <option value="Katolik">
-          Katolik
-        </option>
-        <option value="Hindu">
-          Hindu
-        </option>
-        <option value="Budha">
-          Budha
-        </option>
-      </select>
       <input id="kelas"
       placeholder="Kelas">
 
@@ -321,7 +318,6 @@ onclick="downloadTemplate()">
             <th>NIS</th>
             <th>Nama</th>
             <th>JK</th>
-            <th>Agama</th>
             <th>Kelas</th>
             <th>Status</th>
           </tr>
@@ -361,8 +357,11 @@ import { db } from "../assets/js/firebase.js";
 import {
   collection,
   setDoc,
+  deleteDoc,
   doc,
-  onSnapshot
+  onSnapshot,
+  query,
+  orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
@@ -381,18 +380,15 @@ window.tambahSiswa = async () => {
   const nama =
   document.getElementById("nama").value.trim();
 
-  const jk =
-  document.getElementById("jk").value;
+  const gender =
+  document.getElementById("gender").value;
 
   const kelas =
   document.getElementById("kelas").value.trim();
 
-  const agama =
-  document.getElementById("agama").value;
+  if(!nis || !nama || !gender || !kelas){
 
-  if(!nis || !nama){
-
-    alert("Lengkapi data");
+    alert("Lengkapi semua data");
 
     return;
   }
@@ -403,9 +399,8 @@ window.tambahSiswa = async () => {
 
       nis,
       nama,
-      jk,
+      gender,
       kelas,
-      agama,
 
       status:"aktif",
 
@@ -419,7 +414,7 @@ window.tambahSiswa = async () => {
     document.getElementById("nis").value = "";
     document.getElementById("nama").value = "";
     document.getElementById("kelas").value = "";
-    document.getElementById("agama").value = "Islam";
+    document.getElementById("gender").value = "";
 
   }catch(err){
 
@@ -430,6 +425,37 @@ window.tambahSiswa = async () => {
   }
 
 };
+
+/* ================= FORMAT GENDER ================= */
+
+function formatGender(g){
+
+  if(!g) return "-";
+
+  g = String(g).trim().toUpperCase();
+
+  // laki-laki
+  if(
+    g === "L" ||
+    g === "LK" ||
+    g === "LAKI-LAKI" ||
+    g === "LAKI LAKI"
+  ){
+    return "Laki-laki";
+  }
+
+  // perempuan
+  if(
+    g === "P" ||
+    g === "PR" ||
+    g === "PEREMPUAN"
+  ){
+    return "Perempuan";
+  }
+
+  return g;
+
+}
 
 /* ================= IMPORT EXCEL XLSX ================= */
 
@@ -484,11 +510,8 @@ window.importCSV = async () => {
         nama:
         String(s.nama).trim(),
 
-        jk:
-        String(s.jk).trim(),
-
-        agama:
-        String(s.agama).trim(),
+        gender:
+        formatGender(s.gender),
 
         kelas:
         String(s.kelas).trim(),
@@ -528,16 +551,14 @@ window.downloadTemplate = () => {
     {
       nis:"24001",
       nama:"Ahmad Saputra",
-      jk:"Laki-laki",
-      agama:"Islam",
+      gender:"L",
       kelas:"7A"
     },
 
     {
       nis:"24002",
-      nama:"Siti Aulia",
-      jk:"Perempuan",
-      agama:"Islam",
+      nama:"Siti Aisyah",
+      gender:"P",
       kelas:"7A"
     }
 
@@ -552,80 +573,10 @@ window.downloadTemplate = () => {
 
     { wch:12 },
     { wch:30 },
-    { wch:18 },
-    { wch:18 },
+    { wch:15 },
     { wch:12 }
 
   ];
-
-  // freeze header
-  ws["!freeze"] = {
-    xSplit:0,
-    ySplit:1
-  };
-
-  // autofilter
-  ws["!autofilter"] = {
-    ref:"A1:E1"
-  };
-
-  // style header
-  const range =
-  XLSX.utils.decode_range(ws["!ref"]);
-
-  for(let C = range.s.c; C <= range.e.c; ++C){
-
-    const cell =
-    XLSX.utils.encode_cell({
-      r:0,
-      c:C
-    });
-
-    if(!ws[cell]) continue;
-
-    ws[cell].s = {
-
-      font:{
-        bold:true,
-        color:{
-          rgb:"FFFFFF"
-        }
-      },
-
-      fill:{
-        patternType:"solid",
-        fgColor:{
-          rgb:"2563EB"
-        }
-      },
-
-      alignment:{
-        horizontal:"center",
-        vertical:"center"
-      },
-
-      border:{
-        top:{
-          style:"thin",
-          color:{ rgb:"D1D5DB" }
-        },
-        bottom:{
-          style:"thin",
-          color:{ rgb:"D1D5DB" }
-        },
-        left:{
-          style:"thin",
-          color:{ rgb:"D1D5DB" }
-        },
-        right:{
-          style:"thin",
-          color:{ rgb:"D1D5DB" }
-        }
-      }
-
-    };
-
-  }
 
   // workbook
   const wb =
@@ -645,9 +596,41 @@ window.downloadTemplate = () => {
 
 };
 
+/* ================= HAPUS SISWA ================= */
+
+window.hapusSiswa = async (nis,nama) => {
+
+  const konfirmasi =
+  confirm(`Hapus siswa ${nama}?`);
+
+  if(!konfirmasi) return;
+
+  try{
+
+    await deleteDoc(
+      doc(db,"siswa",nis)
+    );
+
+    alert("Data siswa berhasil dihapus");
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("Gagal menghapus siswa");
+
+  }
+
+};
 /* ================= REALTIME DATA ================= */
 
-onSnapshot(collection(db,"siswa"),(snap)=>{
+const q =
+query(
+  collection(db,"siswa"),
+  orderBy("nis")
+);
+
+onSnapshot(q,(snap)=>{
 
   let html = "";
 
@@ -655,47 +638,56 @@ onSnapshot(collection(db,"siswa"),(snap)=>{
 
     const s = d.data();
 
-    html += `
+html += `
 
-      <tr>
+<tr>
 
-        <td>
+  <td>
 
-          <img
-            class="foto"
-            src="${FOTO_BASE}${s.nis}.jpg"
+    <img
+      class="foto"
+      src="${FOTO_BASE}${s.nis}.jpg"
 
-            onerror="
-            this.onerror=null;
-            this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-            ">
+      onerror="
+      this.onerror=null;
+      this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+      ">
 
-        </td>
+  </td>
 
-        <td>${s.nis || "-"}</td>
+  <td>${s.nis || "-"}</td>
 
-        <td>${s.nama || "-"}</td>
+  <td>${s.nama || "-"}</td>
 
-        <td>${s.jk || "-"}</td>
+  <td>${s.gender || "-"}</td>
 
-        <td>${s.agama || "-"}</td>
+  <td>${s.kelas || "-"}</td>
 
-        <td>${s.kelas || "-"}</td>
+  <td>
 
-        <td>
+    <span class="badge ${s.status}">
 
-          <span class="badge ${s.status}">
+      ${s.status || "aktif"}
 
-            ${s.status || "aktif"}
+    </span>
 
-          </span>
+  </td>
 
-        </td>
+  <td>
 
-      </tr>
+    <button
+      class="btn-hapus"
+      onclick="hapusSiswa('${s.nis}','${s.nama}')">
 
-    `;
+      Hapus
 
+    </button>
+
+  </td>
+
+</tr>
+
+`;
   });
 
   document.getElementById("dataSiswa").innerHTML =
