@@ -177,21 +177,16 @@ Object.keys(kelompokKelas)
 
         <div class="siswa-foto-box">
 
-<img
+          <img
 
             src="${
               siswa.foto ||
-              `../image/siswa/${siswa.nis}.jpg`
+              `image/siswa/${siswa.nis}.jpg`
             }"
-
-  class="siswa-foto"
-
-  onerror="
-    this.onerror=null;
-    this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-  "
-
->
+            class="siswa-foto" onerror="
+            this.onerror=null;
+            this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'; "
+          >
 
         </div>
 
