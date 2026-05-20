@@ -244,13 +244,14 @@ body{
   display:grid;
 
   grid-template-columns:
-  repeat(4,1fr);
+  repeat(3,1fr);
 
   gap:25px;
 
   padding:60px 8%;
 }
 
+/* ================= GURU CARD ================= */
 /* ================= GURU CARD ================= */
 
 .guru-card{
@@ -278,11 +279,13 @@ body{
 
   display:flex;
 
-  align-items:flex-start;
+  align-items:center;
 
-  gap:16px;
+  gap:18px;
 
   text-align:left;
+
+  overflow:hidden;
 }
 
 .guru-card:hover{
@@ -298,11 +301,11 @@ body{
 
 .guru-card img{
 
-  width:100px;
+  width:95px;
 
-  min-width:120px;
+  min-width:95px;
 
-  height:160px;
+  height:135px;
 
   object-fit:cover;
 
@@ -320,7 +323,7 @@ body{
 }
 
 .guru-card:hover img{
-  transform:scale(1.03);
+  transform:scale(1.04);
 }
 
 /* ================= CONTENT ================= */
@@ -330,10 +333,6 @@ body{
   flex:1;
 
   min-width:0;
-
-  padding-top:0;
-
-  margin-top:0;
 }
 
 /* ================= NAMA ================= */
@@ -346,54 +345,62 @@ body{
 
   margin-bottom:10px;
 
-  line-height:1.5;
+  font-weight:700;
 
-  word-break:normal;
+  line-height:1.4;
 
-  overflow-wrap:break-word;
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
 }
 
 /* ================= MAPEL ================= */
 
 .guru-card span{
 
-  display:inline-block;
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
 
   margin-bottom:14px;
 
   padding:6px 14px;
 
-  border-radius:20px;
+  border-radius:30px;
 
   background:
   rgba(96,165,250,.15);
 
   color:#93c5fd;
 
-  font-size:13px;
+  font-size:12px;
 
-  font-weight:600;
+  font-weight:700;
+
+  letter-spacing:.3px;
 }
 
 /* ================= INFO ================= */
 
 .guru-card p{
 
-  margin:8px 0;
+  margin:7px 0;
 
   font-size:14px;
 
   color:#dbeafe;
 
-  line-height:1.7;
+  line-height:1.6;
 
   display:flex;
 
   align-items:flex-start;
 
   gap:8px;
-
-  text-align:left;
 
   word-break:break-word;
 }
@@ -402,7 +409,7 @@ body{
 
   color:#60a5fa;
 
-  margin-top:4px;
+  margin-top:3px;
 
   min-width:16px;
 }
@@ -415,9 +422,9 @@ body{
 
   margin-top:12px;
 
-  padding:6px 14px;
+  padding:7px 14px;
 
-  border-radius:20px;
+  border-radius:30px;
 
   background:
   linear-gradient(
@@ -430,8 +437,69 @@ body{
 
   font-size:12px;
 
+  font-weight:600;
+
   box-shadow:
   0 5px 15px rgba(37,99,235,.3);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .guru-card{
+
+    flex-direction:row;
+
+    align-items:center;
+
+    text-align:left;
+  }
+
+  .guru-card img{
+
+    width:85px;
+
+    min-width:85px;
+
+    height:120px;
+  }
+
+  .guru-card h3{
+
+    font-size:17px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .guru-card{
+
+    padding:15px;
+
+    gap:14px;
+  }
+
+  .guru-card img{
+
+    width:78px;
+
+    min-width:78px;
+
+    height:110px;
+  }
+
+  .guru-card h3{
+
+    font-size:16px;
+  }
+
+  .guru-card p{
+
+    font-size:13px;
+  }
+
 }
 
 /* ================= LOADING ================= */
