@@ -1,15 +1,109 @@
-/* =========================
-   HASIL KELULUSAN
-========================= */
+/* =====================================================
+   POPUP HASIL KELULUSAN
+===================================================== */
+
+.popup-kelulusan{
+  position:fixed;
+  inset:0;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.75);
+
+  backdrop-filter:blur(8px);
+
+  z-index:9999;
+
+  overflow-y:auto;
+}
+
+/* ACTIVE */
+
+.popup-kelulusan.active{
+  display:flex;
+}
+
+/* =====================================================
+   POPUP CONTENT
+===================================================== */
+
+.popup-content{
+  position:relative;
+
+  width:100%;
+  max-width:950px;
+
+  max-height:95vh;
+
+  overflow-y:auto;
+
+  padding:35px;
+
+  border-radius:35px;
+
+  background:linear-gradient(
+    135deg,
+    #0b1f38,
+    #081728
+  );
+
+  border:1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45);
+
+  animation:popupShow .35s ease;
+}
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.close-popup{
+  position:absolute;
+
+  top:18px;
+  right:18px;
+
+  width:45px;
+  height:45px;
+
+  border:none;
+  cursor:pointer;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.10);
+
+  color:#fff;
+
+  font-size:24px;
+
+  transition:.3s;
+}
+
+.close-popup:hover{
+  transform:rotate(90deg);
+
+  background:#ff4d4d;
+}
+
+/* =====================================================
+   HASIL CARD
+===================================================== */
 
 .hasil-card{
   width:100%;
-  color:white;
+  color:#fff;
 }
 
-/* =========================
+/* =====================================================
    CONTAINER ATAS
-========================= */
+===================================================== */
 
 .hasil-top{
   display:flex;
@@ -21,20 +115,18 @@
 
   border-radius:28px;
 
-  background:
-  rgba(255,255,255,.08);
+  background:rgba(255,255,255,.08);
 
-  border:
-  1px solid rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.1);
 
   backdrop-filter:blur(14px);
 
   margin-bottom:22px;
 }
 
-/* =========================
+/* =====================================================
    FOTO
-========================= */
+===================================================== */
 
 .hasil-foto{
   flex-shrink:0;
@@ -48,27 +140,26 @@
 
   border-radius:22px;
 
-  border:
-  4px solid rgba(255,255,255,.12);
+  border:4px solid rgba(255,255,255,.12);
 
   box-shadow:
-  0 12px 35px rgba(0,0,0,.35);
+    0 12px 35px rgba(0,0,0,.35);
 
   display:block;
 }
 
-/* =========================
+/* =====================================================
    INFO
-========================= */
+===================================================== */
 
 .hasil-info{
   flex:1;
   min-width:0;
 }
 
-/* =========================
+/* =====================================================
    NAMA
-========================= */
+===================================================== */
 
 .hasil-nama{
   font-size:40px;
@@ -78,17 +169,17 @@
 
   margin-bottom:24px;
 
-  color:white;
+  color:#fff;
 
   word-break:break-word;
 
   text-shadow:
-  0 3px 10px rgba(0,0,0,.25);
+    0 3px 10px rgba(0,0,0,.25);
 }
 
-/* =========================
+/* =====================================================
    DATA
-========================= */
+===================================================== */
 
 .hasil-data{
   display:flex;
@@ -107,18 +198,15 @@
 
   border-radius:18px;
 
-  background:
-  rgba(255,255,255,.06);
+  background:rgba(255,255,255,.06);
 
-  border:
-  1px solid rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
 
   transition:.3s;
 }
 
 .hasil-item:hover{
-  background:
-  rgba(255,255,255,.1);
+  background:rgba(255,255,255,.1);
 }
 
 /* LABEL */
@@ -131,8 +219,7 @@
   font-size:15px;
   font-weight:600;
 
-  color:
-  rgba(255,255,255,.72);
+  color:rgba(255,255,255,.72);
 }
 
 /* TITIK DUA */
@@ -142,7 +229,7 @@
 
   font-size:17px;
 
-  color:white;
+  color:#fff;
 }
 
 /* VALUE */
@@ -153,14 +240,14 @@
   font-size:17px;
   font-weight:700;
 
-  color:white;
+  color:#fff;
 
   word-break:break-word;
 }
 
-/* =========================
+/* =====================================================
    STATUS
-========================= */
+===================================================== */
 
 .hasil-status{
   width:100%;
@@ -176,15 +263,14 @@
 
   letter-spacing:.5px;
 
-  color:white;
+  color:#fff;
 
   box-shadow:
-  0 10px 30px rgba(0,0,0,.25);
+    0 10px 30px rgba(0,0,0,.25);
 }
 
 .status-lulus{
-  background:
-  linear-gradient(
+  background:linear-gradient(
     135deg,
     #00d084,
     #00b56f
@@ -192,24 +278,23 @@
 }
 
 .status-tidak{
-  background:
-  linear-gradient(
+  background:linear-gradient(
     135deg,
     #ff4d4d,
     #e03131
   );
 }
 
-/* =========================
+/* =====================================================
    LOADING
-========================= */
+===================================================== */
 
 .loading-kelulusan{
   text-align:center;
 
   padding:50px 20px;
 
-  color:white;
+  color:#fff;
 }
 
 .loading-kelulusan i{
@@ -224,16 +309,16 @@
   font-size:18px;
 }
 
-/* =========================
+/* =====================================================
    ERROR
-========================= */
+===================================================== */
 
 .tidak-ditemukan{
   text-align:center;
 
   padding:50px 20px;
 
-  color:white;
+  color:#fff;
 }
 
 .tidak-ditemukan i{
@@ -254,11 +339,31 @@
   opacity:.85;
 }
 
-/* =========================
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes popupShow{
+  from{
+    opacity:0;
+    transform:scale(.85);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* =====================================================
    RESPONSIVE
-========================= */
+===================================================== */
 
 @media(max-width:768px){
+
+  .popup-content{
+    padding:25px 18px;
+  }
 
   .hasil-top{
     flex-direction:column;
@@ -279,14 +384,12 @@
 
   .hasil-nama{
     font-size:28px;
-
     text-align:center;
   }
 
   .hasil-item{
-    align-items:flex-start;
-
     flex-direction:column;
+    align-items:flex-start;
 
     gap:6px;
   }
