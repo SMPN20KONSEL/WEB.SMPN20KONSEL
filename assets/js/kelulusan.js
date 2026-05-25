@@ -103,7 +103,7 @@ openBtn.addEventListener("click", async () => {
       if (ditemukan.nis) {
 
         fotoSiswa =
-          `${BASE_URL}image/siswa/${ditemukan.nis}.JPG`;
+          `${BASE_URL}image/siswa/${ditemukan.nis}.jpg`;
       }
 
 
