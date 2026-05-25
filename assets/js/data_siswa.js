@@ -1,7 +1,3 @@
-/* =========================================
-   IMPORT FIREBASE
-========================================= */
-
 import { db } from "./firebase.js";
 
 import {
@@ -9,30 +5,39 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+const dataSiswa = document.getElementById("dataSiswa");
+const totalSiswaStat = document.getElementById("totalSiswaStat");
+const footerTotalSiswa = document.getElementById("footerTotalSiswa");
+const totalLaki = document.getElementById("totalLaki");
+const totalPerempuan = document.getElementById("totalPerempuan");
+const searchInput = document.getElementById("searchInput");
+const filterKelas = document.getElementById("filterKelas");
+
 /* =========================================
-   ELEMENT
+   BASE URL GITHUB PAGES
 ========================================= */
 
-const dataSiswa =
-document.getElementById("dataSiswa");
+const BASE_URL = "https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
 
-const totalSiswaStat =
-document.getElementById("totalSiswaStat");
+/* =========================================
+   FOTO BUILDER (FAST VERSION)
+========================================= */
 
-const footerTotalSiswa =
-document.getElementById("footerTotalSiswa");
+function getFotoUrl(nis) {
+  if (!nis) {
+    return `${BASE_URL}image/default-user.png`;
+  }
 
-const totalLaki =
-document.getElementById("totalLaki");
+  // urutan prioritas ekstensi (super lengkap)
+  const exts = [
+    "JPG", "jpg",
+    "JPEG", "jpeg",
+    "PNG", "png"
+  ];
 
-const totalPerempuan =
-document.getElementById("totalPerempuan");
-
-const searchInput =
-document.getElementById("searchInput");
-
-const filterKelas =
-document.getElementById("filterKelas");
+  // langsung pakai fallback chaining via onerror (tanpa async check)
+  return `${BASE_URL}image/siswa/${nis}.JPG`;
+}
 
 /* =========================================
    DATA GLOBAL
@@ -44,368 +49,205 @@ let semuaData = [];
    RENDER SISWA
 ========================================= */
 
-function renderSiswa(data){
+function renderSiswa(data) {
 
-  /* ================= KOSONG ================= */
-
-  if(data.length === 0){
-
+  if (data.length === 0) {
     dataSiswa.innerHTML = `
-
       <div class="loading-box">
-
         <i class="fas fa-folder-open"></i>
-
-        <p>
-          Data siswa tidak ditemukan
-        </p>
-
+        <p>Data siswa tidak ditemukan</p>
       </div>
-
     `;
-
     return;
   }
 
-  /* ================= GROUP KELAS ================= */
-
   let kelompokKelas = {};
 
-  data.forEach((siswa)=>{
+  data.forEach((siswa) => {
+    const kelas = siswa.kelas || "Tanpa Kelas";
 
-    const kelas =
-    siswa.kelas || "Tanpa Kelas";
-
-    if(!kelompokKelas[kelas]){
-
+    if (!kelompokKelas[kelas]) {
       kelompokKelas[kelas] = [];
-
     }
 
     kelompokKelas[kelas].push(siswa);
+  });
+
+  const romawiMap = { "VII": 7, "VIII": 8, "IX": 9 };
+
+  const urutanKelas = Object.keys(kelompokKelas).sort((a, b) => {
+
+    const romawiA = a.split(" ")[0];
+    const romawiB = b.split(" ")[0];
+
+    const angkaA = romawiMap[romawiA] || 0;
+    const angkaB = romawiMap[romawiB] || 0;
+
+    if (angkaA !== angkaB) return angkaA - angkaB;
+
+    return a.localeCompare(b, undefined, {
+      numeric: true,
+      sensitivity: "base"
+    });
 
   });
 
-  /* ================= SORT KELAS ================= */
-
-const romawiMap = {
-  "VII": 7,
-  "VIII": 8,
-  "IX": 9
-};
-
-const urutanKelas =
-Object.keys(kelompokKelas)
-.sort((a,b)=>{
-
-  // ambil kata pertama
-  const romawiA =
-  a.split(" ")[0];
-
-  const romawiB =
-  b.split(" ")[0];
-
-  const angkaA =
-  romawiMap[romawiA] || 0;
-
-  const angkaB =
-  romawiMap[romawiB] || 0;
-
-  // urut kelas
-  if(angkaA !== angkaB){
-
-    return angkaA - angkaB;
-
-  }
-
-  // urut abjad
-  return a.localeCompare(
-    b,
-    undefined,
-    {
-      numeric:true,
-      sensitivity:"base"
-    }
-  );
-
-});
-
-  /* ================= HTML ================= */
-
   let html = "";
 
-  urutanKelas.forEach((kelas)=>{
+  urutanKelas.forEach((kelas) => {
 
     html += `
+      <div class="kelas-section">
 
-    <div class="kelas-section">
+        <div class="kelas-header">
+          <h2>
+            <i class="fas fa-school"></i>
+            Kelas ${kelas}
+          </h2>
+          <span>${kelompokKelas[kelas].length} Siswa</span>
+        </div>
 
-      <!-- HEADER -->
-
-      <div class="kelas-header">
-
-        <h2>
-
-          <i class="fas fa-school"></i>
-
-          Kelas ${kelas}
-
-        </h2>
-
-        <span>
-          ${kelompokKelas[kelas].length} Siswa
-        </span>
-
-      </div>
-
-      <!-- GRID -->
-
-      <div class="siswa-grid">
-
+        <div class="siswa-grid">
     `;
 
-    /* ================= SISWA ================= */
-
-    kelompokKelas[kelas]
-    .forEach((siswa)=>{
+    kelompokKelas[kelas].forEach((siswa) => {
 
       html += `
+        <div class="siswa-card">
 
-      <div class="siswa-card">
+          <div class="siswa-foto-box">
 
-        <!-- FOTO -->
-
-        <div class="siswa-foto-box">
-
-          <img
-
-            src="${
-              siswa.foto ||
-              `image/siswa/${siswa.nis}.jpg`
-            }"
-            class="siswa-foto" onerror="
-            this.onerror=null;
-            this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'; "
-          >
-
-        </div>
-
-        <!-- CONTENT -->
-
-        <div class="siswa-content">
-
-          <h3>
-            ${siswa.nama || "-"}
-          </h3>
-
-          <div class="siswa-info">
-
-            <i class="fas fa-id-card"></i>
-
-            <span>
-              NIS :
-              ${siswa.nis || "-"}
-            </span>
+            <img
+              class="siswa-foto"
+              src="${getFotoUrl(siswa.nis)}"
+              onerror="
+                this.onerror=null;
+                this.src='${BASE_URL}image/siswa/${siswa.nis}.jpg';
+              "
+              onload="
+                if(this.naturalWidth === 0){
+                  this.src='${BASE_URL}image/siswa/${siswa.nis}.jpeg';
+                }
+              "
+            >
 
           </div>
 
-          <div class="siswa-info">
+          <div class="siswa-content">
 
-            <i class="fas fa-layer-group"></i>
+            <h3>${siswa.nama || "-"}</h3>
 
-            <span>
-              Kelas :
-              ${siswa.kelas || "-"}
-            </span>
+            <div class="siswa-info">
+              <i class="fas fa-id-card"></i>
+              <span>NIS : ${siswa.nis || "-"}</span>
+            </div>
 
-          </div>
+            <div class="siswa-info">
+              <i class="fas fa-layer-group"></i>
+              <span>Kelas : ${siswa.kelas || "-"}</span>
+            </div>
 
-          <div class="siswa-info">
-
-            <i class="fas fa-user"></i>
-
-            <span>
-              Gender :
-              ${siswa.gender || "-"}
-            </span>
+            <div class="siswa-info">
+              <i class="fas fa-user"></i>
+              <span>Gender : ${siswa.gender || "-"}</span>
+            </div>
 
           </div>
 
         </div>
-
-      </div>
-
       `;
 
     });
 
     html += `
-
+        </div>
       </div>
-
-    </div>
-
     `;
 
   });
 
   dataSiswa.innerHTML = html;
-
 }
 
 /* =========================================
-   UPDATE STATISTIK
+   STATISTIK
 ========================================= */
 
-function updateStatistik(data){
+function updateStatistik(data) {
 
-  const jumlahSiswa =
-  data.length;
+  const jumlahSiswa = data.length;
 
-  const jumlahLaki =
-  data.filter(
+  const jumlahLaki = data.filter(
     s => s.gender === "Laki-laki"
   ).length;
 
-  const jumlahPerempuan =
-  data.filter(
+  const jumlahPerempuan = data.filter(
     s => s.gender === "Perempuan"
   ).length;
 
-  /* ================= SET ================= */
-
-  if(totalSiswaStat){
-
-    totalSiswaStat.textContent =
-    jumlahSiswa;
-
-  }
-
-  if(footerTotalSiswa){
-
-    footerTotalSiswa.textContent =
-    jumlahSiswa;
-
-  }
-
-  if(totalLaki){
-
-    totalLaki.textContent =
-    jumlahLaki;
-
-  }
-
-  if(totalPerempuan){
-
-    totalPerempuan.textContent =
-    jumlahPerempuan;
-
-  }
-
+  totalSiswaStat.textContent = jumlahSiswa;
+  footerTotalSiswa.textContent = jumlahSiswa;
+  totalLaki.textContent = jumlahLaki;
+  totalPerempuan.textContent = jumlahPerempuan;
 }
 
 /* =========================================
    FILTER
 ========================================= */
 
-function filterData(){
+function filterData() {
 
-  const keyword =
-  searchInput.value
-  .toLowerCase();
+  const keyword = searchInput.value.toLowerCase();
+  const kelas = filterKelas.value;
 
-  const kelas =
-  filterKelas.value;
+  const hasil = semuaData.filter((siswa) => {
 
-  const hasil =
-  semuaData.filter((siswa)=>{
-
-    const cocokNama =
-    (siswa.nama || "")
-    .toLowerCase()
-    .includes(keyword);
+    const cocokNama = (siswa.nama || "")
+      .toLowerCase()
+      .includes(keyword);
 
     const cocokKelas =
-    kelas === ""
-    || siswa.kelas === kelas;
+      kelas === "" || siswa.kelas === kelas;
 
-    return (
-      cocokNama &&
-      cocokKelas
-    );
+    return cocokNama && cocokKelas;
 
   });
 
   renderSiswa(hasil);
-
   updateStatistik(hasil);
-
 }
 
 /* =========================================
    REALTIME FIRESTORE
 ========================================= */
 
-onSnapshot(
+onSnapshot(collection(db, "siswa"), (snap) => {
 
-  collection(db, "siswa"),
+  semuaData = [];
 
-  (snap)=>{
-
-    semuaData = [];
-
-    snap.forEach((doc)=>{
-
-      semuaData.push({
-
-        id: doc.id,
-
-        ...doc.data()
-
-      });
-
+  snap.forEach((doc) => {
+    semuaData.push({
+      id: doc.id,
+      ...doc.data()
     });
+  });
 
-    /* ================= SORT NAMA ================= */
+  semuaData.sort((a, b) =>
+    (a.nama || "").localeCompare(b.nama || "")
+  );
 
-    semuaData.sort((a,b)=>
+  renderSiswa(semuaData);
+  updateStatistik(semuaData);
 
-      (a.nama || "")
-      .localeCompare(b.nama || "")
+  console.log("Realtime siswa aktif");
 
-    );
-
-    renderSiswa(semuaData);
-
-    updateStatistik(semuaData);
-
-    console.log(
-      "Realtime siswa aktif"
-    );
-
-  },
-
-  (err)=>{
-
-    console.error(
-      "Gagal memuat data siswa:",
-      err
-    );
-
-  }
-
-);
+}, (err) => {
+  console.error("Gagal memuat data siswa:", err);
+});
 
 /* =========================================
    EVENT
 ========================================= */
 
-searchInput.addEventListener(
-  "input",
-  filterData
-);
-
-filterKelas.addEventListener(
-  "change",
-  filterData
-);
+searchInput.addEventListener("input", filterData);
+filterKelas.addEventListener("change", filterData);
