@@ -181,7 +181,8 @@ Object.keys(kelompokKelas)
 
             src="${
               siswa.foto ||
-              `image/siswa/${siswa.nis}.jpg`
+              `${BASE_URL}image/siswa/${siswa.nis}.jpg`
+              
             }"
             class="siswa-foto" onerror="
             this.onerror=null;
