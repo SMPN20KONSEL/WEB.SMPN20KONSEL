@@ -24,7 +24,7 @@ const filterKelas = document.getElementById("filterKelas");
 const BASE_URL = "https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
 
 /* =========================================
-   FOTO FALLBACK (SUPER STABIL)
+   FOTO HELPER (SEMUA FORMAT)
 ========================================= */
 
 function getFotoList(nis) {
@@ -36,9 +36,40 @@ function getFotoList(nis) {
     `${BASE_URL}image/siswa/${nis}.JPEG`,
     `${BASE_URL}image/siswa/${nis}.jpeg`,
     `${BASE_URL}image/siswa/${nis}.PNG`,
-    `${BASE_URL}image/siswa/${nis}.png`,
+    `${BASE_URL}image/siswa/${nis}.png`
   ];
 }
+
+/* =========================================
+   GLOBAL FOTO LOADER
+========================================= */
+
+window.setFoto = function (img) {
+
+  const nis = img.dataset.nis;
+
+  const list = getFotoList(nis);
+
+  let i = 0;
+
+  function coba() {
+
+    if (i >= list.length) {
+      img.src = `${BASE_URL}image/default-user.png`;
+      return;
+    }
+
+    img.src = list[i];
+
+    img.onerror = () => {
+      i++;
+      coba();
+    };
+
+  }
+
+  coba();
+};
 
 /* =========================================
    DATA GLOBAL
@@ -113,8 +144,6 @@ function renderSiswa(data) {
 
     kelompokKelas[kelas].forEach((siswa) => {
 
-      const fotoList = getFotoList(siswa.nis);
-
       html += `
         <div class="siswa-card">
 
@@ -122,10 +151,9 @@ function renderSiswa(data) {
 
             <img
               class="siswa-foto"
-              src="${fotoList[0]}"
-              data-foto='${JSON.stringify(fotoList)}'
-              data-index="0"
-              onerror="window.nextFoto(this)"
+              src="${BASE_URL}image/default-user.png"
+              data-nis="${siswa.nis}"
+              onload="setFoto(this)"
             >
 
           </div>
@@ -164,28 +192,17 @@ function renderSiswa(data) {
   });
 
   dataSiswa.innerHTML = html;
+
+  /* =========================================
+     TRIGGER FOTO LOAD
+  ========================================= */
+
+  setTimeout(() => {
+    document.querySelectorAll(".siswa-foto").forEach(img => {
+      setFoto(img);
+    });
+  }, 0);
 }
-
-/* =========================================
-   FUNGSI NEXT FOTO (AUTO SWITCH EXTENSION)
-========================================= */
-
-window.nextFoto = function(img) {
-
-  let list = JSON.parse(img.dataset.foto);
-  let index = parseInt(img.dataset.index || "0");
-
-  index++;
-
-  if (index < list.length) {
-    img.dataset.index = index;
-    img.src = list[index];
-  } else {
-    img.onerror = null;
-    img.src = `${BASE_URL}image/default-user.png`;
-  }
-
-};
 
 /* =========================================
    STATISTIK
