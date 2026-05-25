@@ -7,165 +7,232 @@ import { db } from "./firebase.js";
 import {
   collection,
   getDocs
-} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+}
+from
+"https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 
 // =========================
-// BASE URL (GITHUB PAGES)
+// BASE URL
 // =========================
 
-const BASE_URL = "https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
+const BASE_URL =
+"https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
 
 
 // =========================
 // ELEMENT
 // =========================
 
-const popup = document.getElementById("popupKelulusan");
-const hasil = document.getElementById("hasil");
-const openBtn = document.getElementById("openKelulusan");
-const closeBtn = document.getElementById("closePopup");
-const nomorInput = document.getElementById("nomorUjian");
+const popup =
+document.getElementById(
+"popupKelulusan"
+);
+
+const hasil =
+document.getElementById(
+"hasil"
+);
+
+const openBtn =
+document.getElementById(
+"openKelulusan"
+);
+
+const closeBtn =
+document.getElementById(
+"closePopup"
+);
+
+const nomorInput =
+document.getElementById(
+"nomorUjian"
+);
 
 
 // =========================
 // FORMAT NOMOR UJIAN
 // =========================
 
-function formatNomor(no) {
+function formatNomor(no){
+
   return String(no || "")
-    .replace(/[^0-9]/g, "")
-    .trim();
+
+  .replace(/[^0-9]/g,"")
+
+  .trim();
+
 }
 
 
 // =========================
-// CEK KELULUSAN
+// OPEN POPUP
 // =========================
 
-openBtn.addEventListener("click", async () => {
+function openPopup(){
 
-  const nomor = formatNomor(nomorInput.value);
+  popup.classList.add(
+    "show"
+  );
 
-  if (!nomor) {
-    alert("Masukkan nomor ujian");
-    return;
-  }
+}
 
-  // LOADING
+
+// =========================
+// CLOSE POPUP
+// =========================
+
+function closePopupFunc(){
+
+  popup.classList.remove(
+    "show"
+  );
+
+}
+
+
+// =========================
+// LOADING
+// =========================
+
+function tampilLoading(){
+
   hasil.innerHTML = `
+
     <div class="loading-kelulusan">
+
       <i class="fas fa-spinner fa-spin"></i>
-      <p>Mencari data siswa...</p>
+
+      <p>
+        Mencari data siswa...
+      </p>
+
     </div>
+
   `;
 
-  popup.style.display = "flex";
-
-  try {
-
-    const snap = await getDocs(collection(db, "kelulusan"));
-
-    let ditemukan = null;
-
-    snap.forEach(doc => {
-
-      const data = doc.data();
-
-      const nomorDb = formatNomor(data.nomorUjian || "");
-
-      if (nomorDb === nomor) {
-        ditemukan = data;
-      }
-
-    });
-
-    // =========================
-    // JIKA DITEMUKAN
-    // =========================
-
-    if (ditemukan) {
-
-      const statusClass =
-        ditemukan.statusKelulusan
-          ?.toLowerCase()
-          .includes("lulus")
-          ? "status-lulus"
-          : "status-tidak";
+}
 
 
-      // =========================
-      // FOTO SISWA (FIX FINAL)
-      // =========================
+// =========================
+// HASIL DITEMUKAN
+// =========================
 
-      let fotoSiswa = `${BASE_URL}image/default-user.png`;
+function tampilHasil(data){
 
-      if (ditemukan.nis) {
+  const statusText =
+  data.status || "-";
 
-        fotoSiswa =
-          `${BASE_URL}image/siswa/${ditemukan.nis}.jpg`;
-      }
+  const isLulus =
+  statusText
+  .toLowerCase()
+  .includes("lulus");
 
+  const statusClass =
+  isLulus
+  ? "status-lulus"
+  : "status-tidak";
 
-      // =========================
-      // TAMPILKAN HASIL
-      // =========================
+  let fotoSiswa =
+  `${BASE_URL}image/default-user.png`;
 
-      hasil.innerHTML = `
-      <div class="hasil-card">
+  if(data.nis){
 
-        <div class="hasil-top">
+    fotoSiswa =
+    `${BASE_URL}image/siswa/${data.nis}.jpg`;
 
-          <div class="hasil-foto">
+  }
 
-            <img
-              src="${fotoSiswa}"
-              onerror="
-                this.onerror=null;
-                this.src='${BASE_URL}image/default-user.png';
-              "
-              alt="Foto Siswa"
-            >
+  hasil.innerHTML = `
 
-          </div>
+    <div class="hasil-card">
 
-          <div class="hasil-info">
+      <div class="hasil-top">
 
-            <h1 class="hasil-nama">
-              ${ditemukan.nama || "-"}
-            </h1>
+        <!-- FOTO -->
 
-            <div class="hasil-data">
+        <div class="hasil-foto">
 
-              <div class="hasil-item">
-                <span>NIS</span>
-                <b>:</b>
-                <strong>${ditemukan.nis || "-"}</strong>
-              </div>
+          <img
+            src="${fotoSiswa}"
 
-              <div class="hasil-item">
-                <span>NISN</span>
-                <b>:</b>
-                <strong>${ditemukan.nisn || "-"}</strong>
-              </div>
+            alt="Foto Siswa"
 
-              <div class="hasil-item">
-                <span>Kelas</span>
-                <b>:</b>
-                <strong>${ditemukan.kelas || "-"}</strong>
-              </div>
+            onerror="
+              this.onerror=null;
+              this.src='${BASE_URL}image/default-user.png';
+            "
+          >
 
-              <div class="hasil-item">
-                <span>Gender</span>
-                <b>:</b>
-                <strong>${ditemukan.gender || "-"}</strong>
-              </div>
+        </div>
 
-              <div class="hasil-item">
-                <span>Nomor Ujian</span>
-                <b>:</b>
-                <strong>${ditemukan.nomorUjian || "-"}</strong>
-              </div>
+        <!-- INFO -->
+
+        <div class="hasil-info">
+
+          <h1 class="hasil-nama">
+            ${data.nama || "-"}
+          </h1>
+
+          <div class="hasil-data">
+
+            <div class="hasil-item">
+
+              <span>NIS</span>
+
+              <b>:</b>
+
+              <strong>
+                ${data.nis || "-"}
+              </strong>
+
+            </div>
+
+            <div class="hasil-item">
+
+              <span>NISN</span>
+
+              <b>:</b>
+
+              <strong>
+                ${data.nisn || "-"}
+              </strong>
+
+            </div>
+
+            <div class="hasil-item">
+
+              <span>Kelas</span>
+
+              <b>:</b>
+
+              <strong>
+                ${data.kelas || "-"}
+              </strong>
+
+            </div>
+
+            <div class="hasil-item">
+
+              <span>Gender</span>
+
+              <b>:</b>
+
+              <strong>
+                ${data.gender || "-"}
+              </strong>
+
+            </div>
+
+            <div class="hasil-item">
+
+              <span>Nomor Ujian</span>
+
+              <b>:</b>
+
+              <strong>
+                ${data.nomorUjian || "-"}
+              </strong>
 
             </div>
 
@@ -173,80 +240,215 @@ openBtn.addEventListener("click", async () => {
 
         </div>
 
-        <div class="hasil-status ${statusClass}">
-          ${ditemukan.status || "-"}
-        </div>
+      </div>
+
+      <!-- STATUS -->
+
+      <div class="
+      hasil-status
+      ${statusClass}
+      ">
+
+        ${statusText}
 
       </div>
-      `;
 
-    }
+    </div>
 
-    // =========================
-    // TIDAK DITEMUKAN
-    // =========================
+  `;
 
-    else {
+}
 
-      hasil.innerHTML = `
-        <div class="tidak-ditemukan">
 
-          <i class="fas fa-circle-xmark"></i>
+// =========================
+// DATA TIDAK DITEMUKAN
+// =========================
 
-          <h2>Data Tidak Ditemukan</h2>
+function tampilTidakDitemukan(){
 
-          <p>Nomor ujian tidak terdaftar.</p>
+  hasil.innerHTML = `
 
-        </div>
-      `;
+    <div class="tidak-ditemukan">
 
-    }
+      <i class="fas fa-circle-xmark"></i>
+
+      <h2>
+        Data Tidak Ditemukan
+      </h2>
+
+      <p>
+        Nomor ujian tidak terdaftar.
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+// =========================
+// ERROR
+// =========================
+
+function tampilError(){
+
+  hasil.innerHTML = `
+
+    <div class="tidak-ditemukan">
+
+      <i class="fas fa-triangle-exclamation"></i>
+
+      <h2>
+        Terjadi Kesalahan
+      </h2>
+
+      <p>
+        Gagal mengambil data dari Firebase.
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+// =========================
+// CEK KELULUSAN
+// =========================
+
+openBtn.addEventListener(
+
+"click",
+
+async ()=>{
+
+  const nomor =
+  formatNomor(
+    nomorInput.value
+  );
+
+  if(!nomor){
+
+    alert(
+      "Masukkan nomor ujian"
+    );
+
+    nomorInput.focus();
+
+    return;
 
   }
 
-  // ERROR
-  catch (err) {
+  openPopup();
+
+  tampilLoading();
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(
+        db,
+        "kelulusan"
+      )
+    );
+
+    let ditemukan =
+    null;
+
+    snap.forEach((doc)=>{
+
+      const data =
+      doc.data();
+
+      const nomorDb =
+      formatNomor(
+        data.nomorUjian
+      );
+
+      if(
+        nomorDb === nomor
+      ){
+
+        ditemukan =
+        data;
+
+      }
+
+    });
+
+    if(ditemukan){
+
+      tampilHasil(
+        ditemukan
+      );
+
+    }else{
+
+      tampilTidakDitemukan();
+
+    }
+
+  }catch(err){
 
     console.error(err);
 
-    hasil.innerHTML = `
-      <div class="tidak-ditemukan">
-
-        <i class="fas fa-triangle-exclamation"></i>
-
-        <h2>Terjadi Kesalahan</h2>
-
-        <p>Gagal mengambil data dari Firebase.</p>
-
-      </div>
-    `;
+    tampilError();
 
   }
 
-});
+}
+
+);
 
 
 // =========================
-// CLOSE POPUP
+// CLOSE EVENT
 // =========================
 
-closeBtn.addEventListener("click", () => {
-  popup.style.display = "none";
-});
+closeBtn.addEventListener(
 
-popup.addEventListener("click", (e) => {
-  if (e.target === popup) {
-    popup.style.display = "none";
+"click",
+
+closePopupFunc
+
+);
+
+popup.addEventListener(
+
+"click",
+
+(e)=>{
+
+  if(e.target === popup){
+
+    closePopupFunc();
+
   }
-});
+
+}
+
+);
 
 
 // =========================
 // ENTER KEY
 // =========================
 
-nomorInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
+nomorInput.addEventListener(
+
+"keypress",
+
+(e)=>{
+
+  if(e.key === "Enter"){
+
     openBtn.click();
+
   }
-});
+
+}
+
+);
