@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Kelulusan</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet"
+href="../assets/css/admin.css">
+
+<style>
+
+/* =========================
+   GOOGLE FONT
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================
+   ROOT
+========================= */
+
+:root{
+
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+
+  --success:#16a34a;
+
+  --bg:#f1f5f9;
+
+  --white:#ffffff;
+
+  --text:#0f172a;
+  --text-light:#64748b;
+
+  --border:#e2e8f0;
+
+  --shadow:
+  0 10px 30px rgba(0,0,0,.06);
+
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+
+  margin-left:260px;
+
+  width:calc(100% - 260px);
+
+  min-height:100vh;
+
+  transition:.3s;
+
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+  height:85px;
+
+  background:rgba(255,255,255,.95);
+
+  backdrop-filter:blur(10px);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:0 30px;
+
+  border-bottom:1px solid var(--border);
+
+  position:sticky;
+
+  top:0;
+
+  z-index:99;
+
+}
+
+.header h2{
+
+  font-size:26px;
+
+  font-weight:700;
+
+  color:var(--text);
+
+}
+
+.header-right{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  font-weight:600;
+
+  color:var(--text-light);
+
+}
+
+.header-right i{
+
+  font-size:28px;
+
+  color:var(--primary);
+
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+  padding:30px;
+
+}
+
+/* =========================
+   CARD
+========================= */
+
+.main-card{
+
+  background:var(--white);
+
+  border-radius:30px;
+
+  padding:35px;
+
+  box-shadow:var(--shadow);
+
+  border:1px solid #eef2f7;
+
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.badge{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  color:#fff;
+
+  padding:14px 24px;
+
+  border-radius:999px;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  margin-bottom:35px;
+
+  letter-spacing:.5px;
+
+}
+
+/* =========================
+   SWITCH BOX
+========================= */
+
+.switch-box{
+
+  background:
+  linear-gradient(
+    135deg,
+    #eff6ff,
+    #ffffff
+  );
+
+  border:1px solid #dbeafe;
+
+  border-radius:28px;
+
+  padding:28px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:35px;
+
+}
+
+.switch-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+}
+
+.switch-icon{
+
+  width:75px;
+  height:75px;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:30px;
+
+  box-shadow:
+  0 10px 25px rgba(37,99,235,.25);
+
+}
+
+.switch-title{
+
+  font-size:18px;
+
+  font-weight:700;
+
+  margin-bottom:5px;
+
+}
+
+.switch-desc{
+
+  color:var(--text-light);
+
+  font-size:14px;
+
+  line-height:1.6;
+
+}
+
+.switch{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  font-weight:600;
+
+}
+
+.switch input{
+
+  width:22px;
+  height:22px;
+
+  accent-color:var(--primary);
+
+  cursor:pointer;
+
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-box{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(
+    auto-fit,
+    minmax(300px,1fr)
+  );
+
+  gap:25px;
+
+}
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.input-box{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+
+}
+
+.input-box.full{
+  grid-column:1/-1;
+}
+
+.input-box label{
+
+  font-size:15px;
+
+  font-weight:600;
+
+  color:var(--text);
+
+}
+
+.input-box input,
+.input-box textarea{
+
+  width:100%;
+
+  padding:17px 18px;
+
+  border-radius:18px;
+
+  border:1.5px solid var(--border);
+
+  background:#fff;
+
+  outline:none;
+
+  font-size:15px;
+
+  transition:.25s;
+
+  color:var(--text);
+
+}
+
+.input-box textarea{
+
+  min-height:150px;
+
+  resize:vertical;
+
+  line-height:1.7;
+
+}
+
+.input-box input:focus,
+.input-box textarea:focus{
+
+  border-color:var(--primary);
+
+  box-shadow:
+  0 0 0 5px rgba(37,99,235,.10);
+
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.preview{
+
+  width:100%;
+
+  border-radius:24px;
+
+  overflow:hidden;
+
+  border:1px solid var(--border);
+
+}
+
+.preview img{
+
+  width:100%;
+
+  height:350px;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:.4s;
+
+}
+
+.preview img:hover{
+
+  transform:scale(1.03);
+
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.action{
+
+  margin-top:40px;
+
+}
+
+.btn-save{
+
+  border:none;
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--success),
+    #15803d
+  );
+
+  color:#fff;
+
+  padding:18px 28px;
+
+  border-radius:18px;
+
+  font-size:15px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  transition:.25s;
+
+  box-shadow:
+  0 10px 25px rgba(22,163,74,.25);
+
+}
+
+.btn-save:hover{
+
+  transform:translateY(-2px);
+
+  opacity:.95;
+
+}
+
+.btn-save:disabled{
+
+  opacity:.7;
+
+  cursor:not-allowed;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .main{
+
+    margin-left:0;
+
+    width:100%;
+
+  }
+
+}
+
+@media(max-width:768px){
+
+  .container{
+    padding:20px;
+  }
+
+  .main-card{
+    padding:25px;
+    border-radius:24px;
+  }
+
+  .header{
+
+    padding:0 20px;
+
+    height:75px;
+
+  }
+
+  .header h2{
+    font-size:22px;
+  }
+
+  .switch-box{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .switch-left{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .form-box{
+    grid-template-columns:1fr;
+  }
+
+  .btn-save{
+
+    width:100%;
+
+    justify-content:center;
+
+  }
+
+}
+
+</style>
+
+<style>
+body{
+  display:none;
+}
+</style>
+
+<script type="module"
+src="../assets/js/auth-guard.js">
+</script>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div id="sidebar"></div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <h2>
+      Admin Kelulusan
+    </h2>
+
+    <div class="header-right">
+
+      <i class="fas fa-user-circle"></i>
+
+      <span>
+        Administrator
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- CONTAINER -->
+
+  <div class="container">
+
+    <div class="main-card">
+
+      <!-- BADGE -->
+
+      <div class="badge">
+
+        <i class="fas fa-graduation-cap"></i>
+
+        PENGATURAN HALAMAN KELULUSAN
+
+      </div>
+
+      <!-- STATUS -->
+
+      <div class="switch-box">
+
+        <div class="switch-left">
+
+          <div class="switch-icon">
+
+            <i class="fas fa-school"></i>
+
+          </div>
+
+          <div>
+
+            <div class="switch-title">
+              Status Halaman Kelulusan
+            </div>
+
+            <div class="switch-desc">
+              Aktifkan atau nonaktifkan halaman pengumuman kelulusan siswa
+            </div>
+
+          </div>
+
+        </div>
+
+        <label class="switch">
+
+          <input
+          type="checkbox"
+          id="aktif">
+
+          <span>
+            Aktifkan
+          </span>
+
+        </label>
+
+      </div>
+
+      <!-- FORM -->
+
+      <div class="form-box">
+
+        <div class="input-box">
+
+          <label>
+            Label
+          </label>
+
+          <input
+          type="text"
+          id="label"
+          placeholder="Masukkan label">
+
+        </div>
+
+        <div class="input-box">
+
+          <label>
+            Tanggal Pengumuman
+          </label>
+
+          <input
+          type="text"
+          id="tanggal"
+          placeholder="02 Juni 2026">
+
+        </div>
+
+        <div class="input-box">
+
+          <label>
+            Jam Pengumuman
+          </label>
+
+          <input
+          type="text"
+          id="jam"
+          placeholder="10:00 WITA">
+
+        </div>
+
+        <div class="input-box">
+
+          <label>
+            Judul Sambutan
+          </label>
+
+          <input
+          type="text"
+          id="welcome_title"
+          placeholder="Masukkan judul sambutan">
+
+        </div>
+
+        <div class="input-box full">
+
+          <label>
+            Judul
+          </label>
+
+          <textarea
+          id="title"
+          placeholder="Masukkan judul pengumuman"></textarea>
+
+        </div>
+
+        <div class="input-box full">
+
+          <label>
+            Deskripsi
+          </label>
+
+          <textarea
+          id="desc"
+          placeholder="Masukkan deskripsi"></textarea>
+
+        </div>
+
+        <div class="input-box full">
+
+          <label>
+            Deskripsi Sambutan
+          </label>
+
+          <textarea
+          id="welcome_desc"
+          placeholder="Masukkan deskripsi sambutan"></textarea>
+
+        </div>
+
+        <!-- IMAGE -->
+
+        <div class="input-box full">
+
+          <label>
+            Gambar Halaman
+          </label>
+
+          <div class="preview">
+
+            <img
+            src="../image/guru.jpeg"
+            id="previewImage">
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+
+      <div class="action">
+
+        <button
+        class="btn-save"
+        onclick="simpanData()"
+        id="btnSave">
+
+          <i class="fas fa-save"></i>
+
+          Simpan Data
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module">
+
+import { db }
+from "../assets/js/firebase.js";
+
+import {
+  doc,
+  getDoc,
+  setDoc
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadData(){
+
+  try{
+
+    const ref =
+    doc(db,"website","kelulusan");
+
+    const snap =
+    await getDoc(ref);
+
+    /* DEFAULT */
+
+    if(!snap.exists()){
+
+      await setDoc(
+        ref,
+        {
+
+          aktif:true,
+
+          label:
+          "INFORMASI SEKOLAH",
+
+          title:
+`PENGUMUMAN
+KELULUSAN SISWA`,
+
+          desc:
+`Portal resmi pengumuman kelulusan SMP Negeri 20 Konawe Selatan. Silakan cek hasil kelulusan menggunakan nomor ujian siswa.`,
+
+          tanggal_pengumuman:
+          "02 Juni 2026",
+
+          jam_pengumuman:
+          "10:00 WITA",
+
+          welcome_title:
+          "Selamat Datang",
+
+          welcome_desc:
+`Website resmi pengumuman kelulusan siswa SMP Negeri 20 Konawe Selatan.`,
+
+          image:
+          "image/guru.jpeg"
+
+        }
+      );
+
+    }
+
+    const newSnap =
+    await getDoc(ref);
+
+    const d =
+    newSnap.data();
+
+    /* INPUT */
+
+    document.getElementById(
+    "aktif"
+    ).checked =
+    d.aktif ?? true;
+
+    document.getElementById(
+    "label"
+    ).value =
+    d.label || "";
+
+    document.getElementById(
+    "title"
+    ).value =
+    d.title || "";
+
+    document.getElementById(
+    "desc"
+    ).value =
+    d.desc || "";
+
+    document.getElementById(
+    "tanggal"
+    ).value =
+    d.tanggal_pengumuman || "";
+
+    document.getElementById(
+    "jam"
+    ).value =
+    d.jam_pengumuman || "";
+
+    document.getElementById(
+    "welcome_title"
+    ).value =
+    d.welcome_title || "";
+
+    document.getElementById(
+    "welcome_desc"
+    ).value =
+    d.welcome_desc || "";
+
+    document.getElementById(
+    "previewImage"
+    ).src =
+    "../" + (
+      d.image ||
+      "image/guru.jpeg"
+    );
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Gagal load data"
+    );
+
+  }
+
+}
+
+loadData();
+
+/* =========================
+   SIMPAN DATA
+========================= */
+
+window.simpanData =
+async () => {
+
+  const btn =
+  document.getElementById(
+  "btnSave"
+  );
+
+  try{
+
+    btn.innerHTML =
+    '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+
+    btn.disabled = true;
+
+    await setDoc(
+      doc(db,"website","kelulusan"),
+      {
+
+        aktif:
+        document.getElementById(
+        "aktif"
+        ).checked,
+
+        label:
+        document.getElementById(
+        "label"
+        ).value,
+
+        title:
+        document.getElementById(
+        "title"
+        ).value,
+
+        desc:
+        document.getElementById(
+        "desc"
+        ).value,
+
+        tanggal_pengumuman:
+        document.getElementById(
+        "tanggal"
+        ).value,
+
+        jam_pengumuman:
+        document.getElementById(
+        "jam"
+        ).value,
+
+        welcome_title:
+        document.getElementById(
+        "welcome_title"
+        ).value,
+
+        welcome_desc:
+        document.getElementById(
+        "welcome_desc"
+        ).value,
+
+        image:
+        "image/guru.jpeg"
+
+      }
+    );
+
+    alert(
+      "Data berhasil disimpan"
+    );
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Gagal menyimpan data"
+    );
+
+  }
+
+  btn.innerHTML =
+  '<i class="fas fa-save"></i> Simpan Data';
+
+  btn.disabled = false;
+
+};
+
+</script>
+
+<script type="module"
+src="../assets/js/sidebar.js">
+</script>
+
+</body>
+</html>

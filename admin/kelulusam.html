@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+  Dashboard Admin Kelulusan
+</title>
+
+<!-- FONT -->
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<!-- ICON -->
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- SHEETJS -->
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<!-- ADMIN CSS -->
+
+<link
+rel="stylesheet"
+href="../assets/css/admin.css">
+
+<style>
+
+/* =========================
+   ROOT
+========================= */
+
+:root{
+
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+
+  --success:#16a34a;
+  --danger:#ef4444;
+  --warning:#f59e0b;
+  --purple:#9333ea;
+
+  --bg:#f1f5f9;
+
+  --white:#ffffff;
+
+  --text:#0f172a;
+  --text-light:#64748b;
+
+  --border:#e2e8f0;
+
+  --shadow:
+  0 10px 30px rgba(0,0,0,.06);
+
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:'Poppins',sans-serif;
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  overflow-x:hidden;
+
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+
+  margin-left:260px;
+
+  width:calc(100% - 260px);
+
+  min-height:100vh;
+
+  transition:.3s;
+
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+  height:85px;
+
+  background:
+  rgba(255,255,255,.95);
+
+  backdrop-filter:blur(10px);
+
+  border-bottom:
+  1px solid var(--border);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:0 30px;
+
+  position:sticky;
+
+  top:0;
+
+  z-index:99;
+
+}
+
+.header h2{
+
+  font-size:26px;
+
+  font-weight:700;
+
+}
+
+.header-right{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  color:var(--text-light);
+
+  font-weight:600;
+
+}
+
+.header-right i{
+
+  font-size:28px;
+
+  color:var(--primary);
+
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+  padding:30px;
+
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title{
+
+  margin-bottom:30px;
+
+}
+
+.page-title h1{
+
+  font-size:34px;
+
+  font-weight:800;
+
+  margin-bottom:10px;
+
+  color:var(--text);
+
+}
+
+.page-title p{
+
+  color:var(--text-light);
+
+  line-height:1.8;
+
+  max-width:700px;
+
+}
+
+/* =========================
+   CARD
+========================= */
+
+.form-box{
+
+  background:var(--white);
+
+  border-radius:30px;
+
+  padding:35px;
+
+  box-shadow:var(--shadow);
+
+  border:
+  1px solid #eef2f7;
+
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info{
+
+  background:
+  linear-gradient(
+    135deg,
+    #eff6ff,
+    #ffffff
+  );
+
+  border:
+  1px solid #dbeafe;
+
+  padding:22px;
+
+  border-radius:22px;
+
+  margin-bottom:30px;
+
+  color:var(--text-light);
+
+  line-height:2;
+
+  font-size:15px;
+
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.label{
+
+  display:block;
+
+  margin-bottom:10px;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  color:var(--text);
+
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(
+    auto-fit,
+    minmax(250px,1fr)
+  );
+
+  gap:18px;
+
+}
+
+/* =========================
+   INPUT
+========================= */
+
+input,
+select{
+
+  width:100%;
+
+  padding:16px 18px;
+
+  border-radius:18px;
+
+  border:
+  1.5px solid var(--border);
+
+  background:#fff;
+
+  outline:none;
+
+  font-size:15px;
+
+  transition:.25s;
+
+  color:var(--text);
+
+  margin-bottom:20px;
+
+}
+
+input::placeholder{
+  color:#94a3b8;
+}
+
+input:focus,
+select:focus{
+
+  border-color:var(--primary);
+
+  box-shadow:
+  0 0 0 5px rgba(37,99,235,.10);
+
+}
+
+input[readonly]{
+
+  background:#f8fafc;
+
+  cursor:not-allowed;
+
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+
+  border:none;
+
+  padding:16px 20px;
+
+  border-radius:18px;
+
+  color:white;
+
+  font-size:15px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:10px;
+
+  width:100%;
+
+}
+
+button:hover{
+
+  transform:translateY(-2px);
+
+  opacity:.95;
+
+}
+
+.cari-btn{
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  margin-bottom:25px;
+
+}
+
+.simpan-btn{
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--success),
+    #15803d
+  );
+
+}
+
+.import-btn{
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--purple),
+    #7e22ce
+  );
+
+}
+
+.download-btn{
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--warning),
+    #d97706
+  );
+
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+hr{
+
+  border:none;
+
+  border-top:
+  1px solid var(--border);
+
+  margin:35px 0;
+
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+
+  overflow:auto;
+
+  border-radius:22px;
+
+  margin-top:30px;
+
+  border:
+  1px solid var(--border);
+
+}
+
+table{
+
+  width:100%;
+
+  border-collapse:collapse;
+
+  min-width:800px;
+
+  background:#fff;
+
+}
+
+thead{
+
+  background:#f8fafc;
+
+}
+
+th{
+
+  padding:16px;
+
+  text-align:left;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:var(--text);
+
+  border-bottom:
+  1px solid var(--border);
+
+}
+
+td{
+
+  padding:15px;
+
+  border-bottom:
+  1px solid #f1f5f9;
+
+  font-size:14px;
+
+  color:#334155;
+
+}
+
+tbody tr:hover{
+
+  background:#f8fafc;
+
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status-lulus{
+
+  color:#16a34a;
+
+  font-weight:700;
+
+}
+
+.status-tidak{
+
+  color:#ef4444;
+
+  font-weight:700;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .main{
+
+    margin-left:0;
+
+    width:100%;
+
+  }
+
+}
+
+@media(max-width:768px){
+
+  .container{
+    padding:20px;
+  }
+
+  .header{
+
+    padding:0 20px;
+
+    height:75px;
+
+  }
+
+  .header h2{
+    font-size:22px;
+  }
+
+  .page-title h1{
+    font-size:28px;
+  }
+
+  .form-box{
+
+    padding:24px;
+
+    border-radius:24px;
+
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div id="sidebar"></div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <h2>
+      Admin Kelulusan
+    </h2>
+
+    <div class="header-right">
+
+      <i class="fas fa-user-circle"></i>
+
+      <span>
+        Administrator
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- CONTAINER -->
+
+  <div class="container">
+
+    <!-- TITLE -->
+
+    <div class="page-title">
+
+      <h1>
+        Dashboard Kelulusan
+      </h1>
+
+      <p>
+        Kelola data kelulusan siswa
+        secara otomatis menggunakan
+        Firebase dan import Excel.
+      </p>
+
+    </div>
+
+    <!-- FORM BOX -->
+
+    <div class="form-box">
+
+      <!-- INFO -->
+
+      <div class="info">
+
+        • Cari siswa berdasarkan NIS<br>
+
+        • Data siswa otomatis diambil dari Firebase<br>
+
+        • Nomor ujian dengan tanda "-" aman digunakan<br>
+
+        • Bisa import massal menggunakan Excel
+
+      </div>
+
+      <!-- SEARCH -->
+
+      <label class="label">
+        Cari Berdasarkan NIS
+      </label>
+
+      <input
+      type="text"
+      id="nisCari"
+      placeholder="Masukkan NIS siswa">
+
+      <button
+      class="cari-btn"
+      id="cariBtn">
+
+        <i class="fas fa-search"></i>
+
+        Ambil Data Siswa
+
+      </button>
+
+      <!-- GRID -->
+
+      <div class="grid">
+
+        <div>
+
+          <label class="label">
+            Nama Lengkap
+          </label>
+
+          <input
+          type="text"
+          id="nama"
+          readonly>
+
+        </div>
+
+        <div>
+
+          <label class="label">
+            Kelas
+          </label>
+
+          <input
+          type="text"
+          id="kelas"
+          readonly>
+
+        </div>
+
+        <div>
+
+          <label class="label">
+            NIS
+          </label>
+
+          <input
+          type="text"
+          id="nis"
+          readonly>
+
+        </div>
+
+        <div>
+
+          <label class="label">
+            NISN
+          </label>
+
+          <input
+          type="text"
+          id="nisn"
+          placeholder="Masukkan NISN">
+
+        </div>
+
+      </div>
+
+      <!-- NOMOR UJIAN -->
+
+      <label class="label">
+        Nomor Ujian
+      </label>
+
+      <input
+      type="text"
+      id="nomorUjian"
+      placeholder="Contoh: 25-001-1401">
+
+      <!-- STATUS -->
+
+      <label class="label">
+        Status Kelulusan
+      </label>
+
+      <select id="status">
+
+        <option value="LULUS">
+          LULUS
+        </option>
+
+        <option value="TIDAK LULUS">
+          TIDAK LULUS
+        </option>
+
+      </select>
+
+      <!-- BUTTON -->
+
+      <button
+      class="simpan-btn"
+      id="simpanBtn">
+
+        <i class="fas fa-save"></i>
+
+        Simpan Kelulusan
+
+      </button>
+
+      <!-- DIVIDER -->
+
+      <hr>
+
+      <!-- IMPORT -->
+
+      <label class="label">
+        Import Excel Kelulusan
+      </label>
+
+      <input
+      type="file"
+      id="excelFile"
+      accept=".xlsx,.xls">
+
+      <button
+      class="import-btn"
+      id="importBtn">
+
+        <i class="fas fa-file-excel"></i>
+
+        Import Excel
+
+      </button>
+
+      <br><br>
+
+      <!-- DOWNLOAD -->
+
+      <a
+      href="template_kelulusan.xlsx"
+      download
+      style="text-decoration:none;">
+
+        <button
+        type="button"
+        class="download-btn">
+
+          <i class="fas fa-download"></i>
+
+          Unduh Template Excel
+
+        </button>
+
+      </a>
+
+      <!-- TABLE -->
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Nama</th>
+              <th>Kelas</th>
+              <th>NIS</th>
+              <th>NISN</th>
+              <th>Nomor Ujian</th>
+              <th>Status</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="previewBody">
+
+            <tr>
+
+              <td colspan="6"
+              style="
+              text-align:center;
+              padding:30px;
+              ">
+
+                Memuat data...
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<script src="../assets/js/sidebar.js"></script>
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { db }
+from "../assets/js/firebase.js";
+
+import {
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs
+}
+from
+"https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+   ELEMENT
+========================= */
+
+const cariBtn =
+document.getElementById(
+"cariBtn"
+);
+
+const simpanBtn =
+document.getElementById(
+"simpanBtn"
+);
+
+const importBtn =
+document.getElementById(
+"importBtn"
+);
+
+const namaEl =
+document.getElementById(
+"nama"
+);
+
+const kelasEl =
+document.getElementById(
+"kelas"
+);
+
+const nisEl =
+document.getElementById(
+"nis"
+);
+
+const nisnEl =
+document.getElementById(
+"nisn"
+);
+
+const nomorUjianEl =
+document.getElementById(
+"nomorUjian"
+);
+
+const statusEl =
+document.getElementById(
+"status"
+);
+
+const previewBody =
+document.getElementById(
+"previewBody"
+);
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadKelulusan(){
+
+  previewBody.innerHTML = `
+    <tr>
+      <td colspan="6"
+      style="
+      text-align:center;
+      padding:30px;
+      ">
+        Memuat data...
+      </td>
+    </tr>
+  `;
+
+  try{
+
+    const querySnapshot =
+    await getDocs(
+      collection(db,"kelulusan")
+    );
+
+    previewBody.innerHTML = "";
+
+    if(querySnapshot.empty){
+
+      previewBody.innerHTML = `
+        <tr>
+          <td colspan="6"
+          style="
+          text-align:center;
+          padding:30px;
+          ">
+            Belum ada data kelulusan
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+    let semuaData = [];
+
+    querySnapshot.forEach((docSnap)=>{
+
+      semuaData.push(
+        docSnap.data()
+      );
+
+    });
+
+    semuaData.sort((a,b)=>{
+
+      return (
+        a.nama || ""
+      ).localeCompare(
+        b.nama || ""
+      );
+
+    });
+
+    semuaData.forEach((data)=>{
+
+      previewBody.innerHTML += `
+
+        <tr>
+
+          <td>
+            ${data.nama || "-"}
+          </td>
+
+          <td>
+            ${data.kelas || "-"}
+          </td>
+
+          <td>
+            ${data.nis || "-"}
+          </td>
+
+          <td>
+            ${data.nisn || "-"}
+          </td>
+
+          <td>
+            ${data.nomorUjian || "-"}
+          </td>
+
+          <td class="
+          ${data.status === "LULUS"
+            ? "status-lulus"
+            : "status-tidak"}
+          ">
+
+            ${data.status || "-"}
+
+          </td>
+
+        </tr>
+
+      `;
+
+    });
+
+  }catch(error){
+
+    console.log(error);
+
+    previewBody.innerHTML = `
+      <tr>
+        <td colspan="6"
+        style="
+        text-align:center;
+        padding:30px;
+        color:red;
+        ">
+          Gagal memuat data
+        </td>
+      </tr>
+    `;
+
+  }
+
+}
+
+/* =========================
+   AMBIL DATA SISWA
+========================= */
+
+cariBtn.addEventListener(
+
+"click",
+
+async ()=>{
+
+  const nisCari =
+  document
+  .getElementById(
+    "nisCari"
+  )
+  .value
+  .trim();
+
+  if(!nisCari){
+
+    alert(
+      "Masukkan NIS siswa"
+    );
+
+    return;
+
+  }
+
+  try{
+
+    const siswaRef =
+    doc(
+      db,
+      "siswa",
+      nisCari
+    );
+
+    const siswaSnap =
+    await getDoc(
+      siswaRef
+    );
+
+    if(
+      siswaSnap.exists()
+    ){
+
+      const data =
+      siswaSnap.data();
+
+      namaEl.value =
+      data.nama || "";
+
+      kelasEl.value =
+      data.kelas || "";
+
+      nisEl.value =
+      data.nis || "";
+
+      nisnEl.value =
+      data.nisn || "";
+
+      alert(
+        "Data siswa ditemukan"
+      );
+
+    }else{
+
+      alert(
+        "Data siswa tidak ditemukan"
+      );
+
+    }
+
+  }catch(error){
+
+    console.log(error);
+
+    alert(
+      "Gagal mengambil data"
+    );
+
+  }
+
+}
+
+);
+
+/* =========================
+   SIMPAN
+========================= */
+
+simpanBtn.addEventListener(
+
+"click",
+
+async ()=>{
+
+  const nama =
+  namaEl.value;
+
+  const kelas =
+  kelasEl.value;
+
+  const nis =
+  nisEl.value;
+
+  const nisn =
+  nisnEl.value;
+
+  const nomorUjian =
+  nomorUjianEl.value
+  .trim();
+
+  const status =
+  statusEl.value;
+
+  if(
+    !nama ||
+    !kelas ||
+    !nis ||
+    !nisn ||
+    !nomorUjian
+  ){
+
+    alert(
+      "Lengkapi data"
+    );
+
+    return;
+
+  }
+
+  try{
+
+    simpanBtn.innerHTML =
+    `
+      <i class="fas fa-spinner fa-spin"></i>
+      Menyimpan...
+    `;
+
+    simpanBtn.disabled =
+    true;
+
+    await setDoc(
+
+      doc(
+        db,
+        "kelulusan",
+        nis
+      ),
+
+      {
+        nama,
+        kelas,
+        nis,
+        nisn,
+        nomorUjian,
+        status,
+        timestamp:
+        new Date()
+      }
+
+    );
+
+    alert(
+      "Data berhasil disimpan"
+    );
+
+    loadKelulusan();
+
+  }catch(error){
+
+    console.log(error);
+
+    alert(
+      "Gagal menyimpan data"
+    );
+
+  }
+
+  simpanBtn.innerHTML =
+  `
+    <i class="fas fa-save"></i>
+    Simpan Kelulusan
+  `;
+
+  simpanBtn.disabled =
+  false;
+
+}
+
+);
+
+/* =========================
+   IMPORT EXCEL
+========================= */
+
+importBtn.addEventListener(
+
+"click",
+
+async ()=>{
+
+  const fileInput =
+  document.getElementById(
+    "excelFile"
+  );
+
+  const file =
+  fileInput.files[0];
+
+  if(!file){
+
+    alert(
+      "Pilih file Excel"
+    );
+
+    return;
+
+  }
+
+  try{
+
+    importBtn.innerHTML =
+    `
+      <i class="fas fa-spinner fa-spin"></i>
+      Mengimport...
+    `;
+
+    importBtn.disabled =
+    true;
+
+    const data =
+    await file.arrayBuffer();
+
+    const workbook =
+    XLSX.read(
+      data,
+      {
+        type:"array"
+      }
+    );
+
+    const sheet =
+    workbook.Sheets[
+      workbook.SheetNames[0]
+    ];
+
+    const rows =
+    XLSX.utils.sheet_to_json(
+      sheet
+    );
+
+    let berhasil = 0;
+    let gagal = 0;
+
+    for(const row of rows){
+
+      const nis =
+      String(
+        row.nis ||
+        row.NIS ||
+        ""
+      ).trim();
+
+      const nisn =
+      String(
+        row.nisn ||
+        row.NISN ||
+        ""
+      ).trim();
+
+      const nomorUjian =
+      String(
+        row.nomorUjian ||
+        row.nomor_ujian ||
+        row["nomor ujian"] ||
+        ""
+      ).trim();
+
+      const status =
+      String(
+        row.status ||
+        row.STATUS ||
+        ""
+      ).trim();
+
+      if(
+        !nis ||
+        !nisn ||
+        !nomorUjian ||
+        !status
+      ){
+
+        gagal++;
+        continue;
+
+      }
+
+      const siswaRef =
+      doc(
+        db,
+        "siswa",
+        nis
+      );
+
+      const siswaSnap =
+      await getDoc(
+        siswaRef
+      );
+
+      if(
+        siswaSnap.exists()
+      ){
+
+        const siswa =
+        siswaSnap.data();
+
+        await setDoc(
+
+          doc(
+            db,
+            "kelulusan",
+            nis
+          ),
+
+          {
+            nama:
+            siswa.nama || "",
+
+            kelas:
+            siswa.kelas || "",
+
+            gender:
+            siswa.gender || "",
+
+            nis,
+
+            nisn,
+
+            nomorUjian,
+
+            status,
+
+            timestamp:
+            new Date()
+          }
+
+        );
+
+        berhasil++;
+
+      }else{
+
+        gagal++;
+
+      }
+
+    }
+
+    alert(
+
+      "Import selesai\n\n" +
+
+      "Berhasil: " +
+      berhasil +
+
+      "\nGagal: " +
+      gagal
+
+    );
+
+    loadKelulusan();
+
+  }catch(error){
+
+    console.log(error);
+
+    alert(
+      "Import gagal"
+    );
+
+  }
+
+  importBtn.innerHTML =
+  `
+    <i class="fas fa-file-excel"></i>
+    Import Excel
+  `;
+
+  importBtn.disabled =
+  false;
+
+}
+
+);
+
+/* =========================
+   LOAD AWAL
+========================= */
+
+loadKelulusan();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+/* =========================
+   HASIL KELULUSAN
+========================= */
+
+.hasil-card{
+  width:100%;
+  color:white;
+}
+
+/* =========================
+   CONTAINER ATAS
+========================= */
+
+.hasil-top{
+  display:flex;
+  align-items:flex-start;
+
+  gap:28px;
+
+  padding:30px;
+
+  border-radius:28px;
+
+  background:
+  rgba(255,255,255,.08);
+
+  border:
+  1px solid rgba(255,255,255,.1);
+
+  backdrop-filter:blur(14px);
+
+  margin-bottom:22px;
+}
+
+/* =========================
+   FOTO
+========================= */
+
+.hasil-foto{
+  flex-shrink:0;
+}
+
+.hasil-foto img{
+  width:170px;
+  height:220px;
+
+  object-fit:cover;
+
+  border-radius:22px;
+
+  border:
+  4px solid rgba(255,255,255,.12);
+
+  box-shadow:
+  0 12px 35px rgba(0,0,0,.35);
+
+  display:block;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.hasil-info{
+  flex:1;
+  min-width:0;
+}
+
+/* =========================
+   NAMA
+========================= */
+
+.hasil-nama{
+  font-size:40px;
+  font-weight:800;
+
+  line-height:1.2;
+
+  margin-bottom:24px;
+
+  color:white;
+
+  word-break:break-word;
+
+  text-shadow:
+  0 3px 10px rgba(0,0,0,.25);
+}
+
+/* =========================
+   DATA
+========================= */
+
+.hasil-data{
+  display:flex;
+  flex-direction:column;
+
+  gap:14px;
+}
+
+/* ITEM */
+
+.hasil-item{
+  display:flex;
+  align-items:center;
+
+  padding:16px 20px;
+
+  border-radius:18px;
+
+  background:
+  rgba(255,255,255,.06);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  transition:.3s;
+}
+
+.hasil-item:hover{
+  background:
+  rgba(255,255,255,.1);
+}
+
+/* LABEL */
+
+.hasil-item span{
+  width:140px;
+
+  flex-shrink:0;
+
+  font-size:15px;
+  font-weight:600;
+
+  color:
+  rgba(255,255,255,.72);
+}
+
+/* TITIK DUA */
+
+.hasil-item b{
+  margin-right:14px;
+
+  font-size:17px;
+
+  color:white;
+}
+
+/* VALUE */
+
+.hasil-item strong{
+  flex:1;
+
+  font-size:17px;
+  font-weight:700;
+
+  color:white;
+
+  word-break:break-word;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.hasil-status{
+  width:100%;
+
+  padding:18px 20px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+  font-size:24px;
+  font-weight:800;
+
+  letter-spacing:.5px;
+
+  color:white;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.25);
+}
+
+.status-lulus{
+  background:
+  linear-gradient(
+    135deg,
+    #00d084,
+    #00b56f
+  );
+}
+
+.status-tidak{
+  background:
+  linear-gradient(
+    135deg,
+    #ff4d4d,
+    #e03131
+  );
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading-kelulusan{
+  text-align:center;
+
+  padding:50px 20px;
+
+  color:white;
+}
+
+.loading-kelulusan i{
+  font-size:55px;
+
+  margin-bottom:20px;
+
+  color:#00d084;
+}
+
+.loading-kelulusan p{
+  font-size:18px;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.tidak-ditemukan{
+  text-align:center;
+
+  padding:50px 20px;
+
+  color:white;
+}
+
+.tidak-ditemukan i{
+  font-size:70px;
+
+  margin-bottom:20px;
+
+  color:#ff4d4d;
+}
+
+.tidak-ditemukan h2{
+  font-size:30px;
+
+  margin-bottom:12px;
+}
+
+.tidak-ditemukan p{
+  opacity:.85;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .hasil-top{
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:22px;
+  }
+
+  .hasil-foto img{
+    width:150px;
+    height:190px;
+  }
+
+  .hasil-info{
+    width:100%;
+  }
+
+  .hasil-nama{
+    font-size:28px;
+
+    text-align:center;
+  }
+
+  .hasil-item{
+    align-items:flex-start;
+
+    flex-direction:column;
+
+    gap:6px;
+  }
+
+  .hasil-item span{
+    width:100%;
+  }
+
+  .hasil-item b{
+    display:none;
+  }
+
+  .hasil-item strong{
+    width:100%;
+  }
+
+  .hasil-status{
+    font-size:20px;
+  }
+
+}

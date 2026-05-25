@@ -33,6 +33,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/header-footer.css">
   <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/kelulusan.css">
 
 </head>
 <body>
@@ -197,9 +198,6 @@
 
 </section>
 
-
-  </section>
-
   <!-- BREAKING NEWS -->
 
   <div class="breaking-news">
@@ -264,6 +262,190 @@ id="spmbSection">
   </div>
 
 </section>
+
+<!-- =========================
+     PENGUMUMAN KELULUSAN
+========================= -->
+
+<section
+class="kelulusan-section"
+id="kelulusanSection">
+
+  <div class="kelulusan-container">
+
+    <!-- ================= LEFT ================= -->
+
+    <div class="kelulusan-left">
+
+      <!-- LABEL -->
+
+      <span
+      class="kelulusan-label"
+      id="v_label">
+
+        INFORMASI SEKOLAH
+
+      </span>
+
+      <!-- TITLE -->
+
+      <h1
+      class="kelulusan-title"
+      id="v_title">
+
+        PENGUMUMAN
+        <br>
+        KELULUSAN SISWA
+
+      </h1>
+
+      <!-- DESC -->
+
+      <p
+      class="kelulusan-text"
+      id="v_desc">
+
+        Loading...
+
+      </p>
+
+      <!-- ================= INFO ================= -->
+
+      <div class="kelulusan-info">
+
+        <!-- TANGGAL -->
+
+        <div class="kelulusan-item">
+
+          <i class="fas fa-calendar-alt"></i>
+
+          <div>
+
+            <h3>
+              Tanggal Pengumuman
+            </h3>
+
+            <p id="v_tanggal">
+              -
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- JAM -->
+
+        <div class="kelulusan-item">
+
+          <i class="fas fa-clock"></i>
+
+          <div>
+
+            <h3>
+              Jam Pengumuman
+            </h3>
+
+            <p id="v_jam">
+              -
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ================= INPUT ================= -->
+
+      <div class="popup-input">
+
+        <label>
+          Nomor Ujian
+        </label>
+
+        <i class="fas fa-id-card"></i>
+
+        <input
+        type="text"
+        id="nomorUjian"
+        placeholder="Masukkan Nomor Ujian">
+
+      </div>
+
+      <!-- ================= BUTTON ================= -->
+
+      <button
+      class="kelulusan-btn"
+      id="openKelulusan">
+
+        <i class="fas fa-search"></i>
+
+        Cek Kelulusan
+
+      </button>
+
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+
+    <div class="kelulusan-right">
+
+      <!-- IMAGE -->
+
+      <img
+      id="v_image"
+      src="image/guru.jpeg"
+      alt="Kelulusan">
+
+      <!-- BOX -->
+
+      <div class="kelulusan-box">
+
+        <h2 id="v_welcome_title">
+
+          Selamat Datang
+
+        </h2>
+
+        <p id="v_welcome_desc">
+
+          Loading...
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= POPUP ================= -->
+
+<div
+  class="popup-kelulusan"
+  id="popupKelulusan">
+
+  <div class="popup-content">
+
+    <!-- CLOSE -->
+
+    <button
+      class="close-popup"
+      id="closePopup">
+
+      &times;
+
+    </button>
+
+    <!-- HASIL -->
+
+    <div id="hasil"></div>
+
+  </div>
+
+</div>
 
 <!-- =========================
      BERITA
@@ -550,6 +732,132 @@ id="spmbSection">
 
 <script src="assets/js/include.js"></script>
 <script type="module" src="assets/js/index.js"></script>
+<script type="module" src="assets/js/kelulusan.js"></script>
+<script type="module">
+
+import { db }
+from "./assets/js/firebase.js";
+
+import {
+  doc,
+  onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+   FIREBASE
+========================= */
+
+const ref =
+doc(db,"website","kelulusan");
+
+/* =========================
+   REALTIME LOAD
+========================= */
+
+onSnapshot(ref,(snap)=>{
+
+  if(!snap.exists()) return;
+
+  const d =
+  snap.data();
+
+  /* =========================
+     STATUS
+  ========================= */
+
+  if(d.aktif === false){
+
+    document.getElementById(
+    "kelulusanSection"
+    ).style.display =
+    "none";
+
+    return;
+
+  }
+
+  document.getElementById(
+  "kelulusanSection"
+  ).style.display =
+  "block";
+
+  /* =========================
+     LABEL
+  ========================= */
+
+  document.getElementById(
+  "v_label"
+  ).innerText =
+  d.label || "-";
+
+  /* =========================
+     TITLE
+  ========================= */
+
+  document.getElementById(
+  "v_title"
+  ).innerHTML =
+  (d.title || "-")
+  .replace(/\n/g,"<br>");
+
+  /* =========================
+     DESC
+  ========================= */
+
+  document.getElementById(
+  "v_desc"
+  ).innerText =
+  d.desc || "-";
+
+  /* =========================
+     TANGGAL
+  ========================= */
+
+  document.getElementById(
+  "v_tanggal"
+  ).innerText =
+  d.tanggal_pengumuman || "-";
+
+  /* =========================
+     JAM
+  ========================= */
+
+  document.getElementById(
+  "v_jam"
+  ).innerText =
+  d.jam_pengumuman || "-";
+
+  /* =========================
+     IMAGE
+  ========================= */
+
+  document.getElementById(
+  "v_image"
+  ).src =
+  d.image || "image/guru.jpeg";
+
+  /* =========================
+     WELCOME TITLE
+  ========================= */
+
+  document.getElementById(
+  "v_welcome_title"
+  ).innerText =
+  d.welcome_title || "-";
+
+  /* =========================
+     WELCOME DESC
+  ========================= */
+
+  document.getElementById(
+  "v_welcome_desc"
+  ).innerText =
+  d.welcome_desc || "-";
+
+});
+
+</script>
 <!-- JS -->
 </body>
 </html>

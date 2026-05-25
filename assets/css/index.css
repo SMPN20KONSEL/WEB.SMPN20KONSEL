@@ -1172,3 +1172,597 @@ section{
   }
 
 }
+
+
+/* =========================
+   KELULUSAN SECTION
+========================= */
+
+.kelulusan-section{
+  position:relative;
+  width:100%;
+  padding:100px 7%;
+  overflow:hidden;
+
+  background:
+  radial-gradient(circle at top left,
+  rgba(0,184,148,.18),
+  transparent 35%),
+
+  radial-gradient(circle at bottom right,
+  rgba(0,140,255,.15),
+  transparent 30%),
+
+  linear-gradient(
+    135deg,
+    #061120 0%,
+    #0a1b33 50%,
+    #061120 100%
+  );
+
+  color:#fff;
+}
+
+/* efek blur background */
+
+.kelulusan-section::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+  url("https://www.transparenttextures.com/patterns/cubes.png");
+
+  opacity:.04;
+
+  pointer-events:none;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.kelulusan-container{
+  position:relative;
+  z-index:2;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(340px,1fr));
+
+  gap:70px;
+
+  align-items:center;
+}
+
+/* =========================
+   LEFT
+========================= */
+
+.kelulusan-left{
+  animation:fadeLeft .8s ease;
+}
+
+.kelulusan-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  padding:11px 20px;
+
+  border-radius:100px;
+
+  background:
+  rgba(255,255,255,.08);
+
+  border:
+  1px solid rgba(255,255,255,.12);
+
+  backdrop-filter:blur(14px);
+
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.5px;
+
+  margin-bottom:24px;
+
+  color:#d9fdf6;
+}
+
+.kelulusan-title{
+  font-size:58px;
+  line-height:1.1;
+  font-weight:900;
+
+  margin-bottom:24px;
+
+  background:
+  linear-gradient(
+    90deg,
+    #ffffff,
+    #dffef7
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.kelulusan-text{
+  font-size:17px;
+  line-height:1.9;
+
+  color:
+  rgba(255,255,255,.82);
+
+  max-width:580px;
+
+  margin-bottom:35px;
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.kelulusan-info{
+  display:flex;
+  flex-direction:column;
+
+  gap:18px;
+
+  margin-bottom:35px;
+}
+
+.kelulusan-item{
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  padding:20px;
+
+  border-radius:22px;
+
+  background:
+  rgba(255,255,255,.08);
+
+  border:
+  1px solid rgba(255,255,255,.12);
+
+  backdrop-filter:blur(15px);
+
+  transition:.3s ease;
+}
+
+.kelulusan-item:hover{
+  transform:translateY(-4px);
+
+  background:
+  rgba(255,255,255,.12);
+}
+
+.kelulusan-item i{
+  width:60px;
+  height:60px;
+
+  flex-shrink:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d2a8,
+    #00b894
+  );
+
+  box-shadow:
+  0 10px 25px rgba(0,184,148,.35);
+
+  font-size:22px;
+}
+
+.kelulusan-item h3{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.kelulusan-item p{
+  opacity:.78;
+  font-size:15px;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.popup-input{
+  position:relative;
+
+  margin-bottom:28px;
+}
+
+.popup-input label{
+  display:block;
+
+  margin-bottom:12px;
+
+  font-size:15px;
+  font-weight:600;
+
+  color:#ecfdf9;
+}
+
+.popup-input i{
+  position:absolute;
+
+  left:18px;
+  bottom:18px;
+
+  color:#9be9d8;
+
+  font-size:17px;
+}
+
+.popup-input input{
+  width:100%;
+
+  height:58px;
+
+  border:none;
+  outline:none;
+
+  padding:
+  0 18px 0 52px;
+
+  border-radius:18px;
+
+  background:
+  rgba(255,255,255,.08);
+
+  border:
+  1px solid rgba(255,255,255,.12);
+
+  color:white;
+
+  font-size:16px;
+
+  backdrop-filter:blur(10px);
+
+  transition:.3s ease;
+}
+
+.popup-input input:focus{
+  border-color:#00d2a8;
+
+  box-shadow:
+  0 0 0 4px rgba(0,184,148,.18);
+
+  background:
+  rgba(255,255,255,.12);
+}
+
+.popup-input input::placeholder{
+  color:rgba(255,255,255,.5);
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.kelulusan-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+
+  min-width:220px;
+  height:58px;
+
+  padding:0 30px;
+
+  border:none;
+  cursor:pointer;
+
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d2a8,
+    #00b894
+  );
+
+  color:white;
+
+  font-size:16px;
+  font-weight:700;
+
+  box-shadow:
+  0 15px 35px rgba(0,184,148,.28);
+
+  transition:.3s ease;
+}
+
+.kelulusan-btn:hover{
+  transform:
+  translateY(-5px);
+
+  box-shadow:
+  0 20px 40px rgba(0,184,148,.35);
+}
+
+.kelulusan-btn:active{
+  transform:scale(.98);
+}
+
+/* =========================
+   RIGHT
+========================= */
+
+.kelulusan-right{
+  position:relative;
+
+  animation:fadeRight .8s ease;
+}
+
+.kelulusan-right img{
+  width:100%;
+  height:560px;
+
+  object-fit:cover;
+
+  border-radius:35px;
+
+  border:
+  1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,.45);
+}
+
+/* overlay */
+
+.kelulusan-right::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  border-radius:35px;
+
+  background:
+  linear-gradient(
+    to top,
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.05)
+  );
+}
+
+/* =========================
+   FLOATING BOX
+========================= */
+
+.kelulusan-box{
+  position:absolute;
+
+  left:25px;
+  right:25px;
+  bottom:25px;
+
+  z-index:3;
+
+  padding:28px;
+
+  border-radius:25px;
+
+  background:
+  rgba(255,255,255,.12);
+
+  border:
+  1px solid rgba(255,255,255,.15);
+
+  backdrop-filter:blur(16px);
+
+  box-shadow:
+  0 10px 35px rgba(0,0,0,.2);
+}
+
+.kelulusan-box h2{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.kelulusan-box p{
+  line-height:1.8;
+  opacity:.9;
+}
+
+/* =========================
+   POPUP
+========================= */
+
+.popup-kelulusan{
+  position:fixed;
+  inset:0;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+  rgba(0,0,0,.7);
+
+  backdrop-filter:blur(8px);
+
+  z-index:9999;
+}
+
+.popup-content{
+  position:relative;
+
+  width:100%;
+  max-width:700px;
+
+  padding:35px;
+
+  border-radius:30px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #0b1f38,
+    #081728
+  );
+
+  border:
+  1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+  0 25px 70px rgba(0,0,0,.45);
+
+  animation:popupShow .35s ease;
+}
+
+.close-popup{
+  position:absolute;
+
+  top:15px;
+  right:18px;
+
+  width:42px;
+  height:42px;
+
+  border:none;
+  cursor:pointer;
+
+  border-radius:50%;
+
+  background:
+  rgba(255,255,255,.1);
+
+  color:white;
+
+  font-size:26px;
+
+  transition:.3s;
+}
+
+.close-popup:hover{
+  transform:rotate(90deg);
+
+  background:#ff4d4d;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeLeft{
+  from{
+    opacity:0;
+    transform:translateX(-40px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes fadeRight{
+  from{
+    opacity:0;
+    transform:translateX(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes popupShow{
+  from{
+    opacity:0;
+    transform:scale(.85);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .kelulusan-container{
+    gap:50px;
+  }
+
+  .kelulusan-title{
+    font-size:48px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .kelulusan-section{
+    padding:80px 6%;
+  }
+
+  .kelulusan-title{
+    font-size:38px;
+  }
+
+  .kelulusan-text{
+    font-size:15px;
+  }
+
+  .kelulusan-right img{
+    height:400px;
+  }
+
+  .kelulusan-box{
+    padding:22px;
+  }
+
+  .kelulusan-box h2{
+    font-size:22px;
+  }
+
+  .kelulusan-btn{
+    width:100%;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .kelulusan-title{
+    font-size:32px;
+  }
+
+  .kelulusan-item{
+    padding:16px;
+  }
+
+  .kelulusan-item i{
+    width:52px;
+    height:52px;
+    font-size:18px;
+  }
+
+  .popup-content{
+    padding:28px 22px;
+  }
+
+}
