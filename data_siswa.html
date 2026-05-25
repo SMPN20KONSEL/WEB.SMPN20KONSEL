@@ -3,45 +3,25 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport"
-  content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>
-    Data Siswa - SMPN 20 Konawe Selatan
-  </title>
+  <title>Data Siswa - SMPN 20 Konawe Selatan</title>
 
   <!-- SEO -->
-<meta
-name="description"
-content="Data siswa SMP Negeri 20 Konawe Selatan">
-
-<meta
-name="keywords"
-content="Data siswa SMPN 20 Konawe Selatan, siswa SMP">
-
-<meta
-name="author"
-content="SMP Negeri 20 Konawe Selatan">
+  <meta name="description" content="Data siswa SMP Negeri 20 Konawe Selatan">
+  <meta name="keywords" content="Data siswa SMPN 20 Konawe Selatan, siswa SMP">
+  <meta name="author" content="SMP Negeri 20 Konawe Selatan">
 
   <!-- ICON -->
-  <link
-  rel="icon"
-  href="image/Logo_transparent.png">
+  <link rel="icon" href="image/Logo_transparent.png">
 
   <!-- FONT AWESOME -->
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet"
-  href="assets/css/global.css">
-
-  <link rel="stylesheet"
-  href="assets/css/header-footer.css">
-
-  <link rel="stylesheet"
-  href="assets/css/datasiswa.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/header-footer.css">
+  <link rel="stylesheet" href="assets/css/datasiswa.css">
 
 </head>
 
@@ -50,141 +30,84 @@ content="SMP Negeri 20 Konawe Selatan">
 <!-- ================= HEADER ================= -->
 <div id="header"></div>
 
-
 <!-- ================= HERO ================= -->
 <section class="hero">
 
-  <div class="hero-content" data-aos="fade-up">
+  <div class="hero-content">
 
     <h1>Profil Siswa</h1>
 
-    <p>
-      Data peserta didik
-      SMP Negeri 20 Konawe Selatan
-    </p>
+    <p>Data peserta didik SMP Negeri 20 Konawe Selatan</p>
 
   </div>
 
 </section>
 
-
 <!-- ================= MAIN ================= -->
-
 <div class="container">
 
   <!-- FILTER -->
-
   <div class="filter-card">
 
     <div class="search-box">
-
       <i class="fas fa-search"></i>
 
       <input
-      type="text"
-      id="searchInput"
-      placeholder="Cari nama siswa...">
-
+        type="text"
+        id="searchInput"
+        placeholder="Cari nama siswa..."
+      >
     </div>
 
     <select id="filterKelas">
-
-      <option value="">
-        Semua Kelas
-      </option>
-
-      <option value="VII">
-        VII
-      </option>
-
-      <option value="VIII">
-        VIII
-      </option>
-
-      <option value="IX">
-        IX
-      </option>
-
+      <option value="">Semua Kelas</option>
+      <option value="VII">VII</option>
+      <option value="VIII">VIII</option>
+      <option value="IX">IX</option>
     </select>
 
   </div>
 
   <!-- STATISTIK -->
-
   <div class="stats-grid">
 
     <div class="stat-card">
-
       <i class="fas fa-users"></i>
-
-      <h2 id="totalSiswaStat">
-        0
-      </h2>
-
+      <h2 id="totalSiswaStat">0</h2>
       <p>Total Siswa</p>
-
     </div>
 
     <div class="stat-card">
-
       <i class="fas fa-male"></i>
-
-      <h2 id="totalLaki">
-        0
-      </h2>
-
+      <h2 id="totalLaki">0</h2>
       <p>Laki-laki</p>
-
     </div>
 
     <div class="stat-card">
-
       <i class="fas fa-female"></i>
-
-      <h2 id="totalPerempuan">
-        0
-      </h2>
-
+      <h2 id="totalPerempuan">0</h2>
       <p>Perempuan</p>
-
     </div>
 
   </div>
 
   <!-- ================= DATA SISWA ================= -->
-
   <div class="siswa-wrapper">
 
     <div class="siswa-header">
-
       <h1>
-
         <i class="fas fa-user-graduate"></i>
-
         Profil Peserta Didik
-
       </h1>
-
-      <p>
-        Data siswa SMP Negeri 20 Konawe Selatan
-      </p>
-
+      <p>Data siswa SMP Negeri 20 Konawe Selatan</p>
     </div>
 
     <!-- CARD SISWA -->
-
-    <div
-    id="dataSiswa"
-    class="siswa-grid">
+    <div id="dataSiswa" class="siswa-grid">
 
       <div class="loading-box">
-
         <i class="fas fa-spinner fa-spin"></i>
-
-        <p>
-          Memuat data siswa...
-        </p>
-
+        <p>Memuat data siswa...</p>
       </div>
 
     </div>
@@ -194,13 +117,48 @@ content="SMP Negeri 20 Konawe Selatan">
 </div>
 
 <!-- ================= FOOTER ================= -->
-
 <div id="footer"></div>
 
 <!-- ================= SCRIPT ================= -->
-
 <script type="module" src="assets/js/include.js"></script>
 <script type="module" src="assets/js/data_siswa.js"></script>
+
+<!-- 🔥 WAJIB: GLOBAL IMAGE HANDLER -->
+<script>
+  window.BASE_URL = "https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
+
+  window.setFoto = function(img, nis) {
+
+    const list = [
+      `${window.BASE_URL}image/siswa/${nis}.JPG`,
+      `${window.BASE_URL}image/siswa/${nis}.jpg`,
+      `${window.BASE_URL}image/siswa/${nis}.JPEG`,
+      `${window.BASE_URL}image/siswa/${nis}.jpeg`,
+      `${window.BASE_URL}image/siswa/${nis}.PNG`,
+      `${window.BASE_URL}image/siswa/${nis}.png`
+    ];
+
+    let i = 0;
+
+    function coba() {
+
+      if (i >= list.length) {
+        img.src = `${window.BASE_URL}image/default-user.png`;
+        return;
+      }
+
+      img.src = list[i];
+
+      img.onerror = () => {
+        i++;
+        coba();
+      };
+
+    }
+
+    coba();
+  };
+</script>
 
 </body>
 </html>
