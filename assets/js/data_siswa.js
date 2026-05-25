@@ -5,6 +5,10 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+/* =========================================
+   ELEMENT
+========================================= */
+
 const dataSiswa = document.getElementById("dataSiswa");
 const totalSiswaStat = document.getElementById("totalSiswaStat");
 const footerTotalSiswa = document.getElementById("footerTotalSiswa");
@@ -14,29 +18,26 @@ const searchInput = document.getElementById("searchInput");
 const filterKelas = document.getElementById("filterKelas");
 
 /* =========================================
-   BASE URL GITHUB PAGES
+   BASE URL
 ========================================= */
 
 const BASE_URL = "https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
 
 /* =========================================
-   FOTO BUILDER (FAST VERSION)
+   FOTO FALLBACK (SUPER STABIL)
 ========================================= */
 
-function getFotoUrl(nis) {
-  if (!nis) {
-    return `${BASE_URL}image/default-user.png`;
-  }
+function getFotoList(nis) {
+  if (!nis) return [];
 
-  // urutan prioritas ekstensi (super lengkap)
-  const exts = [
-    "JPG", "jpg",
-    "JPEG", "jpeg",
-    "PNG", "png"
+  return [
+    `${BASE_URL}image/siswa/${nis}.JPG`,
+    `${BASE_URL}image/siswa/${nis}.jpg`,
+    `${BASE_URL}image/siswa/${nis}.JPEG`,
+    `${BASE_URL}image/siswa/${nis}.jpeg`,
+    `${BASE_URL}image/siswa/${nis}.PNG`,
+    `${BASE_URL}image/siswa/${nis}.png`,
   ];
-
-  // langsung pakai fallback chaining via onerror (tanpa async check)
-  return `${BASE_URL}image/siswa/${nis}.JPG`;
 }
 
 /* =========================================
@@ -112,6 +113,8 @@ function renderSiswa(data) {
 
     kelompokKelas[kelas].forEach((siswa) => {
 
+      const fotoList = getFotoList(siswa.nis);
+
       html += `
         <div class="siswa-card">
 
@@ -119,16 +122,10 @@ function renderSiswa(data) {
 
             <img
               class="siswa-foto"
-              src="${getFotoUrl(siswa.nis)}"
-              onerror="
-                this.onerror=null;
-                this.src='${BASE_URL}image/siswa/${siswa.nis}.jpg';
-              "
-              onload="
-                if(this.naturalWidth === 0){
-                  this.src='${BASE_URL}image/siswa/${siswa.nis}.jpeg';
-                }
-              "
+              src="${fotoList[0]}"
+              data-foto='${JSON.stringify(fotoList)}'
+              data-index="0"
+              onerror="window.nextFoto(this)"
             >
 
           </div>
@@ -170,25 +167,37 @@ function renderSiswa(data) {
 }
 
 /* =========================================
+   FUNGSI NEXT FOTO (AUTO SWITCH EXTENSION)
+========================================= */
+
+window.nextFoto = function(img) {
+
+  let list = JSON.parse(img.dataset.foto);
+  let index = parseInt(img.dataset.index || "0");
+
+  index++;
+
+  if (index < list.length) {
+    img.dataset.index = index;
+    img.src = list[index];
+  } else {
+    img.onerror = null;
+    img.src = `${BASE_URL}image/default-user.png`;
+  }
+
+};
+
+/* =========================================
    STATISTIK
 ========================================= */
 
 function updateStatistik(data) {
 
-  const jumlahSiswa = data.length;
+  totalSiswaStat.textContent = data.length;
+  footerTotalSiswa.textContent = data.length;
 
-  const jumlahLaki = data.filter(
-    s => s.gender === "Laki-laki"
-  ).length;
-
-  const jumlahPerempuan = data.filter(
-    s => s.gender === "Perempuan"
-  ).length;
-
-  totalSiswaStat.textContent = jumlahSiswa;
-  footerTotalSiswa.textContent = jumlahSiswa;
-  totalLaki.textContent = jumlahLaki;
-  totalPerempuan.textContent = jumlahPerempuan;
+  totalLaki.textContent = data.filter(s => s.gender === "Laki-laki").length;
+  totalPerempuan.textContent = data.filter(s => s.gender === "Perempuan").length;
 }
 
 /* =========================================
@@ -218,7 +227,7 @@ function filterData() {
 }
 
 /* =========================================
-   REALTIME FIRESTORE
+   FIRESTORE REALTIME
 ========================================= */
 
 onSnapshot(collection(db, "siswa"), (snap) => {
@@ -226,10 +235,7 @@ onSnapshot(collection(db, "siswa"), (snap) => {
   semuaData = [];
 
   snap.forEach((doc) => {
-    semuaData.push({
-      id: doc.id,
-      ...doc.data()
-    });
+    semuaData.push({ id: doc.id, ...doc.data() });
   });
 
   semuaData.sort((a, b) =>
@@ -242,7 +248,7 @@ onSnapshot(collection(db, "siswa"), (snap) => {
   console.log("Realtime siswa aktif");
 
 }, (err) => {
-  console.error("Gagal memuat data siswa:", err);
+  console.error(err);
 });
 
 /* =========================================
