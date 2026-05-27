@@ -22,7 +22,6 @@ body{
 }
 
 /* ================= HERO ================= */
-
 .hero{
   position:relative;
 
@@ -34,10 +33,12 @@ body{
 
   background:
     linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)),
-    url('../../image/upacara.jpg');
+    url('../../image/guru.jpeg');
 
   background-size:cover;
-  background-position:center;
+
+  /* POSISI FOTO */
+  background-position:center 15%;
 
   color:white;
 }
