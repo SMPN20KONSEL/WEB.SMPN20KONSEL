@@ -1,54 +1,128 @@
-/* =========================
+/* =========================================
+   ROOT
+========================================= */
+
+:root{
+
+  --bg-dark:#081b33;
+  --bg-dark2:#0d2342;
+
+  --primary:#2563eb;
+  --primary-light:#60a5fa;
+
+  --white:#ffffff;
+
+  --text-soft:#dbeafe;
+  --border:rgba(255,255,255,.08);
+
+  --glass:rgba(255,255,255,.08);
+
+  --shadow:
+  0 10px 25px rgba(0,0,0,.18);
+
+  --radius:24px;
+
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+/* =========================================
    BODY
-========================= */
+========================================= */
 
 body{
-  margin:0;
+
   font-family:'Segoe UI',sans-serif;
 
   background:
   linear-gradient(
     180deg,
-    #081b33 0%,
-    #0d2342 50%,
-    #081b33 100%
+    var(--bg-dark) 0%,
+    var(--bg-dark2) 50%,
+    var(--bg-dark) 100%
   );
 
-  color:white;
+  color:var(--white);
+
   overflow-x:hidden;
 }
 
-/* =========================
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--primary);
+  border-radius:20px;
+}
+
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero{
+
   position:relative;
+
   height:75vh;
 
   background:
-    linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+    linear-gradient(
+      rgba(0,0,0,.7),
+      rgba(0,0,0,.7)
+    ),
     url('../../image/upacara.jpg');
 
   background-size:cover;
   background-position:center;
 
-  color:white;
+  overflow:hidden;
 }
 
 .overlay{
+
   position:absolute;
-  width:100%;
-  height:100%;
+  inset:0;
+
+  background:
+  linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.45)
+  );
 }
 
-/* ================= NAVBAR ================= */
+/* =========================================
+   NAVBAR
+========================================= */
 
 .navbar{
+
   position:relative;
   z-index:10;
 
   display:flex;
+
   justify-content:space-between;
   align-items:center;
 
@@ -56,9 +130,10 @@ body{
 }
 
 .logo{
+
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 
 .logo img{
@@ -66,70 +141,97 @@ body{
 }
 
 .logo h2{
+
   font-size:24px;
-  color:white;
+  font-weight:700;
+
+  color:var(--white);
 }
 
 .navbar ul{
+
   display:flex;
+
   list-style:none;
+
   gap:25px;
 }
 
 .navbar ul li a{
+
   text-decoration:none;
-  color:white;
-  font-weight:bold;
-  transition:.3s;
+
+  color:var(--white);
+
+  font-weight:600;
+
+  transition:.3s ease;
 }
 
 .navbar ul li a:hover{
-  color:#60a5fa;
+
+  color:var(--primary-light);
 }
 
-/* ================= HERO CONTENT ================= */
+/* =========================================
+   HERO CONTENT
+========================================= */
 
 .hero-content{
+
   position:relative;
   z-index:2;
 
   height:80%;
 
   display:flex;
+
   flex-direction:column;
   justify-content:center;
   align-items:center;
 
   text-align:center;
+
+  padding:20px;
 }
 
 .hero-content h1{
+
   font-size:65px;
+
   margin-bottom:15px;
-  color:white;
+
+  font-weight:700;
 }
 
 .hero-content p{
+
   font-size:22px;
-  color:#dbeafe;
+
+  color:var(--text-soft);
+
+  max-width:800px;
 }
 
-/* =========================
+/* =========================================
    CONTAINER
-========================= */
+========================================= */
 
 .container{
+
   max-width:1500px;
+
   margin:20px auto 50px;
+
   padding:20px;
 
   position:relative;
   z-index:5;
 }
 
-/* =========================
+/* =========================================
    PAGE HEADER
-========================= */
+========================================= */
 
 .page-header{
 
@@ -148,26 +250,29 @@ body{
 
   backdrop-filter:blur(14px);
 
-  color:white;
-
   border-radius:
   0 0 40px 40px;
+
+  border:1px solid var(--border);
 
   position:relative;
 
   overflow:hidden;
-
-  border:
-  1px solid rgba(255,255,255,.08);
 }
 
 /* EFFECT */
 
-.page-header::before{
+.page-header::before,
+.page-header::after{
 
   content:"";
 
   position:absolute;
+
+  border-radius:50%;
+}
+
+.page-header::before{
 
   width:320px;
   height:320px;
@@ -175,25 +280,17 @@ body{
   background:
   rgba(255,255,255,.06);
 
-  border-radius:50%;
-
   top:-120px;
   right:-100px;
 }
 
 .page-header::after{
 
-  content:"";
-
-  position:absolute;
-
   width:220px;
   height:220px;
 
   background:
   rgba(255,255,255,.04);
-
-  border-radius:50%;
 
   bottom:-100px;
   left:-60px;
@@ -203,12 +300,14 @@ body{
 
 .page-header h1{
 
-  font-size:38px;
-  margin-bottom:10px;
-  font-weight:700;
-
   position:relative;
   z-index:2;
+
+  font-size:38px;
+
+  margin-bottom:10px;
+
+  font-weight:700;
 }
 
 .page-header h1 i{
@@ -217,49 +316,47 @@ body{
 
 .page-header p{
 
+  position:relative;
+  z-index:2;
+
   color:rgba(255,255,255,.82);
 
   font-size:15px;
-
-  position:relative;
-  z-index:2;
 }
 
-/* =========================
+/* =========================================
    FILTER
-========================= */
+========================================= */
 
 .filter-card{
 
-  background:rgba(255,255,255,.08);
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:15px;
+
+  margin-bottom:30px;
+
+  padding:16px;
+
+  background:var(--glass);
 
   backdrop-filter:blur(14px);
 
   border-radius:22px;
 
-  padding:16px;
+  border:1px solid var(--border);
 
-  display:flex;
-  gap:15px;
-
-  margin-top:-5px;
-  margin-bottom:30px;
-
-  position:relative;
-  z-index:20;
-
-  box-shadow:
-  0 12px 30px rgba(0,0,0,.18);
-
-  border:1px solid rgba(255,255,255,.08);
-
-  flex-wrap:wrap;
+  box-shadow:var(--shadow);
 }
 
 /* SEARCH */
 
 .search-box{
+
   flex:1;
+
   position:relative;
 }
 
@@ -284,21 +381,22 @@ body{
 
   height:55px;
 
-  border-radius:14px;
-
-  border:1px solid rgba(255,255,255,.08);
-
-  font-size:15px;
+  border:none;
 
   outline:none;
 
-  transition:.3s;
+  border-radius:14px;
 
-  background:rgba(255,255,255,.05);
+  font-size:15px;
 
-  color:white;
+  background:
+  rgba(255,255,255,.05);
 
-  box-sizing:border-box;
+  color:var(--white);
+
+  border:1px solid var(--border);
+
+  transition:.3s ease;
 }
 
 .search-box input{
@@ -323,17 +421,18 @@ body{
 .search-box input:focus,
 #filterKelas:focus{
 
-  border-color:#3b82f6;
+  border-color:var(--primary);
 
-  background:rgba(255,255,255,.08);
+  background:
+  rgba(255,255,255,.08);
 
   box-shadow:
   0 0 0 4px rgba(37,99,235,.15);
 }
 
-/* =========================
+/* =========================================
    STATS
-========================= */
+========================================= */
 
 .stats-grid{
 
@@ -349,20 +448,19 @@ body{
 
 .stat-card{
 
-  background:rgba(255,255,255,.08);
-
-  backdrop-filter:blur(14px);
-
-  border-radius:22px;
-
   padding:24px;
 
   text-align:center;
 
-  box-shadow:
-  0 8px 20px rgba(0,0,0,.18);
+  background:var(--glass);
 
-  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+
+  border-radius:var(--radius);
+
+  border:1px solid var(--border);
+
+  box-shadow:var(--shadow);
 
   transition:.3s ease;
 }
@@ -379,52 +477,47 @@ body{
 
   font-size:30px;
 
-  color:#60a5fa;
+  color:var(--primary-light);
 
   margin-bottom:12px;
 }
 
 .stat-card h2{
 
-  margin:0;
-
   font-size:32px;
 
-  color:white;
-
   font-weight:700;
+
+  color:var(--white);
 }
 
 .stat-card p{
 
   margin-top:10px;
 
-  color:#dbeafe;
+  color:var(--text-soft);
 
   font-size:15px;
 }
 
-/* =========================
+/* =========================================
    SISWA WRAPPER
-========================= */
+========================================= */
 
 .siswa-wrapper{
   margin-top:10px;
 }
 
-/* =========================
-   HEADER SISWA
-========================= */
+/* =========================================
+   SISWA HEADER
+========================================= */
 
 .siswa-header{
+
   margin-bottom:40px;
 }
 
 .siswa-header h1{
-
-  font-size:34px;
-  margin-top:50px;
-  margin-bottom:10px;
 
   display:flex;
 
@@ -432,78 +525,23 @@ body{
 
   gap:12px;
 
-  color:white;
+  margin-top:50px;
+  margin-bottom:10px;
+
+  font-size:34px;
 }
 
 .siswa-header h1 i{
-  color:#60a5fa;
+  color:var(--primary-light);
 }
 
 .siswa-header p{
-  color:#dbeafe;
+  color:var(--text-soft);
 }
 
-/* =========================
-   KELAS SECTION
-========================= */
-
-.kelas-section{
-  margin-bottom:45px;
-}
-
-.kelas-header{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  margin-bottom:22px;
-
-  flex-wrap:wrap;
-
-  gap:10px;
-}
-
-.kelas-header h2{
-
-  margin:0;
-
-  font-size:28px;
-
-  color:white;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-}
-
-.kelas-header h2 i{
-  color:#60a5fa;
-}
-
-.kelas-header span{
-
-  background:rgba(59,130,246,.15);
-
-  color:#93c5fd;
-
-  padding:8px 16px;
-
-  border-radius:999px;
-
-  font-size:14px;
-
-  font-weight:600;
-
-  border:1px solid rgba(255,255,255,.08);
-}
-/* =========================
-   WRAPPER SEMUA KELAS
-========================= */
+/* =========================================
+   DATA SISWA
+========================================= */
 
 #dataSiswa{
 
@@ -512,63 +550,113 @@ body{
   flex-direction:column;
 
   gap:40px;
-
-  width:100%;
 }
 
-/* =========================
+/* =========================================
    KELAS SECTION
-========================= */
+========================================= */
 
 .kelas-section{
-
   width:100%;
-
-  display:block;
 }
-/* =========================
+
+.kelas-header{
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-bottom:22px;
+}
+
+.kelas-header h2{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  font-size:28px;
+}
+
+.kelas-header h2 i{
+  color:var(--primary-light);
+}
+
+.kelas-header span{
+
+  padding:8px 16px;
+
+  border-radius:999px;
+
+  background:
+  rgba(59,130,246,.15);
+
+  color:#93c5fd;
+
+  border:1px solid var(--border);
+
+  font-size:14px;
+
+  font-weight:600;
+}
+
+/* =========================================
    GRID SISWA
-========================= */
+========================================= */
 
 .siswa-grid{
 
   display:grid;
 
   grid-template-columns:
-  repeat(4, minmax(0,1fr));
+  repeat(4,minmax(0,1fr));
 
   gap:20px;
 }
 
-/* =========================
+/* =========================================
    CARD SISWA
-========================= */
+========================================= */
 
 .siswa-card{
-
-  background:rgba(255,255,255,.08);
-
-  backdrop-filter:blur(14px);
-
-  border-radius:24px;
-
-  overflow:hidden;
-
-  box-shadow:
-  0 10px 25px rgba(0,0,0,.18);
-
-  border:1px solid rgba(255,255,255,.08);
-
-  transition:.3s ease;
 
   padding:18px;
 
   text-align:center;
+
+  background:var(--glass);
+
+  backdrop-filter:blur(14px);
+
+  border-radius:var(--radius);
+
+  border:1px solid var(--border);
+
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
+
+  transition:.3s ease;
 }
 
-/* =========================
-   FOTO BOX
-========================= */
+.siswa-card:hover{
+
+  transform:translateY(-6px);
+
+  box-shadow:
+  0 18px 35px rgba(0,0,0,.25);
+}
+
+/* =========================================
+   FOTO
+========================================= */
 
 .siswa-foto-box{
 
@@ -577,18 +665,14 @@ body{
   margin-bottom:15px;
 }
 
-/* =========================
-   FOTO
-========================= */
-.siswa-foto{
+.siswa-foto-box img{
 
-  width:50%;
-
-  height:150px;
+  width:120px;
+  height:120px;
 
   object-fit:cover;
 
-  border-radius:18px;
+  border-radius:20px;
 
   border:3px solid rgba(255,255,255,.15);
 
@@ -597,89 +681,88 @@ body{
   margin:auto;
 }
 
-/* =========================
+/* =========================================
    CONTENT
-========================= */
-
-.siswa-content{
-  width:100%;
-}
-
-/* =========================
-   NAMA
-========================= */
+========================================= */
 
 .siswa-content h3{
 
-  margin-top:0;
-
-  margin-bottom:12px;
+  margin-bottom:14px;
 
   font-size:18px;
 
-  line-height:1.4;
-
-  color:white;
+  line-height:1.5;
 }
 
-/* =========================
+.siswa-info{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:10px;
+
+  padding:10px 12px;
+
+  border-radius:12px;
+
+  background:
+  rgba(255,255,255,.04);
+
+  color:var(--text-soft);
+
+  font-size:14px;
+
+  text-align:left;
+}
+
+.siswa-info i{
+
+  color:var(--primary-light);
+
+  min-width:18px;
+}
+
+/* =========================================
    LOADING
-========================= */
+========================================= */
 
 .loading-box{
-
-  background:rgba(255,255,255,.08);
-
-  backdrop-filter:blur(14px);
-
-  border-radius:24px;
 
   padding:50px;
 
   text-align:center;
 
-  box-shadow:
-  0 10px 25px rgba(0,0,0,.18);
+  background:var(--glass);
 
-  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+
+  border-radius:var(--radius);
+
+  border:1px solid var(--border);
+
+  box-shadow:var(--shadow);
 }
 
 .loading-box i{
 
   font-size:38px;
 
-  color:#60a5fa;
+  color:var(--primary-light);
 
   margin-bottom:15px;
 }
 
 .loading-box p{
 
-  color:#dbeafe;
-
-  margin:0;
+  color:var(--text-soft);
 }
 
-/* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-  width:10px;
-}
-
-::-webkit-scrollbar-track{
-  background:#081b33;
-}
-
-::-webkit-scrollbar-thumb{
-  background:#2563eb;
-  border-radius:20px;
-}
-
-/* =========================
+/* =========================================
    RESPONSIVE
-========================= */
+========================================= */
 
 @media(max-width:1400px){
 
@@ -701,10 +784,6 @@ body{
 
 @media(max-width:768px){
 
-  body{
-    overflow-x:hidden;
-  }
-
   .hero{
     height:55vh;
   }
@@ -718,13 +797,18 @@ body{
   }
 
   .navbar{
+
     flex-direction:column;
+
     gap:15px;
+
     padding:15px 5%;
   }
 
   .navbar ul{
+
     flex-wrap:wrap;
+
     justify-content:center;
   }
 
@@ -733,7 +817,9 @@ body{
   }
 
   .page-header{
+
     margin-top:60px;
+
     padding:80px 15px 30px;
   }
 
@@ -754,7 +840,9 @@ body{
   }
 
   .kelas-header{
+
     flex-direction:column;
+
     align-items:flex-start;
   }
 
@@ -767,9 +855,10 @@ body{
     padding:16px;
   }
 
-  .siswa-foto{
-    width:80px;
-    height:80px;
+  .siswa-foto-box img{
+
+    width:90px;
+    height:90px;
   }
 
   .siswa-content h3{
@@ -828,13 +917,10 @@ body{
     padding:15px;
   }
 
-  .siswa-foto-box{
-    padding:15px;
-  }
+  .siswa-foto-box img{
 
-  .siswa-foto{
-    width:75px;
-    height:75px;
+    width:80px;
+    height:80px;
   }
 
 }

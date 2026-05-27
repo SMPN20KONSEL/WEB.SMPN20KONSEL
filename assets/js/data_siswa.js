@@ -9,15 +9,7 @@ import {
   onSnapshot,
   query,
   orderBy
-}
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-
-/* =========================================
-   BASE URL
-========================================= */
-
-const BASE_URL =
-"https://SMPN20KONSEL.github.io/WEB.SMPN20KONSEL/";
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 /* =========================================
    ELEMENT
@@ -52,49 +44,25 @@ let semuaData = [];
 let renderTimeout = null;
 
 /* =========================================
-   FOTO DEFAULT
-========================================= */
-
-const FOTO_DEFAULT =
-"https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
-
-/* =========================================
-   FORMAT FOTO
-========================================= */
-
-function getFotoSiswa(siswa){
-
-  if(
-    siswa.foto &&
-    siswa.foto.trim() !== ""
-  ){
-    return siswa.foto;
-  }
-
-  return `${BASE_URL}image/siswa/${siswa.nis}.jpg`;
-
-}
-
-/* =========================================
    UPDATE STATISTIK
 ========================================= */
 
-function updateStatistik(data){
+function updateStatistik(data) {
 
   let jumlahLaki = 0;
   let jumlahPerempuan = 0;
 
-  data.forEach((siswa)=>{
+  data.forEach((siswa) => {
 
     const gender =
     (siswa.gender || "")
     .toLowerCase();
 
-    if(gender === "laki-laki"){
+    if (gender === "laki-laki") {
 
       jumlahLaki++;
 
-    }else if(gender === "perempuan"){
+    } else if (gender === "perempuan") {
 
       jumlahPerempuan++;
 
@@ -105,28 +73,28 @@ function updateStatistik(data){
   const jumlahSiswa =
   data.length;
 
-  if(totalSiswaStat){
+  if (totalSiswaStat) {
 
     totalSiswaStat.textContent =
     jumlahSiswa;
 
   }
 
-  if(footerTotalSiswa){
+  if (footerTotalSiswa) {
 
     footerTotalSiswa.textContent =
     jumlahSiswa;
 
   }
 
-  if(totalLaki){
+  if (totalLaki) {
 
     totalLaki.textContent =
     jumlahLaki;
 
   }
 
-  if(totalPerempuan){
+  if (totalPerempuan) {
 
     totalPerempuan.textContent =
     jumlahPerempuan;
@@ -139,11 +107,13 @@ function updateStatistik(data){
    RENDER SISWA
 ========================================= */
 
-function renderSiswa(data){
+function renderSiswa(data) {
 
-  /* ================= KOSONG ================= */
+  /* =========================
+     DATA KOSONG
+  ========================= */
 
-  if(!data.length){
+  if (!data.length) {
 
     dataSiswa.innerHTML = `
 
@@ -163,18 +133,18 @@ function renderSiswa(data){
 
   }
 
-  /* =========================================
-     GROUP KELAS
-  ========================================= */
+  /* =========================
+     GROUP BERDASARKAN KELAS
+  ========================= */
 
   const kelompokKelas = {};
 
-  for(const siswa of data){
+  data.forEach((siswa) => {
 
     const kelas =
     siswa.kelas || "Tanpa Kelas";
 
-    if(!kelompokKelas[kelas]){
+    if (!kelompokKelas[kelas]) {
 
       kelompokKelas[kelas] = [];
 
@@ -182,21 +152,23 @@ function renderSiswa(data){
 
     kelompokKelas[kelas].push(siswa);
 
-  }
+  });
 
-  /* =========================================
-     SORT KELAS
-  ========================================= */
+  /* =========================
+     SORTING KELAS
+  ========================= */
 
   const romawiMap = {
+
     "VII": 7,
     "VIII": 8,
     "IX": 9
+
   };
 
   const urutanKelas =
   Object.keys(kelompokKelas)
-  .sort((a,b)=>{
+  .sort((a, b) => {
 
     const romawiA =
     a.split(" ")[0];
@@ -210,7 +182,7 @@ function renderSiswa(data){
     const angkaB =
     romawiMap[romawiB] || 0;
 
-    if(angkaA !== angkaB){
+    if (angkaA !== angkaB) {
 
       return angkaA - angkaB;
 
@@ -220,20 +192,20 @@ function renderSiswa(data){
       b,
       undefined,
       {
-        numeric:true,
-        sensitivity:"base"
+        numeric: true,
+        sensitivity: "base"
       }
     );
 
   });
 
-  /* =========================================
-     HTML RINGAN
-  ========================================= */
+  /* =========================
+     GENERATE HTML
+  ========================= */
 
   const html = [];
 
-  for(const kelas of urutanKelas){
+  urutanKelas.forEach((kelas) => {
 
     html.push(`
 
@@ -259,7 +231,7 @@ function renderSiswa(data){
 
     `);
 
-    for(const siswa of kelompokKelas[kelas]){
+    kelompokKelas[kelas].forEach((siswa) => {
 
       html.push(`
 
@@ -268,16 +240,18 @@ function renderSiswa(data){
           <div class="siswa-foto-box">
 
             <img
-              src="${getFotoSiswa(siswa)}"
-              class="siswa-foto"
-              loading="lazy"
-              decoding="async"
-              referrerpolicy="no-referrer"
+              src="${
+                siswa.foto ||
+                `image/siswa/${(siswa.nis || "").trim()}.jpg`
+              }"
+
               onerror="
                 this.onerror=null;
-                this.src='${FOTO_DEFAULT}';
+                this.src='image/siswa/user.png'
               "
-            >
+
+              alt="Foto Siswa"
+            />
 
           </div>
 
@@ -326,7 +300,7 @@ function renderSiswa(data){
 
       `);
 
-    }
+    });
 
     html.push(`
 
@@ -336,11 +310,11 @@ function renderSiswa(data){
 
     `);
 
-  }
+  });
 
-  /* =========================================
+  /* =========================
      SEKALI RENDER
-  ========================================= */
+  ========================= */
 
   dataSiswa.innerHTML =
   html.join("");
@@ -351,7 +325,7 @@ function renderSiswa(data){
    FILTER DATA
 ========================================= */
 
-function filterData(){
+function filterData() {
 
   const keyword =
   (searchInput?.value || "")
@@ -362,7 +336,7 @@ function filterData(){
   filterKelas?.value || "";
 
   const hasil =
-  semuaData.filter((siswa)=>{
+  semuaData.filter((siswa) => {
 
     const nama =
     (siswa.nama || "")
@@ -386,8 +360,10 @@ function filterData(){
       siswa.kelas === kelas;
 
     return (
+
       cocokKeyword &&
       cocokKelas
+
     );
 
   });
@@ -402,12 +378,12 @@ function filterData(){
    DEBOUNCE SEARCH
 ========================================= */
 
-function debounceFilter(){
+function debounceFilter() {
 
   clearTimeout(renderTimeout);
 
   renderTimeout =
-  setTimeout(()=>{
+  setTimeout(() => {
 
     filterData();
 
@@ -420,19 +396,21 @@ function debounceFilter(){
 ========================================= */
 
 const q = query(
+
   collection(db, "siswa"),
   orderBy("nama")
+
 );
 
 onSnapshot(
 
   q,
 
-  (snapshot)=>{
+  (snapshot) => {
 
     const dataBaru = [];
 
-    snapshot.forEach((doc)=>{
+    snapshot.forEach((doc) => {
 
       dataBaru.push({
 
@@ -455,7 +433,7 @@ onSnapshot(
 
   },
 
-  (error)=>{
+  (error) => {
 
     console.error(
       "Gagal memuat data siswa:",
@@ -481,10 +459,10 @@ onSnapshot(
 );
 
 /* =========================================
-   EVENT
+   EVENT LISTENER
 ========================================= */
 
-if(searchInput){
+if (searchInput) {
 
   searchInput.addEventListener(
     "input",
@@ -493,7 +471,7 @@ if(searchInput){
 
 }
 
-if(filterKelas){
+if (filterKelas) {
 
   filterKelas.addEventListener(
     "change",
