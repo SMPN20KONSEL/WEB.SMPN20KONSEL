@@ -1,26 +1,40 @@
 /* =========================================
    GLOBAL AOS AUTO
    SMPN 20 KONAWE SELATAN
-   OPTIMIZED VERSION
 ========================================= */
 
-window.addEventListener("DOMContentLoaded",()=>{
+window.addEventListener("load",()=>{
 
   /* =========================================
-     SELECTOR & ANIMATION
+     AOS MAP
   ========================================= */
 
   const aosGlobal = {
 
-    /* HERO */
-    ".hero-content" : "zoom-in",
+    /* =====================================
+       HERO
+    ===================================== */
 
-    ".hero-btn" : "fade-up",
+    ".hero h1" : "fade-up",
 
-    /* TITLE */
+    ".hero p" : "fade-up",
+
+    ".hero-btn" : "zoom-in",
+
+    ".hero-slider" : "fade",
+
+    ".slide" : "fade",
+
+    /* =====================================
+       TITLE
+    ===================================== */
+
     ".section-title" : "fade-up",
 
-    /* ABOUT */
+    /* =====================================
+       ABOUT
+    ===================================== */
+
     ".about img" : "fade-right",
 
     ".about-text" : "fade-left",
@@ -33,7 +47,10 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     ".sambutan-text" : "fade-left",
 
-    /* CARD */
+    /* =====================================
+       CARD
+    ===================================== */
+
     ".card" : "fade-up",
 
     ".info-card" : "zoom-in-up",
@@ -74,7 +91,10 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     ".feature-card" : "fade-up",
 
-    /* GRID */
+    /* =====================================
+       GRID
+    ===================================== */
+
     ".grid > *" : "fade-up",
 
     ".card-container > *" : "fade-up",
@@ -89,7 +109,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     ".stats > *" : "zoom-in",
 
-    ".gallery > img" : "zoom-in",
+    ".gallery > *" : "zoom-in",
 
     ".news-container > *" : "fade-up",
 
@@ -99,12 +119,20 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     ".video-wrapper" : "zoom-in",
 
-    /* TIMELINE */
+    /* =====================================
+       TIMELINE
+    ===================================== */
+
     ".timeline-item:nth-child(odd)" : "fade-right",
 
     ".timeline-item:nth-child(even)" : "fade-left",
 
-    /* CONTACT */
+    ".timeline-content" : "fade-up",
+
+    /* =====================================
+       CONTACT
+    ===================================== */
+
     ".contact-info p" : "fade-up",
 
     ".contact-box" : "fade-up",
@@ -113,15 +141,35 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     ".contact-map" : "fade-right",
 
-    /* TABLE */
+    /* =====================================
+       TABLE
+    ===================================== */
+
+    "table" : "fade-up",
+
     ".table-responsive" : "fade-up",
 
-    /* BUTTON */
+    /* =====================================
+       BUTTON
+    ===================================== */
+
     ".btn" : "fade-up",
 
     ".btn-baca" : "fade-up",
 
-    ".login-btn" : "fade-up"
+    ".login-btn" : "fade-up",
+
+    /* =====================================
+       FORM
+    ===================================== */
+
+    "form" : "fade-up",
+
+    "input" : "fade-up",
+
+    "textarea" : "fade-up",
+
+    "select" : "fade-up"
 
   };
 
@@ -129,61 +177,99 @@ window.addEventListener("DOMContentLoaded",()=>{
      AUTO GENERATE
   ========================================= */
 
-  for(const selector in aosGlobal){
+  Object.entries(aosGlobal).forEach(
 
-    const elements =
-    document.querySelectorAll(selector);
+    ([selector,animation])=>{
 
-    elements.forEach((el,index)=>{
+      document
+      .querySelectorAll(selector)
+      .forEach((el,index)=>{
 
-      /* skip jika sudah ada */
-      if(el.dataset.aos) return;
+        /* SKIP */
 
-      /* animasi */
-      el.dataset.aos =
-      aosGlobal[selector];
+        if(el.dataset.aos) return;
 
-      /* delay smooth */
-      el.dataset.aosDelay =
-      Math.min(index * 80, 400);
+        /* SET ANIMATION */
 
-      /* durasi lebih ringan */
-      el.dataset.aosDuration =
-      700;
+        el.dataset.aos =
+        animation;
 
-      /* easing */
-      el.dataset.aosEasing =
-      "ease-out-cubic";
+        /* =================================
+           HERO DELAY
+        ================================= */
 
-    });
+        if(selector === ".hero h1"){
 
-  }
+          el.dataset.aosDelay = 200;
+
+        }
+
+        else if(selector === ".hero p"){
+
+          el.dataset.aosDelay = 500;
+
+        }
+
+        else if(selector === ".hero-btn"){
+
+          el.dataset.aosDelay = 800;
+
+        }
+
+        /* =================================
+           DEFAULT DELAY
+        ================================= */
+
+        else{
+
+          el.dataset.aosDelay =
+          Math.min(index * 80,400);
+
+        }
+
+        /* DURATION */
+
+        el.dataset.aosDuration =
+        1000;
+
+        /* EASING */
+
+        el.dataset.aosEasing =
+        "ease-out-cubic";
+
+      });
+
+    }
+
+  );
 
   /* =========================================
-     INIT AOS
+     INIT
   ========================================= */
 
   AOS.init({
 
     once:true,
 
-    offset:60,
+    offset:70,
 
-    duration:700,
+    duration:1000,
 
     easing:"ease-out-cubic",
 
-    mirror:false,
-
-    throttleDelay:99,
-
-    debounceDelay:50,
-
-    disable:false,
-
-    startEvent:"DOMContentLoaded"
+    mirror:false
 
   });
+
+  /* =========================================
+     REFRESH
+  ========================================= */
+
+  setTimeout(()=>{
+
+    AOS.refreshHard();
+
+  },500);
 
 });
 
@@ -193,10 +279,10 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 window.refreshAOS = ()=>{
 
-  requestAnimationFrame(()=>{
+  setTimeout(()=>{
 
-    AOS.refresh();
+    AOS.refreshHard();
 
-  });
+  },300);
 
 };
