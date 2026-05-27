@@ -9,7 +9,7 @@
 <!-- FONT AWESOME -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
 <style>
 
 /* =========================================================
@@ -590,10 +590,17 @@ body{
 
 }
 </style>
-</head>
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/header-footer.css">
 
+</head>
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+<div id="header"></div>
 <!-- =========================================================
      BACK BUTTON
 ========================================================= -->
@@ -791,13 +798,11 @@ body{
 <!-- =========================================================
      FOOTER
 ========================================================= -->
+ <div id="footer"></div>
 
-<footer class="footer">
-
-  © 2026 SMPN 20 Konawe Selatan
-  | Website Sekolah
-
-</footer>
-
+<!-- JS -->
+<script type="module" src="assets/js/include.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/js/aos-global.js"></script>
 </body>
 </html>
