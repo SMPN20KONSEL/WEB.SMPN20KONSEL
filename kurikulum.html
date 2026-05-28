@@ -115,138 +115,77 @@
 
   <!-- JADWAL -->
 
-  <section id="jadwal">
+<section id="jadwal">
+<div class="title">
 
-    <div class="section-title">
-      <h2>Jadwal Pelajaran</h2>
-      <p>Jadwal pembelajaran siswa</p>
-    </div>
+  <h1>Jadwal Pelajaran</h1>
 
-    <div class="table-container">
+  <p>
+    Jadwal pembelajaran siswa
+  </p>
 
-      <table>
+</div>
 
-        <tr>
-          <th>Hari</th>
-          <th>Mata Pelajaran</th>
-          <th>Jam</th>
-        </tr>
 
-        <tr>
-          <td>Senin</td>
-          <td>Matematika</td>
-          <td>07.30 - 09.00</td>
-        </tr>
+<div class="table-wrapper">
 
-        <tr>
-          <td>Selasa</td>
-          <td>IPA</td>
-          <td>08.00 - 09.30</td>
-        </tr>
+<table class="jadwal-table">
 
-        <tr>
-          <td>Rabu</td>
-          <td>Bahasa Indonesia</td>
-          <td>09.00 - 10.30</td>
-        </tr>
+<thead>
 
-        <tr>
-          <td>Kamis</td>
-          <td>IPS</td>
-          <td>07.30 - 09.00</td>
-        </tr>
+<tr>
 
-        <tr>
-          <td>Jumat</td>
-          <td>Bahasa Inggris</td>
-          <td>08.00 - 09.30</td>
-        </tr>
+<th>hari</th>
+<th>jam</th>
+<th>vii_a</th>
+<th>vii_b</th>
+<th>viii_a</th>
+<th>viii_b</th>
+<th>ix_a</th>
+<th>ix_b</th>
 
-      </table>
+</tr>
 
-    </div>
+</thead>
 
-  </section>
+<tbody id="jadwalBody">
 
-  <!-- STATISTIK -->
+<tr>
+<td colspan="8">
+Loading...
+</td>
+</tr>
 
-  <section>
+</tbody>
 
-    <div class="section-title">
-      <h2>Statistik Akademik</h2>
-      <p>Data akademik sekolah</p>
-    </div>
+</table>
 
-    <div class="stats">
+</div>
 
-      <div class="stat-box">
-        <h2>45</h2>
-        <p>Guru</p>
-      </div>
+</section>
 
-      <div class="stat-box">
-        <h2>780</h2>
-        <p>Siswa</p>
-      </div>
 
-      <div class="stat-box">
-        <h2>32</h2>
-        <p>Prestasi</p>
-      </div>
+<!-- =========================
+SECTION GURU
+========================= -->
 
-      <div class="stat-box">
-        <h2>100%</h2>
-        <p>Kelulusan</p>
-      </div>
+<section id="guru" class="guru-section">
 
-    </div>
+  <div class="section-title">
+    <h2>Guru Mata Pelajaran</h2>
+    <p>Tenaga pendidik profesional</p>
+  </div>
 
-  </section>
+  <!-- CONTAINER -->
+  <div
+    class="guru-container"
+    id="guruContainer">
 
-  <!-- GURU -->
+    <!-- DATA DARI FIREBASE -->
 
-  <section id="guru">
+  </div>
 
-    <div class="section-title">
-      <h2>Guru Mata Pelajaran</h2>
-      <p>Tenaga pendidik profesional</p>
-    </div>
-
-    <div class="teacher-container">
-
-      <div class="teacher-card">
-
-        <img src="https://randomuser.me/api/portraits/men/32.jpg">
-
-        <h3>Bapak Ahmad</h3>
-
-        <p>Guru Matematika</p>
-
-      </div>
-
-      <div class="teacher-card">
-
-        <img src="https://randomuser.me/api/portraits/women/44.jpg">
-
-        <h3>Ibu Siti</h3>
-
-        <p>Guru IPA</p>
-
-      </div>
-
-      <div class="teacher-card">
-
-        <img src="https://randomuser.me/api/portraits/men/55.jpg">
-
-        <h3>Bapak Rian</h3>
-
-        <p>Guru Bahasa Inggris</p>
-
-      </div>
-
-    </div>
-
-  </section>
+</section>
 
   <!-- DOWNLOAD -->
 
@@ -269,15 +208,15 @@
 
       </div>
 
-      <div class="download-card">
+<div class="download-card">
 
-        <i class="fas fa-file-alt"></i>
+  <i class="fas fa-file-alt"></i>
 
-        <h3>Jadwal Pelajaran</h3>
+  <h3>Jadwal Pelajaran</h3>
 
-        <a href="#">Download</a>
+  <a href="assets/file/jadwal_pembelajaran.xlsx">Download</a>
 
-      </div>
+</div>
 
       <div class="download-card">
 
@@ -295,38 +234,16 @@
 
   <!-- SLIDER -->
 
-  <section>
+<section>
 
-    <div class="section-title">
-      <h2>Galeri Pembelajaran</h2>
-      <p>Kegiatan belajar siswa</p>
-    </div>
+  <div class="section-title">
+    <h2>Galeri Pembelajaran</h2>
+    <p>Kegiatan belajar siswa</p>
+  </div>
 
-    <div class="slider">
+  <div class="gallery-full" id="galleryFull"></div>
 
-      <div class="slide-track">
-
-        <div class="slide">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200">
-        </div>
-
-        <div class="slide">
-          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200">
-        </div>
-
-        <div class="slide">
-          <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200">
-        </div>
-
-        <div class="slide">
-          <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200">
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+</section>
 
   <!-- FAQ -->
 
@@ -429,6 +346,631 @@
 <script type="module" src="assets/js/kurikulum.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="assets/js/aos-global.js"></script>
+<script type="module" src="assets/js/profil_guru.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+<script type="module">
+
+import { db }
+from "./assets/js/firebase.js";
+
+import {
+
+collection,
+getDocs,
+doc,
+getDoc
+
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+ELEMENT
+========================= */
+
+const jadwalBody =
+document.getElementById(
+"jadwalBody"
+);
+
+/* =========================
+MASTER DATA
+========================= */
+
+let guruData = {};
+let mapelData = {};
+
+/* =========================
+LOAD MASTER
+========================= */
+
+async function loadMasterData(){
+
+/* MAPEL */
+
+const mapelRef =
+doc(
+db,
+"master_data",
+"mapel"
+);
+
+const mapelSnap =
+await getDoc(mapelRef);
+
+if(mapelSnap.exists()){
+
+mapelData =
+mapelSnap.data();
+
+}
+
+/* GURU */
+
+const guruRef =
+doc(
+db,
+"master_data",
+"guru"
+);
+
+const guruSnap =
+await getDoc(guruRef);
+
+if(guruSnap.exists()){
+
+guruData =
+guruSnap.data();
+
+}
+
+}
+
+/* =========================
+SPECIAL
+========================= */
+
+function isSpecial(kode){
+
+if(!kode) return false;
+
+const special = [
+
+"ISTIRAHAT",
+"APEL",
+"UPACARA",
+"UPACARA BENDERA",
+"LITERASI",
+"SAIH / LITERASI",
+"SHOLAT",
+"PULANG",
+"KOSONG"
+
+];
+
+return special.includes(
+kode.toUpperCase()
+);
+
+}
+
+/* =========================
+TRANSLATE
+========================= */
+
+function translateKode(kode){
+
+if(!kode){
+
+return `
+<div class="special-box">
+-
+</div>
+`;
+
+}
+
+/* SPECIAL */
+
+if(isSpecial(kode)){
+
+return `
+
+<div class="special-box">
+
+${kode}
+
+</div>
+
+`;
+
+}
+
+/* NORMAL */
+
+const split =
+kode.split("/");
+
+const kodeMapel =
+split[0]?.trim();
+
+const kodeGuru =
+split[1]?.trim();
+
+const namaMapel =
+mapelData[
+kodeMapel
+] || kodeMapel;
+
+const namaGuru =
+guruData[
+kodeGuru
+] || kodeGuru;
+
+return `
+
+<div class="kode-box">
+
+<b>
+${namaMapel}
+</b>
+
+<small>
+${namaGuru}
+</small>
+
+</div>
+
+`;
+
+}
+
+/* =========================
+GROUP HARI
+========================= */
+
+function groupByHari(data){
+
+const grouped = {};
+
+data.forEach(item=>{
+
+const hari =
+(item.hari || "").toUpperCase();
+
+if(!grouped[hari]){
+
+grouped[hari] = [];
+
+}
+
+grouped[hari].push(item);
+
+});
+
+return grouped;
+
+}
+
+/* =========================
+LOAD JADWAL
+========================= */
+
+async function loadJadwal(){
+
+jadwalBody.innerHTML = `
+<tr>
+<td colspan="8">
+Loading...
+</td>
+</tr>
+`;
+
+try{
+
+const querySnapshot =
+await getDocs(
+collection(db,"jadwal")
+);
+
+const allData = [];
+
+querySnapshot.forEach((item)=>{
+
+allData.push(item.data());
+
+});
+
+/* SORT MANUAL */
+
+const urutanHari = {
+
+"SENIN":1,
+"SELASA":2,
+"RABU":3,
+"KAMIS":4,
+"JUMAT":5,
+"SABTU":6
+
+};
+
+allData.sort((a,b)=>{
+
+const hariA =
+urutanHari[
+(a.hari || "").toUpperCase()
+] || 99;
+
+const hariB =
+urutanHari[
+(b.hari || "").toUpperCase()
+] || 99;
+
+if(hariA !== hariB){
+
+return hariA - hariB;
+
+}
+
+return (a.jam || "")
+.localeCompare(
+b.jam || ""
+);
+
+});
+
+const grouped =
+groupByHari(allData);
+
+jadwalBody.innerHTML = "";
+
+/* LOOP HARI */
+
+Object.keys(grouped).forEach((hari)=>{
+
+const rows =
+grouped[hari];
+
+rows.forEach((data,index)=>{
+
+jadwalBody.innerHTML += `
+
+<tr>
+
+${
+index === 0
+? `
+<td class="hari-cell"
+rowspan="${rows.length}">
+
+${hari}
+
+</td>
+`
+: ""
+}
+
+<td class="jam-cell">
+
+${data.jam || "-"}
+
+</td>
+
+<td>
+${translateKode(data.vii_a)}
+</td>
+
+<td>
+${translateKode(data.vii_b)}
+</td>
+
+<td>
+${translateKode(data.viii_a)}
+</td>
+
+<td>
+${translateKode(data.viii_b)}
+</td>
+
+<td>
+${translateKode(data.ix_a)}
+</td>
+
+<td>
+${translateKode(data.ix_b)}
+</td>
+
+</tr>
+
+`;
+
+});
+
+});
+
+}
+catch(error){
+
+console.log(error);
+
+jadwalBody.innerHTML = `
+
+<tr>
+
+<td colspan="8">
+
+Gagal mengambil data
+
+</td>
+
+</tr>
+
+`;
+
+}
+
+}
+
+/* =========================
+LOAD
+========================= */
+
+await loadMasterData();
+
+await loadJadwal();
+
+</script>
+
+
+<script type="module">
+
+import { db } from "./assets/js/firebase.js";
+
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+ELEMENT
+========================= */
+
+const guruContainer =
+document.getElementById(
+  "guruContainer"
+);
+
+/* =========================
+LOAD GURU
+========================= */
+
+async function loadGuru(){
+
+  guruContainer.innerHTML = `
+    <h2 style="
+      text-align:center;
+      color:white;
+      grid-column:1/-1;
+      padding:40px 0;
+    ">
+      Memuat data...
+    </h2>
+  `;
+
+  try{
+
+    const snapshot =
+    await getDocs(
+      collection(db,"guru")
+    );
+
+    let dataGuru = [];
+
+    snapshot.forEach((doc)=>{
+
+      dataGuru.push(doc.data());
+
+    });
+
+    /* =========================
+    ACAK DATA
+    ========================= */
+
+    dataGuru.sort(()=>
+      Math.random() - 0.5
+    );
+
+    /* =========================
+    TAMPILKAN 6 GURU
+    ========================= */
+
+    const tampilGuru =
+    dataGuru.slice(0,6);
+
+    guruContainer.innerHTML = "";
+
+    tampilGuru.forEach((guru)=>{
+
+      const fotoGuru =
+      guru.foto ||
+      `image/guru/${(guru.nip || "").trim()}.jpg`;
+
+      guruContainer.innerHTML += `
+
+        <div class="guru-card">
+
+          <div class="guru-img">
+
+            <img
+              src="${fotoGuru}"
+
+              alt="foto guru"
+
+              onerror="
+              this.onerror=null;
+              this.src='image/guru/user.png'
+              "
+            >
+
+          </div>
+
+          <div class="guru-info">
+
+            <h3>
+              ${guru.nama || "-"}
+            </h3>
+
+            <span>
+              Mapel :
+              ${guru.mapel || "-"}
+            </span>
+
+            <span>
+              Agama :
+              ${guru.agama || "-"}
+            </span>
+
+            <p>
+              Status :
+              ${guru.statusKepegawaian || "-"}
+            </p>
+
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+  }catch(err){
+
+    console.error(err);
+
+    guruContainer.innerHTML = `
+      <h2 style="
+        color:red;
+        text-align:center;
+        grid-column:1/-1;
+        padding:40px 0;
+      ">
+        ${err.message}
+      </h2>
+    `;
+
+  }
+
+}
+
+/* =========================
+LOAD AWAL
+========================= */
+
+loadGuru();
+
+/* =========================
+AUTO GANTI SETIAP 3 JAM
+========================= */
+
+setInterval(()=>{
+
+  loadGuru();
+
+}, 10800000);
+
+</script>
+
+<script>
+
+const gallery =
+document.getElementById(
+  "galleryFull"
+);
+
+const photos = [
+
+  "Gambar 1.jpg",
+  "Gambar 2.jpg",
+  "Gambar 3.jpg",
+  "Gambar 4.jpg",
+  "Gambar 5.jpg"
+
+];
+
+/* FOTO OTOMATIS */
+for(let i = 1; i <= 84; i++){
+
+  const number =
+  String(i).padStart(4,"0");
+
+  photos.push(
+    `IMG-20250613-WA${number}.jpg`
+  );
+
+}
+
+/* ACAK FOTO */
+function shuffle(array){
+
+  for(
+    let i = array.length - 1;
+    i > 0;
+    i--
+  ){
+
+    const j =
+    Math.floor(
+      Math.random() * (i + 1)
+    );
+
+    [array[i],array[j]] =
+    [array[j],array[i]];
+  }
+
+}
+
+/* TAMPILKAN FOTO */
+function tampilGaleri(){
+
+  gallery.innerHTML = "";
+
+  shuffle(photos);
+
+  /* tampil 8 foto */
+  const tampil =
+  photos.slice(0,8);
+
+  tampil.forEach(photo=>{
+
+    const div =
+    document.createElement("div");
+
+    div.className = "slide";
+
+    div.innerHTML = `
+      <img
+        src="Galeri/${photo}"
+        alt="Kegiatan"
+        onerror="this.parentElement.style.display='none'"
+      >
+    `;
+
+    gallery.appendChild(div);
+
+  });
+
+}
+
+/* pertama kali */
+tampilGaleri();
+
+/* ganti otomatis */
+setInterval(()=>{
+
+  tampilGaleri();
+
+},10800000);
+
+</script>
 </body>
 </html>

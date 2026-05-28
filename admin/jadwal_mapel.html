@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Jadwal Lengkap</title>
+
+<!-- SHEETJS -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<style>
+
+/* =========================
+GLOBAL
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:
+  linear-gradient(
+    180deg,
+    #081b33,
+    #0d2342,
+    #081b33
+  );
+
+  min-height:100vh;
+  padding:40px 4%;
+
+  color:white;
+}
+
+/* =========================
+TITLE
+========================= */
+
+.title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.title h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.title p{
+  color:#dfe6e9;
+}
+
+/* =========================
+BOX
+========================= */
+
+.box{
+  background:
+  rgba(255,255,255,0.08);
+
+  padding:30px;
+  border-radius:25px;
+
+  backdrop-filter:blur(10px);
+
+  margin-bottom:35px;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.3);
+}
+
+.box h2{
+  margin-bottom:20px;
+}
+
+/* =========================
+FORM
+========================= */
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(200px,1fr));
+
+  gap:15px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+
+  border:none;
+  border-radius:12px;
+
+  outline:none;
+}
+
+button{
+  padding:14px 20px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#00b894;
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#00a383;
+}
+
+.delete-btn{
+  background:#e53935;
+}
+
+.delete-btn:hover{
+  background:#c62828;
+}
+
+/* =========================
+UPLOAD
+========================= */
+
+.upload-area{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+TABLE
+========================= */
+
+.table-container{
+  overflow-x:auto;
+
+  background:white;
+  border-radius:20px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1200px;
+}
+
+table th{
+  background:#081b33;
+  color:white;
+
+  padding:15px;
+}
+
+table td{
+  padding:15px;
+  text-align:center;
+
+  color:#222;
+
+  border-bottom:
+  1px solid #eee;
+}
+
+table tr:hover{
+  background:#f5f5f5;
+}
+
+.kode-box{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.kode-box b{
+  color:#081b33;
+}
+
+.kode-box small{
+  color:#666;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .title h1{
+    font-size:30px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================
+TITLE
+========================= -->
+
+<div class="title">
+
+  <h1>Admin Jadwal Sekolah</h1>
+
+  <p>
+    Input manual & import Excel
+  </p>
+
+</div>
+
+<!-- =========================
+MAPEL
+========================= -->
+
+<div class="box">
+
+<h2>Tambah Mapel</h2>
+
+<div class="form-grid">
+
+  <input
+  type="text"
+  id="kodeMapel"
+  placeholder="Kode Mapel">
+
+  <input
+  type="text"
+  id="namaMapel"
+  placeholder="Nama Mapel">
+
+  <button id="simpanMapel">
+    Simpan Mapel
+  </button>
+
+</div>
+
+</div>
+
+<!-- =========================
+GURU
+========================= -->
+
+<div class="box">
+
+<h2>Tambah Guru</h2>
+
+<div class="form-grid">
+
+  <input
+  type="text"
+  id="kodeGuru"
+  placeholder="Kode Guru">
+
+  <input
+  type="text"
+  id="namaGuru"
+  placeholder="Nama Guru">
+
+  <button id="simpanGuru">
+    Simpan Guru
+  </button>
+
+</div>
+
+</div>
+
+<!-- =========================
+INPUT JADWAL
+========================= -->
+
+<div class="box">
+
+<h2>Input Jadwal</h2>
+
+<div class="form-grid">
+
+<input type="text"
+id="hari"
+placeholder="Hari">
+
+<input type="text"
+id="jam"
+placeholder="Jam">
+
+<input type="text"
+id="vii_a"
+placeholder="VII-A ex:I/13">
+
+<input type="text"
+id="vii_b"
+placeholder="VII-B">
+
+<input type="text"
+id="viii_a"
+placeholder="VIII-A">
+
+<input type="text"
+id="viii_b"
+placeholder="VIII-B">
+
+<input type="text"
+id="ix_a"
+placeholder="IX-A">
+
+<input type="text"
+id="ix_b"
+placeholder="IX-B">
+
+<button id="simpanJadwal">
+
+Simpan Jadwal
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================
+IMPORT EXCEL
+========================= -->
+
+<div class="box">
+
+<h2>Import Excel</h2>
+
+<div class="upload-area">
+
+<input
+type="file"
+id="excelFile"
+accept=".xlsx,.xls">
+
+<button id="uploadBtn">
+
+Upload Excel
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================
+TABLE
+========================= -->
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Hari</th>
+<th>Jam</th>
+
+<th>VII-A</th>
+<th>VII-B</th>
+
+<th>VIII-A</th>
+<th>VIII-B</th>
+
+<th>IX-A</th>
+<th>IX-B</th>
+
+<th>Aksi</th>
+
+</tr>
+
+</thead>
+
+<tbody id="jadwalBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- =========================
+FIREBASE
+========================= -->
+
+<script type="module">
+
+import { db }
+from "../assets/js/firebase.js";
+
+import {
+
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+getDoc,
+setDoc
+
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+ELEMENT
+========================= */
+
+const jadwalBody =
+document.getElementById(
+"jadwalBody"
+);
+
+const uploadBtn =
+document.getElementById(
+"uploadBtn"
+);
+
+const simpanJadwalBtn =
+document.getElementById(
+"simpanJadwal"
+);
+
+/* =========================
+LOADING
+========================= */
+
+function setLoading(
+btn,
+text = "Loading..."
+){
+
+btn.disabled = true;
+
+btn.dataset.oldtext =
+btn.innerHTML;
+
+btn.innerHTML = text;
+
+}
+
+function stopLoading(btn){
+
+btn.disabled = false;
+
+btn.innerHTML =
+btn.dataset.oldtext;
+
+}
+
+/* =========================
+MASTER DATA
+========================= */
+
+let guruData = {};
+let mapelData = {};
+
+async function loadMasterData(){
+
+/* MAPEL */
+
+const mapelRef =
+doc(
+db,
+"master_data",
+"mapel"
+);
+
+const mapelSnap =
+await getDoc(mapelRef);
+
+if(mapelSnap.exists()){
+
+mapelData =
+mapelSnap.data();
+
+}
+
+/* GURU */
+
+const guruRef =
+doc(
+db,
+"master_data",
+"guru"
+);
+
+const guruSnap =
+await getDoc(guruRef);
+
+if(guruSnap.exists()){
+
+guruData =
+guruSnap.data();
+
+}
+
+}
+
+/* =========================
+SIMPAN MAPEL
+========================= */
+
+document
+.getElementById(
+"simpanMapel"
+)
+
+.addEventListener(
+"click",
+
+async()=>{
+
+const btn =
+document.getElementById(
+"simpanMapel"
+);
+
+setLoading(
+btn,
+"Menyimpan..."
+);
+
+try{
+
+const kode =
+document
+.getElementById(
+"kodeMapel"
+)
+.value;
+
+const nama =
+document
+.getElementById(
+"namaMapel"
+)
+.value;
+
+if(!kode || !nama){
+
+alert(
+"Lengkapi data"
+);
+
+stopLoading(btn);
+
+return;
+
+}
+
+mapelData[kode] = nama;
+
+await setDoc(
+
+doc(
+db,
+"master_data",
+"mapel"
+),
+
+mapelData
+
+);
+
+alert(
+"Mapel berhasil"
+);
+
+await loadMasterData();
+
+}
+catch(err){
+
+console.log(err);
+
+alert(
+"Gagal simpan"
+);
+
+}
+
+stopLoading(btn);
+
+}
+
+);
+
+/* =========================
+SIMPAN GURU
+========================= */
+
+document
+.getElementById(
+"simpanGuru"
+)
+
+.addEventListener(
+"click",
+
+async()=>{
+
+const btn =
+document.getElementById(
+"simpanGuru"
+);
+
+setLoading(
+btn,
+"Menyimpan..."
+);
+
+try{
+
+const kode =
+document
+.getElementById(
+"kodeGuru"
+)
+.value;
+
+const nama =
+document
+.getElementById(
+"namaGuru"
+)
+.value;
+
+if(!kode || !nama){
+
+alert(
+"Lengkapi data"
+);
+
+stopLoading(btn);
+
+return;
+
+}
+
+guruData[kode] = nama;
+
+await setDoc(
+
+doc(
+db,
+"master_data",
+"guru"
+),
+
+guruData
+
+);
+
+alert(
+"Guru berhasil"
+);
+
+await loadMasterData();
+
+}
+catch(err){
+
+console.log(err);
+
+alert(
+"Gagal simpan"
+);
+
+}
+
+stopLoading(btn);
+
+}
+
+);
+
+/* =========================
+SIMPAN JADWAL
+========================= */
+
+simpanJadwalBtn
+.addEventListener(
+"click",
+
+async()=>{
+
+setLoading(
+simpanJadwalBtn,
+"Menyimpan..."
+);
+
+try{
+
+await addDoc(
+
+collection(
+db,
+"jadwal"
+),
+
+{
+
+hari:
+document
+.getElementById(
+"hari"
+).value,
+
+jam:
+document
+.getElementById(
+"jam"
+).value,
+
+vii_a:
+document
+.getElementById(
+"vii_a"
+).value,
+
+vii_b:
+document
+.getElementById(
+"vii_b"
+).value,
+
+viii_a:
+document
+.getElementById(
+"viii_a"
+).value,
+
+viii_b:
+document
+.getElementById(
+"viii_b"
+).value,
+
+ix_a:
+document
+.getElementById(
+"ix_a"
+).value,
+
+ix_b:
+document
+.getElementById(
+"ix_b"
+).value
+
+}
+
+);
+
+alert(
+"Jadwal berhasil"
+);
+
+loadJadwal();
+
+}
+catch(err){
+
+console.log(err);
+
+alert(
+"Gagal simpan"
+);
+
+}
+
+stopLoading(
+simpanJadwalBtn
+);
+
+}
+
+);
+
+/* =========================
+IMPORT EXCEL
+========================= */
+
+uploadBtn
+.addEventListener(
+"click",
+
+async()=>{
+
+const file =
+document
+.getElementById(
+"excelFile"
+)
+.files[0];
+
+if(!file){
+
+alert(
+"Pilih Excel"
+);
+
+return;
+
+}
+
+setLoading(
+uploadBtn,
+"Mengupload..."
+);
+
+try{
+
+const reader =
+new FileReader();
+
+reader.onload =
+async(e)=>{
+
+const data =
+new Uint8Array(
+e.target.result
+);
+
+const workbook =
+XLSX.read(data,{
+type:"array"
+});
+
+/* =========================
+SHEET MAPEL
+========================= */
+
+const mapelSheet =
+workbook.Sheets[
+"mapel"
+];
+
+if(mapelSheet){
+
+const mapelJson =
+XLSX.utils.sheet_to_json(
+mapelSheet
+);
+
+mapelJson.forEach(item=>{
+
+mapelData[
+item.kode
+] = item.nama;
+
+});
+
+await setDoc(
+
+doc(
+db,
+"master_data",
+"mapel"
+),
+
+mapelData
+
+);
+
+}
+
+/* =========================
+SHEET GURU
+========================= */
+
+const guruSheet =
+workbook.Sheets[
+"guru"
+];
+
+if(guruSheet){
+
+const guruJson =
+XLSX.utils.sheet_to_json(
+guruSheet
+);
+
+guruJson.forEach(item=>{
+
+guruData[
+item.kode
+] = item.nama;
+
+});
+
+await setDoc(
+
+doc(
+db,
+"master_data",
+"guru"
+),
+
+guruData
+
+);
+
+}
+
+/* =========================
+SHEET JADWAL
+========================= */
+
+const jadwalSheet =
+workbook.Sheets[
+"jadwal"
+];
+
+if(jadwalSheet){
+
+const jadwalJson =
+XLSX.utils.sheet_to_json(
+jadwalSheet
+);
+
+for(const item of jadwalJson){
+
+await addDoc(
+
+collection(
+db,
+"jadwal"
+),
+
+{
+
+hari:
+item.hari || "",
+
+jam:
+item.jam || "",
+
+vii_a:
+item.vii_a || "",
+
+vii_b:
+item.vii_b || "",
+
+viii_a:
+item.viii_a || "",
+
+viii_b:
+item.viii_b || "",
+
+ix_a:
+item.ix_a || "",
+
+ix_b:
+item.ix_b || ""
+
+}
+
+);
+
+}
+
+}
+
+alert(
+"Import berhasil"
+);
+
+await loadMasterData();
+
+loadJadwal();
+
+stopLoading(
+uploadBtn
+);
+
+};
+
+reader.readAsArrayBuffer(
+file
+);
+
+}
+catch(err){
+
+console.log(err);
+
+alert(
+"Import gagal"
+);
+
+stopLoading(
+uploadBtn
+);
+
+}
+
+}
+
+);
+
+/* =========================
+SPECIAL ROW
+========================= */
+
+function isSpecial(kode){
+
+const special = [
+
+"ISTIRAHAT",
+"APEL",
+"UPACARA",
+"UPACARA BENDERA",
+"LITERASI",
+"SHOLAT",
+"PULANG",
+"KOSONG"
+
+];
+
+return special.includes(
+kode
+);
+
+}
+
+/* =========================
+TRANSLATE
+========================= */
+
+function translateKode(kode){
+
+if(!kode) return "-";
+
+/* SPECIAL */
+
+if(isSpecial(kode)){
+
+return `
+
+<div style="
+background:#ffeaa7;
+padding:10px;
+border-radius:12px;
+font-weight:bold;
+color:#222;
+">
+
+${kode}
+
+</div>
+
+`;
+
+}
+
+/* NORMAL */
+
+const split =
+kode.split("/");
+
+const kodeMapel =
+split[0];
+
+const kodeGuru =
+split[1];
+
+const namaMapel =
+mapelData[
+kodeMapel
+] || kodeMapel;
+
+const namaGuru =
+guruData[
+kodeGuru
+] || kodeGuru;
+
+return `
+
+<div class="kode-box">
+
+<b>
+${namaMapel}
+</b>
+
+<small>
+${namaGuru}
+</small>
+
+</div>
+
+`;
+
+}
+
+/* =========================
+LOAD JADWAL
+========================= */
+
+async function loadJadwal(){
+
+jadwalBody.innerHTML = `
+
+<tr>
+
+<td colspan="9">
+
+Loading...
+
+</td>
+
+</tr>
+
+`;
+
+const querySnapshot =
+await getDocs(
+collection(
+db,
+"jadwal"
+)
+);
+
+jadwalBody.innerHTML = "";
+
+querySnapshot.forEach((item)=>{
+
+const data =
+item.data();
+
+jadwalBody.innerHTML += `
+
+<tr>
+
+<td>${data.hari}</td>
+
+<td>${data.jam}</td>
+
+<td>
+${translateKode(data.vii_a)}
+</td>
+
+<td>
+${translateKode(data.vii_b)}
+</td>
+
+<td>
+${translateKode(data.viii_a)}
+</td>
+
+<td>
+${translateKode(data.viii_b)}
+</td>
+
+<td>
+${translateKode(data.ix_a)}
+</td>
+
+<td>
+${translateKode(data.ix_b)}
+</td>
+
+<td>
+
+<button
+class="delete-btn"
+onclick="hapusJadwal('${item.id}')">
+
+Hapus
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+/* =========================
+HAPUS
+========================= */
+
+window.hapusJadwal =
+async(id)=>{
+
+const yakin =
+confirm(
+"Hapus jadwal?"
+);
+
+if(!yakin) return;
+
+await deleteDoc(
+doc(
+db,
+"jadwal",
+id
+)
+);
+
+loadJadwal();
+
+};
+
+/* =========================
+LOAD AWAL
+========================= */
+
+await loadMasterData();
+
+loadJadwal();
+
+</script>
+
+</body>
+</html>
