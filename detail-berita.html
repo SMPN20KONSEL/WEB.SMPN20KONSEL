@@ -1,0 +1,547 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"/>
+
+<title>Detail Berita Sekolah</title>
+
+<!-- FONT AWESOME -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link
+rel="stylesheet"
+href="assets/css/global.css">
+
+<link
+rel="stylesheet"
+href="assets/css/header-footer.css">
+<link
+rel="stylesheet"
+href="assets/css/detail_berrita.css">
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-container">
+
+    <!-- TEXT -->
+<div class="hero-text">
+
+  <h1 class="hero-title">
+
+    <div class="title-icon">
+      <i class="fas fa-newspaper"></i>
+    </div>
+
+    <span id="judulBerita">
+      Loading...
+    </span>
+
+  </h1>
+
+</div>
+
+    <!-- IMAGE -->
+    <div class="hero-image">
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+
+      <img
+        id="gambarBerita"
+        src=""
+        alt="Gambar Berita">
+
+      <div class="square"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CONTENT -->
+<!-- ========================= CONTENT ========================= -->
+<section class="content">
+
+  <!-- ARTICLE -->
+  <div class="article">
+
+    <div class="article-meta" id="metaBerita"></div>
+
+    <div id="isiBerita"></div>
+
+    <!-- SHARE -->
+<div class="share-box">
+
+  <h3>Bagikan Berita</h3>
+
+  <div class="share-icons">
+
+    <a
+      href="https://web.facebook.com/profile.php?id=61577266951408"
+      target="_blank"
+    >
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a
+      href="https://www.tiktok.com/@smpn20konsel7"
+      target="_blank"
+    >
+      <i class="fab fa-tiktok"></i>
+    </a>
+
+    <a
+      href="https://www.instagram.com/smpn20konsel"
+      target="_blank"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a
+      href="https://wa.me/qr/AXZTONE55Z4YK1"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+  </div>
+
+</div>
+
+    <!-- KOMENTAR -->
+    <div class="comment-box">
+
+      <h3>Tinggalkan Komentar</h3>
+
+      <div class="form-group">
+        <label>Nama</label>
+        <input type="text" id="nama" placeholder="Nama kamu">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Email kamu">
+      </div>
+
+      <div class="form-group">
+        <label>Komentar</label>
+        <textarea id="pesan" placeholder="Tulis komentar..."></textarea>
+      </div>
+
+      <button class="btn" id="btnKirim">
+        Kirim Komentar
+      </button>
+
+      <!-- LIST KOMENTAR -->
+      <div id="listKomentar"></div>
+
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-box">
+
+      <h3>Popular Post</h3>
+
+      <a href="#" class="popular-post">
+
+        <img src="./image/osis.jpg" alt="OSIS">
+
+        <div>
+          <h4>Kegiatan OSIS SMPN 20 Konawe Selatan</h4>
+          <span>11 Maret 2026</span>
+        </div>
+
+      </a>
+
+      <a href="#" class="popular-post">
+
+        <img src="./image/pramuka.jpg" alt="Pramuka">
+
+        <div>
+          <h4>Kegiatan Pramuka dan Karakter Siswa</h4>
+          <span>5 Maret 2026</span>
+        </div>
+
+      </a>
+
+    </div>
+
+  </aside>
+
+</section>
+
+<!-- FIREBASE -->
+<div id="footer"></div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script type="module" src="assets/js/include.js"></script>
+<script type="module">
+
+import { db }
+from "./assets/js/firebase.js";
+
+import {
+
+  doc,
+  getDoc,
+
+  addDoc,
+  collection,
+
+  query,
+  where,
+
+  onSnapshot,
+  serverTimestamp
+
+}
+from
+"https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* =========================
+   URL PARAM
+========================= */
+
+const params =
+new URLSearchParams(
+  window.location.search
+);
+
+const id =
+params.get("id");
+
+/* =========================
+   VALIDASI ID
+========================= */
+
+if(!id){
+
+  document.body.innerHTML = `
+    <div style="padding:100px;text-align:center;font-family:Arial;">
+      <h1>ID berita tidak ditemukan</h1>
+    </div>
+  `;
+
+  throw new Error("ID tidak ditemukan");
+
+}
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(text){
+
+  if(!text) return "";
+
+  return text
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+/* =========================
+   FORMAT TANGGAL
+========================= */
+
+function formatTanggalIndonesia(tanggalInput){
+
+  if(!tanggalInput) return "-";
+
+  try{
+
+    if(tanggalInput.seconds){
+      tanggalInput = new Date(tanggalInput.seconds * 1000);
+    }else{
+      tanggalInput = new Date(tanggalInput);
+    }
+
+    return tanggalInput.toLocaleDateString("id-ID",{
+      weekday:"long",
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    });
+
+  }catch{
+    return "-";
+  }
+
+}
+
+/* =========================
+   LOAD BERITA
+========================= */
+
+async function loadBerita(){
+
+  try{
+
+    const beritaRef = doc(db,"berita",id);
+    const beritaSnap = await getDoc(beritaRef);
+
+    if(beritaSnap.exists()){
+      tampilBerita(beritaSnap.data());
+    }else{
+      document.body.innerHTML = `
+        <div style="padding:100px;text-align:center;font-family:Arial;">
+          <h1>Berita tidak ditemukan</h1>
+        </div>
+      `;
+    }
+
+  }catch(error){
+    console.log(error);
+  }
+
+}
+
+/* =========================
+   TAMPIL BERITA (FIX ISI)
+========================= */
+function tampilBerita(data){
+
+  document.getElementById("judulBerita").textContent =
+  data.judul || "-";
+
+  document.getElementById("metaBerita").innerHTML = `
+    ${formatTanggalIndonesia(data.tanggal)}
+    &nbsp; • &nbsp;
+    ${escapeHtml(data.penulis || "-")}
+  `;
+
+  const gambarHero =
+  document.getElementById("gambarBerita");
+
+  gambarHero.src =
+  data.gambar1 ||
+  "https://via.placeholder.com/1000x700?text=Berita";
+
+  gambarHero.onerror = function(){
+    this.src = "https://via.placeholder.com/1000x700?text=Berita";
+  };
+
+  let isiHtml = "";
+
+  /* =========================
+     ARRAY
+  ========================= */
+
+  if(Array.isArray(data.isi)){
+
+    data.isi.forEach((item,index)=>{
+
+      isiHtml += `
+        <p>${escapeHtml(item)}</p>
+      `;
+
+      if(index === 2 && data.gambar2){
+
+        isiHtml += `
+          <img
+            src="${data.gambar2}"
+            class="gambar-tengah"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          >
+        `;
+
+      }
+
+    });
+
+  }
+
+  /* =========================
+     STRING
+  ========================= */
+
+  else{
+
+    isiHtml += `
+      <p>${escapeHtml(data.isi || "")}</p>
+    `;
+
+    if(data.gambar2){
+
+      isiHtml += `
+        <img
+          src="${data.gambar2}"
+          class="gambar-tengah"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+      `;
+
+    }
+
+  }
+
+  document.getElementById("isiBerita").innerHTML =
+  isiHtml;
+
+}
+/* =========================
+   KIRIM KOMENTAR
+========================= */
+
+const btnKirim =
+document.getElementById("btnKirim");
+
+btnKirim.addEventListener("click", async () => {
+
+  const nama =
+  document.getElementById("nama").value.trim();
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const pesan =
+  document.getElementById("pesan").value.trim();
+
+  if(!nama || !email || !pesan){
+    alert("Lengkapi semua data");
+    return;
+  }
+
+  try{
+
+    btnKirim.disabled = true;
+    btnKirim.innerHTML = "Mengirim...";
+
+    await addDoc(
+      collection(db,"komentar"),
+      {
+        beritaId:id,
+        nama,
+        email,
+        pesan,
+        createdAt: serverTimestamp()
+      }
+    );
+
+    alert("Komentar berhasil dikirim");
+
+    document.getElementById("nama").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("pesan").value = "";
+
+  }catch(error){
+    console.log(error);
+    alert("Gagal mengirim komentar");
+  }
+
+  btnKirim.disabled = false;
+  btnKirim.innerHTML = "Kirim Komentar";
+
+});
+
+/* =========================
+   TAMPIL KOMENTAR (ANTI ERROR FIX)
+========================= */
+
+function tampilKomentar(){
+
+  const listKomentar =
+  document.getElementById("listKomentar");
+
+  listKomentar.innerHTML = "<p>Memuat komentar...</p>";
+
+  const q = query(
+    collection(db,"komentar"),
+    where("beritaId","==",id)
+  );
+
+  onSnapshot(q, (snapshot) => {
+
+    listKomentar.innerHTML = "";
+
+    if(snapshot.empty){
+      listKomentar.innerHTML = "<p>Belum ada komentar</p>";
+      return;
+    }
+
+    const list = [];
+
+    snapshot.forEach(doc => {
+      list.push(doc.data());
+    });
+
+    // urutkan manual (biar tidak perlu orderBy index)
+    list.sort((a,b)=>{
+      return (b.createdAt?.seconds || 0)
+           - (a.createdAt?.seconds || 0);
+    });
+
+    list.forEach(data => {
+
+      let waktu = "Baru saja";
+
+      if(data.createdAt?.seconds){
+        waktu = new Date(
+          data.createdAt.seconds * 1000
+        ).toLocaleString("id-ID");
+      }
+
+      listKomentar.innerHTML += `
+        <div class="komentar-item">
+
+          <div class="komentar-top">
+            <h5>${escapeHtml(data.nama)}</h5>
+            <span>${waktu}</span>
+          </div>
+
+          <p>${escapeHtml(data.pesan)}</p>
+
+        </div>
+      `;
+
+    });
+
+  }, (error) => {
+
+    console.log(error);
+
+    listKomentar.innerHTML = `
+      <p style="color:red;">
+        Gagal memuat komentar
+      </p>
+    `;
+
+  });
+
+}
+
+/* =========================
+   START
+========================= */
+
+loadBerita();
+tampilKomentar();
+
+</script>
+
+</body>
+</html>
+```

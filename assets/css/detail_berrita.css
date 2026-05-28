@@ -1,0 +1,541 @@
+/* ================= GLOBAL ================= */
+
+body{
+  background:#f5f5f5;
+  color:#222;
+  line-height:1.7;
+  font-family:Arial, Helvetica, sans-serif;
+
+  /* supaya tidak ketutup header fixed */
+  padding-top:20px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  width:100%;
+  background:#ececec;
+  overflow:hidden;
+
+  padding:90px 0 40px;
+}
+
+/* ================= CONTAINER ================= */
+
+.hero-container{
+  width:92%;
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:40px;
+}
+
+/* ================= TEXT ================= */
+
+.hero-text{
+  width:60%;
+  z-index:2;
+}
+
+/* TITLE */
+.hero-title{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+}
+
+/* ICON */
+.title-icon{
+  min-width:65px;
+  width:65px;
+  height:65px;
+
+  background:rgba(255,152,0,.15);
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-top:5px;
+}
+
+.title-icon i{
+  font-size:28px;
+  color:#ff9800;
+}
+
+/* JUDUL */
+#judulBerita{
+  flex:1;
+
+  font-size:clamp(28px,3.5vw,58px);
+
+  font-weight:900;
+
+  line-height:1.08;
+
+  letter-spacing:-1px;
+
+  color:#0b2b4d;
+}
+
+/* ================= IMAGE ================= */
+
+.hero-image{
+  width:35%;
+  position:relative;
+
+  display:flex;
+  justify-content:center;
+}
+
+/* IMAGE */
+.hero-image img{
+  width:100%;
+  height:260px;
+
+  object-fit:cover;
+
+  border-radius:24px;
+
+  position:relative;
+  z-index:2;
+
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+/* ================= ORNAMENT ================= */
+
+.circle1{
+  position:absolute;
+
+  width:260px;
+  height:260px;
+
+  background:#f9b233;
+
+  border-radius:50%;
+
+  opacity:.35;
+
+  bottom:-30px;
+  right:30px;
+
+  z-index:0;
+}
+
+.circle2{
+  position:absolute;
+
+  width:360px;
+  height:360px;
+
+  border-radius:50%;
+
+  border:24px solid rgba(249,178,51,.18);
+
+  bottom:-80px;
+  right:-20px;
+
+  z-index:0;
+}
+
+.square{
+  width:50px;
+  height:50px;
+
+  background:#4dd7cc;
+
+  position:absolute;
+
+  left:-20px;
+  bottom:40px;
+
+  z-index:1;
+}
+
+.dot{
+  width:36px;
+  height:36px;
+
+  background:#ff1744;
+
+  border-radius:50%;
+
+  position:absolute;
+
+  right:-10px;
+  top:-10px;
+
+  z-index:3;
+}
+/* ================= CONTENT ================= */
+
+.content{
+  width:95%;
+  margin:10px auto 30px;
+
+  display:flex;
+  gap:35px;
+
+  align-items:flex-start;
+}
+
+/* ================= ARTICLE ================= */
+
+.article{
+  flex:1;
+}
+
+/* TITLE */
+.article h3{
+  font-size:42px;
+  margin-bottom:12px;
+
+  color:#0b2b4d;
+
+  line-height:1.1;
+  letter-spacing:-1px;
+}
+
+.article-meta{
+  font-size:32px;
+  font-weight:600;
+
+  color:#db8300;
+
+  margin-bottom:28px;
+
+  line-height:1.6;
+}
+
+/* PARAGRAF */
+.article p{
+  font-size:24px;
+  line-height:1.9;
+
+  margin-bottom:22px;
+
+  color:#333333;
+
+  text-align:justify;
+}
+
+/* IMAGE */
+.article img{
+  width:100%;
+  max-width:900px;
+
+  height:400px;
+
+  object-fit:cover;
+
+  display:block;
+
+  margin:35px auto;
+
+  border-radius:22px;
+
+  box-shadow:
+  0 15px 35px rgba(0,0,0,.12);
+
+  transition:.3s;
+}
+
+.article img:hover{
+  transform:scale(1.02);
+}
+
+/* ================= POST BOX ================= */
+
+.post-box{
+  background:#f5f5f5;
+
+  padding:28px;
+
+  border-radius:22px;
+
+  margin-top:10px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+/* ================= SHARE BOX ================= */
+
+.share-box{
+  margin-top:50px;
+
+  padding:30px;
+
+  background:#f5f5f5;
+
+  border-radius:24px;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.06);
+}
+
+.share-box h3{
+  font-size:28px;
+
+  margin-bottom:20px;
+
+  color:#0b2b4d;
+}
+
+/* ICONS */
+.share-icons{
+  display:flex;
+  gap:14px;
+}
+
+/* LINK */
+.share-icons a{
+  width:55px;
+  height:55px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  font-size:22px;
+
+  color:white;
+
+  transition:.3s;
+}
+
+/* HOVER */
+.share-icons a:hover{
+  transform:translateY(-5px) scale(1.05);
+}
+
+/* COLORS */
+.share-icons a:nth-child(1){
+  background:#1877f2;
+}
+
+.share-icons a:nth-child(2){
+  background:#000;
+}
+
+.share-icons a:nth-child(3){
+  background:#e1306c;
+}
+
+.share-icons a:nth-child(4){
+  background:#25d366;
+}
+
+/* ================= COMMENT ================= */
+
+.comment-box{
+  margin-top:40px;
+}
+
+.comment-box h3{
+  font-size:34px;
+  margin-bottom:20px;
+
+  color:#0b2b4d;
+}
+
+/* FORM */
+.form-group{
+  margin-bottom:18px;
+}
+
+.form-group label{
+  display:block;
+
+  margin-bottom:8px;
+
+  font-size:15px;
+  font-weight:700;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+
+  padding:15px;
+
+  border:1px solid #ddd;
+
+  border-radius:12px;
+
+  font-size:16px;
+
+  outline:none;
+}
+
+.form-group textarea{
+  height:170px;
+  resize:none;
+}
+
+/* BUTTON */
+.btn{
+  padding:15px 28px;
+
+  background:#ff9800;
+  color:white;
+
+  border:none;
+
+  border-radius:12px;
+
+  font-size:16px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* LIST KOMENTAR */
+#listKomentar{
+  margin-top:25px;
+}
+
+.komentar-item{
+  background:white;
+
+  padding:18px;
+
+  border-radius:16px;
+
+  margin-bottom:16px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.07);
+}
+
+.komentar-item h5{
+  font-size:16px;
+  color:#0b2b4d;
+}
+
+.komentar-item small{
+  color:#888;
+}
+
+.komentar-item p{
+  margin-top:10px;
+  font-size:15px;
+  line-height:1.7;
+}
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+  width:320px;
+
+  position:sticky;
+  top:100px;
+
+  align-self:flex-start;
+}
+
+/* BOX */
+.sidebar-box{
+  background:#f5f5f5;
+
+  padding:28px;
+
+  border-radius:24px;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.06);
+}
+
+/* TITLE */
+.sidebar-box h3{
+  font-size:28px;
+
+  margin-bottom:25px;
+
+  color:#0b2b4d;
+
+  letter-spacing:-.5px;
+}
+
+/* ================= POPULAR POST ================= */
+
+.popular-post{
+  display:flex;
+  gap:15px;
+
+  text-decoration:none;
+
+  margin-bottom:22px;
+
+  padding-bottom:22px;
+
+  border-bottom:
+  1px solid rgba(0,0,0,.08);
+
+  transition:.3s;
+}
+
+.popular-post:last-child{
+  margin-bottom:0;
+  padding-bottom:0;
+  border-bottom:none;
+}
+
+/* HOVER */
+.popular-post:hover{
+  transform:translateX(5px);
+}
+
+/* IMAGE */
+.popular-post img{
+  width:95px;
+  height:85px;
+
+  object-fit:cover;
+
+  border-radius:14px;
+
+  flex-shrink:0;
+}
+
+/* CONTENT */
+.popular-post div{
+  flex:1;
+}
+
+/* JUDUL */
+.popular-post h4{
+  font-size:17px;
+
+  line-height:1.4;
+
+  color:#0b2b4d;
+
+  margin-bottom:8px;
+
+  transition:.3s;
+}
+
+.popular-post:hover h4{
+  color:#ff9800;
+}
+
+/* DATE */
+.popular-post span{
+  font-size:14px;
+  color:#777;
+}
