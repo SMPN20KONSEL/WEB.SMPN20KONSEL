@@ -1582,115 +1582,149 @@ section{
 }
 
 
-
 /* =========================
-   BERITA
+   BERITA SECTION
 ========================= */
 
 .berita-section{
-  padding:80px 5%;
+  padding: 80px 5%;
 }
 
 .judul-berita{
-  text-align:center;
-  font-size:45px;
-  color:white;
-  margin-bottom:50px;
+  text-align: center;
+  font-size: 45px;
+  color: white;
+  margin-bottom: 50px;
 }
+
+
+/* =========================
+   GRID 3 KOLOM (INDEX)
+========================= */
 
 .berita-container{
-  display:grid;
-  grid-template-columns:
-  repeat(auto-fit,minmax(320px,1fr));
-
-  gap:30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
+
+/* =========================
+   CARD
+========================= */
+
 .berita-card{
-  background:
-  rgba(255,255,255,.08);
-
-  border-radius:22px;
-
-  overflow:hidden;
-
-  border:
-  1px solid rgba(255,255,255,.10);
-
-  backdrop-filter:blur(10px);
-
-  transition:0.4s;
+  background: rgba(255,255,255,.08);
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
 }
 
 .berita-card:hover{
-  transform:translateY(-10px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
 }
 
+
+/* =========================
+   GAMBAR
+========================= */
+
 .gambar-wrapper{
-  position:relative;
-  overflow:hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .gambar-wrapper img{
-  height:240px;
-  width:100%;
-  object-fit:cover;
-  transition:0.5s;
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.5s;
 }
 
 .berita-card:hover img{
-  transform:scale(1.08);
+  transform: scale(1.08);
 }
+
+
+/* =========================
+   KATEGORI
+========================= */
 
 .kategori{
-  position:absolute;
-  top:15px;
-  left:15px;
-
-  background:#1877f2;
-  color:white;
-
-  padding:8px 18px;
-
-  border-radius:30px;
-
-  font-size:13px;
-  font-weight:bold;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #1877f2;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
+
+/* =========================
+   CONTENT
+========================= */
+
 .berita-content{
-  padding:25px;
+  padding: 25px;
 }
 
 .berita-content h3{
-  font-size:24px;
-  margin-bottom:15px;
-  color:white;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: white;
 }
 
 .berita-content p{
-  line-height:1.8;
-  color:#d1d5db;
-  margin-bottom:20px;
+  line-height: 1.8;
+  color: #d1d5db;
+  margin-bottom: 20px;
 }
 
+
+/* =========================
+   BUTTON
+========================= */
+
 .btn-baca{
-  display:inline-block;
-
-  padding:12px 24px;
-
-  background:#1877f2;
-  color:white;
-
-  border-radius:30px;
-
-  transition:0.3s;
-
-  text-decoration:none;
+  display: inline-block;
+  padding: 12px 24px;
+  background: #1877f2;
+  color: white;
+  border-radius: 30px;
+  transition: 0.3s;
+  text-decoration: none;
 }
 
 .btn-baca:hover{
-  background:#0f5fd1;
+  background: #0f5fd1;
+  transform: translateY(-3px);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px){
+  .berita-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px){
+  .berita-container{
+    grid-template-columns: 1fr;
+  }
+
+  .judul-berita{
+    font-size: 32px;
+  }
 }
 
 /* =========================
