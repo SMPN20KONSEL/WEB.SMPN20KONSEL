@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smpn20konsel.github.io/WEB.SMPN20KONSEL/sitemap.xml
