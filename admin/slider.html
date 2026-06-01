@@ -385,19 +385,23 @@ src="../assets/js/auth-guard.js">
 <!-- ================= SCRIPT ================= -->
  <script type="module" src="../assets/js/sidebar.js"></script>
 <script type="module">
-
 import { db } from "../assets/js/firebase.js";
 
 import {
-
   collection,
   getDocs,
   onSnapshot,
   doc,
   setDoc,
   deleteDoc
-
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= BASE URL ================= */
+
+const BASE_URL =
+window.location.hostname === "localhost"
+  ? "../"
+  : "/WEB.SMPN20KONSEL/";
 
 /* ================= ELEMENT ================= */
 
@@ -413,7 +417,6 @@ document.getElementById("output");
 /* ================= DATA ================= */
 
 let guruList = [];
-
 let selectedGuru = null;
 
 /* ================= LOAD GURU ================= */
@@ -427,11 +430,9 @@ async function loadGuru(){
     );
 
     guruSelect.innerHTML = `
-
       <option value="">
         -- Pilih Guru --
       </option>
-
     `;
 
     guruList = [];
@@ -448,22 +449,16 @@ async function loadGuru(){
 
         nip: data.nip || "-",
 
-        nohp: data.nohp || "-",
-
-        foto:
-          data.foto ||
-          `../image/guru/${data.nip}.jpg`
+        nohp: data.nohp || "-"
 
       };
 
       guruList.push(guru);
 
       guruSelect.innerHTML += `
-
         <option value="${docSnap.id}">
           ${data.nama}
         </option>
-
       `;
 
     });
@@ -496,8 +491,8 @@ guruSelect.addEventListener("change", ()=>{
     preview.innerHTML = `
 
       <img
-        src="${selectedGuru.foto}"
-        onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"
+        src="${BASE_URL}image/guru/${selectedGuru.nip}.jpg"
+        onerror="this.src='${BASE_URL}image/default.png'"
       >
 
       <h3>${selectedGuru.nama}</h3>
@@ -525,12 +520,10 @@ window.simpan = async function(){
   try{
 
     const judul =
-      document.getElementById("judul")
-      .value;
+      document.getElementById("judul").value;
 
     const jabatan =
-      document.getElementById("jabatan")
-      .value;
+      document.getElementById("jabatan").value;
 
     if(
       judul === "" ||
@@ -568,8 +561,6 @@ window.simpan = async function(){
 
         nohp: selectedGuru.nohp,
 
-        foto: selectedGuru.foto,
-
         jabatan: jabatan
 
       }
@@ -577,8 +568,6 @@ window.simpan = async function(){
     );
 
     alert("Data berhasil disimpan");
-
-    /* RESET */
 
     document.getElementById(
       "judul"
@@ -621,9 +610,7 @@ window.hapusData = async function(id){
   try{
 
     await deleteDoc(
-
       doc(db, "jabatan", id)
-
     );
 
     alert("Data berhasil dihapus");
@@ -692,27 +679,19 @@ function renderData(){
               <td>
 
                 <img
-                  src="${d.foto}"
-                  onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'"
+                  src="${BASE_URL}image/guru/${d.nip}.jpg"
+                  onerror="this.src='${BASE_URL}image/default.png'"
                 >
 
               </td>
 
-              <td>
-                ${d.nama || "-"}
-              </td>
+              <td>${d.nama || "-"}</td>
 
-              <td>
-                ${d.nip || "-"}
-              </td>
+              <td>${d.nip || "-"}</td>
 
-              <td>
-                ${d.nohp || "-"}
-              </td>
+              <td>${d.nohp || "-"}</td>
 
-              <td>
-                ${d.jabatan || "-"}
-              </td>
+              <td>${d.jabatan || "-"}</td>
 
               <td>
 
@@ -749,9 +728,7 @@ function renderData(){
 /* ================= LOAD ================= */
 
 loadGuru();
-
 renderData();
-
 </script>
 
 </body>

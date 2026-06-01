@@ -5,6 +5,13 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+/* ================= BASE URL ================= */
+
+const BASE_URL =
+window.location.hostname === "localhost"
+  ? "./"
+  : "/WEB.SMPN20KONSEL/";
+
 /* ================= TEAM ================= */
 
 const container =
@@ -39,11 +46,10 @@ onSnapshot(
         return;
       }
 
-      /* FOTO DEFAULT */
+      /* FOTO BERDASARKAN NIP */
 
       const foto =
-        data.foto ||
-        "image/default.png";
+      `${BASE_URL}image/guru/${data.nip}.jpg`;
 
       /* TEAM CARD */
 
@@ -53,8 +59,8 @@ onSnapshot(
 
           <img
             src="${foto}"
-            alt="${data.nama}"
-            onerror="this.src='image/default.png'"
+            alt="${data.nama || '-'}"
+            onerror="this.src='${BASE_URL}image/default.png'"
           >
 
           <h3>
