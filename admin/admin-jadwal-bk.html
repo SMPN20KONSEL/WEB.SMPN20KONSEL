@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Jadwal BK</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="../assets/css/admin.css">
+
+<style>
+
+/* ================= ROOT ================= */
+:root{
+  --primary:#1976d2;
+  --primary-dark:#125aa0;
+  --bg:#eef3f8;
+  --card:#ffffff;
+  --text:#222;
+  --border:#e0e0e0;
+  --radius:12px;
+
+  /* ⭐ SIDEBAR WIDTH (PENTING) */
+  --sidebar-width:260px;
+}
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* ================= WRAPPER (BIAR TIDAK MEPET SIDEBAR) ================= */
+.main-content{
+  margin-left:var(--sidebar-width);
+  padding:20px;
+  transition:.3s;
+}
+
+/* ================= TITLE ================= */
+h2{
+  text-align:center;
+  margin:20px 0;
+  font-size:22px;
+}
+
+/* ================= CARD ================= */
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:var(--radius);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  margin-bottom:20px;
+}
+
+/* ================= FORM ================= */
+.card input,
+.card select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:1px solid var(--border);
+  outline:none;
+  font-size:14px;
+  transition:.2s;
+}
+
+.card input:focus,
+.card select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(25,118,210,.15);
+}
+
+/* ================= BUTTON ================= */
+button{
+  padding:10px 14px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:500;
+  transition:.2s;
+}
+
+/* SIMPAN */
+button.primary{
+  background:var(--primary);
+  color:white;
+  width:100%;
+  margin-top:10px;
+}
+
+button.primary:hover{
+  background:var(--primary-dark);
+}
+
+/* EDIT */
+button.edit{
+  background:#ffb300;
+  color:white;
+}
+
+button.edit:hover{
+  background:#e0a000;
+}
+
+/* HAPUS */
+button.delete{
+  background:#e53935;
+  color:white;
+}
+
+button.delete:hover{
+  background:#c62828;
+}
+
+/* ================= TABLE ================= */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+th{
+  background:var(--primary);
+  color:white;
+  text-align:left;
+  padding:12px;
+}
+
+td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+tr:hover{
+  background:#f5f9ff;
+}
+
+/* ACTION BUTTONS */
+.actions{
+  display:flex;
+  gap:6px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+
+  :root{
+    --sidebar-width:0px;
+  }
+
+  .main-content{
+    margin-left:0;
+    padding:12px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  button{
+    width:100%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="sidebar"></div>
+
+<div class="main-content">
+
+  <div id="sidebar"></div>
+
+  <h2>ADMIN JADWAL BK</h2>
+
+
+<!-- ================= FORM ================= -->
+<div class="card">
+
+  <input type="hidden" id="docId">
+
+  <select id="hari">
+    <option value="">-- Pilih Hari --</option>
+    <option>Senin</option>
+    <option>Selasa</option>
+    <option>Rabu</option>
+    <option>Kamis</option>
+    <option>Jumat</option>
+    <option>Sabtu</option>
+  </select>
+
+  <input type="time" id="jam">
+
+  <select id="layanan">
+    <option value="">-- Pilih Layanan --</option>
+    <option>Konseling Individu</option>
+    <option>Bimbingan Belajar</option>
+    <option>Konseling Kelompok</option>
+    <option>Bimbingan Karier</option>
+    <option>Karakter</option>
+    <option>Orang Tua</option>
+  </select>
+
+  <select id="ruangan">
+    <option value="">-- Pilih Ruangan --</option>
+    <option>Ruang BK</option>
+    <option>Ruang Guru BK</option>
+    <option>Ruang Kelas</option>
+    <option>Ruang Konseling Individu</option>
+    <option>Ruang Konseling Kelompok</option>
+    <option>Ruang Multimedia</option>
+  </select>
+
+  <button class="primary" onclick="simpanData()">
+    Simpan
+  </button>
+
+</div>
+
+<!-- ================= TABLE ================= -->
+<div class="card">
+
+<table>
+
+  <thead>
+    <tr>
+      <th>Hari</th>
+      <th>Jam</th>
+      <th>Layanan</th>
+      <th>Ruangan</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+
+  <tbody id="tabel"></tbody>
+
+</table>
+
+</div>
+</div>
+
+<!-- ================= SIDEBAR ================= -->
+<script type="module" src="../assets/js/sidebar.js"></script>
+
+<!-- ================= FIREBASE ================= -->
+<script type="module">
+
+import { db } from "../assets/js/firebase.js";
+
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+/* ================= COLLECTION ================= */
+const ref = collection(db,"jadwalbk");
+
+/* ================= LOAD DATA ================= */
+async function loadData(){
+
+  const snap = await getDocs(ref);
+  const tabel = document.getElementById("tabel");
+
+  tabel.innerHTML = "";
+
+  snap.forEach((d)=>{
+
+    const data = d.data();
+
+    tabel.innerHTML += `
+      <tr>
+        <td>${data.hari}</td>
+        <td>${data.jam}</td>
+        <td>${data.layanan}</td>
+        <td>${data.ruangan}</td>
+        <td class="actions">
+
+          <button class="edit"
+          onclick="editData(
+          '${d.id}',
+          '${data.hari}',
+          '${data.jam}',
+          '${data.layanan}',
+          '${data.ruangan}'
+          )">
+          Edit
+          </button>
+
+          <button class="delete"
+          onclick="hapusData('${d.id}')">
+          Hapus
+          </button>
+
+        </td>
+      </tr>
+    `;
+  });
+}
+
+/* ================= SIMPAN ================= */
+window.simpanData = async function(){
+
+  const id = document.getElementById("docId").value;
+  const hari = document.getElementById("hari").value;
+  const jam = document.getElementById("jam").value;
+  const layanan = document.getElementById("layanan").value;
+  const ruangan = document.getElementById("ruangan").value;
+
+  if(!hari || !jam || !layanan || !ruangan){
+    alert("Lengkapi data!");
+    return;
+  }
+
+  try{
+
+    if(id){
+
+      await updateDoc(doc(db,"jadwalbk",id),{
+        hari,
+        jam,
+        layanan,
+        ruangan
+      });
+
+      alert("Data berhasil diupdate");
+
+    }else{
+
+      await addDoc(ref,{
+        hari,
+        jam,
+        layanan,
+        ruangan,
+        createdAt:new Date()
+      });
+
+      alert("Data berhasil disimpan");
+    }
+
+    resetForm();
+    loadData();
+
+  }catch(err){
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+/* ================= EDIT ================= */
+window.editData = function(id,hari,jam,layanan,ruangan){
+
+  document.getElementById("docId").value = id;
+  document.getElementById("hari").value = hari;
+  document.getElementById("jam").value = jam;
+  document.getElementById("layanan").value = layanan;
+  document.getElementById("ruangan").value = ruangan;
+
+};
+
+/* ================= HAPUS ================= */
+window.hapusData = async function(id){
+
+  if(!confirm("Hapus data?")) return;
+
+  await deleteDoc(doc(db,"jadwalbk",id));
+  loadData();
+
+};
+
+/* ================= RESET ================= */
+function resetForm(){
+  document.getElementById("docId").value = "";
+  document.getElementById("hari").value = "";
+  document.getElementById("jam").value = "";
+  document.getElementById("layanan").value = "";
+  document.getElementById("ruangan").value = "";
+}
+
+/* ================= INIT ================= */
+loadData();
+
+</script>
+
+</body>
+</html>

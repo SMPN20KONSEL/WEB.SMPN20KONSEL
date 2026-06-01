@@ -1,622 +1,430 @@
-<!-- =========================================
-     TAMBAHKAN DI ATAS </body>
-========================================= -->
-
-<!-- LOADING SCREEN -->
-
-<div id="loader">
-
-  <div class="loader-content">
-
-    <img src="image/Logo_transparent.png" alt="Logo">
-
-    <h2>SMPN 20 KONAWE SELATAN</h2>
-
-    <div class="loading-bar">
-      <span></span>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- DARK MODE BUTTON -->
-
-<button id="darkModeToggle">
-  <i class="fas fa-moon"></i>
-</button>
-
-<!-- BACK TO TOP -->
-
-<button id="backToTop">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- FLOATING WHATSAPP -->
-
-<a href="https://wa.me/qr/AXZTONE55Z4YK1"
-class="floating-wa">
-
-  <i class="fab fa-whatsapp"></i>
-
-</a>
-
-<!-- BREAKING NEWS -->
-
-<div class="breaking-news">
-
-  <div class="breaking-track">
-
-    🔥 SELAMAT DATANG DI WEBSITE RESMI SMPN 20 KONAWE SELATAN •
-    PENDAFTARAN SPMB 2026 TELAH DIBUKA •
-    SEKOLAH UNGGUL BERPRESTASI •
-    MENUJU GENERASI CERDAS DAN BERKARAKTER •
-
-  </div>
-
-</div>
-
-<!-- STATISTIK -->
-
-<section class="stats-section">
-
-  <div class="stats-container">
-
-    <div class="stat-card">
-
-      <i class="fas fa-user-graduate"></i>
-
-      <h2 class="counter" data-target="850">0</h2>
-
-      <p>Siswa</p>
-
-    </div>
-
-    <div class="stat-card">
-
-      <i class="fas fa-chalkboard-teacher"></i>
-
-      <h2 class="counter" data-target="45">0</h2>
-
-      <p>Guru & TU</p>
-
-    </div>
-
-    <div class="stat-card">
-
-      <i class="fas fa-award"></i>
-
-      <h2 class="counter" data-target="120">0</h2>
-
-      <p>Prestasi</p>
-
-    </div>
-
-    <div class="stat-card">
-
-      <i class="fas fa-school"></i>
-
-      <h2 class="counter" data-target="15">0</h2>
-
-      <p>Fasilitas</p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- PRESTASI -->
-
-<section class="prestasi-section">
-
-  <div class="section-title">
-
-    <h2>Prestasi Sekolah</h2>
-
-    <p>
-      Prestasi akademik dan non akademik siswa
-    </p>
-
-  </div>
-
-  <div class="prestasi-container">
-
-    <div class="prestasi-card">
-
-      <img src="image/Kegiatan 1.jpg">
-
-      <div class="prestasi-content">
-
-        <span>Akademik</span>
-
-        <h3>Juara Olimpiade Matematika</h3>
-
-        <p>
-          Siswa berhasil meraih juara tingkat kabupaten.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="prestasi-card">
-
-      <img src="image/SEKOLAH.jpg">
-
-      <div class="prestasi-content">
-
-        <span>Pramuka</span>
-
-        <h3>Juara Lomba Pramuka</h3>
-
-        <p>
-          Prestasi luar biasa dalam kegiatan kepramukaan.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="prestasi-card">
-
-      <img src="Galeri/Gambar 3.jpg">
-
-      <div class="prestasi-content">
-
-        <span>Olahraga</span>
-
-        <h3>Juara Futsal Antar Sekolah</h3>
-
-        <p>
-          Tim futsal sekolah meraih kemenangan gemilang.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- VIDEO PROFIL -->
-
-<section class="video-section">
-
-  <div class="section-title">
-
-    <h2>Video Profil Sekolah</h2>
-
-    <p>
-      Mengenal lebih dekat SMPN 20 Konawe Selatan
-    </p>
-
-  </div>
-
-  <div class="video-wrapper">
-
-    <iframe
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-      title="Video Profil"
-      allowfullscreen>
-    </iframe>
-
-  </div>
-
-</section>
-
-<!-- =========================================
-     CSS TAMBAHAN
-========================================= -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bimbingan & Konseling - SMPN 20 Konawe Selatan</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
 <style>
 
-  /* LOADER */
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI, sans-serif;
+}
 
-  #loader{
-    position:fixed;
-    inset:0;
-    background:#071426;
-    z-index:99999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transition:0.5s;
-  }
+body{
+  background:#071426;
+  color:white;
+}
 
-  .loader-content{
-    text-align:center;
-    color:white;
-  }
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:100px 8%;
+  background:
+  linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600') center/cover;
+}
 
-  .loader-content img{
-    width:120px;
-    margin:auto;
-    animation:spin 3s linear infinite;
-  }
+.hero h1{
+  font-size:60px;
+}
 
-  .loader-content h2{
-    margin-top:20px;
-    color:#ffd54f;
-  }
+.hero h1 span{
+  color:#00b4ff;
+}
 
-  .loading-bar{
-    width:250px;
-    height:8px;
-    background:#1e3550;
-    border-radius:30px;
-    overflow:hidden;
-    margin-top:20px;
-  }
+.hero p{
+  max-width:800px;
+  margin:20px auto;
+  color:#cfd9e6;
+  line-height:1.8;
+}
 
-  .loading-bar span{
-    display:block;
-    width:0%;
-    height:100%;
-    background:#ffd54f;
-    animation:loading 3s forwards;
-  }
+.hero-btns{
+  margin-top:25px;
+}
 
-  @keyframes loading{
-    100%{
-      width:100%;
-    }
-  }
+.hero-btns a{
+  display:inline-block;
+  padding:14px 22px;
+  margin:5px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-  @keyframes spin{
-    100%{
-      transform:rotate(360deg);
-    }
-  }
+.btn1{ background:#00b4ff; color:white; }
+.btn2{ border:1px solid white; color:white; background:transparent; }
 
-  /* DARK MODE */
+/* ================= SECTION ================= */
+section{
+  padding:80px 8%;
+}
 
-  #darkModeToggle{
-    position:fixed;
-    right:25px;
-    bottom:110px;
-    width:55px;
-    height:55px;
-    border:none;
-    border-radius:50%;
-    background:#ffd54f;
-    color:#071426;
-    font-size:22px;
-    cursor:pointer;
-    z-index:999;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-  }
+.title{
+  text-align:center;
+  margin-bottom:50px;
+}
 
-  body.dark{
-    background:#071426;
-    color:white;
-  }
+.title h2{
+  font-size:40px;
+}
 
-  /* BACK TO TOP */
+/* ================= CARD ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-  #backToTop{
-    position:fixed;
-    right:25px;
-    bottom:40px;
-    width:55px;
-    height:55px;
-    border:none;
-    border-radius:50%;
-    background:#0d6efd;
-    color:white;
-    font-size:20px;
-    cursor:pointer;
-    display:none;
-    z-index:999;
-  }
+.card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  padding:25px;
+  border-radius:20px;
+}
 
-  /* WHATSAPP */
+.card i{
+  font-size:30px;
+  color:#00b4ff;
+  margin-bottom:15px;
+}
 
-  .floating-wa{
-    position:fixed;
-    left:25px;
-    bottom:40px;
-    width:60px;
-    height:60px;
-    background:#25d366;
-    color:white;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:30px;
-    z-index:999;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-    animation:pulse 2s infinite;
-  }
+/* ================= GURU ================= */
+.guru{
+  text-align:center;
+}
 
-  @keyframes pulse{
+.guru img{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:10px;
+}
 
-    0%{
-      transform:scale(1);
-    }
+.btn-hubungi{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 15px;
+  background:#00b4ff;
+  border-radius:20px;
+  color:white;
+  text-decoration:none;
+}
 
-    50%{
-      transform:scale(1.1);
-    }
+/* ================= TABLE ================= */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:rgba(255,255,255,.05);
+  overflow:hidden;
+  border-radius:10px;
+}
 
-    100%{
-      transform:scale(1);
-    }
+th,td{
+  padding:12px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
 
-  }
+th{
+  background:#00b4ff;
+  color:white;
+}
 
-  /* BREAKING NEWS */
+/* ================= FORM ================= */
+form{
+  max-width:600px;
+  margin:auto;
+  background:rgba(255,255,255,.05);
+  padding:25px;
+  border-radius:20px;
+}
 
-  .breaking-news{
-    background:#ffd54f;
-    color:#071426;
-    padding:12px 0;
-    overflow:hidden;
-    white-space:nowrap;
-    font-weight:bold;
-  }
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:none;
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  color:white;
+}
 
-  .breaking-track{
-    display:inline-block;
-    padding-left:100%;
-    animation:marquee 20s linear infinite;
-  }
+button{
+  width:100%;
+  padding:12px;
+  background:#00b4ff;
+  border:none;
+  border-radius:10px;
+  color:white;
+  font-weight:bold;
+}
 
-  @keyframes marquee{
+/* ================= FAQ ================= */
+.faq{
+  max-width:800px;
+  margin:auto;
+}
 
-    0%{
-      transform:translateX(0);
-    }
+.faq-item{
+  background:rgba(255,255,255,.05);
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:15px;
+}
 
-    100%{
-      transform:translateX(-100%);
-    }
-
-  }
-
-  /* STATISTIK */
-
-  .stats-section{
-    padding:90px 7%;
-    background:#071426;
-  }
-
-  .stats-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-  }
-
-  .stat-card{
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:25px;
-    padding:40px;
-    text-align:center;
-    transition:0.4s;
-  }
-
-  .stat-card:hover{
-    transform:translateY(-10px);
-  }
-
-  .stat-card i{
-    font-size:50px;
-    color:#ffd54f;
-    margin-bottom:20px;
-  }
-
-  .stat-card h2{
-    font-size:45px;
-    color:white;
-    margin-bottom:10px;
-  }
-
-  .stat-card p{
-    color:#ccc;
-  }
-
-  /* PRESTASI */
-
-  .prestasi-section{
-    padding:100px 7%;
-    background:#0b1f39;
-  }
-
-  .section-title{
-    text-align:center;
-    margin-bottom:60px;
-  }
-
-  .section-title h2{
-    font-size:42px;
-    color:#ffd54f;
-    margin-bottom:15px;
-  }
-
-  .prestasi-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
-  }
-
-  .prestasi-card{
-    background:rgba(255,255,255,0.05);
-    border-radius:25px;
-    overflow:hidden;
-    transition:0.4s;
-    backdrop-filter:blur(10px);
-  }
-
-  .prestasi-card:hover{
-    transform:translateY(-12px);
-  }
-
-  .prestasi-card img{
-    height:240px;
-    object-fit:cover;
-  }
-
-  .prestasi-content{
-    padding:25px;
-  }
-
-  .prestasi-content span{
-    background:#ffd54f;
-    color:#071426;
-    padding:7px 15px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:bold;
-  }
-
-  .prestasi-content h3{
-    margin:20px 0 15px;
-    color:white;
-  }
-
-  .prestasi-content p{
-    color:#ccc;
-    line-height:1.8;
-  }
-
-  /* VIDEO */
-
-  .video-section{
-    padding:100px 7%;
-    background:#071426;
-  }
-
-  .video-wrapper{
-    max-width:1000px;
-    margin:auto;
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow:0 15px 35px rgba(0,0,0,0.3);
-  }
-
-  .video-wrapper iframe{
-    width:100%;
-    height:550px;
-    border:none;
-  }
-
-  /* RESPONSIVE */
-
-  @media(max-width:768px){
-
-    .section-title h2{
-      font-size:30px;
-    }
-
-    .video-wrapper iframe{
-      height:300px;
-    }
-
-  }
+/* ================= FOOTER ================= */
+footer{
+  background:#04101d;
+  text-align:center;
+  padding:30px;
+  margin-top:40px;
+}
 
 </style>
+</head>
+<body>
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+<!-- HERO -->
+<section class="hero">
 
-<script>
+<div>
 
-  // LOADING SCREEN
+<h1>Bimbingan & <span>Konseling</span></h1>
 
-  window.addEventListener("load", ()=>{
+<p>
+Membantu siswa berkembang secara pribadi, sosial, belajar, dan karier melalui layanan bimbingan dan konseling sekolah.
+</p>
 
-    setTimeout(()=>{
+<div class="hero-btns">
+<a href="#konsultasi" class="btn1">Konsultasi</a>
+<a href="#jadwal" class="btn2">Jadwal BK</a>
+<a href="#guru" class="btn2">Hubungi Guru BK</a>
+</div>
 
-      document.getElementById("loader").style.opacity="0";
+</div>
 
-      setTimeout(()=>{
+</section>
 
-        document.getElementById("loader").style.display="none";
+<!-- LAYANAN -->
+<section>
+<div class="title"><h2>Layanan BK</h2></div>
 
-      },500);
+<div class="grid">
 
-    },2500);
+<div class="card">
+<i class="fas fa-user"></i>
+<h3>Konseling Individu</h3>
+<p>Pendampingan siswa secara pribadi.</p>
+</div>
 
-  });
+<div class="card">
+<i class="fas fa-users"></i>
+<h3>Konseling Kelompok</h3>
+<p>Diskusi dan kerja sama siswa.</p>
+</div>
 
-  // DARK MODE
+<div class="card">
+<i class="fas fa-book"></i>
+<h3>Bimbingan Belajar</h3>
+<p>Meningkatkan prestasi belajar.</p>
+</div>
 
-  const darkBtn =
-  document.getElementById("darkModeToggle");
+<div class="card">
+<i class="fas fa-briefcase"></i>
+<h3>Bimbingan Karier</h3>
+<p>Mengenali bakat dan minat.</p>
+</div>
 
-  darkBtn.onclick = ()=>{
+<div class="card">
+<i class="fas fa-heart"></i>
+<h3>Karakter</h3>
+<p>Pembentukan sikap positif.</p>
+</div>
 
-    document.body.classList.toggle("dark");
+<div class="card">
+<i class="fas fa-home"></i>
+<h3>Orang Tua</h3>
+<p>Konsultasi dengan wali siswa.</p>
+</div>
 
-  };
+</div>
+</section>
 
-  // BACK TO TOP
+<!-- GURU BK -->
+<section id="guru">
+<div class="title"><h2>Profil Guru BK</h2></div>
 
-  const topBtn =
-  document.getElementById("backToTop");
+<div class="grid">
 
-  window.onscroll = ()=>{
+<div class="card guru">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330">
+<h3>Rahmawati, S.Pd</h3>
+<p>Guru BK</p>
+<p>08.00 – 12.00</p>
+<a class="btn-hubungi" href="#">Hubungi</a>
+</div>
 
-    if(window.scrollY > 300){
+<div class="card guru">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
+<h3>Andi Saputra, S.Pd</h3>
+<p>Konselor Sekolah</p>
+<p>10.00 – 14.00</p>
+<a class="btn-hubungi" href="#">Hubungi</a>
+</div>
 
-      topBtn.style.display="block";
+</div>
+</section>
 
-    }else{
+<!-- JADWAL -->
+<section id="jadwal">
+<div class="title"><h2>Jadwal BK</h2></div>
 
-      topBtn.style.display="none";
+<table>
+<tr>
+<th>Hari</th>
+<th>Jam</th>
+<th>Layanan</th>
+<th>Ruangan</th>
+</tr>
 
-    }
+<tr>
+<td>Senin</td>
+<td>08:00</td>
+<td>Konseling Individu</td>
+<td>Ruang BK</td>
+</tr>
 
-  };
+<tr>
+<td>Selasa</td>
+<td>10:00</td>
+<td>Bimbingan Belajar</td>
+<td>Ruang BK</td>
+</tr>
 
-  topBtn.onclick = ()=>{
+<tr>
+<td>Rabu</td>
+<td>09:00</td>
+<td>Konseling Kelompok</td>
+<td>Ruang BK</td>
+</tr>
 
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
+<tr>
+<td>Kamis</td>
+<td>11:00</td>
+<td>Bimbingan Karier</td>
+<td>Ruang BK</td>
+</tr>
 
-  };
+<tr>
+<td>Jumat</td>
+<td>08:00</td>
+<td>Konsultasi Orang Tua</td>
+<td>Ruang BK</td>
+</tr>
 
-  // COUNTER
+</table>
+</section>
 
-  const counters =
-  document.querySelectorAll(".counter");
+<!-- ALUR -->
+<section>
+<div class="title"><h2>Alur Konseling</h2></div>
 
-  counters.forEach(counter=>{
+<div class="card">
+<p>1. Isi formulir konsultasi</p>
+<p>2. Pilih jadwal yang tersedia</p>
+<p>3. Datang ke ruang BK</p>
+<p>4. Bertemu guru BK</p>
+<p>5. Mendapatkan solusi</p>
+</div>
 
-    counter.innerText="0";
+</section>
 
-    const updateCounter = ()=>{
+<!-- QUOTE -->
+<section>
+<div class="title"><h2>Motivasi</h2></div>
 
-      const target = +counter.getAttribute("data-target");
+<div class="card">
+<p style="text-align:center;font-size:18px;">
+“Setiap siswa memiliki potensi untuk berkembang dan meraih masa depan yang lebih baik.”
+</p>
+<p style="text-align:center;color:#cfd9e6;margin-top:10px;">
+BK hadir untuk membantu siswa menemukan jalan terbaik dalam hidupnya.
+</p>
+</div>
+</section>
 
-      const c = +counter.innerText;
+<!-- FORM -->
+<section id="konsultasi">
+<div class="title"><h2>Form Konsultasi</h2></div>
 
-      const increment = target / 100;
+<form>
+<input type="text" placeholder="Nama Siswa">
+<input type="text" placeholder="Kelas">
 
-      if(c < target){
+<select>
+<option>Jenis Masalah</option>
+<option>Belajar</option>
+<option>Sosial</option>
+<option>Pribadi</option>
+<option>Karier</option>
+</select>
 
-        counter.innerText =
-        `${Math.ceil(c + increment)}`;
+<select>
+<option>Pilih Jadwal</option>
+<option>Senin 08:00</option>
+<option>Selasa 10:00</option>
+</select>
 
-        setTimeout(updateCounter,20);
+<textarea placeholder="Pesan / Keluhan"></textarea>
 
-      }else{
+<button type="submit">Kirim Konsultasi</button>
+</form>
+</section>
 
-        counter.innerText = target;
+<!-- FAQ -->
+<section>
+<div class="title"><h2>FAQ BK</h2></div>
 
-      }
+<div class="faq">
 
-    };
+<div class="faq-item">
+<b>Apakah konsultasi bersifat rahasia?</b>
+<p>✔ Ya, semua layanan BK dijaga kerahasiaannya.</p>
+</div>
 
-    updateCounter();
+<div class="faq-item">
+<b>Bagaimana cara membuat janji?</b>
+<p>✔ Isi form atau datang langsung ke ruang BK.</p>
+</div>
 
-  });
+<div class="faq-item">
+<b>Apakah orang tua bisa konsultasi?</b>
+<p>✔ Bisa, terutama terkait perkembangan siswa.</p>
+</div>
 
-</script>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>Ruang BK SMPN 20 Konawe Selatan</p>
+<p>WhatsApp: 08xxxxxxxxxx | Email: bk@smpn20.sch.id</p>
+<p>Senin – Jumat | 08.00 – 14.00 WITA</p>
+</footer>
+
+</body>
+</html>

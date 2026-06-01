@@ -1,0 +1,708 @@
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
+:root{
+  --primary:#1e88e5;
+  --primary-light:#42a5f5;
+
+  --secondary:#ffd54f;
+  --accent:#f4b700;
+
+  --bg-dark:#061426;
+  --bg-dark-2:#0b1f3a;
+
+  --bg-card:#14263a;
+  --bg-card-light:rgba(20,38,58,.9);
+
+  --text:#ffffff;
+  --text-muted:#c7d4e2;
+
+  --radius:20px;
+
+  --shadow:
+  0 10px 25px rgba(0,0,0,.25);
+
+  --shadow-lg:
+  0 20px 40px rgba(0,0,0,.35);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+
+  background:
+  linear-gradient(
+    180deg,
+    var(--bg-dark) 0%,
+    var(--bg-dark-2) 50%,
+    var(--bg-dark) 100%
+  );
+
+  color:var(--text);
+
+  overflow-x:hidden;
+}
+
+/* =========================================================
+   GLOBAL SECTION
+========================================================= */
+section{
+  padding:100px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.section-title h2{
+  font-size:42px;
+  color:var(--secondary);
+  margin-bottom:15px;
+  font-weight:700;
+}
+
+.section-title p{
+  max-width:750px;
+  margin:auto;
+  color:var(--text-muted);
+  line-height:1.8;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  width:100%;
+  min-height:100vh;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.65),
+    rgba(0,0,0,.65)
+  ),
+  url('../../image/kesiswaan/Gambar 4.jpg');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:100px 8%;
+}
+
+.hero-content{
+  max-width:900px;
+}
+
+.hero-content h1{
+  font-size:72px;
+  color:#fff;
+  margin-bottom:20px;
+  line-height:1.2;
+}
+
+.hero-content h1 span{
+  color:#00b4ff;
+}
+
+.hero-content p{
+  color:#e6e6e6;
+  font-size:20px;
+  line-height:1.9;
+  max-width:800px;
+  margin:auto;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+.hero-btn{
+  margin-top:40px;
+}
+
+.hero-btn a,
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:16px 38px;
+
+  border:none;
+  border-radius:16px;
+
+  text-decoration:none;
+
+  font-weight:700;
+  font-size:16px;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00b4ff,
+    #0077b6
+  );
+
+  box-shadow:
+  0 15px 30px rgba(0,180,255,.3);
+
+  transition:.35s ease;
+}
+
+.hero-btn a:hover,
+.btn-primary:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 20px 40px rgba(0,180,255,.4);
+}
+
+/* =========================================================
+   TENTANG BK
+========================================================= */
+#tentang-kesiswaan{
+  background:#032c58ad;
+}
+
+.about-kesiswaan{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.about-kesiswaan img{
+  width:420px;
+  max-width:100%;
+
+  border-radius:30px;
+
+  object-fit:cover;
+
+  box-shadow:
+  0 15px 35px rgba(0,0,0,.25);
+
+  transition:.4s;
+}
+
+.about-kesiswaan img:hover{
+  transform:scale(1.03);
+}
+
+.about-text{
+  flex:1;
+}
+
+.about-text h3{
+  font-size:38px;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+
+.about-text p{
+  line-height:2;
+  color:#f3f3f3;
+  margin-bottom:25px;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.list-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#fff;
+}
+
+.list-item i{
+  color:#4caf50;
+}
+
+/* =========================================================
+   GRID LAYANAN
+========================================================= */
+.grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:24px;
+}
+
+.grid .card{
+  text-align:center;
+}
+
+.card{
+  background:var(--bg-card);
+
+  padding:25px;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+
+  transition:.35s ease;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-lg);
+}
+
+.card::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-100%;
+
+  width:100%;
+  height:100%;
+
+  background:
+  linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.05),
+    transparent
+  );
+
+  transition:.6s;
+}
+
+.card:hover::before{
+  left:100%;
+}
+
+.card i{
+  font-size:34px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.card p{
+  color:var(--text-muted);
+  line-height:1.8;
+}
+
+/* =========================================================
+   MOTIVASI
+========================================================= */
+.motivasi{
+  text-align:center;
+}
+
+.motivasi-box{
+  max-width:900px;
+  margin:auto;
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-light)
+  );
+
+  padding:50px;
+
+  border-radius:var(--radius);
+
+  box-shadow:
+  0 15px 35px rgba(30,136,229,.3);
+}
+
+.motivasi-box i{
+  font-size:45px;
+  margin-bottom:20px;
+}
+
+.motivasi-box h2{
+  margin-bottom:15px;
+}
+
+.motivasi-box p{
+  opacity:.9;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+.table-container{
+  overflow-x:auto;
+
+  background:var(--bg-card);
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+thead{
+  background:var(--primary);
+}
+
+th,
+td{
+  padding:16px;
+  text-align:left;
+}
+
+th{
+  color:#fff;
+}
+
+tbody tr{
+  border-bottom:
+  1px solid rgba(255,255,255,.08);
+}
+
+tbody tr:hover{
+  background:
+  rgba(255,255,255,.03);
+}
+
+/* =========================================================
+   ALUR KONSELING
+========================================================= */
+.alur-card{
+  background:var(--bg-card);
+
+  max-width:650px;
+
+  margin:auto;
+
+  padding:30px;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+}
+
+.alur-card p{
+  position:relative;
+
+  margin:15px 0;
+
+  padding-left:50px;
+
+  color:#e6eef7;
+}
+
+.alur-card p::before{
+  content:attr(data-step);
+
+  position:absolute;
+
+  left:0;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:30px;
+  height:30px;
+
+  border-radius:50%;
+
+  background:var(--primary);
+
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:14px;
+  font-weight:700;
+}
+
+.alur-card p:not(:last-child)::after{
+  content:"";
+
+  position:absolute;
+
+  left:14px;
+  top:32px;
+
+  width:2px;
+  height:18px;
+
+  background:
+  rgba(255,255,255,.2);
+}
+
+.alur-card p:hover{
+  transform:translateX(5px);
+  transition:.25s;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+.form-container{
+  max-width:700px;
+
+  margin:auto;
+
+  background:var(--bg-card-light);
+
+  padding:35px;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+}
+
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  outline:none;
+
+  background:#0f2236;
+
+  color:#fff;
+
+  transition:.3s;
+}
+
+textarea{
+  resize:vertical;
+  min-height:120px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--primary);
+
+  box-shadow:
+  0 0 0 3px rgba(30,136,229,.15);
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+.faq{
+  max-width:900px;
+  margin:auto;
+}
+
+.faq-item{
+  background:var(--bg-card);
+
+  padding:20px;
+
+  border-radius:16px;
+
+  margin-bottom:15px;
+
+  border:
+  1px solid rgba(255,255,255,.05);
+
+  transition:.3s;
+}
+
+.faq-item:hover{
+  transform:translateY(-4px);
+
+  border-color:var(--primary);
+}
+
+.faq-item b{
+  display:block;
+
+  color:#fff;
+
+  margin-bottom:8px;
+}
+
+.faq-item p{
+  color:var(--text-muted);
+  line-height:1.7;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+.contact{
+  max-width:900px;
+
+  margin:auto;
+
+  background:#16345c;
+
+  padding:55px;
+
+  border-radius:30px;
+
+  box-shadow:var(--shadow);
+}
+
+.contact h2{
+  text-align:center;
+
+  color:var(--secondary);
+
+  font-size:42px;
+
+  margin-bottom:35px;
+}
+
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.contact-info p{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+
+  color:#e5e5e5;
+
+  line-height:1.8;
+}
+
+.contact-info i{
+  color:var(--secondary);
+
+  min-width:20px;
+
+  margin-top:4px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width:992px){
+
+  .hero-content h1{
+    font-size:56px;
+  }
+
+  .about-kesiswaan{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .about-text{
+    width:100%;
+  }
+}
+
+@media (max-width:768px){
+
+  section{
+    padding:70px 6%;
+  }
+
+  .hero{
+    min-height:80vh;
+  }
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .hero-content p{
+    font-size:16px;
+  }
+
+  .section-title h2{
+    font-size:30px;
+  }
+
+  .about-text h3{
+    font-size:28px;
+  }
+
+  .motivasi-box{
+    padding:35px 20px;
+  }
+
+  .contact{
+    padding:30px 20px;
+  }
+
+  .contact h2{
+    font-size:30px;
+  }
+
+  th,
+  td{
+    padding:12px;
+    font-size:14px;
+  }
+}
+
+@media (max-width:480px){
+
+  .hero-content h1{
+    font-size:34px;
+  }
+
+  .hero-btn a,
+  .btn-primary{
+    width:100%;
+  }
+
+  .form-container{
+    padding:20px;
+  }
+}

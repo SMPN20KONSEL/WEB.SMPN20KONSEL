@@ -2,767 +2,414 @@
 <html lang="id">
 <head>
 
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="SPMB SMPN 20 Konawe Selatan">
+<meta name="keywords" content="SPMB, PPDB, SMPN 20 Konawe Selatan">
+<meta name="author" content="SMPN 20 Konawe Selatan">
 
 <title>Bimbingan dan Konseling - SMPN 20 Konawe Selatan</title>
 
+<!-- FAVICON -->
+<link rel="icon" href="image/logo.png">
+
 <!-- FONT AWESOME -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- AOS -->
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-<style>
+<!-- CSS EXTERNAL -->
+<link rel="stylesheet" href="assets/css/header-footer.css">
+<link rel="stylesheet" href="assets/css/bk.css">
 
-/* =========================
-   RESET
-========================= */
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#071426;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-  width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-  background:#00b4ff;
-  border-radius:20px;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-  width:100%;
-  padding:18px 8%;
-  position:fixed;
-  top:0;
-  z-index:999;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(12px);
-
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.logo{
-  font-size:28px;
-  font-weight:bold;
-}
-
-.logo span{
-  color:#00b4ff;
-}
-
-.menu{
-  display:flex;
-  gap:28px;
-}
-
-.menu a{
-  color:white;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.menu a:hover{
-  color:#00b4ff;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  width:100%;
-  min-height:100vh;
-
-  background:
-  linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop');
-
-  background-size:cover;
-  background-position:center;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-
-  padding:100px 8%;
-}
-
-.hero-content h1{
-  font-size:78px;
-  margin-bottom:20px;
-}
-
-.hero-content h1 span{
-  color:#00b4ff;
-}
-
-.hero-content p{
-  max-width:850px;
-  margin:auto;
-  line-height:2;
-  color:#ddd;
-  font-size:20px;
-}
-
-.hero-btn{
-  margin-top:40px;
-}
-
-.hero-btn a{
-  display:inline-block;
-  padding:18px 40px;
-  border-radius:50px;
-  background:linear-gradient(135deg,#00b4ff,#0077b6);
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  transition:.4s;
-}
-
-.hero-btn a:hover{
-  transform:translateY(-5px);
-}
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-  padding:100px 8%;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:70px;
-}
-
-.section-title h2{
-  font-size:46px;
-  margin-bottom:15px;
-}
-
-.section-title p{
-  color:#cfd9e6;
-  max-width:700px;
-  margin:auto;
-  line-height:1.9;
-}
-
-/* =========================
-   ABOUT BK
-========================= */
-
-.about-bk{
-  display:flex;
-  align-items:center;
-  gap:60px;
-  flex-wrap:wrap;
-}
-
-.about-bk img{
-  width:450px;
-  max-width:100%;
-  border-radius:30px;
-  box-shadow:0 15px 35px rgba(0,0,0,.3);
-}
-
-.about-text{
-  flex:1;
-}
-
-.about-text h3{
-  font-size:40px;
-  margin-bottom:25px;
-}
-
-.about-text p{
-  color:#cfd9e6;
-  line-height:2;
-  margin-bottom:20px;
-}
-
-/* =========================
-   LAYANAN BK
-========================= */
-
-.layanan-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:35px;
-}
-
-.layanan-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-
-  padding:35px;
-  border-radius:30px;
-
-  transition:.4s;
-}
-
-.layanan-card:hover{
-  transform:translateY(-10px);
-  border-color:#00b4ff;
-}
-
-.layanan-icon{
-  width:80px;
-  height:80px;
-
-  border-radius:22px;
-
-  background:linear-gradient(135deg,#00b4ff,#0077b6);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  margin-bottom:25px;
-}
-
-.layanan-icon i{
-  font-size:34px;
-}
-
-.layanan-card h3{
-  font-size:28px;
-  margin-bottom:18px;
-}
-
-.layanan-card p{
-  color:#cfd9e6;
-  line-height:1.9;
-}
-
-/* =========================
-   GURU BK
-========================= */
-
-.guru-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:35px;
-}
-
-.guru-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-
-  border-radius:30px;
-  overflow:hidden;
-
-  transition:.4s;
-}
-
-.guru-card:hover{
-  transform:translateY(-10px);
-}
-
-.guru-card img{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-}
-
-.guru-content{
-  padding:30px;
-  text-align:center;
-}
-
-.guru-content h3{
-  margin-bottom:10px;
-}
-
-.guru-content p{
-  color:#00b4ff;
-}
-
-/* =========================
-   FORM BK
-========================= */
-
-.form-container{
-  max-width:800px;
-  margin:auto;
-
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-
-  padding:40px;
-  border-radius:30px;
-}
-
-.form-group{
-  margin-bottom:25px;
-}
-
-.form-group label{
-  display:block;
-  margin-bottom:10px;
-}
-
-.form-group input,
-.form-group textarea{
-  width:100%;
-  padding:18px;
-  border:none;
-  outline:none;
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,.08);
-  color:white;
-}
-
-.form-group textarea{
-  height:160px;
-  resize:none;
-}
-
-.form-btn{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:20px;
-
-  background:linear-gradient(135deg,#00b4ff,#0077b6);
-
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-
-  cursor:pointer;
-  transition:.4s;
-}
-
-.form-btn:hover{
-  transform:translateY(-3px);
-}
-
-/* =========================
-   STATISTIK
-========================= */
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-}
-
-.stat-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
-
-  border-radius:30px;
-  padding:40px;
-  text-align:center;
-}
-
-.stat-card h1{
-  font-size:60px;
-  color:#00b4ff;
-  margin-bottom:10px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#04101d;
-  padding:40px 20px;
-  text-align:center;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-
-footer p{
-  color:#cfd9e6;
-  margin-top:10px;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-  .menu{
-    display:none;
-  }
-
-  .hero-content h1{
-    font-size:50px;
-  }
-
-  .hero-content p{
-    font-size:16px;
-  }
-
-  .about-bk{
-    flex-direction:column;
-  }
-
-  .section-title h2{
-    font-size:34px;
-  }
-
-}
-
-</style>
 </head>
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-
-<nav class="navbar">
-
-<div class="logo">
-BK<span>.</span>
-</div>
-
-<div class="menu">
-<a href="#">Beranda</a>
-<a href="#tentang">Tentang</a>
-<a href="#layanan">Layanan</a>
-<a href="#guru">Guru BK</a>
-<a href="#konsultasi">Konsultasi</a>
-</div>
-
-</nav>
-
-<!-- =========================
-     HERO
-========================= -->
+  <div id="header"></div>
 
 <section class="hero">
 
-<div class="hero-content" data-aos="zoom-in">
+  <div class="hero-content">
 
-<h1>
-Bimbingan & <span>Konseling</span>
-</h1>
+    <h1>
+      Bimbingan &
+      <span>Konseling Sekolah</span>
+    </h1>
 
-<p>
-Membantu siswa berkembang secara pribadi,
-sosial, belajar, dan karier melalui layanan
-bimbingan dan konseling sekolah.
-</p>
+    <p>
+      Membantu siswa berkembang secara pribadi,
+      sosial, belajar, dan karier melalui layanan
+      bimbingan dan konseling yang profesional.
+    </p>
 
-<div class="hero-btn">
-<a href="#layanan">
-Lihat Layanan
-</a>
-</div>
+    <div class="hero-btn">
+      <a href="#jadwal">
+        Lihat Jadwal BK
+      </a>
+    </div>
 
-</div>
-
-</section>
-
-<!-- =========================
-     TENTANG BK
-========================= -->
-
-<section id="tentang">
-
-<div class="section-title" data-aos="fade-up">
-
-<h2>Tentang BK</h2>
-
-<p>
-Bidang Bimbingan dan Konseling
-SMPN 20 Konawe Selatan.
-</p>
-
-</div>
-
-<div class="about-bk">
-
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-data-aos="fade-right">
-
-<div class="about-text" data-aos="fade-left">
-
-<h3>Mendampingi dan Membina Siswa</h3>
-
-<p>
-Bimbingan dan Konseling memiliki peran penting
-dalam membantu siswa mengembangkan potensi,
-membentuk karakter, dan mengatasi berbagai
-permasalahan belajar maupun sosial.
-</p>
-
-<p>
-Melalui layanan BK, siswa mendapatkan pendampingan,
-motivasi, konsultasi belajar, dan pembinaan karakter
-agar mampu berkembang secara optimal.
-</p>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
-<!-- =========================
-     LAYANAN BK
-========================= -->
+<section id="tentang-kesiswaan">
 
-<section id="layanan">
+  <div class="section-title">
+    <h2>Tentang Bimbingan dan Konseling Sekolah</h2>
+    <p>
+      Bidang Bimbingan dan Konseling
+      SMPN 20 Konawe Selatan
+    </p>
+  </div>
 
-<div class="section-title" data-aos="fade-up">
+  <div class="about-kesiswaan">
 
-<h2>Layanan BK</h2>
+    <img
+      src="image/kesiswaan/1.jpg"
+      alt="Bimbingan dan Konseling Sekolah"
+      loading="lazy"
+    >
 
-<p>
-Berbagai layanan pendampingan siswa sekolah.
-</p>
+    <div class="about-text">
 
-</div>
+      <h3>Mendampingi dan Membina Siswa</h3>
 
-<div class="layanan-grid">
+      <p>
+        Layanan BK membantu pengembangan
+        karakter siswa serta mendukung
+        keberhasilan belajar dan kehidupan sosial.
+      </p>
 
-<div class="layanan-card" data-aos="zoom-in">
+      <div class="list">
 
-<div class="layanan-icon">
-<i class="fas fa-user"></i>
-</div>
+        <div class="list-item">
+          <i class="fas fa-check-circle"></i>
+          Konseling pribadi siswa
+        </div>
 
-<h3>Konseling Individu</h3>
+        <div class="list-item">
+          <i class="fas fa-check-circle"></i>
+          Bimbingan belajar
+        </div>
 
-<p>
-Pendampingan pribadi siswa dalam menyelesaikan masalah.
-</p>
+        <div class="list-item">
+          <i class="fas fa-check-circle"></i>
+          Pembinaan karakter
+        </div>
 
-</div>
+        <div class="list-item">
+          <i class="fas fa-check-circle"></i>
+          Pengembangan potensi
+        </div>
 
-<div class="layanan-card" data-aos="zoom-in">
+      </div>
 
-<div class="layanan-icon">
-<i class="fas fa-users"></i>
-</div>
+    </div>
 
-<h3>Konseling Kelompok</h3>
-
-<p>
-Layanan diskusi dan pembinaan kelompok siswa.
-</p>
-
-</div>
-
-<div class="layanan-card" data-aos="zoom-in">
-
-<div class="layanan-icon">
-<i class="fas fa-book"></i>
-</div>
-
-<h3>Bimbingan Belajar</h3>
-
-<p>
-Pendampingan siswa dalam meningkatkan prestasi belajar.
-</p>
-
-</div>
-
-<div class="layanan-card" data-aos="zoom-in">
-
-<div class="layanan-icon">
-<i class="fas fa-heart"></i>
-</div>
-
-<h3>Pembinaan Karakter</h3>
-
-<p>
-Pembentukan sikap disiplin dan karakter positif siswa.
-</p>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
-<!-- =========================
-     GURU BK
-========================= -->
 
-<section id="guru">
+<!-- LAYANAN -->
+<section id="layanan" class="section">
 
-<div class="section-title" data-aos="fade-up">
+  <div class="section-title">
+    <h2>Layanan BK</h2>
+  </div>
 
-<h2>Guru BK</h2>
+  <div class="grid">
 
-<p>
-Guru pembimbing dan konselor sekolah.
-</p>
+    <div class="card"><i class="fas fa-user"></i><h3>Konseling Individu</h3><p>Pendampingan siswa secara pribadi.</p></div>
+    <div class="card"><i class="fas fa-users"></i><h3>Konseling Kelompok</h3><p>Diskusi siswa.</p></div>
+    <div class="card"><i class="fas fa-book"></i><h3>Bimbingan Belajar</h3><p>Meningkatkan prestasi.</p></div>
+    <div class="card"><i class="fas fa-briefcase"></i><h3>Bimbingan Karier</h3><p>Minat dan bakat.</p></div>
+    <div class="card"><i class="fas fa-heart"></i><h3>Karakter</h3><p>Sikap positif.</p></div>
+    <div class="card"><i class="fas fa-home"></i><h3>Orang Tua</h3><p>Konsultasi wali.</p></div>
 
-</div>
+  </div>
+</section>
 
-<div class="guru-grid">
 
-<div class="guru-card" data-aos="zoom-in">
+<!-- MOTIVASI -->
+<section class="section motivasi">
 
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+  <div class="section-title">
+    <h2>Motivasi</h2>
+  </div>
 
-<div class="guru-content">
-<h3>Rahmawati, S.Pd</h3>
-<p>Guru BK</p>
-</div>
-
-</div>
-
-<div class="guru-card" data-aos="zoom-in">
-
-<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
-
-<div class="guru-content">
-<h3>Andi Saputra, S.Pd</h3>
-<p>Konselor Sekolah</p>
-</div>
-
-</div>
-
-</div>
+  <div class="motivasi-box" data-aos="zoom-in">
+    <i class="fas fa-quote-left"></i>
+    <h2>"Setiap siswa memiliki potensi untuk berkembang."</h2>
+    <p>BK SMPN 20 Konawe Selatan</p>
+  </div>
 
 </section>
 
-<!-- =========================
-     FORM KONSULTASI
-========================= -->
+<!-- JADWAL BK -->
+<section id="jadwal" class="section">
 
-<section id="konsultasi">
+  <div class="section-title">
+    <h2>Jadwal BK</h2>
+  </div>
 
-<div class="section-title" data-aos="fade-up">
+  <div class="table-container">
 
-<h2>Konsultasi Online</h2>
+    <table>
 
-<p>
-Sampaikan pertanyaan atau konsultasi kepada guru BK.
-</p>
+      <thead>
+        <tr>
+          <th>Hari</th>
+          <th>Jam</th>
+          <th>Layanan</th>
+          <th>Ruangan</th>
+        </tr>
+      </thead>
 
-</div>
+      <tbody id="dataJadwal">
+        <tr>
+          <td colspan="4" style="text-align:center;">
+            Memuat data...
+          </td>
+        </tr>
+      </tbody>
 
-<div class="form-container" data-aos="zoom-in">
+    </table>
 
-<form>
+  </div>
+</section>
 
-<div class="form-group">
-<label>Nama Siswa</label>
-<input type="text" placeholder="Masukkan nama">
-</div>
 
-<div class="form-group">
-<label>Kelas</label>
-<input type="text" placeholder="Masukkan kelas">
-</div>
+<!-- FORM 2 -->
+<section class="section">
 
-<div class="form-group">
-<label>Pesan Konsultasi</label>
-<textarea placeholder="Tuliskan konsultasi..."></textarea>
-</div>
+  <div class="section-title">
+    <h2>Form Konsultasi</h2>
+  </div>
 
-<button type="submit" class="form-btn">
-Kirim Konsultasi
-</button>
+  <div class="form-container">
 
-</form>
+    <form class="form" id="formBK">
 
-</div>
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama Lengkap"
+        required
+      >
+
+      <input
+        type="text"
+        name="kelas"
+        placeholder="Kelas"
+        required
+      >
+
+      <select name="jenisMasalah" required>
+        <option value="">Pilih Jenis Masalah</option>
+        <option value="Belajar">Belajar</option>
+        <option value="Sosial">Sosial</option>
+        <option value="Pribadi">Pribadi</option>
+        <option value="Keluarga">Keluarga</option>
+      </select>
+
+      <select name="jadwal" required>
+        <option value="">Pilih Jadwal</option>
+        <option value="Senin">Senin</option>
+        <option value="Selasa">Selasa</option>
+        <option value="Rabu">Rabu</option>
+        <option value="Kamis">Kamis</option>
+        <option value="Jumat">Jumat</option>
+      </select>
+
+      <textarea
+        name="pesan"
+        placeholder="Tuliskan permasalahan atau kebutuhan konsultasi..."
+        rows="5"
+        required
+      ></textarea>
+
+      <button type="submit" class="btn-primary">
+        Kirim Konsultasi
+      </button>
+
+    </form>
+
+  </div>
 
 </section>
 
-<!-- =========================
-     STATISTIK
-========================= -->
 
-<section id="statistik">
+<section class="section">
 
-<div class="section-title" data-aos="fade-up">
+  <div class="section-title">
+    <h2>Pertanyaan Umum (FAQ)</h2>
+  </div>
 
-<h2>Statistik BK</h2>
+  <div class="faq">
 
-<p>
-Data layanan dan kegiatan BK sekolah.
-</p>
+    <div class="faq-item">
+      <b>Apakah hasil konseling bersifat rahasia?</b>
+      <p>
+        Ya, seluruh layanan konseling dijaga
+        kerahasiaannya sesuai etika profesi BK.
+      </p>
+    </div>
 
-</div>
+    <div class="faq-item">
+      <b>Bagaimana cara membuat janji konseling?</b>
+      <p>
+        Siswa dapat mengisi formulir konsultasi
+        atau menghubungi guru BK secara langsung.
+      </p>
+    </div>
 
-<div class="stats-grid">
+    <div class="faq-item">
+      <b>Apakah orang tua dapat berkonsultasi?</b>
+      <p>
+        Ya, orang tua dapat berkonsultasi dengan
+        guru BK untuk mendukung perkembangan siswa.
+      </p>
+    </div>
 
-<div class="stat-card" data-aos="zoom-in">
-<h1>500+</h1>
-<p>Siswa Dibimbing</p>
-</div>
-
-<div class="stat-card" data-aos="zoom-in">
-<h1>20+</h1>
-<p>Program BK</p>
-</div>
-
-<div class="stat-card" data-aos="zoom-in">
-<h1>50+</h1>
-<p>Kegiatan Konseling</p>
-</div>
-
-<div class="stat-card" data-aos="zoom-in">
-<h1>100%</h1>
-<p>Layanan Aktif</p>
-</div>
-
-</div>
+  </div>
 
 </section>
 
-<!-- =========================
-     FOOTER
-========================= -->
 
-<footer>
+<!-- KONTAK -->
+  <!-- KONTAK -->
+<section class="contact">
 
-<h2>BK SMPN 20 Konawe Selatan</h2>
+  <h2>Kontak BK</h2>
 
-<p>
-Website Bimbingan dan Konseling © 2026
-</p>
+  <div class="contact-info">
 
-</footer>
+    <p>
+      <i class="fa-solid fa-location-dot"></i>
+      Sabulakoa, Kabupaten Konawe Selatan, Provinsi Sulawesi Tenggara
+    </p>
 
-<!-- AOS -->
+    <p id="kontakBK">
+      <i class="fas fa-phone"></i>
+      Memuat nomor...
+    </p>
+
+    <p>
+      <i class="fas fa-envelope"></i>
+      smpn20konsel96@gmail.com
+    </p>
+
+  </div>
+
+</section>
+
+</section>
+
+<footer id="footer"></footer>
+
+<!-- SCRIPT -->
+<script type="module" src="assets/js/include.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="assets/js/aos-global.js"></script>
+<script type="module" src="assets/js/bk.js"></script>
+
+<script>
+AOS.init({
+  duration:1000,
+  once:true
+});
+</script>
+
+<!-- FIREBASE PUBLIK SCRIPT -->
+<script type="module">
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const ref = query(
+  collection(db, "jadwalbk"),
+  orderBy("hari"),
+  orderBy("jam")
+);
+
+
+const tbody = document.getElementById("dataJadwal");
+
+/* ================= LOAD DATA ================= */
+async function loadJadwal() {
+
+  try {
+
+tbody.innerHTML = `
+<tr>
+  <td colspan="4" class="loading">
+    <i class="fas fa-spinner fa-spin"></i>
+    Memuat jadwal BK...
+  </td>
+</tr>
+`;
+
+    const snap = await getDocs(ref);
+
+    console.log("JUMLAH DATA:", snap.size);
+
+    if (snap.empty) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="4" style="text-align:center;">
+            Belum ada jadwal BK
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    let rows = "";
+
+    snap.forEach((d) => {
+      const data = d.data();
+
+      rows += `
+        <tr>
+          <td>${data.hari ?? "-"}</td>
+          <td>${data.jam ?? "-"}</td>
+          <td>${data.layanan ?? "-"}</td>
+          <td>${data.ruangan ?? "-"}</td>
+        </tr>
+      `;
+    });
+
+    tbody.innerHTML = rows;
+
+  } catch (err) {
+
+    console.error("ERROR FIREBASE:", err);
+
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="4" style="text-align:center;color:red;">
+          Gagal memuat jadwal
+        </td>
+      </tr>
+    `;
+  }
+}
+
+/* ================= INIT ================= */
+loadJadwal();
+
+</script>
 
 </body>
 </html>
