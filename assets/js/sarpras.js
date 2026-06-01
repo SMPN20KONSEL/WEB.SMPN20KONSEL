@@ -1,4 +1,3 @@
-
 import { db } from "./firebase.js";
 
 import {
@@ -6,9 +5,27 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-const fotoKepala = document.getElementById("fotoKepala");
-const nama = document.getElementById("nama");
-const hp = document.getElementById("hp");
+/* =========================
+   BASE URL
+========================= */
+
+const BASE_URL =
+window.location.hostname === "localhost"
+  ? "./"
+  : "/WEB.SMPN20KONSEL/";
+
+/* =========================
+   DATA WAKASEK SARPRAS
+========================= */
+
+const fotoKepala =
+document.getElementById("fotoKepala");
+
+const nama =
+document.getElementById("nama");
+
+const hp =
+document.getElementById("hp");
 
 const docRef = doc(
   db,
@@ -20,20 +37,35 @@ onSnapshot(docRef, (docSnap) => {
 
   if(docSnap.exists()){
 
-    const data = docSnap.data();
+    const data =
+    docSnap.data();
 
     fotoKepala.src =
-      data.foto || "image/default.png";
+    `${BASE_URL}image/guru/${data.nip}.jpg`;
+
+    fotoKepala.onerror = () => {
+
+      fotoKepala.src =
+      `${BASE_URL}image/default.png`;
+
+    };
 
     nama.textContent =
-      data.nama || "-";
+    data.nama || "-";
 
     hp.textContent =
-      data.nohp || "-";
+    data.nohp || "-";
 
-  } else {
+  }else{
 
-    nama.textContent = "Data tidak ditemukan";
+    fotoKepala.src =
+    `${BASE_URL}image/default.png`;
+
+    nama.textContent =
+    "Data tidak ditemukan";
+
+    hp.textContent =
+    "-";
 
   }
 

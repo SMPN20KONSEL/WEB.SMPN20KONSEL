@@ -5,10 +5,18 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+/* =========================
+   BASE URL
+========================= */
+
 const BASE_URL =
 window.location.hostname === "localhost"
   ? "./"
   : "/WEB.SMPN20KONSEL/";
+
+/* =========================
+   DATA WAKASEK KURIKULUM
+========================= */
 
 const fotoKepala =
 document.getElementById("fotoKepala");
@@ -29,7 +37,8 @@ onSnapshot(docRef, (docSnap) => {
 
   if(docSnap.exists()){
 
-    const data = docSnap.data();
+    const data =
+    docSnap.data();
 
     fotoKepala.src =
     `${BASE_URL}image/guru/${data.nip}.jpg`;
@@ -49,14 +58,18 @@ onSnapshot(docRef, (docSnap) => {
 
   }else{
 
+    fotoKepala.src =
+    `${BASE_URL}image/default.png`;
+
     nama.textContent =
     "Data tidak ditemukan";
+
+    hp.textContent =
+    "-";
 
   }
 
 });
-    
-
 
 /* ================= FAQ ================= */
 
@@ -78,19 +91,23 @@ faqItems.forEach((faq)=>{
 const sliderTrack =
 document.querySelector(".slide-track");
 
-sliderTrack.addEventListener("mouseenter",()=>{
+if(sliderTrack){
 
-  sliderTrack.style.animationPlayState =
-  "paused";
+  sliderTrack.addEventListener("mouseenter",()=>{
 
-});
+    sliderTrack.style.animationPlayState =
+    "paused";
 
-sliderTrack.addEventListener("mouseleave",()=>{
+  });
 
-  sliderTrack.style.animationPlayState =
-  "running";
+  sliderTrack.addEventListener("mouseleave",()=>{
 
-});
+    sliderTrack.style.animationPlayState =
+    "running";
+
+  });
+
+}
 
 /* ================= LIGHT MODE ================= */
 
@@ -134,6 +151,3 @@ btn.onclick = ()=>{
   }
 
 };
-
-
-
