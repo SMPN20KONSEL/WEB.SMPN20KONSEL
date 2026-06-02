@@ -577,7 +577,7 @@
     </div>
 
   </section>
-
+<div id="modal-container"></div>
   <!-- =========================
        POPUP KELULUSAN
   ========================= -->
@@ -860,128 +860,7 @@
   ></script>
   
   <!-- FIREBASE -->
-  <script type="module">
 
-    import { db }
-    from "./assets/js/firebase.js";
-
-    import {
-      doc,
-      onSnapshot
-    }
-    from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-
-    /* =========================
-       FIREBASE
-    ========================= */
-
-    const ref =
-    doc(db, "website", "kelulusan");
-
-    /* =========================
-       REALTIME LOAD
-    ========================= */
-
-    onSnapshot(ref, (snap) => {
-
-      if (!snap.exists()) return;
-
-      const d = snap.data();
-
-      /* =========================
-         STATUS
-      ========================= */
-
-      if (d.aktif === false) {
-
-        document.getElementById(
-          "kelulusanSection"
-        ).style.display = "none";
-
-        return;
-
-      }
-
-      document.getElementById(
-        "kelulusanSection"
-      ).style.display = "block";
-
-      /* =========================
-         LABEL
-      ========================= */
-
-      document.getElementById(
-        "v_label"
-      ).innerText =
-      d.label || "-";
-
-      /* =========================
-         TITLE
-      ========================= */
-
-      document.getElementById(
-        "v_title"
-      ).innerHTML =
-      (d.title || "-")
-      .replace(/\n/g, "<br>");
-
-      /* =========================
-         DESC
-      ========================= */
-
-      document.getElementById(
-        "v_desc"
-      ).innerText =
-      d.desc || "-";
-
-      /* =========================
-         TANGGAL
-      ========================= */
-
-      document.getElementById(
-        "v_tanggal"
-      ).innerText =
-      d.tanggal_pengumuman || "-";
-
-      /* =========================
-         JAM
-      ========================= */
-
-      document.getElementById(
-        "v_jam"
-      ).innerText =
-      d.jam_pengumuman || "-";
-
-      /* =========================
-         IMAGE
-      ========================= */
-
-      document.getElementById(
-        "v_image"
-      ).src =
-      d.image || "image/guru.jpeg";
-
-      /* =========================
-         WELCOME TITLE
-      ========================= */
-
-      document.getElementById(
-        "v_welcome_title"
-      ).innerText =
-      d.welcome_title || "-";
-
-      /* =========================
-         WELCOME DESC
-      ========================= */
-
-      document.getElementById(
-        "v_welcome_desc"
-      ).innerText =
-      d.welcome_desc || "-";
-
-    });
-
-  </script>
 
 </body>
 </html>

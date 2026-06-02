@@ -1,5 +1,5 @@
 /* =====================================================
-   POPUP HASIL KELULUSAN
+   POPUP KELULUSAN
 ===================================================== */
 
 .popup-kelulusan{
@@ -13,19 +13,16 @@
   padding:20px;
 
   background:rgba(0,0,0,.75);
-
   backdrop-filter:blur(8px);
 
   z-index:9999;
-
   overflow-y:auto;
 }
-
-/* ACTIVE */
 
 .popup-kelulusan.active{
   display:flex;
 }
+
 
 /* =====================================================
    POPUP CONTENT
@@ -36,7 +33,6 @@
 
   width:100%;
   max-width:950px;
-
   max-height:95vh;
 
   overflow-y:auto;
@@ -45,19 +41,14 @@
 
   border-radius:35px;
 
-  background:linear-gradient(
-    135deg,
-    #0b1f38,
-    #081728
-  );
-
+  background:linear-gradient(135deg,#0b1f38,#081728);
   border:1px solid rgba(255,255,255,.1);
 
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.45);
+  box-shadow:0 25px 70px rgba(0,0,0,.45);
 
   animation:popupShow .35s ease;
 }
+
 
 /* =====================================================
    CLOSE BUTTON
@@ -65,7 +56,6 @@
 
 .close-popup{
   position:absolute;
-
   top:18px;
   right:18px;
 
@@ -78,7 +68,6 @@
   border-radius:50%;
 
   background:rgba(255,255,255,.10);
-
   color:#fff;
 
   font-size:24px;
@@ -88,9 +77,9 @@
 
 .close-popup:hover{
   transform:rotate(90deg);
-
   background:#ff4d4d;
 }
+
 
 /* =====================================================
    HASIL CARD
@@ -101,14 +90,14 @@
   color:#fff;
 }
 
+
 /* =====================================================
-   CONTAINER ATAS
+   TOP SECTION
 ===================================================== */
 
 .hasil-top{
   display:flex;
   align-items:flex-start;
-
   gap:28px;
 
   padding:30px;
@@ -116,13 +105,13 @@
   border-radius:28px;
 
   background:rgba(255,255,255,.08);
-
   border:1px solid rgba(255,255,255,.1);
 
   backdrop-filter:blur(14px);
 
   margin-bottom:22px;
 }
+
 
 /* =====================================================
    FOTO
@@ -139,14 +128,12 @@
   object-fit:cover;
 
   border-radius:22px;
-
   border:4px solid rgba(255,255,255,.12);
 
-  box-shadow:
-    0 12px 35px rgba(0,0,0,.35);
-
+  box-shadow:0 12px 35px rgba(0,0,0,.35);
   display:block;
 }
+
 
 /* =====================================================
    INFO
@@ -157,6 +144,7 @@
   min-width:0;
 }
 
+
 /* =====================================================
    NAMA
 ===================================================== */
@@ -166,29 +154,22 @@
   font-weight:800;
 
   line-height:1.2;
-
   margin-bottom:24px;
 
-  color:#fff;
-
   word-break:break-word;
-
-  text-shadow:
-    0 3px 10px rgba(0,0,0,.25);
+  text-shadow:0 3px 10px rgba(0,0,0,.25);
 }
 
+
 /* =====================================================
-   DATA
+   DATA LIST
 ===================================================== */
 
 .hasil-data{
   display:flex;
   flex-direction:column;
-
   gap:14px;
 }
-
-/* ITEM */
 
 .hasil-item{
   display:flex;
@@ -199,7 +180,6 @@
   border-radius:18px;
 
   background:rgba(255,255,255,.06);
-
   border:1px solid rgba(255,255,255,.08);
 
   transition:.3s;
@@ -209,11 +189,8 @@
   background:rgba(255,255,255,.1);
 }
 
-/* LABEL */
-
 .hasil-item span{
   width:140px;
-
   flex-shrink:0;
 
   font-size:15px;
@@ -222,28 +199,19 @@
   color:rgba(255,255,255,.72);
 }
 
-/* TITIK DUA */
-
 .hasil-item b{
   margin-right:14px;
-
   font-size:17px;
-
-  color:#fff;
 }
-
-/* VALUE */
 
 .hasil-item strong{
   flex:1;
-
   font-size:17px;
   font-weight:700;
 
-  color:#fff;
-
   word-break:break-word;
 }
+
 
 /* =====================================================
    STATUS
@@ -255,7 +223,6 @@
   padding:18px 20px;
 
   border-radius:20px;
-
   text-align:center;
 
   font-size:24px;
@@ -265,43 +232,32 @@
 
   color:#fff;
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.25);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .status-lulus{
-  background:linear-gradient(
-    135deg,
-    #00d084,
-    #00b56f
-  );
+  background:linear-gradient(135deg,#00d084,#00b56f);
 }
 
 .status-tidak{
-  background:linear-gradient(
-    135deg,
-    #ff4d4d,
-    #e03131
-  );
+  background:linear-gradient(135deg,#ff4d4d,#e03131);
 }
 
+
 /* =====================================================
-   LOADING
+   LOADING & ERROR
 ===================================================== */
 
-.loading-kelulusan{
+.loading-kelulusan,
+.tidak-ditemukan{
   text-align:center;
-
   padding:50px 20px;
-
   color:#fff;
 }
 
 .loading-kelulusan i{
   font-size:55px;
-
   margin-bottom:20px;
-
   color:#00d084;
 }
 
@@ -309,29 +265,14 @@
   font-size:18px;
 }
 
-/* =====================================================
-   ERROR
-===================================================== */
-
-.tidak-ditemukan{
-  text-align:center;
-
-  padding:50px 20px;
-
-  color:#fff;
-}
-
 .tidak-ditemukan i{
   font-size:70px;
-
   margin-bottom:20px;
-
   color:#ff4d4d;
 }
 
 .tidak-ditemukan h2{
   font-size:30px;
-
   margin-bottom:12px;
 }
 
@@ -339,21 +280,104 @@
   opacity:.85;
 }
 
+
+/* =====================================================
+   MODAL LOCK
+===================================================== */
+
+.modal-lock{
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.6);
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  z-index:9999;
+  backdrop-filter:blur(6px);
+
+  animation:fadeIn .2s ease;
+}
+
+.modal-box{
+  width:340px;
+
+  background:#fff;
+  border-radius:20px;
+
+  padding:30px 25px;
+
+  text-align:center;
+
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
+
+  animation:pop .25s ease;
+}
+
+.modal-box i{
+  font-size:45px;
+  color:#ef4444;
+  margin-bottom:10px;
+}
+
+.modal-box h2{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:10px;
+  color:#0f172a;
+}
+
+.modal-box p{
+  font-size:14px;
+  color:#64748b;
+  line-height:1.6;
+}
+
+.modal-box button{
+  margin-top:18px;
+
+  padding:10px 18px;
+
+  border:none;
+  border-radius:10px;
+
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:#fff;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.modal-box button:hover{
+  transform:translateY(-2px);
+  opacity:.9;
+}
+
+
 /* =====================================================
    ANIMATION
 ===================================================== */
 
 @keyframes popupShow{
-  from{
-    opacity:0;
-    transform:scale(.85);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+  from{opacity:0; transform:scale(.85);}
+  to{opacity:1; transform:scale(1);}
 }
+
+@keyframes pop{
+  from{transform:scale(.8); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
 
 /* =====================================================
    RESPONSIVE
@@ -367,19 +391,13 @@
 
   .hasil-top{
     flex-direction:column;
-
     align-items:center;
-
     padding:22px;
   }
 
   .hasil-foto img{
     width:150px;
     height:190px;
-  }
-
-  .hasil-info{
-    width:100%;
   }
 
   .hasil-nama{
@@ -390,7 +408,6 @@
   .hasil-item{
     flex-direction:column;
     align-items:flex-start;
-
     gap:6px;
   }
 
@@ -402,12 +419,7 @@
     display:none;
   }
 
-  .hasil-item strong{
-    width:100%;
-  }
-
   .hasil-status{
     font-size:20px;
   }
-
 }

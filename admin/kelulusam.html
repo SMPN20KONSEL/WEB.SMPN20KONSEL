@@ -536,6 +536,12 @@ tbody tr:hover{
   font-weight:700;
 
 }
+.status-select{
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-weight:600;
+}
 
 /* =========================
    RESPONSIVE
@@ -737,7 +743,18 @@ tbody tr:hover{
           placeholder="Masukkan NISN">
 
         </div>
+<div>
 
+  <label class="label">
+    Gender
+  </label>
+
+  <input
+    type="text"
+    id="gender"
+    placeholder="L / P atau Laki-laki / Perempuan">
+
+</div>
       </div>
 
       <!-- NOMOR UJIAN -->
@@ -926,6 +943,9 @@ document.getElementById(
 "kelas"
 );
 
+const genderEl =
+document.getElementById("gender");
+
 const nisEl =
 document.getElementById(
 "nis"
@@ -1042,15 +1062,12 @@ async function loadKelulusan(){
             ${data.nomorUjian || "-"}
           </td>
 
-          <td class="
-          ${data.status === "LULUS"
-            ? "status-lulus"
-            : "status-tidak"}
-          ">
-
-            ${data.status || "-"}
-
-          </td>
+<td>
+  <select class="status-select" data-nis="${data.nis}">
+    <option value="LULUS" ${data.status === "LULUS" ? "selected" : ""}>LULUS</option>
+    <option value="TIDAK LULUS" ${data.status === "TIDAK LULUS" ? "selected" : ""}>TIDAK LULUS</option>
+  </select>
+</td>
 
         </tr>
 
@@ -1222,26 +1239,23 @@ async ()=>{
     simpanBtn.disabled =
     true;
 
-    await setDoc(
+await setDoc(
 
-      doc(
-        db,
-        "kelulusan",
-        nis
-      ),
+  doc(db, "kelulusan", nis),
 
-      {
-        nama,
-        kelas,
-        nis,
-        nisn,
-        nomorUjian,
-        status,
-        timestamp:
-        new Date()
-      }
+  {
+    nama,
+    kelas,
+    nis,
+    nisn,
+    gender, // ✅ TAMBAHKAN INI
+    nomorUjian,
+    status,
+    timestamp: new Date()
+  },
 
-    );
+  { merge: true } // ⭐ penting biar aman update
+);
 
     alert(
       "Data berhasil disimpan"
@@ -1481,7 +1495,26 @@ async ()=>{
 ========================= */
 
 loadKelulusan();
+document.addEventListener("change", async (e) => {
+  if(e.target.classList.contains("status-select")){
 
+    const nis = e.target.getAttribute("data-nis");
+    const statusBaru = e.target.value;
+
+    try{
+      await setDoc(doc(db, "kelulusan", nis), {
+        status: statusBaru
+      }, { merge: true });
+
+      alert("Status berhasil diperbarui");
+      loadKelulusan();
+
+    }catch(err){
+      console.log(err);
+      alert("Gagal update status");
+    }
+  }
+});
 </script>
 
 </body>
