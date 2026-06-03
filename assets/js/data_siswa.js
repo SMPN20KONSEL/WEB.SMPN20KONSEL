@@ -1,9 +1,4 @@
-/* =========================================
-   IMPORT FIREBASE
-========================================= */
-
 import { db } from "./firebase.js";
-
 import {
   collection,
   onSnapshot,
@@ -11,471 +6,275 @@ import {
   orderBy
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-/* =========================================
-   ELEMENT
-========================================= */
+/* ================= ELEMENT ================= */
+const dataSiswa = document.getElementById("dataSiswa");
+const dataAlumni = document.getElementById("dataAlumni");
 
-const dataSiswa =
-document.getElementById("dataSiswa");
+const totalSiswaStat = document.getElementById("totalSiswa");
+const totalLaki = document.getElementById("siswaL");
+const totalPerempuan = document.getElementById("siswaP");
 
-const totalSiswaStat =
-document.getElementById("totalSiswaStat");
+const totalAlumni = document.getElementById("totalAlumni");
+const alumniL = document.getElementById("alumniL");
+const alumniP = document.getElementById("alumniP");
 
-const footerTotalSiswa =
-document.getElementById("footerTotalSiswa");
+const filterKelas = document.getElementById("filterKelas");
+const filterTahun = document.getElementById("filterTahun");
 
-const totalLaki =
-document.getElementById("totalLaki");
-
-const totalPerempuan =
-document.getElementById("totalPerempuan");
-
-const searchInput =
-document.getElementById("searchInput");
-
-const filterKelas =
-document.getElementById("filterKelas");
-
-/* =========================================
-   DATA GLOBAL
-========================================= */
-
+/* ================= GLOBAL DATA ================= */
 let semuaData = [];
-let renderTimeout = null;
+let semuaAlumni = [];
 
-/* =========================================
-   UPDATE STATISTIK
-========================================= */
+/* ================= FILTER STATE ================= */
+let filterState = {
+  kelas: "",
+  tahun: ""
+};
 
-function updateStatistik(data) {
+/* ================= NORMALISASI GENDER ================= */
+function normalizeGender(g){
+  const gender = String(g || "").toLowerCase().trim();
 
-  let jumlahLaki = 0;
-  let jumlahPerempuan = 0;
+  if(["l","lk","laki-laki","laki laki"].includes(gender)) return "L";
+  if(["p","pr","perempuan"].includes(gender)) return "P";
 
-  data.forEach((siswa) => {
-
-    const gender =
-    (siswa.gender || "")
-    .toLowerCase();
-
-    if (gender === "laki-laki") {
-
-      jumlahLaki++;
-
-    } else if (gender === "perempuan") {
-
-      jumlahPerempuan++;
-
-    }
-
-  });
-
-  const jumlahSiswa =
-  data.length;
-
-  if (totalSiswaStat) {
-
-    totalSiswaStat.textContent =
-    jumlahSiswa;
-
-  }
-
-  if (footerTotalSiswa) {
-
-    footerTotalSiswa.textContent =
-    jumlahSiswa;
-
-  }
-
-  if (totalLaki) {
-
-    totalLaki.textContent =
-    jumlahLaki;
-
-  }
-
-  if (totalPerempuan) {
-
-    totalPerempuan.textContent =
-    jumlahPerempuan;
-
-  }
-
+  return "-";
 }
 
-/* =========================================
-   RENDER SISWA
-========================================= */
+/* ================= STAT SISWA ================= */
+function updateStatistikSiswa(data){
+  let l = 0, p = 0;
 
-function renderSiswa(data) {
+  data.forEach(s => {
+    const g = normalizeGender(s.gender);
+    if(g === "L") l++;
+    if(g === "P") p++;
+  });
 
-  /* =========================
-     DATA KOSONG
-  ========================= */
+  totalSiswaStat.textContent = data.length;
+  totalLaki.textContent = l;
+  totalPerempuan.textContent = p;
+}
 
-  if (!data.length) {
+/* ================= STAT ALUMNI ================= */
+function updateStatistikAlumni(data){
+  let l = 0, p = 0;
 
+  data.forEach(a => {
+    const g = normalizeGender(a.gender);
+    if(g === "L") l++;
+    if(g === "P") p++;
+  });
+
+  totalAlumni.textContent = data.length;
+  alumniL.textContent = l;
+  alumniP.textContent = p;
+}
+
+/* ================= FILTER FUNCTION ================= */
+function applyFilter(){
+
+  const siswaFiltered = semuaData.filter(s =>
+    !filterState.kelas || s.kelas === filterState.kelas
+  );
+
+  const alumniFiltered = semuaAlumni.filter(a =>
+    !filterState.tahun || String(a.tahunLulus) === String(filterState.tahun)
+  );
+
+  renderSiswa(siswaFiltered);
+  renderAlumni(alumniFiltered);
+}
+
+/* ================= DROPDOWN KELAS ================= */
+function setFilterKelas(data){
+  if(!filterKelas) return;
+
+  const selected = filterKelas.value;
+  const set = new Set();
+
+  data.forEach(s => {
+    if(s.kelas) set.add(s.kelas);
+  });
+
+  const arr = [...set].sort((a,b)=>
+    a.localeCompare(b, "id", { numeric: true })
+  );
+
+  filterKelas.innerHTML = `<option value="">Semua Kelas</option>`;
+
+  arr.forEach(k => {
+    filterKelas.innerHTML += `<option value="${k}">${k}</option>`;
+  });
+
+  filterKelas.value = selected;
+}
+
+/* ================= DROPDOWN TAHUN ================= */
+function setFilterTahun(data){
+  if(!filterTahun) return;
+
+  const selected = filterTahun.value;
+  const set = new Set();
+
+  data.forEach(a=>{
+    if(a.tahunLulus) set.add(a.tahunLulus);
+  });
+
+  const arr = [...set].sort((a,b)=>b-a);
+
+  filterTahun.innerHTML = `<option value="">Semua Tahun Lulus</option>`;
+
+  arr.forEach(t=>{
+    filterTahun.innerHTML += `<option value="${t}">${t}</option>`;
+  });
+
+  filterTahun.value = selected;
+}
+
+/* ================= RENDER SISWA ================= */
+function renderSiswa(data){
+
+  if(!data.length){
     dataSiswa.innerHTML = `
-
       <div class="loading-box">
-
         <i class="fas fa-folder-open"></i>
-
-        <p>
-          Data siswa tidak ditemukan
-        </p>
-
+        <p>Data siswa tidak ditemukan</p>
       </div>
-
     `;
-
     return;
-
   }
 
-  /* =========================
-     GROUP BERDASARKAN KELAS
-  ========================= */
+  data.sort((a, b) => {
+    const kelasA = (a.kelas || "").toLowerCase();
+    const kelasB = (b.kelas || "").toLowerCase();
 
-  const kelompokKelas = {};
+    const namaA = (a.nama || "").toLowerCase();
+    const namaB = (b.nama || "").toLowerCase();
 
-  data.forEach((siswa) => {
+    if (kelasA < kelasB) return -1;
+    if (kelasA > kelasB) return 1;
 
-    const kelas =
-    siswa.kelas || "Tanpa Kelas";
+    return namaA.localeCompare(namaB);
+  });
 
-    if (!kelompokKelas[kelas]) {
+  let html = "";
 
-      kelompokKelas[kelas] = [];
+  data.forEach(s => {
+    const gender = (s.gender || "").toLowerCase();
 
+    let fotoDefault = "image/siswa/user.png";
+
+    if(gender.includes("laki")) {
+      fotoDefault = "image/siswa/userlaki.png";
+    } else if(gender.includes("perempuan")) {
+      fotoDefault = "image/siswa/usercewe.png";
     }
 
-    kelompokKelas[kelas].push(siswa);
-
-  });
-
-  /* =========================
-     SORTING KELAS
-  ========================= */
-
-  const romawiMap = {
-
-    "VII": 7,
-    "VIII": 8,
-    "IX": 9
-
-  };
-
-  const urutanKelas =
-  Object.keys(kelompokKelas)
-  .sort((a, b) => {
-
-    const romawiA =
-    a.split(" ")[0];
-
-    const romawiB =
-    b.split(" ")[0];
-
-    const angkaA =
-    romawiMap[romawiA] || 0;
-
-    const angkaB =
-    romawiMap[romawiB] || 0;
-
-    if (angkaA !== angkaB) {
-
-      return angkaA - angkaB;
-
-    }
-
-    return a.localeCompare(
-      b,
-      undefined,
-      {
-        numeric: true,
-        sensitivity: "base"
-      }
-    );
-
-  });
-
-  /* =========================
-     GENERATE HTML
-  ========================= */
-
-  const html = [];
-
-  urutanKelas.forEach((kelas) => {
-
-    html.push(`
-
-      <div class="kelas-section">
-
-        <div class="kelas-header">
-
-          <h2>
-
-            <i class="fas fa-school"></i>
-
-            Kelas ${kelas}
-
-          </h2>
-
-          <span>
-            ${kelompokKelas[kelas].length} Siswa
-          </span>
-
+    html += `
+      <div class="siswa-card">
+        <div class="siswa-foto-box">
+          <img src="${s.foto || fotoDefault}"
+               onerror="this.src='image/siswa/user.png'">
         </div>
 
-        <div class="siswa-grid">
-
-    `);
-
-    kelompokKelas[kelas].forEach((siswa) => {
-
-      html.push(`
-
-        <div class="siswa-card">
-
-          <div class="siswa-foto-box">
-
-            <img
-              src="${
-                siswa.foto ||
-                `image/siswa/${(siswa.nis || "").trim()}.jpg`
-              }"
-
-              onerror="
-                this.onerror=null;
-                this.src='image/siswa/user.png'
-              "
-
-              alt="Foto Siswa"
-            />
-
-          </div>
-
-          <div class="siswa-content">
-
-            <h3>
-              ${siswa.nama || "-"}
-            </h3>
-
-            <div class="siswa-info">
-
-              <i class="fas fa-id-card"></i>
-
-              <span>
-                NIS :
-                ${siswa.nis || "-"}
-              </span>
-
-            </div>
-
-            <div class="siswa-info">
-
-              <i class="fas fa-layer-group"></i>
-
-              <span>
-                Kelas :
-                ${siswa.kelas || "-"}
-              </span>
-
-            </div>
-
-            <div class="siswa-info">
-
-              <i class="fas fa-user"></i>
-
-              <span>
-                Gender :
-                ${siswa.gender || "-"}
-              </span>
-
-            </div>
-
-          </div>
-
+        <div class="siswa-content">
+          <h3>${s.nama || "-"}</h3>
+          <p>NIS: ${s.nis || "-"}</p>
+          <p>Kelas: ${s.kelas || "-"}</p>
+          <p>Gender: ${s.gender || "-"}</p>
         </div>
-
-      `);
-
-    });
-
-    html.push(`
-
-        </div>
-
       </div>
-
-    `);
-
-  });
-
-  /* =========================
-     SEKALI RENDER
-  ========================= */
-
-  dataSiswa.innerHTML =
-  html.join("");
-
-}
-
-/* =========================================
-   FILTER DATA
-========================================= */
-
-function filterData() {
-
-  const keyword =
-  (searchInput?.value || "")
-  .toLowerCase()
-  .trim();
-
-  const kelas =
-  filterKelas?.value || "";
-
-  const hasil =
-  semuaData.filter((siswa) => {
-
-    const nama =
-    (siswa.nama || "")
-    .toLowerCase();
-
-    const nis =
-    (siswa.nis || "")
-    .toString()
-    .toLowerCase();
-
-    const cocokKeyword =
-
-      nama.includes(keyword) ||
-
-      nis.includes(keyword);
-
-    const cocokKelas =
-
-      !kelas ||
-
-      siswa.kelas === kelas;
-
-    return (
-
-      cocokKeyword &&
-      cocokKelas
-
-    );
-
-  });
-
-  renderSiswa(hasil);
-
-  updateStatistik(hasil);
-
-}
-
-/* =========================================
-   DEBOUNCE SEARCH
-========================================= */
-
-function debounceFilter() {
-
-  clearTimeout(renderTimeout);
-
-  renderTimeout =
-  setTimeout(() => {
-
-    filterData();
-
-  }, 300);
-
-}
-
-/* =========================================
-   REALTIME FIRESTORE
-========================================= */
-
-const q = query(
-
-  collection(db, "siswa"),
-  orderBy("nama")
-
-);
-
-onSnapshot(
-
-  q,
-
-  (snapshot) => {
-
-    const dataBaru = [];
-
-    snapshot.forEach((doc) => {
-
-      dataBaru.push({
-
-        id: doc.id,
-
-        ...doc.data()
-
-      });
-
-    });
-
-    semuaData = dataBaru;
-
-    filterData();
-
-    console.log(
-      "Realtime siswa aktif:",
-      semuaData.length
-    );
-
-  },
-
-  (error) => {
-
-    console.error(
-      "Gagal memuat data siswa:",
-      error
-    );
-
-    dataSiswa.innerHTML = `
-
-      <div class="loading-box">
-
-        <i class="fas fa-triangle-exclamation"></i>
-
-        <p>
-          Gagal mengambil data siswa
-        </p>
-
-      </div>
-
     `;
+  });
 
+  dataSiswa.innerHTML = html;
+}
+
+/* ================= RENDER ALUMNI ================= */
+function renderAlumni(data){
+
+  if(!data.length){
+    dataAlumni.innerHTML = `
+      <div class="loading-box">
+        <i class="fas fa-folder-open"></i>
+        <p>Data alumni tidak ditemukan</p>
+      </div>
+    `;
+    return;
   }
 
-);
+  data.sort((a, b) => {
+    const tahunA = parseInt(a.tahunLulus) || 0;
+    const tahunB = parseInt(b.tahunLulus) || 0;
 
-/* =========================================
-   EVENT LISTENER
-========================================= */
+    const namaA = (a.nama || "").toLowerCase();
+    const namaB = (b.nama || "").toLowerCase();
 
-if (searchInput) {
+    if (tahunA !== tahunB) return tahunB - tahunA;
 
-  searchInput.addEventListener(
-    "input",
-    debounceFilter
-  );
+    return namaA.localeCompare(namaB);
+  });
 
+  let html = "";
+
+  data.forEach(a=>{
+    const gender = (a.gender || "").toLowerCase();
+
+    let fotoDefault = "image/siswa/user.png";
+
+    if(gender.includes("laki")) {
+      fotoDefault = "image/siswa/userlaki.png";
+    } else if(gender.includes("perempuan")) {
+      fotoDefault = "image/siswa/usercewe.png";
+    }
+
+    html += `
+      <div class="siswa-card">
+        <div class="siswa-foto-box">
+          <img src="${a.foto || fotoDefault}"
+               onerror="this.src='image/siswa/user.png'">
+        </div>
+
+        <div class="siswa-content">
+          <h3>${a.nama || "-"}</h3>
+          <p>NIS: ${a.nis || "-"}</p>
+          <p>Lulus: ${a.tahunLulus || "-"}</p>
+          <p>Gender: ${a.gender || "-"}</p>
+        </div>
+      </div>
+    `;
+  });
+
+  dataAlumni.innerHTML = html;
 }
 
-if (filterKelas) {
+/* ================= EVENT ================= */
+filterKelas?.addEventListener("change", (e) => {
+  filterState.kelas = e.target.value;
+  applyFilter();
+});
 
-  filterKelas.addEventListener(
-    "change",
-    filterData
-  );
+filterTahun?.addEventListener("change", (e) => {
+  filterState.tahun = e.target.value;
+  applyFilter();
+});
 
-}
+/* ================= FIRESTORE ================= */
+onSnapshot(query(collection(db,"siswa"), orderBy("nama")), snap=>{
+  semuaData = snap.docs.map(d => d.data());
+
+  setFilterKelas(semuaData);
+  applyFilter();
+
+  updateStatistikSiswa(semuaData);
+});
+
+onSnapshot(query(collection(db,"alumni"), orderBy("nama")), snap=>{
+  semuaAlumni = snap.docs.map(d => d.data());
+
+  setFilterTahun(semuaAlumni);
+  applyFilter();
+
+  updateStatistikAlumni(semuaAlumni);
+});

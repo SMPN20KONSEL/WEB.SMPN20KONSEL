@@ -8,177 +8,10 @@
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../assets/css/admin.css">
-<style>
 
+<link rel="stylesheet" href="../assets/css/admin.css">
+<link rel="stylesheet" href="../assets/css/siswa.css">
 
-/* ================= MAIN ================= */
-.main{
-  margin-left:260px;
-  width:100%;
-}
-
-/* ================= HEADER ================= */
-.header{
-  background:white;
-  padding:15px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-
-/* ================= FORM ================= */
-.form-card{
-  background:white;
-  margin:20px;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-
-.form-title{
-  margin-bottom:20px;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-input, select{
-  padding:12px;
-  border:1px solid #ddd;
-  border-radius:8px;
-  outline:none;
-}
-
-input:focus,
-select:focus{
-  border-color:#2563eb;
-}
-
-/* ================= BUTTON ================= */
-.btn{
-  padding:10px 15px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  color:white;
-  font-size:14px;
-}
-
-.btn-save{
-  background:#16a34a;
-}
-
-.btn-import{
-  background:#2563eb;
-}
-
-/* ================= TABLE ================= */
-.container{
-  padding:20px;
-}
-
-.table-card{
-  background:white;
-  border-radius:12px;
-  overflow:auto;
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th, td{
-  padding:12px;
-  border-bottom:1px solid #eee;
-  font-size:14px;
-  text-align:left;
-}
-
-th{
-  background:#f3f4f6;
-}
-
-/* FOTO */
-.foto{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid #eee;
-}
-
-/* BADGE */
-.badge{
-  padding:5px 10px;
-  border-radius:6px;
-  font-size:12px;
-  color:white;
-}
-
-.aktif{
-  background:#16a34a;
-}
-
-.pindah{
-  background:#dc2626;
-}
-
-/* INFO */
-.info-foto{
-  margin-top:15px;
-  padding:15px;
-  background:#eff6ff;
-  border-left:4px solid #2563eb;
-  border-radius:8px;
-  font-size:14px;
-  line-height:1.7;
-}
-
-.btn-hapus{
-  background:#dc2626;
-  color:#fff;
-  border:none;
-  padding:7px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:13px;
-}
-
-.btn-hapus:hover{
-  opacity:.9;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-
-  body{
-    flex-direction:column;
-  }
-
-  .sidebar{
-    width:100%;
-    position:relative;
-    height:auto;
-  }
-
-  .main{
-    margin-left:0;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-</style>
 <style>
 body{
   display:none;
@@ -188,25 +21,29 @@ body{
 <script type="module"
 src="../assets/js/auth-guard.js">
 </script>
-</head>
 
+</head>
 <body>
 
-<!-- ================= SIDEBAR ================= -->
+<!-- SIDEBAR -->
 <div id="sidebar"></div>
-<!-- ================= MAIN ================= -->
+
+<!-- MAIN -->
 <div class="main">
 
   <!-- HEADER -->
   <div class="header">
+
     <h3>Data Siswa</h3>
+
     <div>
       <i class="fas fa-users"></i>
       Manajemen Siswa
     </div>
+
   </div>
 
-  <!-- FORM -->
+  <!-- FORM SISWA -->
   <div class="form-card">
 
     <h3 class="form-title">
@@ -215,13 +52,20 @@ src="../assets/js/auth-guard.js">
 
     <div class="form-grid">
 
-      <input id="nis"
+      <input
+      id="nis"
       placeholder="NIS">
 
-      <input id="nama"
+      <input
+      id="nama"
       placeholder="Nama Lengkap">
 
       <select id="gender">
+
+        <option value="">
+          Pilih Gender
+        </option>
+
         <option value="Laki-laki">
           Laki-laki
         </option>
@@ -229,9 +73,11 @@ src="../assets/js/auth-guard.js">
         <option value="Perempuan">
           Perempuan
         </option>
+
       </select>
 
-      <input id="kelas"
+      <input
+      id="kelas"
       placeholder="Kelas">
 
     </div>
@@ -247,44 +93,140 @@ src="../assets/js/auth-guard.js">
 
     </button>
 
-    <hr style="margin:25px 0; border:none; border-top:1px solid #eee;">
+    <hr class="divider">
 
-<h3 style="margin-bottom:15px;">
-  Import Excel XLSX
-</h3>
+    <!-- IMPORT -->
 
-<input
-  type="file"
-  id="fileCSV"
-  accept=".xlsx,.xls">
+    <h3>
+      Import Excel XLSX
+    </h3>
 
-<br><br>
+    <input
+    type="file"
+    id="fileCSV"
+    accept=".xlsx,.xls">
 
-<button
-class="btn btn-import"
-onclick="downloadTemplate()">
+    <br><br>
 
-  <i class="fas fa-download"></i>
-  Unduh Template XLSX
+    <button
+    class="btn btn-import"
+    onclick="downloadTemplate()">
 
-</button>
+      <i class="fas fa-download"></i>
+      Unduh Template
+
+    </button>
 
     <button
     class="btn btn-import"
     onclick="importCSV()">
 
       <i class="fas fa-file-import"></i>
-      Import CSV
+      Import Excel
 
     </button>
 
-    <div class="info-foto">
+    <hr class="divider">
 
-      <b>📸 Sistem Foto GitHub</b><br>
+    <!-- NAIK KELAS -->
 
-      Upload foto manual ke folder:
+    <h3>
+      Naik Kelas Massal
+    </h3>
+
+    <label>
+      Pilih Kelas
+    </label>
+
+    <select id="kelasAsal">
+      <option value="">
+        Pilih Kelas
+      </option>
+    </select>
+
+    <br><br>
+
+    <label>
+      Siswa Tidak Naik Kelas
+    </label>
+
+    <select
+    id="siswaTidakNaik"
+    multiple>
+
+    </select>
+
+    <small>
+      Kosongkan jika semua siswa naik kelas
+    </small>
+
+    <br><br>
+
+    <button
+    class="btn btn-naik"
+    onclick="naikKelasMassal()">
+
+      <i class="fas fa-arrow-up"></i>
+      Naikkan Kelas
+
+    </button>
+
+    <hr class="divider">
+
+    <!-- LULUSKAN -->
+
+    <h3>
+      Luluskan Siswa
+    </h3>
+
+    <label>
+      Pilih Kelas
+    </label>
+
+    <select id="kelasLulus">
+
+      <option value="">
+        Pilih Kelas
+      </option>
+
+    </select>
+
+    <br><br>
+
+    <label>
+      Siswa Tidak Lulus
+    </label>
+
+    <select
+    id="siswaTidakLulus"
+    multiple>
+
+    </select>
+
+    <small>
+      Kosongkan jika semua siswa lulus
+    </small>
+
+    <br><br>
+
+    <button
+    class="btn btn-lulus"
+    onclick="luluskanSiswa()">
+
+      <i class="fas fa-graduation-cap"></i>
+      Luluskan
+
+    </button>
+
+    <div class="info-box">
+
+      <b>📸 Foto Siswa</b>
 
       <br><br>
+
+      Simpan foto ke folder:
+
+      <br>
 
       <b>
       image/siswa/
@@ -292,20 +234,24 @@ onclick="downloadTemplate()">
 
       <br><br>
 
-      Nama file harus sesuai NISN siswa.
+      Nama file harus sama dengan NIS.
 
       <br><br>
 
       Contoh:
+
       <br>
 
-      <b>1234567890.jpg</b>
+      <b>
+      24001.jpg
+      </b>
 
     </div>
 
   </div>
 
-  <!-- TABLE -->
+  <!-- DATA TABLE -->
+
   <div class="container">
 
     <div class="table-card">
@@ -313,22 +259,29 @@ onclick="downloadTemplate()">
       <table>
 
         <thead>
+
           <tr>
+
             <th>Foto</th>
             <th>NIS</th>
             <th>Nama</th>
-            <th>gender</th>
+            <th>Gender</th>
             <th>Kelas</th>
             <th>Status</th>
+            <th>Aksi</th>
+
           </tr>
+
         </thead>
 
         <tbody id="dataSiswa">
 
           <tr>
-            <td colspan="9">
+
+            <td colspan="7">
               Loading...
             </td>
+
           </tr>
 
         </tbody>
@@ -341,375 +294,16 @@ onclick="downloadTemplate()">
 
 </div>
 
-<!-- ================= FIREBASE ================= -->
-<!-- ================= FIREBASE ================= -->
-<script src="../assets/js/sidebar.js"></script>
+ <script type="module" src="../assets/js/sidebar.js"></script>
 
-<!-- XLSX STYLE -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style/dist/xlsx.bundle.js"></script>
 
-<script type="module" src="../assets/js/admin.js"></script>
-
-<script type="module">
-
-import { db } from "../assets/js/firebase.js";
-
-import {
-  collection,
-  setDoc,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-  orderBy
-}
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
-
-/* ================= URL FOTO ================= */
-
-const FOTO_BASE =
-"../image/siswa/";
-
-/* ================= TAMBAH SISWA ================= */
-
-window.tambahSiswa = async () => {
-
-  const nis =
-  document.getElementById("nis").value.trim();
-
-  const nama =
-  document.getElementById("nama").value.trim();
-
-  const gender =
-  document.getElementById("gender").value;
-
-  const kelas =
-  document.getElementById("kelas").value.trim();
-
-  if(!nis || !nama || !gender || !kelas){
-
-    alert("Lengkapi semua data");
-
-    return;
-  }
-
-  try{
-
-    await setDoc(doc(db,"siswa",nis),{
-
-      nis,
-      nama,
-      gender,
-      kelas,
-
-      status:"aktif",
-
-      createdAt:new Date()
-
-    });
-
-    alert("Siswa berhasil ditambahkan");
-
-    // reset form
-    document.getElementById("nis").value = "";
-    document.getElementById("nama").value = "";
-    document.getElementById("kelas").value = "";
-    document.getElementById("gender").value = "";
-
-  }catch(err){
-
-    console.error(err);
-
-    alert("Gagal menambahkan siswa");
-
-  }
-
-};
-
-/* ================= FORMAT GENDER ================= */
-
-function formatGender(g){
-
-  if(!g) return "-";
-
-  g = String(g).trim().toUpperCase();
-
-  // laki-laki
-  if(
-    g === "L" ||
-    g === "LK" ||
-    g === "LAKI-LAKI" ||
-    g === "LAKI LAKI"
-  ){
-    return "Laki-laki";
-  }
-
-  // perempuan
-  if(
-    g === "P" ||
-    g === "PR" ||
-    g === "PEREMPUAN"
-  ){
-    return "Perempuan";
-  }
-
-  return g;
-
-}
-
-/* ================= IMPORT EXCEL XLSX ================= */
-
-window.importCSV = async () => {
-
-  const file =
-  document.getElementById("fileCSV").files[0];
-
-  if(!file){
-
-    alert("Pilih file Excel (.xlsx)");
-
-    return;
-  }
-
-  try{
-
-    // baca file
-    const data =
-    await file.arrayBuffer();
-
-    // workbook
-    const workbook =
-    XLSX.read(data,{
-      type:"array"
-    });
-
-    // sheet pertama
-    const sheetName =
-    workbook.SheetNames[0];
-
-    const sheet =
-    workbook.Sheets[sheetName];
-
-    // convert json
-    const rows =
-    XLSX.utils.sheet_to_json(sheet,{
-      defval:""
-    });
-
-    let total = 0;
-
-    for(let s of rows){
-
-      if(!s.nis) continue;
-
-      await setDoc(doc(db,"siswa",String(s.nis)),{
-
-        nis:
-        String(s.nis).trim(),
-
-        nama:
-        String(s.nama).trim(),
-
-        gender:
-        formatGender(s.gender),
-
-        kelas:
-        String(s.kelas).trim(),
-
-        status:"aktif",
-
-        createdAt:new Date()
-
-      });
-
-      total++;
-
-    }
-
-    alert(
-      `Import berhasil (${total} siswa)`
-    );
-
-    document.getElementById("fileCSV").value = "";
-
-  }catch(err){
-
-    console.error(err);
-
-    alert("Gagal import Excel");
-
-  }
-
-};
-
-/* ================= DOWNLOAD TEMPLATE XLSX ================= */
-
-window.downloadTemplate = () => {
-
-  const data = [
-
-    {
-      nis:"24001",
-      nama:"Ahmad Saputra",
-      gender:"L",
-      kelas:"7A"
-    },
-
-    {
-      nis:"24002",
-      nama:"Siti Aisyah",
-      gender:"P",
-      kelas:"7A"
-    }
-
-  ];
-
-  // worksheet
-  const ws =
-  XLSX.utils.json_to_sheet(data);
-
-  // ukuran kolom
-  ws["!cols"] = [
-
-    { wch:12 },
-    { wch:30 },
-    { wch:15 },
-    { wch:12 }
-
-  ];
-
-  // workbook
-  const wb =
-  XLSX.utils.book_new();
-
-  XLSX.utils.book_append_sheet(
-    wb,
-    ws,
-    "Data Siswa"
-  );
-
-  // download
-  XLSX.writeFile(
-    wb,
-    "template-data-siswa.xlsx"
-  );
-
-};
-
-/* ================= HAPUS SISWA ================= */
-
-window.hapusSiswa = async (nis,nama) => {
-
-  const konfirmasi =
-  confirm(`Hapus siswa ${nama}?`);
-
-  if(!konfirmasi) return;
-
-  try{
-
-    await deleteDoc(
-      doc(db,"siswa",nis)
-    );
-
-    alert("Data siswa berhasil dihapus");
-
-  }catch(err){
-
-    console.error(err);
-
-    alert("Gagal menghapus siswa");
-
-  }
-
-};
-/* ================= REALTIME DATA ================= */
-
-const q =
-query(
-  collection(db,"siswa"),
-  orderBy("nis")
-);
-
-onSnapshot(q,(snap)=>{
-
-  let html = "";
-
-  snap.forEach((d)=>{
-
-    const s = d.data();
-
-html += `
-
-<tr>
-
-  <td>
-
-    <img
-      class="foto"
-      src="${FOTO_BASE}${s.nis}.jpg"
-
-      onerror="
-      this.onerror=null;
-      this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-      ">
-
-  </td>
-
-  <td>${s.nis || "-"}</td>
-
-  <td>${s.nama || "-"}</td>
-
-  <td>${s.gender || "-"}</td>
-
-  <td>${s.kelas || "-"}</td>
-
-  <td>
-
-    <span class="badge ${s.status}">
-
-      ${s.status || "aktif"}
-
-    </span>
-
-  </td>
-
-  <td>
-
-    <button
-      class="btn-hapus"
-      onclick="hapusSiswa('${s.nis}','${s.nama}')">
-
-      Hapus
-
-    </button>
-
-  </td>
-
-</tr>
-
-`;
-  });
-
-  document.getElementById("dataSiswa").innerHTML =
-
-  html ||
-
-  `
-
-    <tr>
-
-      <td colspan="7">
-
-        Tidak ada data siswa
-
-      </td>
-
-    </tr>
-
-  `;
-
-});
-
+<script type="module"
+src="../assets/js/admin.js">
+</script>
+
+<script type="module"
+src="../assets/js/siswa.js">
 </script>
 
 </body>

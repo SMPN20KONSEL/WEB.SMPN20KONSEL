@@ -2,292 +2,171 @@
 <html lang="id">
 <head>
 
-  <!-- =========================
-       BASIC
-  ========================== -->
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <title>Data Siswa | SMP Negeri 20 Konawe Selatan</title>
 
-  <!-- =========================
-       SEO
-  ========================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <title>
-    Data Siswa | SMP Negeri 20 Konawe Selatan
-  </title>
-
-  <meta
-    name="description"
-    content="Data peserta didik SMP Negeri 20 Konawe Selatan. Informasi siswa berdasarkan kelas, statistik siswa, dan profil peserta didik sekolah.">
-
-  <meta
-    name="keywords"
-    content="Data Siswa SMPN 20 Konawe Selatan, Peserta Didik SMPN 20 Konawe Selatan, Profil Siswa, Siswa SMP">
-
-  <meta
-    name="author"
-    content="SMP Negeri 20 Konawe Selatan">
-
-  <meta
-    name="robots"
-    content="index, follow">
-
-  <!-- =========================
-       CANONICAL
-  ========================== -->
-
-  <link
-    rel="canonical"
-    href="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/data_siswa.html">
-
-  <!-- =========================
-       OPEN GRAPH
-  ========================== -->
-
-  <meta
-    property="og:type"
-    content="website">
-
-  <meta
-    property="og:title"
-    content="Data Siswa | SMP Negeri 20 Konawe Selatan">
-
-  <meta
-    property="og:description"
-    content="Data peserta didik SMP Negeri 20 Konawe Selatan.">
-
-  <meta
-    property="og:url"
-    content="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/data_siswa.html">
-
-  <meta
-    property="og:image"
-    content="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/Logo_transparent.png">
-
-  <!-- =========================
-       TWITTER CARD
-  ========================== -->
-
-  <meta
-    name="twitter:card"
-    content="summary_large_image">
-
-  <meta
-    name="twitter:title"
-    content="Data Siswa | SMP Negeri 20 Konawe Selatan">
-
-  <meta
-    name="twitter:description"
-    content="Data peserta didik SMP Negeri 20 Konawe Selatan.">
-
-  <meta
-    name="twitter:image"
-    content="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/Logo_transparent.png">
-
-  <!-- =========================
-       FAVICON
-  ========================== -->
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="image/Logo_transparent.png">
-
-  <!-- =========================
-       FONT AWESOME
-  ========================== -->
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- =========================
-       AOS ANIMATION
-  ========================== -->
-
-  <link
-    href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-    rel="stylesheet">
-
-  <!-- =========================
-       CSS
-  ========================== -->
-
-  <link
-    rel="stylesheet"
-    href="assets/css/global.css">
-
-  <link
-    rel="stylesheet"
-    href="assets/css/header-footer.css">
-
-  <link
-    rel="stylesheet"
-    href="assets/css/datasiswa.css">
+  <link rel="stylesheet" href="assets/css/header-footer.css">
+  <link rel="stylesheet" href="assets/css/datasiswa.css">
 
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <div id="header"></div>
-
+<!-- =========================
+     HERO
+========================= -->
 
 <!-- ================= HERO ================= -->
 <section class="hero">
 
-  <div class="hero-content" data-aos="fade-up">
+  <div class="hero-content">
 
-    <h1>Profil Siswa</h1>
+    <h1>
+      Profil <span>Siswa</span>
+    </h1>
 
     <p>
-      Data peserta didik
-      SMP Negeri 20 Konawe Selatan
+      Data peserta didik SMP Negeri 20 Konawe Selatan
     </p>
+
+    <div class="hero-btn">
+      <a href="#siswa">
+        Lihat Siswa
+      </a>
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- ================= MAIN ================= -->
+<!-- ================= STATISTICS ================= -->
+<section class="container stats-dashboard">
 
-<div class="container">
+  <!-- SISWA -->
+  <div class="stats-card stats-left">
 
-  <!-- FILTER -->
-
-  <div class="filter-card">
-
-    <div class="search-box">
-
-      <i class="fas fa-search"></i>
-
-      <input
-      type="text"
-      id="searchInput"
-      placeholder="Cari nama siswa...">
-
+    <div class="stat-main">
+      <h4><i class="fas fa-user-graduate"></i> Total Siswa Aktif</h4>
+      <h2 id="totalSiswa">0</h2>
     </div>
 
-    <select id="filterKelas">
+    <div class="stat-row">
 
-      <option value="">
-        Semua Kelas
-      </option>
+      <div class="stat-mini">
+        <h4><i class="fas fa-male"></i> Laki-laki</h4>
+        <h2 id="siswaL">0</h2>
+      </div>
 
-      <option value="VII">
-        VII
-      </option>
-
-      <option value="VIII">
-        VIII
-      </option>
-
-      <option value="IX">
-        IX
-      </option>
-
-    </select>
-
-  </div>
-
-  <!-- STATISTIK -->
-
-  <div class="stats-grid">
-
-    <div class="stat-card">
-
-      <i class="fas fa-users"></i>
-
-      <h2 id="totalSiswaStat">
-        0
-      </h2>
-
-      <p>Total Siswa</p>
-
-    </div>
-
-    <div class="stat-card">
-
-      <i class="fas fa-male"></i>
-
-      <h2 id="totalLaki">
-        0
-      </h2>
-
-      <p>Laki-laki</p>
-
-    </div>
-
-    <div class="stat-card">
-
-      <i class="fas fa-female"></i>
-
-      <h2 id="totalPerempuan">
-        0
-      </h2>
-
-      <p>Perempuan</p>
-
-    </div>
-
-  </div>
-
-  <!-- ================= DATA SISWA ================= -->
-
-  <div class="siswa-wrapper">
-
-    <div class="siswa-header">
-
-      <h1>
-
-        <i class="fas fa-user-graduate"></i>
-
-        Profil Peserta Didik
-
-      </h1>
-
-      <p>
-        Data siswa SMP Negeri 20 Konawe Selatan
-      </p>
-
-    </div>
-
-    <!-- CARD SISWA -->
-
-    <div
-    id="dataSiswa"
-    class="siswa-grid">
-
-      <div class="loading-box">
-
-        <i class="fas fa-spinner fa-spin"></i>
-
-        <p>
-          Memuat data siswa...
-        </p>
-
+      <div class="stat-mini">
+        <h4><i class="fas fa-female"></i> Perempuan</h4>
+        <h2 id="siswaP">0</h2>
       </div>
 
     </div>
 
   </div>
 
-</div>
+  <!-- ALUMNI -->
+  <div class="stats-card stats-right">
 
-<!-- ================= FOOTER ================= -->
+    <div class="stat-main">
+      <h4><i class="fas fa-user-check"></i> Total Alumni</h4>
+      <h2 id="totalAlumni">0</h2>
+    </div>
+
+    <div class="stat-row">
+
+      <div class="stat-mini">
+        <h4><i class="fas fa-male"></i> Alumni Laki-laki</h4>
+        <h2 id="alumniL">0</h2>
+      </div>
+
+      <div class="stat-mini">
+        <h4><i class="fas fa-female"></i> Alumni Perempuan</h4>
+        <h2 id="alumniP">0</h2>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FILTER ================= -->
+<section class="container filter-section">
+
+  <div class="filter-card">
+
+    <!-- FILTER SISWA -->
+    <div class="filter-item">
+
+      <label class="filter-label">
+        <i class="fas fa-user-graduate"></i>
+        Siswa Aktif
+      </label>
+
+      <select id="filterKelas" class="filter-select">
+        <option value="">Semua Kelas</option>
+      </select>
+
+    </div>
+
+    <!-- FILTER ALUMNI -->
+    <div class="filter-item">
+
+      <label class="filter-label">
+        <i class="fas fa-user-check"></i>
+        Alumni
+      </label>
+
+      <select id="filterTahun" class="filter-select">
+        <option value="">Semua Tahun Lulus</option>
+      </select>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SISWA ================= -->
+<section id="siswa" class="container">
+
+  <div class="section-title">
+    <h2><i class="fas fa-users"></i> Siswa Aktif</h2>
+  </div>
+
+  <div id="dataSiswa" class="siswa-grid"></div>
+
+</section>
+
+
+<!-- ================= ALUMNI ================= -->
+<section class="container alumni-section">
+
+  <div class="section-title">
+    <h2><i class="fas fa-user-check"></i> Alumni</h2>
+  </div>
+
+  <div id="dataAlumni" class="siswa-grid"></div>
+
+</section>
 
 <div id="footer"></div>
-
-<!-- ================= SCRIPT ================= -->
 
 <script type="module" src="assets/js/include.js"></script>
 <script type="module" src="assets/js/data_siswa.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="assets/js/aos-global.js"></script>
+
 </body>
 </html>

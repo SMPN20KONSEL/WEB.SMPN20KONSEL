@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Alumni</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="../assets/css/admin.css">
+
+<style>
+
+.main{
+  margin-left:260px;
+  padding:20px;
+}
+
+.header{
+  background:#fff;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.card{
+  background:#fff;
+  padding:20px;
+  margin-top:20px;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+input{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.btn{
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.btn-add{background:#16a34a;}
+.btn-export{background:#2563eb;}
+.btn-import{background:#7c3aed;}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+th{
+  background:#f3f4f6;
+}
+
+.foto{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+</style>
+
+<script type="module"
+src="../assets/js/auth-guard.js"></script>
+
+</head>
+
+<body>
+
+<div id="sidebar"></div>
+
+<div class="main">
+
+  <div class="header">
+    <h3>Data Alumni</h3>
+
+    <div>
+      <button class="btn btn-export" onclick="exportAlumni()">
+        Export Excel
+      </button>
+
+      <button class="btn btn-import" onclick="importAlumniExcel()">
+        Import Alumni Lama
+      </button>
+    </div>
+  </div>
+
+  <!-- FORM TAMBAH ALUMNI MANUAL -->
+  <div class="card">
+
+    <h3>Tambah Alumni Lama</h3>
+
+<div class="form-grid">
+
+  <input id="nis" placeholder="NIS">
+  <input id="nama" placeholder="Nama">
+
+  <select id="gender">
+    <option value="">Gender</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select>
+
+  <input id="kelas" placeholder="Kelas Terakhir">
+  <input id="tahun" placeholder="Tahun Lulus">
+
+</div>
+
+    <br>
+
+    <button class="btn btn-add" onclick="tambahAlumniManual()">
+      Tambah Alumni
+    </button>
+
+  </div>
+
+  <!-- IMPORT -->
+  <div class="card">
+
+    <h3>Import Alumni Lama (Excel)</h3>
+
+    <input type="file" id="fileAlumni" accept=".xlsx,.xls">
+
+    <br><br>
+
+    <button class="btn btn-import" onclick="importAlumniExcel()">
+      Import Excel
+    </button>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="card">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>NIS</th>
+          <th>Nama</th>
+          <th>Gender</th>
+          <th>Kelas</th>
+          <th>Tahun Lulus</th>
+        </tr>
+      </thead>
+
+      <tbody id="alumniTable">
+        <tr><td colspan="5">Loading...</td></tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+ <script type="module" src="../assets/js/sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style/dist/xlsx.bundle.js"></script>
+
+<script type="module" src="../assets/js/alumni.js"></script>
+
+</body>
+</html>
