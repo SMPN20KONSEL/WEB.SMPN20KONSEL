@@ -1,131 +1,169 @@
+<!-- =========================
+     SIDEBAR
+========================= -->
 <div class="sidebar">
 
   <!-- LOGO -->
   <div class="logo">
-    <img src="../image/logo.png">
+    <img src="../image/logo.png" alt="Logo Sekolah">
     <h2>SMPN 20 KONSEL</h2>
   </div>
 
-  <!-- MENU -->
+  <!-- MENU TITLE -->
   <div class="menu-title">
     Menu Utama
   </div>
 
   <!-- DASHBOARD -->
-  <a href="dashboard.html">
+  <a href="dashboard.html" class="menu-link">
     <i class="fas fa-home"></i>
-    Dashboard
+    <span>Dashboard</span>
   </a>
 
-  <!-- DATA SEKOLAH -->
+
+  <!-- =========================
+       DATA SEKOLAH
+  ========================= -->
   <div class="dropdown">
 
     <button class="dropbtn">
-      <i class="fas fa-school"></i>
-      Data Sekolah ▾
+
+      <span class="menu-left">
+        <i class="fas fa-school"></i>
+        Data Sekolah
+      </span>
+
+      <i class="fas fa-chevron-down arrow"></i>
+
     </button>
 
     <div class="dropdown-content">
 
       <a href="siswa.html">
         <i class="fas fa-users"></i>
-        Data Siswa
+        <span>Data Siswa</span>
       </a>
 
       <a href="guru.html">
         <i class="fas fa-chalkboard-teacher"></i>
-        Data Guru
+        <span>Data Guru</span>
       </a>
 
       <a href="osis.html">
         <i class="fas fa-user-group"></i>
-        Data OSIS
+        <span>Data OSIS</span>
       </a>
 
       <a href="profil.html">
         <i class="fas fa-pen"></i>
-        Edit Profil
+        <span>Edit Profil</span>
       </a>
 
-      <a href="kelulusam.html">
-        <i class="fas fa-pen"></i>
-        Data Kelulusan
-      </a>      
+      <a href="kelulusan.html">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Data Kelulusan</span>
+      </a>
+
     </div>
 
   </div>
 
-  <!-- BUAT DATA SEKOLAH -->
+
+  <!-- =========================
+       BUAT DATA SEKOLAH
+  ========================= -->
   <div class="dropdown">
 
     <button class="dropbtn">
-      <i class="fas fa-folder-plus"></i>
-      Buat Data Sekolah ▾
+
+      <span class="menu-left">
+        <i class="fas fa-folder-plus"></i>
+        Buat Data Sekolah
+      </span>
+
+      <i class="fas fa-chevron-down arrow"></i>
+
     </button>
 
     <div class="dropdown-content">
 
       <a href="berita.html">
         <i class="fas fa-newspaper"></i>
-        Berita
+        <span>Berita</span>
       </a>
 
       <a href="galeri.html">
         <i class="fas fa-image"></i>
-        Galeri
+        <span>Galeri</span>
       </a>
 
       <a href="galeri_vidio.html">
         <i class="fas fa-video"></i>
-        Video Sekolah
+        <span>Video Sekolah</span>
       </a>
 
       <a href="slider.html">
         <i class="fas fa-users-gear"></i>
-        Input Pengurus
+        <span>Input Pengurus</span>
       </a>
 
       <a href="sambutan.html">
         <i class="fas fa-comment"></i>
-        Sambutan
+        <span>Sambutan</span>
       </a>
 
       <a href="pendaftaran.html">
         <i class="fas fa-user-plus"></i>
-        Info SPMB
+        <span>Info SPMB</span>
       </a>
 
       <a href="informasi_kelulusan.html">
-        <i class="fas fa-user-plus"></i>
-        Info Kelulusan
+        <i class="fas fa-circle-info"></i>
+        <span>Info Kelulusan</span>
       </a>
-        <a href="admin-jadwal-bk.html">
-        <i class="fas fa-user-plus"></i>
-        Jadwal BK
+
+      <a href="admin-jadwal-bk.html">
+        <i class="fas fa-calendar-days"></i>
+        <span>Jadwal BK</span>
       </a>
+
     </div>
 
   </div>
 
-  <!-- MENU LAIN -->
-  <a href="statistik.html">
+
+  <!-- =========================
+       MENU LAIN
+  ========================= -->
+
+  <a href="statistik.html" class="menu-link">
     <i class="fas fa-chart-bar"></i>
-    Statistik
+    <span>Statistik</span>
   </a>
 
-  <a href="pengumuman.html">
+  <a href="pengumuman.html" class="menu-link">
     <i class="fas fa-bullhorn"></i>
-    Pengumuman
+    <span>Pengumuman</span>
   </a>
 
-  <a href="pengaturan.html">
+  <a href="pengaturan.html" class="menu-link">
     <i class="fas fa-cog"></i>
-    Pengaturan
+    <span>Pengaturan</span>
   </a>
 
-  <a href="login.html">
+  <a href="login.html" class="menu-link logout">
     <i class="fas fa-right-from-bracket"></i>
-    Logout
+    <span>Logout</span>
   </a>
 
 </div>
+
+
+
+<!-- =========================
+     TOGGLE BUTTON MOBILE
+========================= -->
+<button class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i>
+</button>
+

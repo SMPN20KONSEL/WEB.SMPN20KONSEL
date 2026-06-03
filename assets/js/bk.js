@@ -3,19 +3,20 @@ import { db } from "./firebase.js";
 import {
   doc,
   onSnapshot
-} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 /* =========================
-   BASE URL
+BASE URL
 ========================= */
 
 const BASE_URL =
 window.location.hostname === "localhost"
-  ? "./"
-  : "/WEB.SMPN20KONSEL/";
+? "./"
+: "/WEB.SMPN20KONSEL/";
 
 /* =========================
-   DATA BIMBINGAN KONSELOR
+DATA BIMBINGAN KONSELOR
 ========================= */
 
 const fotoKepala =

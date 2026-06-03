@@ -21,6 +21,7 @@
 body{
   background:var(--bg);
   display:flex;
+  overflow-x:hidden;
 }
 
 /* ================= SIDEBAR ================= */
@@ -37,6 +38,10 @@ body{
   padding:20px;
 
   overflow-y:auto;
+
+  transition:.4s;
+
+  z-index:999;
 }
 
 /* ================= LOGO ================= */
@@ -59,16 +64,19 @@ body{
 /* ================= MENU TITLE ================= */
 .menu-title{
   color:#9ca3af;
+
   margin-bottom:15px;
+
   font-size:13px;
+
   text-transform:uppercase;
+
   letter-spacing:1px;
 }
 
 /* ================= MENU ================= */
 .sidebar a,
 .dropbtn{
-
   width:100%;
 
   display:flex;
@@ -78,9 +86,11 @@ body{
   padding:14px 16px;
 
   color:white;
+
   text-decoration:none;
 
   background:none;
+
   border:none;
 
   border-radius:12px;
@@ -95,12 +105,12 @@ body{
 /* ================= HOVER ================= */
 .sidebar a:hover,
 .dropbtn:hover{
-  background:#1877f2;
+  background:rgba(255,255,255,0.08);
 }
 
 /* ================= ACTIVE ================= */
 .sidebar a.active{
-  background:#1877f2;
+  background:var(--primary);
 }
 
 /* ================= DROPDOWN ================= */
@@ -110,12 +120,29 @@ body{
 
 /* tombol dropdown */
 .dropbtn{
-  justify-content:flex-start;
+  justify-content:space-between;
+}
+
+/* kiri menu */
+.menu-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* arrow */
+.arrow{
+  font-size:12px;
+  transition:.3s;
+}
+
+/* rotate arrow */
+.dropdown.active .arrow{
+  transform:rotate(180deg);
 }
 
 /* isi dropdown */
 .dropdown-content{
-
   display:none;
 
   padding-left:15px;
@@ -123,19 +150,18 @@ body{
   margin-top:6px;
 }
 
+/* aktif */
+.dropdown.active .dropdown-content{
+  display:block;
+}
+
 /* link dropdown */
 .dropdown-content a{
-
   font-size:14px;
 
   margin-top:5px;
 
   background:rgba(255,255,255,0.03);
-}
-
-/* saat aktif */
-.dropdown.active .dropdown-content{
-  display:block;
 }
 
 /* ================= SCROLLBAR ================= */
@@ -148,25 +174,34 @@ body{
   border-radius:20px;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){
+/* ================= TOGGLE BUTTON ================= */
+.menu-toggle{
+  position:fixed;
 
-  body{
-    flex-direction:column;
-  }
+  top:15px;
+  left:15px;
 
-  .sidebar{
-    width:100%;
-    height:auto;
-    position:relative;
-  }
+  width:45px;
+  height:45px;
 
+  border:none;
+
+  border-radius:10px;
+
+  background:var(--primary);
+
+  color:white;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+  z-index:1000;
+
+  display:none;
 }
-/* =========================
-   RESPONSIVE SIDEBAR ADMIN
-========================= */
 
-/* TABLET */
+/* ================= TABLET ================= */
 @media(max-width:992px){
 
   .sidebar{
@@ -190,27 +225,33 @@ body{
 
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
 
   body{
     flex-direction:column;
-    overflow-x:hidden;
   }
 
-  /* SIDEBAR */
+  /* toggle muncul */
+  .menu-toggle{
+    display:block;
+  }
+
+  /* sidebar hidden */
   .sidebar{
-    width:100%;
-    height:auto;
+    width:260px;
+    height:100vh;
 
-    position:relative;
+    position:fixed;
 
-    padding:15px;
-
-    overflow:visible;
+    transform:translateX(-100%);
   }
 
-  /* LOGO */
+  /* sidebar aktif */
+  .sidebar.active{
+    transform:translateX(0);
+  }
+
   .logo{
     margin-bottom:20px;
   }
@@ -221,25 +262,19 @@ body{
 
   .logo h2{
     font-size:16px;
-    line-height:1.4;
   }
 
-  /* MENU TITLE */
   .menu-title{
     font-size:12px;
-    margin-bottom:12px;
   }
 
-  /* MENU */
   .sidebar a,
   .dropbtn{
     padding:12px 14px;
     font-size:14px;
-    border-radius:10px;
     gap:10px;
   }
 
-  /* DROPDOWN */
   .dropdown-content{
     padding-left:10px;
   }
@@ -251,10 +286,11 @@ body{
 
 }
 
-/* SMALL MOBILE */
+/* ================= SMALL MOBILE ================= */
 @media(max-width:480px){
 
   .sidebar{
+    width:240px;
     padding:12px;
   }
 

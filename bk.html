@@ -284,35 +284,57 @@
 
 </section>
 
-
-<!-- KONTAK -->
   <!-- KONTAK -->
-<section class="contact">
+<section id="kontak">
 
-  <h2>Kontak BK</h2>
+  <div class="contact">
 
-  <div class="contact-info">
+    <h2>Kontak Bagian BK</h2>
 
-    <p>
-      <i class="fa-solid fa-location-dot"></i>
-      Sabulakoa, Kabupaten Konawe Selatan, Provinsi Sulawesi Tenggara
-    </p>
+    <div class="contact-body">
 
-    <p id="kontakBK">
-      <i class="fas fa-phone"></i>
-      Memuat nomor...
-    </p>
+      <!-- FOTO -->
+<img
+  id="fotoKepala"
+  src="image/default.png"
+  alt="Foto Kepala Sarpras"
+  onerror="this.src='image/default.png'"
+>
 
-    <p>
-      <i class="fas fa-envelope"></i>
-      smpn20konsel96@gmail.com
-    </p>
+      <!-- DATA -->
+      <div class="contact-content">
+
+        <p>
+          <i class="fas fa-user"></i>
+          Kepala BK :
+          <span id="nama">Loading...</span>
+        </p>
+
+        <p>
+          <i class="fas fa-phone"></i>
+          <span id="hp">Loading...</span>
+        </p>
+
+        <p>
+          <i class="fas fa-envelope"></i>
+          <span id="email">
+            smpn20konsel96@gmail.com
+          </span>
+        </p>
+
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          Konawe Selatan
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
-</section>
 
 <footer id="footer"></footer>
 
@@ -330,83 +352,67 @@ AOS.init({
 
 <!-- FIREBASE PUBLIK SCRIPT -->
 <script type="module">
+import { db } from "./assets/js/firebase.js";
+
 import {
   collection,
-  getDocs,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-const ref = query(
-  collection(db, "jadwalbk"),
-  orderBy("hari"),
-  orderBy("jam")
-);
+const tbody =
+document.getElementById("dataJadwal");
 
+async function loadJadwal(){
 
-const tbody = document.getElementById("dataJadwal");
+  try{
 
-/* ================= LOAD DATA ================= */
-async function loadJadwal() {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="4">
+          Memuat jadwal...
+        </td>
+      </tr>
+    `;
 
-  try {
-
-tbody.innerHTML = `
-<tr>
-  <td colspan="4" class="loading">
-    <i class="fas fa-spinner fa-spin"></i>
-    Memuat jadwal BK...
-  </td>
-</tr>
-`;
-
-    const snap = await getDocs(ref);
-
-    console.log("JUMLAH DATA:", snap.size);
-
-    if (snap.empty) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="4" style="text-align:center;">
-            Belum ada jadwal BK
-          </td>
-        </tr>
-      `;
-      return;
-    }
+    const snapshot =
+    await getDocs(
+      collection(db,"jadwalbk")
+    );
 
     let rows = "";
 
-    snap.forEach((d) => {
-      const data = d.data();
+    snapshot.forEach((doc)=>{
+
+      const data = doc.data();
 
       rows += `
         <tr>
-          <td>${data.hari ?? "-"}</td>
-          <td>${data.jam ?? "-"}</td>
-          <td>${data.layanan ?? "-"}</td>
-          <td>${data.ruangan ?? "-"}</td>
+          <td>${data.hari || "-"}</td>
+          <td>${data.jam || "-"}</td>
+          <td>${data.layanan || "-"}</td>
+          <td>${data.ruangan || "-"}</td>
         </tr>
       `;
+
     });
 
     tbody.innerHTML = rows;
 
-  } catch (err) {
+  }catch(err){
 
-    console.error("ERROR FIREBASE:", err);
+    console.error(err);
 
     tbody.innerHTML = `
       <tr>
-        <td colspan="4" style="text-align:center;color:red;">
-          Gagal memuat jadwal
+        <td colspan="4" style="color:red">
+          ${err.message}
         </td>
       </tr>
     `;
   }
 }
 
-/* ================= INIT ================= */
 loadJadwal();
 
 </script>
