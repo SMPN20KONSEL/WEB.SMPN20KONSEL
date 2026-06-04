@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -152,41 +151,22 @@ href="assets/css/detail_berrita.css">
 
   </div>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+<aside class="sidebar">
 
-    <div class="sidebar-box">
+  <div class="sidebar-box">
 
-      <h3>Popular Post</h3>
+    <h3>Popular Post</h3>
 
-      <a href="#" class="popular-post">
+    <div id="popularPost">
 
-        <img src="./image/osis.jpg" alt="OSIS">
-
-        <div>
-          <h4>Kegiatan OSIS SMPN 20 Konawe Selatan</h4>
-          <span>11 Maret 2026</span>
-        </div>
-
-      </a>
-
-      <a href="#" class="popular-post">
-
-        <img src="./image/pramuka.jpg" alt="Pramuka">
-
-        <div>
-          <h4>Kegiatan Pramuka dan Karakter Siswa</h4>
-          <span>5 Maret 2026</span>
-        </div>
-
-      </a>
+      <p>Memuat berita...</p>
 
     </div>
 
-  </aside>
+  </div>
 
+</aside>
 </section>
-
 <!-- FIREBASE -->
 <div id="footer"></div>
 
@@ -210,7 +190,11 @@ import {
   where,
 
   onSnapshot,
-  serverTimestamp
+  serverTimestamp,
+
+  getDocs,
+  orderBy,
+  limit
 
 }
 from
@@ -533,15 +517,104 @@ function tampilKomentar(){
 
 }
 
+async function loadPopularPost(){
+
+  const container =
+  document.getElementById("popularPost");
+
+  if(!container) return;
+
+  try{
+
+    const q = query(
+      collection(db,"berita"),
+      orderBy("tanggal","desc")
+    );
+
+    const snapshot =
+    await getDocs(q);
+
+    let berita = [];
+
+    snapshot.forEach(docSnap=>{
+
+      if(docSnap.id !== id){
+
+        berita.push({
+          id: docSnap.id,
+          ...docSnap.data()
+        });
+
+      }
+
+    });
+
+    if(berita.length === 0){
+
+      container.innerHTML =
+      "<p>Belum ada berita.</p>";
+
+      return;
+
+    }
+
+    // indeks berubah setiap hari
+    const hari =
+    Math.floor(Date.now() / 86400000);
+
+    let html = "";
+
+    for(let i=0;i<3;i++){
+
+      const item =
+      berita[(hari + i) % berita.length];
+
+      html += `
+
+      <a href="detail-berita.html?id=${item.id}"
+         class="popular-post">
+
+        <img
+          src="${item.gambar1 || 'https://via.placeholder.com/150'}"
+          alt="${escapeHtml(item.judul)}"
+          loading="lazy"
+        >
+
+        <div>
+          <h4>${escapeHtml(item.judul)}</h4>
+
+          <span>
+            ${formatTanggalIndonesia(item.tanggal)}
+          </span>
+        </div>
+
+      </a>
+
+      `;
+
+    }
+
+    container.innerHTML = html;
+
+  }catch(error){
+
+    console.log(error);
+
+    container.innerHTML =
+    "<p>Gagal memuat berita.</p>";
+
+  }
+
+}
+
 /* =========================
    START
 ========================= */
-
 loadBerita();
 tampilKomentar();
+loadPopularPost();
 
 </script>
 
 </body>
 </html>
-```
