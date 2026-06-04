@@ -153,62 +153,91 @@
 
     </section>
 
-    <!-- ================= SISWA ================= -->
-    <section class="card">
+  <!-- ================= DATA PESERTA DIDIK ================= -->
+<section class="card">
 
-      <h2>Data Peserta Didik SMPN 20 Konawe Selatan</h2>
+  <h2>Data Peserta Didik SMPN 20 Konawe Selatan</h2>
 
-      <p id="tahunPelajaran"></p>
+  <p id="tahunPelajaran"></p>
 
-      <div class="table-wrapper">
+  <div class="table-wrapper">
+    <table>
 
-        <table>
+      <thead>
+        <tr>
+          <th rowspan="2">No</th>
+          <th rowspan="2">Kelas</th>
+          <th colspan="3">Berdasarkan Jenis Kelamin</th>
+        </tr>
 
-          <thead>
-            <tr>
-              <th rowspan="2">No</th>
-              <th rowspan="2">Kelas</th>
+        <tr>
+          <th>Laki-laki</th>
+          <th>Perempuan</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
 
-              <th colspan="3">
-                Berdasarkan Jenis Kelamin
-              </th>
+      <tbody id="tbodySiswa">
+        <tr>
+          <td colspan="5">Loading...</td>
+        </tr>
+      </tbody>
 
-              <th colspan="3">
-                Berdasarkan Agama
-              </th>
+    </table>
+  </div>
 
-              <th rowspan="2">Wali Kelas</th>
-            </tr>
+  <p class="info-link">
+    Untuk melihat profil siswa, silakan kunjungi
+    <a href="data_siswa.html" class="link-utama">
+      halaman ini
+    </a>.
+  </p>
 
-            <tr>
-              <th>Laki-laki</th>
-              <th>Perempuan</th>
-              <th>Jumlah</th>
+</section>
 
-              <th>Islam</th>
-              <th>Hindu</th>
-              <th>Jumlah</th>
-            </tr>
-          </thead>
+<!-- ================= DATA ALUMNI ================= -->
+<section class="card">
 
-          <tbody id="tbodySiswa">
-            <tr>
-              <td colspan="9">Loading...</td>
-            </tr>
-          </tbody>
+  <h2>Data Alumni SMPN 20 Konawe Selatan</h2>
 
-        </table>
-      </div>
+  <p id="tahunPelajaran"></p>
 
-      <p>
-        Untuk melihat Profil Siswa,
-        silakan kunjungi
-        <a href="data_siswa.html" class="link-utama">
-          Halaman Ini
-        </a>
-      </p>
+  <div class="table-wrapper">
+    <table>
 
-    </section>
+      <thead>
+        <tr>
+          <th rowspan="2">No</th>
+          <th rowspan="2">Tahun Lulus</th>
+          <th colspan="3">Berdasarkan Jenis Kelamin</th>
+        </tr>
+
+        <tr>
+          <th>Laki-laki</th>
+          <th>Perempuan</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbodyAlumni">
+        <tr>
+          <td colspan="5">Loading...</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <p>
+    Untuk melihat profil alumni,
+    silakan kunjungi
+    <a href="data_siswa.html" class="link-utama">
+      Halaman Ini
+    </a>
+  </p>
+
+</section>
+
 
 <section class="card">
 

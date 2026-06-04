@@ -108,6 +108,9 @@ onSnapshot(collection(db, "guru"), (snap) => {
 /* =====================================================
    DATA SISWA
 ===================================================== */
+/* =====================================================
+   DATA SISWA
+===================================================== */
 
 const tbodySiswa =
 document.getElementById("tbodySiswa");
@@ -123,50 +126,47 @@ onSnapshot(collection(db, "siswa"), (snap) => {
     const kelas =
     s.kelas || "-";
 
-    const jk =
-    (s.jk || "").toLowerCase();
-
-    const agama =
-    (s.agama || "").toLowerCase();
+const gender =
+(s.gender || "").toLowerCase();
 
     if (!dataKelas[kelas]) {
 
       dataKelas[kelas] = {
-
         laki: 0,
-        perempuan: 0,
-
-        islam: 0,
-        hindu: 0,
-
-        wali:
-        s.wali || "-"
-
+        perempuan: 0
       };
 
     }
 
     /* ================= GENDER ================= */
 
-    if (jk === "laki-laki") {
+    if (gender === "laki-laki") {
       dataKelas[kelas].laki++;
     }
 
-    if (jk === "perempuan") {
+    if (gender === "perempuan") {
       dataKelas[kelas].perempuan++;
     }
 
-    /* ================= AGAMA ================= */
-
-    if (agama === "islam") {
-      dataKelas[kelas].islam++;
-    }
-
-    if (agama === "hindu") {
-      dataKelas[kelas].hindu++;
-    }
-
   });
+
+  /* =====================================================
+     JIKA DATA KOSONG
+  ===================================================== */
+
+  if (Object.keys(dataKelas).length === 0) {
+
+    tbodySiswa.innerHTML = `
+      <tr>
+        <td colspan="5">
+          Belum ada data siswa
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
 
   let html = "";
 
@@ -174,9 +174,6 @@ onSnapshot(collection(db, "siswa"), (snap) => {
 
   let totalL = 0;
   let totalP = 0;
-
-  let totalIslam = 0;
-  let totalHindu = 0;
 
   /* =====================================================
      SORT KELAS
@@ -186,11 +183,9 @@ onSnapshot(collection(db, "siswa"), (snap) => {
   Object.keys(dataKelas).sort((a, b) => {
 
     const urutan = {
-
       "VII": 1,
       "VIII": 2,
       "IX": 3
-
     };
 
     const aMain =
@@ -211,7 +206,11 @@ onSnapshot(collection(db, "siswa"), (snap) => {
 
     }
 
-    return a.localeCompare(b);
+    return a.localeCompare(
+      b,
+      "id",
+      { numeric: true }
+    );
 
   });
 
@@ -230,33 +229,14 @@ onSnapshot(collection(db, "siswa"), (snap) => {
     totalL += k.laki;
     totalP += k.perempuan;
 
-    totalIslam += k.islam;
-    totalHindu += k.hindu;
-
     html += `
-
       <tr>
-
         <td>${no++}</td>
-
         <td>${kelas}</td>
-
         <td>${k.laki}</td>
-
         <td>${k.perempuan}</td>
-
         <td>${jumlah}</td>
-
-        <td>${k.islam}</td>
-
-        <td>${k.hindu}</td>
-
-        <td>${jumlah}</td>
-
-        <td>${k.wali}</td>
-
       </tr>
-
     `;
 
   });
@@ -269,30 +249,129 @@ onSnapshot(collection(db, "siswa"), (snap) => {
   totalL + totalP;
 
   html += `
-
-    <tr>
-
+    <tr class="total-row">
       <th colspan="2">JML</th>
-
       <th>${totalL}</th>
-
       <th>${totalP}</th>
-
       <th>${total}</th>
-
-      <th>${totalIslam}</th>
-
-      <th>${totalHindu}</th>
-
-      <th>${total}</th>
-
-      <th></th>
-
     </tr>
-
   `;
 
   tbodySiswa.innerHTML = html;
 
 });
 
+/* =====================================================
+   DATA ALUMNI BERDASARKAN TAHUN LULUS
+===================================================== */
+
+const tbodyAlumni =
+document.getElementById("tbodyAlumni");
+
+onSnapshot(collection(db, "alumni"), (snap) => {
+
+  let dataTahun = {};
+
+  snap.forEach((doc) => {
+
+    const a = doc.data();
+
+    const tahun =
+    a.tahunLulus || "-";
+
+    const gender =
+    (a.gender || "").toLowerCase();
+
+    if (!dataTahun[tahun]) {
+
+      dataTahun[tahun] = {
+        laki: 0,
+        perempuan: 0
+      };
+
+    }
+
+    if (
+      gender === "laki-laki" ||
+      gender === "laki laki" ||
+      gender === "l"
+    ) {
+      dataTahun[tahun].laki++;
+    }
+
+    if (
+      gender === "perempuan" ||
+      gender === "p"
+    ) {
+      dataTahun[tahun].perempuan++;
+    }
+
+  });
+
+  if (Object.keys(dataTahun).length === 0) {
+
+    tbodyAlumni.innerHTML = `
+      <tr>
+        <td colspan="5">
+          Belum ada data alumni
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  let html = "";
+  let no = 1;
+
+  let totalL = 0;
+  let totalP = 0;
+
+  /* ================= URUTKAN TAHUN ================= */
+
+  const urutanTahun =
+  Object.keys(dataTahun)
+  .sort((a, b) => b - a);
+
+  /* ================= LOOP DATA ================= */
+
+  urutanTahun.forEach((tahun) => {
+
+    const t =
+    dataTahun[tahun];
+
+    const jumlah =
+    t.laki + t.perempuan;
+
+    totalL += t.laki;
+    totalP += t.perempuan;
+
+    html += `
+      <tr>
+        <td>${no++}</td>
+        <td>${tahun}</td>
+        <td>${t.laki}</td>
+        <td>${t.perempuan}</td>
+        <td>${jumlah}</td>
+      </tr>
+    `;
+
+  });
+
+  /* ================= TOTAL ================= */
+
+  const total =
+  totalL + totalP;
+
+  html += `
+    <tr class="total-row">
+      <th colspan="2">JML</th>
+      <th>${totalL}</th>
+      <th>${totalP}</th>
+      <th>${total}</th>
+    </tr>
+  `;
+
+  tbodyAlumni.innerHTML = html;
+
+});

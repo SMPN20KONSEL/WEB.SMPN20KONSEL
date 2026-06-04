@@ -1,4 +1,27 @@
 /* =========================================================
+   ROOT
+========================================================= */
+:root{
+  --primary:#0b48ac;
+  --primary-light:#1565c0;
+  --accent:#00b4ff;
+
+  --bg-dark:#061426;
+  --bg-dark2:#0b1f3a;
+
+  --white:#ffffff;
+  --text-soft:#d9e4f5;
+  --gray:#666;
+
+  --radius:24px;
+
+  --shadow:
+    0 15px 40px rgba(0,0,0,.15);
+
+  --transition:.35s ease;
+}
+
+/* =========================================================
    RESET
 ========================================================= */
 *{
@@ -15,16 +38,16 @@ body{
   font-family:'Segoe UI',sans-serif;
 
   background:
-  linear-gradient(
-    180deg,
-    #061426 0%,
-    #0b1f3a 50%,
-    #061426 100%
-  );
+    linear-gradient(
+      180deg,
+      var(--bg-dark) 0%,
+      var(--bg-dark2) 50%,
+      var(--bg-dark) 100%
+    );
 
   color:#fff;
+  line-height:1.8;
   overflow-x:hidden;
-  line-height:1.7;
 }
 
 img{
@@ -33,35 +56,65 @@ img{
 }
 
 /* =========================================================
-   HERO SECTION
+   SCROLLBAR
+========================================================= */
+::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#071726;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--primary);
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:var(--primary-light);
+}
+
+/* =========================================================
+   HERO
 ========================================================= */
 .hero{
-  width:100%;
-  min-height:85vh;
-
-  background:
-  linear-gradient(
-    rgba(0,0,0,.6),
-    rgba(0,0,0,.6)
-  ),
-  url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop');
-
-  background-size:cover;
-  background-position:center;
+  min-height:80vh;
 
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 
   text-align:center;
 
-  padding:100px 8%;
+  padding:120px 8%;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,.65),
+      rgba(0,0,0,.65)
+    ),
+    url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
 }
 
 .hero-content{
-  max-width:900px;
+  max-width:850px;
 
-  animation:fadeUp .8s ease;
+  padding:40px;
+
+  background:
+    rgba(255,255,255,.05);
+
+  backdrop-filter:blur(12px);
+
+  border:
+    1px solid rgba(255,255,255,.1);
+
+  border-radius:30px;
 }
 
 .hero-content h1{
@@ -73,63 +126,19 @@ img{
 }
 
 .hero-content h1 span{
-  color:#00b4ff;
+  color:var(--accent);
+
+  text-shadow:
+    0 0 15px rgba(0,180,255,.5);
 }
 
 .hero-content p{
-  color:#e8e8e8;
-
   font-size:20px;
-
-  line-height:1.9;
-
-  max-width:800px;
-
-  margin:auto;
+  color:#eee;
 }
 
 /* =========================================================
-   BUTTON
-========================================================= */
-.hero-btn{
-  margin-top:40px;
-}
-
-.hero-btn a{
-  display:inline-block;
-
-  padding:17px 38px;
-
-  border-radius:14px;
-
-  background:
-  linear-gradient(
-    135deg,
-    #00b4ff,
-    #0077b6
-  );
-
-  color:#fff;
-
-  text-decoration:none;
-
-  font-weight:700;
-
-  transition:.3s ease;
-
-  box-shadow:
-  0 10px 30px rgba(0,180,255,.3);
-}
-
-.hero-btn a:hover{
-  transform:translateY(-4px);
-
-  box-shadow:
-  0 18px 40px rgba(0,180,255,.4);
-}
-
-/* =========================================================
-   SECTION GLOBAL
+   SECTION
 ========================================================= */
 section{
   padding:90px 8%;
@@ -137,50 +146,48 @@ section{
 
 .section-title{
   text-align:center;
-
   margin-bottom:60px;
 }
 
 .section-title h2{
   font-size:42px;
-
   color:#ffd54f;
-
   margin-bottom:15px;
 }
 
 .section-title p{
-  color:#ddd;
-
   max-width:700px;
-
   margin:auto;
+  color:#ddd;
 }
 
 /* =========================================================
-   ABOUT SECTION
+   ABOUT
 ========================================================= */
 .about-kesiswaan{
+  max-width:1200px;
+  margin:auto;
+
   display:flex;
   align-items:center;
   gap:50px;
-
-  max-width:1150px;
-
-  margin:auto;
-
   flex-wrap:wrap;
 }
 
 .about-kesiswaan img{
   width:420px;
 
-  border-radius:25px;
+  border-radius:30px;
 
   object-fit:cover;
 
-  box-shadow:
-  0 15px 40px rgba(0,0,0,.35);
+  transition:var(--transition);
+
+  box-shadow:var(--shadow);
+}
+
+.about-kesiswaan img:hover{
+  transform:scale(1.03);
 }
 
 .about-text{
@@ -189,170 +196,164 @@ section{
 
 .about-text h3{
   font-size:34px;
-
-  color:#00b4ff;
-
+  color:var(--accent);
   margin-bottom:20px;
 }
 
 .about-text p{
-  color:#f1f1f1;
-
-  margin-bottom:16px;
-
+  margin-bottom:15px;
   text-align:justify;
+  color:#f1f1f1;
 }
 
 /* =========================================================
-   CARD SECTION
+   CARD
 ========================================================= */
 .card{
-  background:
-  linear-gradient(
-    145deg,
-    #ffffff,
-    #f5f7fb
-  );
+  max-width:1200px;
+  margin:40px auto;
+
+  background:#fff;
 
   color:#222;
 
-  max-width:1150px;
-
-  margin:45px auto;
-
   padding:40px;
 
-  border-radius:28px;
+  border-radius:30px;
 
   box-shadow:
-  0 8px 25px rgba(0,0,0,.08);
+    0 20px 50px rgba(0,0,0,.12);
 
-  transition:.35s ease;
-
-  animation:fadeUp .8s ease;
+  transition:var(--transition);
 }
 
 .card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-5px);
 }
 
-.card h2,
-.card h3{
-  color:#0b48ac;
-
-  margin-bottom:18px;
-
-  font-size:30px;
+.card h2{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:32px;
 }
 
 .card p{
   color:#555;
-
-  line-height:1.9;
+  margin-bottom:20px;
 }
 
 /* =========================================================
-   TABLE SECTION
+   TABLE
 ========================================================= */
 .table-wrapper{
   overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
 
-  margin-top:25px;
+  margin-top:20px;
+  margin-bottom:20px;
 
-  border-radius:22px;
+  border-radius:20px;
 }
 
-/* TABLE DASAR */
 table{
   width:100%;
-
   min-width:700px;
 
   border-collapse:collapse;
 
-  background:#fff;
-
   overflow:hidden;
 
-  border-radius:22px;
+  border-radius:20px;
 
-  box-shadow:
-  0 4px 20px rgba(0,0,0,.06);
+  background:#fff;
 }
 
-/* HEADER */
 thead{
   background:
-  linear-gradient(
-    135deg,
-    #0b48ac,
-    #1565c0
-  );
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-light)
+    );
 }
 
 thead th{
   color:#fff;
 
-  padding:18px 16px;
+  padding:18px;
 
   text-align:center;
 
-  font-weight:700;
-
   font-size:15px;
 
-  border:none;
+  font-weight:700;
 }
 
-/* BODY */
 tbody td{
-  padding:17px 14px;
+  padding:16px;
+
+  text-align:center;
 
   color:#444;
 
   border-bottom:
-  1px solid #edf1f7;
-
-  text-align:center;
-
-  font-size:15px;
+    1px solid #edf1f7;
 }
 
-/* ROW STYLE */
+tbody tr{
+  transition:.3s;
+}
+
 tbody tr:nth-child(even){
   background:#f8fbff;
 }
 
-tbody tr:nth-child(odd){
-  background:#ffffff;
-}
-
-/* HOVER */
 tbody tr:hover{
   background:#eaf3ff;
-
-  transition:.3s ease;
-
-  transform:scale(1.002);
 }
 
 /* =========================================================
    LINK
 ========================================================= */
 .link-utama{
-  color:#0b48ac;
-
+  color:var(--primary);
   font-weight:700;
-
   text-decoration:none;
 }
 
 .link-utama:hover{
+  color:var(--accent);
   text-decoration:underline;
 }
 
 /* =========================================================
-   RESPONSIVE
+   INFO LINK
+========================================================= */
+.info-link{
+  margin-top:15px;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+[data-aos]{
+  transition-duration:.8s !important;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================================================
+   MOBILE TABLET
 ========================================================= */
 @media(max-width:992px){
 
@@ -360,8 +361,8 @@ tbody tr:hover{
     flex-direction:column;
   }
 
-  .about-text{
-    text-align:left;
+  .about-kesiswaan img{
+    width:100%;
   }
 
   .hero-content p{
@@ -369,6 +370,9 @@ tbody tr:hover{
   }
 }
 
+/* =========================================================
+   MOBILE
+========================================================= */
 @media(max-width:768px){
 
   section{
@@ -377,8 +381,11 @@ tbody tr:hover{
 
   .hero{
     min-height:70vh;
+    padding:90px 20px;
+  }
 
-    padding:80px 20px;
+  .hero-content{
+    padding:30px 20px;
   }
 
   .hero-content h1{
@@ -389,16 +396,21 @@ tbody tr:hover{
     font-size:16px;
   }
 
-  .hero-btn a{
-    width:100%;
+  .section-title h2{
+    font-size:32px;
   }
 
-  .about-kesiswaan img{
-    width:100%;
+  .about-text h3{
+    font-size:28px;
   }
 
   .card{
-    padding:28px;
+    padding:25px;
+    border-radius:24px;
+  }
+
+  .card h2{
+    font-size:25px;
   }
 
   table{
@@ -407,17 +419,27 @@ tbody tr:hover{
 }
 
 /* =========================================================
-   ANIMATION
+   EXTRA SMALL DEVICE
 ========================================================= */
-@keyframes fadeUp{
+@media(max-width:480px){
 
-  from{
-    opacity:0;
-    transform:translateY(25px);
+  .hero-content h1{
+    font-size:34px;
   }
 
-  to{
-    opacity:1;
-    transform:translateY(0);
+  .hero-content p{
+    font-size:15px;
+  }
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .card h2{
+    font-size:22px;
   }
 }
