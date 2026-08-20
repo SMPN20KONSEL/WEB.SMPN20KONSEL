@@ -1,1233 +1,3906 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
 
-<title>Admin Jadwal Lengkap</title>
+  <meta charset="UTF-8">
 
-<!-- SHEETJS -->
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<style>
+  <title>
+    Admin Data Sekolah | SMP Negeri 20 Konawe Selatan
+  </title>
 
-/* =========================
-GLOBAL
-========================= */
+  <meta
+    name="robots"
+    content="noindex,nofollow"
+  >
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+  <link
+    rel="icon"
+    type="image/png"
+    href="image/Logo_transparent.png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+<link rel="stylesheet"
+href="../assets/css/admin.css">
+
+  <style>
+:root{
+  --sidebar-width:320px;
 }
 
-body{
-  background:
-  linear-gradient(
-    180deg,
-    #081b33,
-    #0d2342,
-    #081b33
-  );
-
-  min-height:100vh;
-  padding:40px 4%;
-
-  color:white;
+main.container{
+  margin-left:var(--sidebar-width);
+  width:calc(100% - var(--sidebar-width));
+  max-width:none;
+  padding:28px;
 }
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
-/* =========================
-TITLE
-========================= */
+    body{
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-.title{
-  text-align:center;
-  margin-bottom:40px;
-}
+      background:#f3f6fa;
+      color:#222;
+    }
 
-.title h1{
-  font-size:42px;
-  margin-bottom:10px;
-}
+    button,
+    input,
+    select{
+      font-family:inherit;
+    }
 
-.title p{
-  color:#dfe6e9;
-}
 
-/* =========================
-BOX
-========================= */
 
-.box{
-  background:
-  rgba(255,255,255,0.08);
+    /* =========================
+       HEADER
+    ========================= */
 
-  padding:30px;
-  border-radius:25px;
+    header{
+      background:
+        linear-gradient(
+          135deg,
+          #075e54,
+          #0b806f
+        );
 
-  backdrop-filter:blur(10px);
+      color:white;
+      padding:25px 0;
+    }
 
-  margin-bottom:35px;
+    .header-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
 
-  box-shadow:
-  0 10px 30px rgba(0,0,0,0.3);
-}
+    .header-title h1{
+      font-size:27px;
+      margin-bottom:8px;
+    }
 
-.box h2{
-  margin-bottom:20px;
-}
+    .header-title p{
+      opacity:.9;
+      font-size:14px;
+    }
 
-/* =========================
-FORM
-========================= */
+    .btn{
+      border:0;
+      border-radius:8px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-weight:bold;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      transition:.2s;
+    }
 
-.form-grid{
-  display:grid;
+    .btn:hover{
+      transform:translateY(-1px);
+      opacity:.92;
+    }
 
-  grid-template-columns:
-  repeat(auto-fit,minmax(200px,1fr));
+    .btn-primary{
+      background:#075e54;
+      color:white;
+    }
 
-  gap:15px;
-}
+    .btn-success{
+      background:#198754;
+      color:white;
+    }
 
-input{
-  width:100%;
-  padding:14px;
+    .btn-warning{
+      background:#f0ad00;
+      color:white;
+    }
 
-  border:none;
-  border-radius:12px;
+    .btn-danger{
+      background:#dc3545;
+      color:white;
+    }
 
-  outline:none;
-}
+    .btn-secondary{
+      background:#6c757d;
+      color:white;
+    }
 
-button{
-  padding:14px 20px;
+    .btn-light{
+      background:white;
+      color:#075e54;
+    }
 
-  border:none;
-  border-radius:12px;
+    /* =========================
+       STATUS
+    ========================= */
 
-  background:#00b894;
-  color:white;
+    .status{
+      margin:20px 0;
+      padding:14px 18px;
+      background:white;
+      border-radius:10px;
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.07);
 
-  font-weight:bold;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
 
-  cursor:pointer;
-  transition:0.3s;
-}
+    .status-dot{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:#198754;
+    }
 
-button:hover{
-  background:#00a383;
-}
+    .status-dot.error{
+      background:#dc3545;
+    }
 
-.delete-btn{
-  background:#e53935;
-}
+    /* =========================
+       NAV TAB
+    ========================= */
 
-.delete-btn:hover{
-  background:#c62828;
-}
+    .tabs{
+      background:white;
+      padding:8px;
+      border-radius:12px;
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.07);
 
-/* =========================
-UPLOAD
-========================= */
+      display:flex;
+      gap:8px;
+      margin-bottom:20px;
+      overflow-x:auto;
+    }
 
-.upload-area{
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
-}
+    .tab-btn{
+      border:0;
+      background:transparent;
+      padding:12px 20px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:bold;
+      white-space:nowrap;
+      color:#555;
+    }
 
-/* =========================
-TABLE
-========================= */
+    .tab-btn.active{
+      background:#075e54;
+      color:white;
+    }
 
-.table-container{
-  overflow-x:auto;
+    /* =========================
+       PANEL
+    ========================= */
 
-  background:white;
-  border-radius:20px;
-}
+    .panel{
+      display:none;
+    }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:1200px;
-}
+    .panel.active{
+      display:block;
+    }
 
-table th{
-  background:#081b33;
-  color:white;
+    .card{
+      background:white;
+      border-radius:12px;
+      box-shadow:
+        0 3px 15px
+        rgba(0,0,0,.08);
 
-  padding:15px;
-}
+      margin-bottom:25px;
+      overflow:hidden;
+    }
 
-table td{
-  padding:15px;
-  text-align:center;
+    .card-header{
+      padding:18px 20px;
+      border-bottom:1px solid #eee;
 
-  color:#222;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+    }
 
-  border-bottom:
-  1px solid #eee;
-}
+    .card-header h2{
+      color:#075e54;
+      font-size:20px;
+    }
 
-table tr:hover{
-  background:#f5f5f5;
-}
+    .card-header p{
+      color:#777;
+      font-size:13px;
+      margin-top:5px;
+    }
 
-.kode-box{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
+    .card-body{
+      padding:20px;
+    }
 
-.kode-box b{
-  color:#081b33;
-}
+    /* =========================
+       TABLE
+    ========================= */
 
-.kode-box small{
-  color:#666;
-}
+    .table-wrapper{
+      overflow-x:auto;
+    }
 
-/* =========================
-RESPONSIVE
-========================= */
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
 
-@media(max-width:768px){
+    th,
+    td{
+      border:1px solid #ddd;
+      padding:10px;
+      vertical-align:middle;
+    }
 
-  .title h1{
-    font-size:30px;
-  }
+    th{
+      background:#075e54;
+      color:white;
+      text-align:center;
+      font-size:14px;
+    }
 
-}
+    td{
+      font-size:14px;
+    }
 
-</style>
+    .text-center{
+      text-align:center;
+    }
+
+    .code{
+      display:inline-block;
+      background:#e9f5f3;
+      color:#075e54;
+      padding:5px 9px;
+      border-radius:6px;
+      font-weight:bold;
+      font-family:monospace;
+    }
+
+    .action-buttons{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+
+    .action-buttons button{
+      border:0;
+      border-radius:6px;
+      padding:7px 10px;
+      color:white;
+      cursor:pointer;
+    }
+
+    .empty,
+    .loading{
+      text-align:center;
+      padding:35px !important;
+      color:#777;
+    }
+
+    /* =========================
+       JADWAL
+    ========================= */
+
+    .jadwal-table{
+      min-width:1250px;
+    }
+
+    .jadwal-table th{
+      white-space:nowrap;
+    }
+
+    .hari-cell{
+      background:#e8f5f2;
+      color:#075e54;
+      font-weight:bold;
+      text-align:center;
+    }
+
+    .jam-cell{
+      background:#fafafa;
+      font-weight:bold;
+      text-align:center;
+      white-space:nowrap;
+    }
+
+    .jadwal-box{
+      background:#f5f8fa;
+      border-radius:7px;
+      padding:8px;
+      text-align:center;
+      min-width:125px;
+    }
+
+    .jadwal-box b{
+      display:block;
+      color:#075e54;
+      margin-bottom:4px;
+      font-size:13px;
+    }
+
+    .jadwal-box small{
+      color:#555;
+      display:block;
+      font-size:11px;
+    }
+
+    .special-box{
+      background:#fff3cd;
+      color:#856404;
+      padding:9px;
+      border-radius:7px;
+      text-align:center;
+      font-weight:bold;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.6);
+      z-index:9999;
+
+      display:none;
+      padding:20px;
+      overflow-y:auto;
+    }
+
+    .modal.show{
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .modal-content{
+      background:white;
+      width:100%;
+      max-width:1000px;
+      margin:25px auto;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:
+        0 10px 50px
+        rgba(0,0,0,.3);
+    }
+
+    .modal-header{
+      background:#075e54;
+      color:white;
+      padding:17px 20px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .modal-header h3{
+      font-size:20px;
+    }
+
+    .close{
+      background:transparent;
+      border:0;
+      color:white;
+      font-size:27px;
+      cursor:pointer;
+    }
+
+    .modal-body{
+      padding:22px;
+    }
+
+    .modal-footer{
+      padding:17px 20px;
+      border-top:1px solid #eee;
+
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:15px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .form-group.full{
+      grid-column:1/-1;
+    }
+
+    label{
+      font-weight:bold;
+      font-size:14px;
+    }
+
+    input,
+    select{
+      width:100%;
+      padding:11px 12px;
+      border:1px solid #ccc;
+      border-radius:7px;
+      background:white;
+      font-size:14px;
+    }
+
+    input:focus,
+    select:focus{
+      outline:none;
+      border-color:#075e54;
+      box-shadow:
+        0 0 0 2px
+        rgba(7,94,84,.1);
+    }
+
+    /* =========================
+       JADWAL FORM
+    ========================= */
+
+    .kelas-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:15px;
+    }
+
+    .kelas-card{
+      border:1px solid #ddd;
+      background:#fafafa;
+      border-radius:10px;
+      padding:15px;
+    }
+
+    .kelas-card h4{
+      color:#075e54;
+      margin-bottom:12px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:768px){
+
+      .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .form-grid,
+      .kelas-grid{
+        grid-template-columns:1fr;
+      }
+
+      .modal{
+        padding:8px;
+      }
+
+      .modal-content{
+        margin:8px auto;
+      }
+
+      .card-header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
+<div id="sidebar"></div>
+<script type="module"
+src="../assets/js/sidebar.js">
+</script>
 
-<!-- =========================
-TITLE
-========================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
-<div class="title">
+<main class="container">
 
-  <h1>Admin Jadwal Sekolah</h1>
 
-  <p>
-    Input manual & import Excel
-  </p>
+<header>
+
+  <div class="container">
+
+    <div class="header-inner">
+
+      <div class="header-title">
+
+        <h1>
+
+          <i class="fa-solid fa-school"></i>
+
+          Admin Data Sekolah
+
+        </h1>
+
+        <p>
+          SMP Negeri 20 Konawe Selatan
+        </p>
+
+      </div>
+
+      <button
+        class="btn btn-light"
+        id="btnRefreshAll"
+      >
+
+        <i class="fa-solid fa-rotate"></i>
+
+        Muat Ulang Data
+
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+  <!-- STATUS -->
+
+  <div class="status">
+
+    <span
+      class="status-dot"
+      id="statusDot"
+    ></span>
+
+    <span id="statusText">
+
+      Menghubungkan ke Firebase...
+
+    </span>
+
+  </div>
+
+
+  <!-- ===================================================
+       TAB
+  ==================================================== -->
+
+  <div class="tabs">
+
+    <button
+      class="tab-btn active"
+      data-tab="mapel"
+    >
+
+      <i class="fa-solid fa-book"></i>
+
+      Master Mapel
+
+    </button>
+
+
+    <button
+      class="tab-btn"
+      data-tab="guru"
+    >
+
+      <i class="fa-solid fa-user-tie"></i>
+
+      Master Guru
+
+    </button>
+
+
+    <button
+      class="tab-btn"
+      data-tab="jadwal"
+    >
+
+      <i class="fa-solid fa-calendar-days"></i>
+
+      Jadwal
+
+    </button>
+
+  </div>
+
+
+  <!-- ===================================================
+       MASTER MAPEL
+  ==================================================== -->
+
+  <section
+    class="panel active"
+    id="panel-mapel"
+  >
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            Master Mata Pelajaran
+          </h2>
+
+          <p>
+            Data berasal dari master_data/mapel
+          </p>
+
+        </div>
+
+        <button
+          class="btn btn-success"
+          id="btnTambahMapel"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          Tambah Mapel
+
+        </button>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th width="100">
+                No
+              </th>
+
+              <th width="180">
+                Kode
+              </th>
+
+              <th>
+                Nama Mata Pelajaran
+              </th>
+
+              <th width="220">
+                Aksi
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="mapelBody">
+
+            <tr>
+
+              <td
+                colspan="4"
+                class="loading"
+              >
+
+                Memuat master mapel...
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       MASTER GURU
+  ==================================================== -->
+
+  <section
+    class="panel"
+    id="panel-guru"
+  >
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            Master Guru
+          </h2>
+
+          <p>
+            Data berasal dari master_data/guru
+          </p>
+
+        </div>
+
+        <button
+          class="btn btn-success"
+          id="btnTambahGuru"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          Tambah Guru
+
+        </button>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th width="100">
+                No
+              </th>
+
+              <th width="180">
+                Kode
+              </th>
+
+              <th>
+                Nama Guru
+              </th>
+
+              <th width="220">
+                Aksi
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="guruBody">
+
+            <tr>
+
+              <td
+                colspan="4"
+                class="loading"
+              >
+
+                Memuat master guru...
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================
+       JADWAL
+  ==================================================== -->
+
+  <section
+    class="panel"
+    id="panel-jadwal"
+  >
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h2>
+            Data Jadwal
+          </h2>
+
+          <p>
+            Data berasal dari collection jadwal
+          </p>
+
+        </div>
+
+        <button
+          class="btn btn-success"
+          id="btnTambahJadwal"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          Tambah Jadwal
+
+        </button>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table class="jadwal-table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Hari
+              </th>
+
+              <th>
+                Jam
+              </th>
+
+              <th>
+                VII A
+              </th>
+
+              <th>
+                VII B
+              </th>
+
+              <th>
+                VIII A
+              </th>
+
+              <th>
+                VIII B
+              </th>
+
+              <th>
+                IX A
+              </th>
+
+              <th>
+                IX B
+              </th>
+
+              <th>
+                Aksi
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="jadwalBody">
+
+            <tr>
+
+              <td
+                colspan="9"
+                class="loading"
+              >
+
+                Memuat jadwal...
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     MODAL MASTER
+===================================================== -->
+
+<div
+  class="modal"
+  id="masterModal"
+>
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <h3 id="masterModalTitle">
+        Tambah Data
+      </h3>
+
+      <button
+        class="close"
+        id="closeMasterModal"
+      >
+        &times;
+      </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+      <div class="form-grid">
+
+        <div class="form-group">
+
+          <label for="masterKode">
+            Kode
+          </label>
+
+          <input
+            type="text"
+            id="masterKode"
+            placeholder="Contoh: MAT atau G01"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="masterNama">
+            Nama
+          </label>
+
+          <input
+            type="text"
+            id="masterNama"
+            placeholder="Nama data"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+
+      <button
+        class="btn btn-secondary"
+        id="btnBatalMaster"
+      >
+        Batal
+      </button>
+
+      <button
+        class="btn btn-success"
+        id="btnSimpanMaster"
+      >
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        Simpan
+
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
-<!-- =========================
-MAPEL
-========================= -->
 
-<div class="box">
+<!-- =====================================================
+     MODAL JADWAL
+===================================================== -->
 
-<h2>Tambah Mapel</h2>
+<div
+  class="modal"
+  id="jadwalModal"
+>
 
-<div class="form-grid">
+  <div class="modal-content">
 
-  <input
-  type="text"
-  id="kodeMapel"
-  placeholder="Kode Mapel">
+    <div class="modal-header">
 
-  <input
-  type="text"
-  id="namaMapel"
-  placeholder="Nama Mapel">
+      <h3 id="jadwalModalTitle">
+        Tambah Jadwal
+      </h3>
 
-  <button id="simpanMapel">
-    Simpan Mapel
-  </button>
+      <button
+        class="close"
+        id="closeJadwalModal"
+      >
+        &times;
+      </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+      <div class="form-grid">
+
+
+        <!-- HARI -->
+
+        <div class="form-group">
+
+          <label for="jadwalHari">
+            Hari
+          </label>
+
+          <select id="jadwalHari">
+
+            <option value="SENIN">
+              SENIN
+            </option>
+
+            <option value="SELASA">
+              SELASA
+            </option>
+
+            <option value="RABU">
+              RABU
+            </option>
+
+            <option value="KAMIS">
+              KAMIS
+            </option>
+
+            <option value="JUMAT">
+              JUMAT
+            </option>
+
+            <option value="SABTU">
+              SABTU
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- JAM -->
+
+        <div class="form-group">
+
+          <label for="jadwalJam">
+            Jam
+          </label>
+
+          <input
+            type="text"
+            id="jadwalJam"
+            placeholder="Contoh: 07:15 - 08:00"
+          >
+
+        </div>
+
+
+      </div>
+
+
+      <br>
+
+
+      <div class="kelas-grid">
+
+
+        <!-- VII A -->
+
+        <div class="kelas-card">
+
+          <h4>
+            Kelas VII A
+          </h4>
+
+          <div class="form-group">
+
+            <label>
+              Mata Pelajaran
+            </label>
+
+            <select
+              id="vii_a_mapel"
+            ></select>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+
+            <label>
+              Guru
+            </label>
+
+            <select
+              id="vii_a_guru"
+            ></select>
+
+          </div>
+
+        </div>
+
+
+        <!-- VII B -->
+
+        <div class="kelas-card">
+
+          <h4>
+            Kelas VII B
+          </h4>
+
+          <div class="form-group">
+
+            <label>
+              Mata Pelajaran
+            </label>
+
+            <select
+              id="vii_b_mapel"
+            ></select>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+
+            <label>
+              Guru
+            </label>
+
+            <select
+              id="vii_b_guru"
+            ></select>
+
+          </div>
+
+        </div>
+
+
+        <!-- VIII A -->
+
+        <div class="kelas-card">
+
+          <h4>
+            Kelas VIII A
+          </h4>
+
+          <div class="form-group">
+
+            <label>
+              Mata Pelajaran
+            </label>
+
+            <select
+              id="viii_a_mapel"
+            ></select>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+
+            <label>
+              Guru
+            </label>
+
+            <select
+              id="viii_a_guru"
+            ></select>
+
+          </div>
+
+        </div>
+
+
+        <!-- VIII B -->
+
+        <div class="kelas-card">
+
+          <h4>
+            Kelas VIII B
+          </h4>
+
+          <div class="form-group">
+
+            <label>
+              Mata Pelajaran
+            </label>
+
+            <select
+              id="viii_b_mapel"
+            ></select>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+
+            <label>
+              Guru
+            </label>
+
+            <select
+              id="viii_b_guru"
+            ></select>
+
+          </div>
+
+        </div>
+
+
+        <!-- IX A -->
+
+        <div class="kelas-card">
+
+          <h4>
+            Kelas IX A
+          </h4>
+
+          <div class="form-group">
+
+            <label>
+              Mata Pelajaran
+            </label>
+
+            <select
+              id="ix_a_mapel"
+            ></select>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+
+            <label>
+              Guru
+            </label>
+
+            <select
+              id="ix_a_guru"
+            ></select>
+
+          </div>
+
+        </div>
+
+
+        <!-- IX B -->
+
+        <div class="kelas-card">
+
+          <h4>
+            Kelas IX B
+          </h4>
+
+          <div class="form-group">
+
+            <label>
+              Mata Pelajaran
+            </label>
+
+            <select
+              id="ix_b_mapel"
+            ></select>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+
+            <label>
+              Guru
+            </label>
+
+            <select
+              id="ix_b_guru"
+            ></select>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+
+      <button
+        class="btn btn-secondary"
+        id="btnBatalJadwal"
+      >
+        Batal
+      </button>
+
+      <button
+        class="btn btn-success"
+        id="btnSimpanJadwal"
+      >
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        Simpan Jadwal
+
+      </button>
+
+    </div>
+
+  </div>
 
 </div>
 
-</div>
 
-<!-- =========================
-GURU
-========================= -->
-
-<div class="box">
-
-<h2>Tambah Guru</h2>
-
-<div class="form-grid">
-
-  <input
-  type="text"
-  id="kodeGuru"
-  placeholder="Kode Guru">
-
-  <input
-  type="text"
-  id="namaGuru"
-  placeholder="Nama Guru">
-
-  <button id="simpanGuru">
-    Simpan Guru
-  </button>
-
-</div>
-
-</div>
-
-<!-- =========================
-INPUT JADWAL
-========================= -->
-
-<div class="box">
-
-<h2>Input Jadwal</h2>
-
-<div class="form-grid">
-
-<input type="text"
-id="hari"
-placeholder="Hari">
-
-<input type="text"
-id="jam"
-placeholder="Jam">
-
-<input type="text"
-id="vii_a"
-placeholder="VII-A ex:I/13">
-
-<input type="text"
-id="vii_b"
-placeholder="VII-B">
-
-<input type="text"
-id="viii_a"
-placeholder="VIII-A">
-
-<input type="text"
-id="viii_b"
-placeholder="VIII-B">
-
-<input type="text"
-id="ix_a"
-placeholder="IX-A">
-
-<input type="text"
-id="ix_b"
-placeholder="IX-B">
-
-<button id="simpanJadwal">
-
-Simpan Jadwal
-
-</button>
-
-</div>
-
-</div>
-
-<!-- =========================
-IMPORT EXCEL
-========================= -->
-
-<div class="box">
-
-<h2>Import Excel</h2>
-
-<div class="upload-area">
-
-<input
-type="file"
-id="excelFile"
-accept=".xlsx,.xls">
-
-<button id="uploadBtn">
-
-Upload Excel
-
-</button>
-
-</div>
-
-</div>
-
-<!-- =========================
-TABLE
-========================= -->
-
-<div class="table-container">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Hari</th>
-<th>Jam</th>
-
-<th>VII-A</th>
-<th>VII-B</th>
-
-<th>VIII-A</th>
-<th>VIII-B</th>
-
-<th>IX-A</th>
-<th>IX-B</th>
-
-<th>Aksi</th>
-
-</tr>
-
-</thead>
-
-<tbody id="jadwalBody">
-
-</tbody>
-
-</table>
-
-</div>
-
-<!-- =========================
-FIREBASE
-========================= -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script type="module">
 
 import { db }
 from "../assets/js/firebase.js";
 
+
 import {
 
-collection,
-addDoc,
-getDocs,
-deleteDoc,
-doc,
-getDoc,
-setDoc
+  collection,
+  getDocs,
+  getDoc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  doc
 
 }
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-/* =========================
-ELEMENT
-========================= */
+
+/* =====================================================
+   ELEMENT
+===================================================== */
+
+const statusText =
+document.getElementById(
+  "statusText"
+);
+
+const statusDot =
+document.getElementById(
+  "statusDot"
+);
+
+const mapelBody =
+document.getElementById(
+  "mapelBody"
+);
+
+const guruBody =
+document.getElementById(
+  "guruBody"
+);
 
 const jadwalBody =
 document.getElementById(
-"jadwalBody"
+  "jadwalBody"
 );
 
-const uploadBtn =
-document.getElementById(
-"uploadBtn"
-);
 
-const simpanJadwalBtn =
-document.getElementById(
-"simpanJadwal"
-);
+/* =====================================================
+   DATA MASTER
+===================================================== */
 
-/* =========================
-LOADING
-========================= */
-
-function setLoading(
-btn,
-text = "Loading..."
-){
-
-btn.disabled = true;
-
-btn.dataset.oldtext =
-btn.innerHTML;
-
-btn.innerHTML = text;
-
-}
-
-function stopLoading(btn){
-
-btn.disabled = false;
-
-btn.innerHTML =
-btn.dataset.oldtext;
-
-}
-
-/* =========================
-MASTER DATA
-========================= */
-
-let guruData = {};
 let mapelData = {};
 
-async function loadMasterData(){
+let guruData = {};
 
-/* MAPEL */
 
-const mapelRef =
-doc(
-db,
-"master_data",
-"mapel"
-);
+/* =====================================================
+   EDIT MASTER
+===================================================== */
 
-const mapelSnap =
-await getDoc(mapelRef);
+let masterMode = "";
 
-if(mapelSnap.exists()){
+let masterOldCode = "";
 
-mapelData =
-mapelSnap.data();
 
-}
+/* =====================================================
+   EDIT JADWAL
+===================================================== */
 
-/* GURU */
+let editJadwalId = null;
 
-const guruRef =
-doc(
-db,
-"master_data",
-"guru"
-);
 
-const guruSnap =
-await getDoc(guruRef);
+/* =====================================================
+   KONFIGURASI
+===================================================== */
 
-if(guruSnap.exists()){
+const kelasList = [
 
-guruData =
-guruSnap.data();
+  "vii_a",
+  "vii_b",
+  "viii_a",
+  "viii_b",
+  "ix_a",
+  "ix_b"
 
-}
-
-}
-
-/* =========================
-SIMPAN MAPEL
-========================= */
-
-document
-.getElementById(
-"simpanMapel"
-)
-
-.addEventListener(
-"click",
-
-async()=>{
-
-const btn =
-document.getElementById(
-"simpanMapel"
-);
-
-setLoading(
-btn,
-"Menyimpan..."
-);
-
-try{
-
-const kode =
-document
-.getElementById(
-"kodeMapel"
-)
-.value;
-
-const nama =
-document
-.getElementById(
-"namaMapel"
-)
-.value;
-
-if(!kode || !nama){
-
-alert(
-"Lengkapi data"
-);
-
-stopLoading(btn);
-
-return;
-
-}
-
-mapelData[kode] = nama;
-
-await setDoc(
-
-doc(
-db,
-"master_data",
-"mapel"
-),
-
-mapelData
-
-);
-
-alert(
-"Mapel berhasil"
-);
-
-await loadMasterData();
-
-}
-catch(err){
-
-console.log(err);
-
-alert(
-"Gagal simpan"
-);
-
-}
-
-stopLoading(btn);
-
-}
-
-);
-
-/* =========================
-SIMPAN GURU
-========================= */
-
-document
-.getElementById(
-"simpanGuru"
-)
-
-.addEventListener(
-"click",
-
-async()=>{
-
-const btn =
-document.getElementById(
-"simpanGuru"
-);
-
-setLoading(
-btn,
-"Menyimpan..."
-);
-
-try{
-
-const kode =
-document
-.getElementById(
-"kodeGuru"
-)
-.value;
-
-const nama =
-document
-.getElementById(
-"namaGuru"
-)
-.value;
-
-if(!kode || !nama){
-
-alert(
-"Lengkapi data"
-);
-
-stopLoading(btn);
-
-return;
-
-}
-
-guruData[kode] = nama;
-
-await setDoc(
-
-doc(
-db,
-"master_data",
-"guru"
-),
-
-guruData
-
-);
-
-alert(
-"Guru berhasil"
-);
-
-await loadMasterData();
-
-}
-catch(err){
-
-console.log(err);
-
-alert(
-"Gagal simpan"
-);
-
-}
-
-stopLoading(btn);
-
-}
-
-);
-
-/* =========================
-SIMPAN JADWAL
-========================= */
-
-simpanJadwalBtn
-.addEventListener(
-"click",
-
-async()=>{
-
-setLoading(
-simpanJadwalBtn,
-"Menyimpan..."
-);
-
-try{
-
-await addDoc(
-
-collection(
-db,
-"jadwal"
-),
-
-{
-
-hari:
-document
-.getElementById(
-"hari"
-).value,
-
-jam:
-document
-.getElementById(
-"jam"
-).value,
-
-vii_a:
-document
-.getElementById(
-"vii_a"
-).value,
-
-vii_b:
-document
-.getElementById(
-"vii_b"
-).value,
-
-viii_a:
-document
-.getElementById(
-"viii_a"
-).value,
-
-viii_b:
-document
-.getElementById(
-"viii_b"
-).value,
-
-ix_a:
-document
-.getElementById(
-"ix_a"
-).value,
-
-ix_b:
-document
-.getElementById(
-"ix_b"
-).value
-
-}
-
-);
-
-alert(
-"Jadwal berhasil"
-);
-
-loadJadwal();
-
-}
-catch(err){
-
-console.log(err);
-
-alert(
-"Gagal simpan"
-);
-
-}
-
-stopLoading(
-simpanJadwalBtn
-);
-
-}
-
-);
-
-/* =========================
-IMPORT EXCEL
-========================= */
-
-uploadBtn
-.addEventListener(
-"click",
-
-async()=>{
-
-const file =
-document
-.getElementById(
-"excelFile"
-)
-.files[0];
-
-if(!file){
-
-alert(
-"Pilih Excel"
-);
-
-return;
-
-}
-
-setLoading(
-uploadBtn,
-"Mengupload..."
-);
-
-try{
-
-const reader =
-new FileReader();
-
-reader.onload =
-async(e)=>{
-
-const data =
-new Uint8Array(
-e.target.result
-);
-
-const workbook =
-XLSX.read(data,{
-type:"array"
-});
-
-/* =========================
-SHEET MAPEL
-========================= */
-
-const mapelSheet =
-workbook.Sheets[
-"mapel"
 ];
 
-if(mapelSheet){
 
-const mapelJson =
-XLSX.utils.sheet_to_json(
-mapelSheet
-);
+const specialList = [
 
-mapelJson.forEach(item=>{
+  "ISTIRAHAT",
+  "APEL",
+  "UPACARA",
+  "UPACARA BENDERA",
+  "LITERASI",
+  "SAIH / LITERASI",
+  "SHOLAT",
+  "PULANG",
+  "KOSONG"
 
-mapelData[
-item.kode
-] = item.nama;
-
-});
-
-await setDoc(
-
-doc(
-db,
-"master_data",
-"mapel"
-),
-
-mapelData
-
-);
-
-}
-
-/* =========================
-SHEET GURU
-========================= */
-
-const guruSheet =
-workbook.Sheets[
-"guru"
 ];
 
-if(guruSheet){
 
-const guruJson =
-XLSX.utils.sheet_to_json(
-guruSheet
-);
+const urutanHari = {
 
-guruJson.forEach(item=>{
-
-guruData[
-item.kode
-] = item.nama;
-
-});
-
-await setDoc(
-
-doc(
-db,
-"master_data",
-"guru"
-),
-
-guruData
-
-);
-
-}
-
-/* =========================
-SHEET JADWAL
-========================= */
-
-const jadwalSheet =
-workbook.Sheets[
-"jadwal"
-];
-
-if(jadwalSheet){
-
-const jadwalJson =
-XLSX.utils.sheet_to_json(
-jadwalSheet
-);
-
-for(const item of jadwalJson){
-
-await addDoc(
-
-collection(
-db,
-"jadwal"
-),
-
-{
-
-hari:
-item.hari || "",
-
-jam:
-item.jam || "",
-
-vii_a:
-item.vii_a || "",
-
-vii_b:
-item.vii_b || "",
-
-viii_a:
-item.viii_a || "",
-
-viii_b:
-item.viii_b || "",
-
-ix_a:
-item.ix_a || "",
-
-ix_b:
-item.ix_b || ""
-
-}
-
-);
-
-}
-
-}
-
-alert(
-"Import berhasil"
-);
-
-await loadMasterData();
-
-loadJadwal();
-
-stopLoading(
-uploadBtn
-);
+  SENIN:1,
+  SELASA:2,
+  RABU:3,
+  KAMIS:4,
+  JUMAT:5,
+  SABTU:6
 
 };
 
-reader.readAsArrayBuffer(
-file
-);
 
-}
-catch(err){
+/* =====================================================
+   ESCAPE
+===================================================== */
 
-console.log(err);
+function escapeHtml(value){
 
-alert(
-"Import gagal"
-);
-
-stopLoading(
-uploadBtn
-);
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function setStatus(
+  message,
+  error=false
+){
+
+  statusText.textContent =
+    message;
+
+  statusDot.classList.toggle(
+    "error",
+    error
+  );
+
 }
 
-);
 
-/* =========================
-SPECIAL ROW
-========================= */
+/* =====================================================
+   SPECIAL
+===================================================== */
 
 function isSpecial(kode){
 
-const special = [
+  if(!kode){
 
-"ISTIRAHAT",
-"APEL",
-"UPACARA",
-"UPACARA BENDERA",
-"LITERASI",
-"SHOLAT",
-"PULANG",
-"KOSONG"
+    return false;
 
-];
+  }
 
-return special.includes(
-kode
-);
+  return specialList.includes(
+    String(kode)
+      .trim()
+      .toUpperCase()
+  );
 
 }
 
-/* =========================
-TRANSLATE
-========================= */
+
+/* =====================================================
+   MASTER MAPEL
+===================================================== */
+
+async function loadMapel(){
+
+  const ref =
+    doc(
+      db,
+      "master_data",
+      "mapel"
+    );
+
+
+  const snap =
+    await getDoc(ref);
+
+
+  if(snap.exists()){
+
+    mapelData =
+      snap.data() || {};
+
+  }
+  else{
+
+    mapelData = {};
+
+  }
+
+
+  renderMapel();
+
+  refreshJadwalSelects();
+
+}
+
+
+/* =====================================================
+   MASTER GURU
+===================================================== */
+
+async function loadGuru(){
+
+  const ref =
+    doc(
+      db,
+      "master_data",
+      "guru"
+    );
+
+
+  const snap =
+    await getDoc(ref);
+
+
+  if(snap.exists()){
+
+    guruData =
+      snap.data() || {};
+
+  }
+  else{
+
+    guruData = {};
+
+  }
+
+
+  renderGuru();
+
+  refreshJadwalSelects();
+
+}
+
+
+/* =====================================================
+   RENDER MAPEL
+===================================================== */
+
+function renderMapel(){
+
+  const entries =
+    Object.entries(
+      mapelData
+    ).sort(
+      ([a],[b]) =>
+        a.localeCompare(b)
+    );
+
+
+  if(!entries.length){
+
+    mapelBody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="4"
+          class="empty"
+        >
+
+          Belum ada master mata pelajaran.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  mapelBody.innerHTML = "";
+
+
+  entries.forEach(
+    ([kode,nama],index)=>{
+
+      const tr =
+        document.createElement(
+          "tr"
+        );
+
+
+      tr.innerHTML = `
+
+        <td class="text-center">
+          ${index + 1}
+        </td>
+
+        <td class="text-center">
+
+          <span class="code">
+            ${escapeHtml(kode)}
+          </span>
+
+        </td>
+
+        <td>
+          ${escapeHtml(nama)}
+        </td>
+
+        <td>
+
+          <div class="action-buttons">
+
+            <button
+              class="btn btn-warning"
+              data-edit-mapel="${escapeHtml(kode)}"
+            >
+
+              <i class="fa-solid fa-pen"></i>
+
+              Edit
+
+            </button>
+
+            <button
+              class="btn btn-danger"
+              data-delete-mapel="${escapeHtml(kode)}"
+            >
+
+              <i class="fa-solid fa-trash"></i>
+
+              Hapus
+
+            </button>
+
+          </div>
+
+        </td>
+
+      `;
+
+
+      mapelBody.appendChild(
+        tr
+      );
+
+    }
+  );
+
+
+  document
+    .querySelectorAll(
+      "[data-edit-mapel]"
+    )
+    .forEach(button=>{
+
+      button.addEventListener(
+        "click",
+        ()=>{
+
+          openEditMaster(
+            "mapel",
+            button.dataset.editMapel
+          );
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-delete-mapel]"
+    )
+    .forEach(button=>{
+
+      button.addEventListener(
+        "click",
+        ()=>{
+
+          hapusMaster(
+            "mapel",
+            button.dataset.deleteMapel
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   RENDER GURU
+===================================================== */
+
+function renderGuru(){
+
+  const entries =
+    Object.entries(
+      guruData
+    ).sort(
+      ([a],[b]) =>
+        a.localeCompare(b)
+    );
+
+
+  if(!entries.length){
+
+    guruBody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="4"
+          class="empty"
+        >
+
+          Belum ada master guru.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  guruBody.innerHTML = "";
+
+
+  entries.forEach(
+    ([kode,nama],index)=>{
+
+      const tr =
+        document.createElement(
+          "tr"
+        );
+
+
+      tr.innerHTML = `
+
+        <td class="text-center">
+          ${index + 1}
+        </td>
+
+        <td class="text-center">
+
+          <span class="code">
+            ${escapeHtml(kode)}
+          </span>
+
+        </td>
+
+        <td>
+          ${escapeHtml(nama)}
+        </td>
+
+        <td>
+
+          <div class="action-buttons">
+
+            <button
+              class="btn btn-warning"
+              data-edit-guru="${escapeHtml(kode)}"
+            >
+
+              <i class="fa-solid fa-pen"></i>
+
+              Edit
+
+            </button>
+
+            <button
+              class="btn btn-danger"
+              data-delete-guru="${escapeHtml(kode)}"
+            >
+
+              <i class="fa-solid fa-trash"></i>
+
+              Hapus
+
+            </button>
+
+          </div>
+
+        </td>
+
+      `;
+
+
+      guruBody.appendChild(
+        tr
+      );
+
+    }
+  );
+
+
+  document
+    .querySelectorAll(
+      "[data-edit-guru]"
+    )
+    .forEach(button=>{
+
+      button.addEventListener(
+        "click",
+        ()=>{
+
+          openEditMaster(
+            "guru",
+            button.dataset.editGuru
+          );
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-delete-guru]"
+    )
+    .forEach(button=>{
+
+      button.addEventListener(
+        "click",
+        ()=>{
+
+          hapusMaster(
+            "guru",
+            button.dataset.deleteGuru
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   MASTER MODAL
+===================================================== */
+
+const masterModal =
+document.getElementById(
+  "masterModal"
+);
+
+const masterModalTitle =
+document.getElementById(
+  "masterModalTitle"
+);
+
+const masterKode =
+document.getElementById(
+  "masterKode"
+);
+
+const masterNama =
+document.getElementById(
+  "masterNama"
+);
+
+
+/* =====================================================
+   OPEN TAMBAH MASTER
+===================================================== */
+
+function openTambahMaster(
+  tipe
+){
+
+  masterMode =
+    tipe;
+
+  masterOldCode =
+    "";
+
+
+  masterModalTitle.textContent =
+    tipe === "mapel"
+      ? "Tambah Mata Pelajaran"
+      : "Tambah Guru";
+
+
+  masterKode.value = "";
+
+  masterNama.value = "";
+
+
+  masterKode.disabled =
+    false;
+
+
+  masterModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   OPEN EDIT MASTER
+===================================================== */
+
+function openEditMaster(
+  tipe,
+  kode
+){
+
+  masterMode =
+    tipe;
+
+  masterOldCode =
+    kode;
+
+
+  const data =
+    tipe === "mapel"
+      ? mapelData
+      : guruData;
+
+
+  masterModalTitle.textContent =
+    tipe === "mapel"
+      ? "Edit Mata Pelajaran"
+      : "Edit Guru";
+
+
+  masterKode.value =
+    kode;
+
+  masterNama.value =
+    data[kode] || "";
+
+
+  /*
+    Kode boleh diubah.
+    Jadi admin dapat mengatur ulang
+    kode lama jika diperlukan.
+  */
+
+  masterKode.disabled =
+    false;
+
+
+  masterModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   CLOSE MASTER
+===================================================== */
+
+function closeMasterModal(){
+
+  masterModal.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   SIMPAN MASTER
+===================================================== */
+
+async function simpanMaster(){
+
+  const kode =
+    masterKode.value
+      .trim()
+      .toUpperCase();
+
+
+  const nama =
+    masterNama.value
+      .trim();
+
+
+  if(!kode){
+
+    alert(
+      "Kode harus diisi."
+    );
+
+    return;
+
+  }
+
+
+  if(!nama){
+
+    alert(
+      "Nama harus diisi."
+    );
+
+    return;
+
+  }
+
+
+  const target =
+    masterMode === "mapel"
+      ? mapelData
+      : guruData;
+
+
+  /*
+    Jika tambah dan kode sudah ada
+  */
+
+  if(
+    !masterOldCode &&
+    Object.prototype.hasOwnProperty.call(
+      target,
+      kode
+    )
+  ){
+
+    alert(
+      "Kode tersebut sudah ada."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Jika edit kode menjadi kode baru
+  */
+
+  if(
+    masterOldCode &&
+    masterOldCode !== kode &&
+    Object.prototype.hasOwnProperty.call(
+      target,
+      kode
+    )
+  ){
+
+    alert(
+      "Kode baru tersebut sudah digunakan."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const ref =
+      doc(
+        db,
+        "master_data",
+        masterMode
+      );
+
+
+    /*
+      Tambah / update nama
+    */
+
+    const updateData = {
+
+      [kode]: nama
+
+    };
+
+
+    /*
+      Kalau kode lama diganti,
+      hapus field kode lama.
+    */
+
+    if(
+      masterOldCode &&
+      masterOldCode !== kode
+    ){
+
+      const {
+        deleteField
+      } = await import(
+        "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js"
+      );
+
+
+      updateData[
+        masterOldCode
+      ] =
+        deleteField();
+
+    }
+
+
+    await updateDoc(
+      ref,
+      updateData
+    );
+
+
+    alert(
+      masterOldCode
+        ? "Data berhasil diperbarui."
+        : "Data berhasil ditambahkan."
+    );
+
+
+    closeMasterModal();
+
+
+    if(masterMode === "mapel"){
+
+      await loadMapel();
+
+    }
+    else{
+
+      await loadGuru();
+
+    }
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    /*
+      Jika dokumen belum ada,
+      buat dokumen baru.
+    */
+
+    try{
+
+      const ref =
+        doc(
+          db,
+          "master_data",
+          masterMode
+        );
+
+
+      await setDoc(
+        ref,
+        {
+          [kode]: nama
+        },
+        {
+          merge:true
+        }
+      );
+
+
+      closeMasterModal();
+
+
+      if(masterMode === "mapel"){
+
+        await loadMapel();
+
+      }
+      else{
+
+        await loadGuru();
+
+      }
+
+      alert(
+        "Data berhasil disimpan."
+      );
+
+    }
+    catch(error2){
+
+      console.error(
+        error2
+      );
+
+      alert(
+        "Gagal menyimpan:\n\n"
+        + error2.message
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   HAPUS MASTER
+===================================================== */
+
+async function hapusMaster(
+  tipe,
+  kode
+){
+
+  const data =
+    tipe === "mapel"
+      ? mapelData
+      : guruData;
+
+
+  const nama =
+    data[kode] || kode;
+
+
+  const yakin =
+    confirm(
+
+      `Hapus data berikut?\n\n` +
+      `${kode} — ${nama}\n\n` +
+      `Yang dihapus hanya kode "${kode}".\n` +
+      `Dokumen master lainnya tetap aman.`
+
+    );
+
+
+  if(!yakin){
+
+    return;
+
+  }
+
+
+  try{
+
+    const {
+      deleteField
+    } = await import(
+      "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js"
+    );
+
+
+    await updateDoc(
+
+      doc(
+        db,
+        "master_data",
+        tipe
+      ),
+
+      {
+        [kode]:
+          deleteField()
+      }
+
+    );
+
+
+    /*
+      Update lokal
+    */
+
+    delete data[kode];
+
+
+    if(tipe === "mapel"){
+
+      renderMapel();
+
+    }
+    else{
+
+      renderGuru();
+
+    }
+
+
+    refreshJadwalSelects();
+
+
+    alert(
+      "Data berhasil dihapus."
+    );
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "Gagal menghapus:\n\n"
+      + error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   JADWAL SELECT
+===================================================== */
+
+function buildMapelOptions(){
+
+  let html = `
+
+    <option value="">
+      -- Pilih Mapel --
+    </option>
+
+  `;
+
+
+  Object.entries(
+    mapelData
+  )
+  .sort(
+    ([a],[b]) =>
+      a.localeCompare(b)
+  )
+  .forEach(
+    ([kode,nama])=>{
+
+      html += `
+
+        <option value="${escapeHtml(kode)}">
+
+          ${escapeHtml(nama)}
+          (${escapeHtml(kode)})
+
+        </option>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+
+    <optgroup label="Kegiatan Khusus">
+
+      ${specialList.map(
+        item=>`
+
+          <option value="${escapeHtml(item)}">
+
+            ${escapeHtml(item)}
+
+          </option>
+
+        `
+      ).join("")}
+
+    </optgroup>
+
+  `;
+
+
+  return html;
+
+}
+
+
+/* =====================================================
+   GURU OPTIONS
+===================================================== */
+
+function buildGuruOptions(){
+
+  let html = `
+
+    <option value="">
+      -- Pilih Guru --
+    </option>
+
+  `;
+
+
+  Object.entries(
+    guruData
+  )
+  .sort(
+    ([a],[b]) =>
+      a.localeCompare(b)
+  )
+  .forEach(
+    ([kode,nama])=>{
+
+      html += `
+
+        <option value="${escapeHtml(kode)}">
+
+          ${escapeHtml(nama)}
+          (${escapeHtml(kode)})
+
+        </option>
+
+      `;
+
+    }
+  );
+
+
+  return html;
+
+}
+
+
+/* =====================================================
+   REFRESH SELECT
+===================================================== */
+
+function refreshJadwalSelects(){
+
+  kelasList.forEach(
+    kelas=>{
+
+      const mapel =
+        document.getElementById(
+          `${kelas}_mapel`
+        );
+
+      const guru =
+        document.getElementById(
+          `${kelas}_guru`
+        );
+
+
+      if(mapel){
+
+        const old =
+          mapel.value;
+
+        mapel.innerHTML =
+          buildMapelOptions();
+
+        mapel.value =
+          old;
+
+      }
+
+
+      if(guru){
+
+        const old =
+          guru.value;
+
+        guru.innerHTML =
+          buildGuruOptions();
+
+        guru.value =
+          old;
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   KODE JADWAL
+===================================================== */
+
+function getMapelKode(kode){
+
+  if(!kode){
+
+    return "";
+
+  }
+
+
+  if(isSpecial(kode)){
+
+    return kode.trim();
+
+  }
+
+
+  return kode
+    .split("/")[0]
+    .trim();
+
+}
+
+
+function getGuruKode(kode){
+
+  if(!kode){
+
+    return "";
+
+  }
+
+
+  if(isSpecial(kode)){
+
+    return "";
+
+  }
+
+
+  return kode
+    .split("/")[1]
+    ?.trim() || "";
+
+}
+
+
+function makeJadwalKode(
+  mapel,
+  guru
+){
+
+  mapel =
+    (mapel || "")
+      .trim();
+
+  guru =
+    (guru || "")
+      .trim();
+
+
+  if(!mapel){
+
+    return "";
+
+  }
+
+
+  if(
+    isSpecial(mapel)
+  ){
+
+    return mapel;
+
+  }
+
+
+  if(!guru){
+
+    return mapel;
+
+  }
+
+
+  return `${mapel}/${guru}`;
+
+}
+
+
+/* =====================================================
+   TAMPIL JADWAL
+===================================================== */
 
 function translateKode(kode){
 
-if(!kode) return "-";
+  if(!kode){
 
-/* SPECIAL */
+    return `
 
-if(isSpecial(kode)){
+      <div class="jadwal-box">
 
-return `
+        <b>-</b>
 
-<div style="
-background:#ffeaa7;
-padding:10px;
-border-radius:12px;
-font-weight:bold;
-color:#222;
-">
+        <small>
+          Belum diisi
+        </small>
 
-${kode}
+      </div>
 
-</div>
+    `;
 
-`;
+  }
+
+
+  if(
+    isSpecial(kode)
+  ){
+
+    return `
+
+      <div class="special-box">
+
+        ${escapeHtml(kode)}
+
+      </div>
+
+    `;
+
+  }
+
+
+  const kodeMapel =
+    getMapelKode(kode);
+
+  const kodeGuru =
+    getGuruKode(kode);
+
+
+  const namaMapel =
+    mapelData[kodeMapel]
+    || `Kode: ${kodeMapel}`;
+
+
+  const namaGuru =
+    guruData[kodeGuru]
+    || `Kode: ${kodeGuru}`;
+
+
+  return `
+
+    <div class="jadwal-box">
+
+      <b>
+        ${escapeHtml(namaMapel)}
+      </b>
+
+      <small>
+        ${escapeHtml(namaGuru)}
+      </small>
+
+    </div>
+
+  `;
 
 }
 
-/* NORMAL */
 
-const split =
-kode.split("/");
-
-const kodeMapel =
-split[0];
-
-const kodeGuru =
-split[1];
-
-const namaMapel =
-mapelData[
-kodeMapel
-] || kodeMapel;
-
-const namaGuru =
-guruData[
-kodeGuru
-] || kodeGuru;
-
-return `
-
-<div class="kode-box">
-
-<b>
-${namaMapel}
-</b>
-
-<small>
-${namaGuru}
-</small>
-
-</div>
-
-`;
-
-}
-
-/* =========================
-LOAD JADWAL
-========================= */
+/* =====================================================
+   LOAD JADWAL
+===================================================== */
 
 async function loadJadwal(){
 
-jadwalBody.innerHTML = `
+  jadwalBody.innerHTML = `
 
-<tr>
+    <tr>
 
-<td colspan="9">
+      <td
+        colspan="9"
+        class="loading"
+      >
 
-Loading...
+        <i
+          class="fa-solid fa-spinner fa-spin"
+        ></i>
 
-</td>
+        Memuat semua jadwal...
 
-</tr>
+      </td>
 
-`;
+    </tr>
 
-const querySnapshot =
-await getDocs(
-collection(
-db,
-"jadwal"
-)
-);
+  `;
 
-jadwalBody.innerHTML = "";
 
-querySnapshot.forEach((item)=>{
+  try{
 
-const data =
-item.data();
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "jadwal"
+        )
+      );
 
-jadwalBody.innerHTML += `
 
-<tr>
+    const data = [];
 
-<td>${data.hari}</td>
 
-<td>${data.jam}</td>
+    snapshot.forEach(
+      item=>{
 
-<td>
-${translateKode(data.vii_a)}
-</td>
+        data.push({
 
-<td>
-${translateKode(data.vii_b)}
-</td>
+          id:
+            item.id,
 
-<td>
-${translateKode(data.viii_a)}
-</td>
+          data:
+            item.data()
 
-<td>
-${translateKode(data.viii_b)}
-</td>
+        });
 
-<td>
-${translateKode(data.ix_a)}
-</td>
+      }
+    );
 
-<td>
-${translateKode(data.ix_b)}
-</td>
 
-<td>
+    data.sort(
+      (a,b)=>{
 
-<button
-class="delete-btn"
-onclick="hapusJadwal('${item.id}')">
+        const hariA =
+          urutanHari[
+            String(
+              a.data.hari || ""
+            ).toUpperCase()
+          ] || 99;
 
-Hapus
 
-</button>
+        const hariB =
+          urutanHari[
+            String(
+              b.data.hari || ""
+            ).toUpperCase()
+          ] || 99;
 
-</td>
 
-</tr>
+        if(
+          hariA !== hariB
+        ){
 
-`;
+          return hariA - hariB;
 
-});
+        }
+
+
+        return String(
+          a.data.jam || ""
+        ).localeCompare(
+          String(
+            b.data.jam || ""
+          )
+        );
+
+      }
+    );
+
+
+    if(!data.length){
+
+      jadwalBody.innerHTML = `
+
+        <tr>
+
+          <td
+            colspan="9"
+            class="empty"
+          >
+
+            Belum ada data jadwal.
+
+          </td>
+
+        </tr>
+
+      `;
+
+      return;
+
+    }
+
+
+    jadwalBody.innerHTML = "";
+
+
+    let index = 0;
+
+
+    while(
+      index < data.length
+    ){
+
+      const hari =
+        String(
+          data[index]
+            .data.hari || ""
+        ).toUpperCase();
+
+
+      let end =
+        index;
+
+
+      while(
+        end < data.length &&
+        String(
+          data[end]
+            .data.hari || ""
+        ).toUpperCase()
+        === hari
+      ){
+
+        end++;
+
+      }
+
+
+      const rowspan =
+        end - index;
+
+
+      for(
+        let i=index;
+        i<end;
+        i++
+      ){
+
+        const item =
+          data[i];
+
+        const d =
+          item.data;
+
+
+        const tr =
+          document.createElement(
+            "tr"
+          );
+
+
+        if(i === index){
+
+          const td =
+            document.createElement(
+              "td"
+            );
+
+          td.className =
+            "hari-cell";
+
+          td.rowSpan =
+            rowspan;
+
+          td.textContent =
+            hari || "-";
+
+          tr.appendChild(
+            td
+          );
+
+        }
+
+
+        const jam =
+          document.createElement(
+            "td"
+          );
+
+        jam.className =
+          "jam-cell";
+
+        jam.textContent =
+          d.jam || "-";
+
+        tr.appendChild(
+          jam
+        );
+
+
+        kelasList.forEach(
+          kelas=>{
+
+            const td =
+              document.createElement(
+                "td"
+              );
+
+            td.innerHTML =
+              translateKode(
+                d[kelas]
+              );
+
+            tr.appendChild(
+              td
+            );
+
+          }
+        );
+
+
+        const aksi =
+          document.createElement(
+            "td"
+          );
+
+
+        const buttons =
+          document.createElement(
+            "div"
+          );
+
+        buttons.className =
+          "action-buttons";
+
+
+        const edit =
+          document.createElement(
+            "button"
+          );
+
+        edit.className =
+          "btn btn-warning";
+
+        edit.innerHTML = `
+
+          <i class="fa-solid fa-pen"></i>
+
+          Edit
+
+        `;
+
+
+        edit.addEventListener(
+          "click",
+          ()=>{
+
+            openEditJadwal(
+              item.id,
+              d
+            );
+
+          }
+        );
+
+
+        const hapus =
+          document.createElement(
+            "button"
+          );
+
+        hapus.className =
+          "btn btn-danger";
+
+        hapus.innerHTML = `
+
+          <i class="fa-solid fa-trash"></i>
+
+          Hapus
+
+        `;
+
+
+        hapus.addEventListener(
+          "click",
+          ()=>{
+
+            hapusJadwal(
+              item.id,
+              d
+            );
+
+          }
+        );
+
+
+        buttons.appendChild(
+          edit
+        );
+
+        buttons.appendChild(
+          hapus
+        );
+
+
+        aksi.appendChild(
+          buttons
+        );
+
+
+        tr.appendChild(
+          aksi
+        );
+
+
+        jadwalBody.appendChild(
+          tr
+        );
+
+      }
+
+
+      index = end;
+
+    }
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    jadwalBody.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="9"
+          class="empty"
+        >
+
+          Gagal membaca data jadwal.
+
+          <br><br>
+
+          ${escapeHtml(
+            error.message
+          )}
+
+        </td>
+
+      </tr>
+
+    `;
+
+  }
 
 }
 
-/* =========================
-HAPUS
-========================= */
 
-window.hapusJadwal =
-async(id)=>{
+/* =====================================================
+   JADWAL MODAL
+===================================================== */
 
-const yakin =
-confirm(
-"Hapus jadwal?"
+const jadwalModal =
+document.getElementById(
+  "jadwalModal"
 );
 
-if(!yakin) return;
-
-await deleteDoc(
-doc(
-db,
-"jadwal",
-id
-)
+const jadwalModalTitle =
+document.getElementById(
+  "jadwalModalTitle"
 );
 
-loadJadwal();
+const jadwalHari =
+document.getElementById(
+  "jadwalHari"
+);
 
-};
+const jadwalJam =
+document.getElementById(
+  "jadwalJam"
+);
 
-/* =========================
-LOAD AWAL
-========================= */
 
-await loadMasterData();
+/* =====================================================
+   OPEN TAMBAH JADWAL
+===================================================== */
 
-loadJadwal();
+function openTambahJadwal(){
+
+  editJadwalId =
+    null;
+
+
+  jadwalModalTitle.textContent =
+    "Tambah Jadwal";
+
+
+  jadwalHari.value =
+    "SENIN";
+
+
+  jadwalJam.value =
+    "";
+
+
+  kelasList.forEach(
+    kelas=>{
+
+      document.getElementById(
+        `${kelas}_mapel`
+      ).value = "";
+
+      document.getElementById(
+        `${kelas}_guru`
+      ).value = "";
+
+    }
+  );
+
+
+  jadwalModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   SET KELAS
+===================================================== */
+
+function setKelasValue(
+  kelas,
+  kode
+){
+
+  const mapel =
+    document.getElementById(
+      `${kelas}_mapel`
+    );
+
+  const guru =
+    document.getElementById(
+      `${kelas}_guru`
+    );
+
+
+  mapel.value = "";
+
+  guru.value = "";
+
+
+  if(!kode){
+
+    return;
+
+  }
+
+
+  if(
+    isSpecial(kode)
+  ){
+
+    mapel.value =
+      kode.trim();
+
+    return;
+
+  }
+
+
+  mapel.value =
+    getMapelKode(kode);
+
+
+  guru.value =
+    getGuruKode(kode);
+
+}
+
+
+/* =====================================================
+   OPEN EDIT JADWAL
+===================================================== */
+
+function openEditJadwal(
+  id,
+  data
+){
+
+  editJadwalId =
+    id;
+
+
+  jadwalModalTitle.textContent =
+    "Edit Jadwal";
+
+
+  jadwalHari.value =
+    data.hari || "SENIN";
+
+
+  jadwalJam.value =
+    data.jam || "";
+
+
+  kelasList.forEach(
+    kelas=>{
+
+      setKelasValue(
+        kelas,
+        data[kelas] || ""
+      );
+
+    }
+  );
+
+
+  jadwalModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   CLOSE JADWAL
+===================================================== */
+
+function closeJadwalModal(){
+
+  jadwalModal.classList.remove(
+    "show"
+  );
+
+  editJadwalId =
+    null;
+
+}
+
+
+/* =====================================================
+   GET FORM JADWAL
+===================================================== */
+
+function getJadwalForm(){
+
+  const data = {
+
+    hari:
+      jadwalHari.value
+        .trim()
+        .toUpperCase(),
+
+    jam:
+      jadwalJam.value
+        .trim()
+
+  };
+
+
+  kelasList.forEach(
+    kelas=>{
+
+      const mapel =
+        document.getElementById(
+          `${kelas}_mapel`
+        ).value;
+
+      const guru =
+        document.getElementById(
+          `${kelas}_guru`
+        ).value;
+
+
+      data[kelas] =
+        makeJadwalKode(
+          mapel,
+          guru
+        );
+
+    }
+  );
+
+
+  return data;
+
+}
+
+
+/* =====================================================
+   SIMPAN JADWAL
+===================================================== */
+
+async function simpanJadwal(){
+
+  const data =
+    getJadwalForm();
+
+
+  if(!data.hari){
+
+    alert(
+      "Hari harus dipilih."
+    );
+
+    return;
+
+  }
+
+
+  if(!data.jam){
+
+    alert(
+      "Jam harus diisi."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !kelasList.some(
+      kelas =>
+        data[kelas]
+    )
+  ){
+
+    alert(
+      "Minimal satu kelas harus diisi."
+    );
+
+    return;
+
+  }
+
+
+  const btn =
+    document.getElementById(
+      "btnSimpanJadwal"
+    );
+
+
+  btn.disabled =
+    true;
+
+
+  btn.innerHTML = `
+
+    <i
+      class="fa-solid fa-spinner fa-spin"
+    ></i>
+
+    Menyimpan...
+
+  `;
+
+
+  try{
+
+    const ref =
+      editJadwalId
+        ? doc(
+            db,
+            "jadwal",
+            editJadwalId
+          )
+        : doc(
+            collection(
+              db,
+              "jadwal"
+            )
+          );
+
+
+    await setDoc(
+      ref,
+      data,
+      {
+        merge:true
+      }
+    );
+
+
+    alert(
+      editJadwalId
+        ? "Jadwal berhasil diperbarui."
+        : "Jadwal berhasil ditambahkan."
+    );
+
+
+    closeJadwalModal();
+
+    await loadJadwal();
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "Gagal menyimpan jadwal:\n\n"
+      + error.message
+    );
+
+  }
+  finally{
+
+    btn.disabled =
+      false;
+
+    btn.innerHTML = `
+
+      <i class="fa-solid fa-floppy-disk"></i>
+
+      Simpan Jadwal
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   HAPUS JADWAL
+===================================================== */
+
+async function hapusJadwal(
+  id,
+  data
+){
+
+  const yakin =
+    confirm(
+
+      `Hapus jadwal?\n\n` +
+      `${data.hari || ""} - ${data.jam || ""}`
+
+    );
+
+
+  if(!yakin){
+
+    return;
+
+  }
+
+
+  try{
+
+    await deleteDoc(
+
+      doc(
+        db,
+        "jadwal",
+        id
+      )
+
+    );
+
+
+    alert(
+      "Jadwal berhasil dihapus."
+    );
+
+
+    await loadJadwal();
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "Gagal menghapus jadwal:\n\n"
+      + error.message
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   TAB
+===================================================== */
+
+document
+  .querySelectorAll(
+    ".tab-btn"
+  )
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+        const tab =
+          button.dataset.tab;
+
+
+        document
+          .querySelectorAll(
+            ".tab-btn"
+          )
+          .forEach(
+            item =>
+              item.classList.remove(
+                "active"
+              )
+          );
+
+
+        document
+          .querySelectorAll(
+            ".panel"
+          )
+          .forEach(
+            panel =>
+              panel.classList.remove(
+                "active"
+              )
+          );
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        document
+          .getElementById(
+            `panel-${tab}`
+          )
+          .classList.add(
+            "active"
+          );
+
+      }
+    );
+
+  });
+
+
+/* =====================================================
+   BUTTON MASTER
+===================================================== */
+
+document
+  .getElementById(
+    "btnTambahMapel"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+      openTambahMaster(
+        "mapel"
+      );
+    }
+  );
+
+
+document
+  .getElementById(
+    "btnTambahGuru"
+  )
+  .addEventListener(
+    "click",
+    ()=>{
+      openTambahMaster(
+        "guru"
+      );
+    }
+  );
+
+
+document
+  .getElementById(
+    "closeMasterModal"
+  )
+  .addEventListener(
+    "click",
+    closeMasterModal
+  );
+
+
+document
+  .getElementById(
+    "btnBatalMaster"
+  )
+  .addEventListener(
+    "click",
+    closeMasterModal
+  );
+
+
+document
+  .getElementById(
+    "btnSimpanMaster"
+  )
+  .addEventListener(
+    "click",
+    simpanMaster
+  );
+
+
+/* =====================================================
+   BUTTON JADWAL
+===================================================== */
+
+document
+  .getElementById(
+    "btnTambahJadwal"
+  )
+  .addEventListener(
+    "click",
+    openTambahJadwal
+  );
+
+
+document
+  .getElementById(
+    "closeJadwalModal"
+  )
+  .addEventListener(
+    "click",
+    closeJadwalModal
+  );
+
+
+document
+  .getElementById(
+    "btnBatalJadwal"
+  )
+  .addEventListener(
+    "click",
+    closeJadwalModal
+  );
+
+
+document
+  .getElementById(
+    "btnSimpanJadwal"
+  )
+  .addEventListener(
+    "click",
+    simpanJadwal
+  );
+
+
+/* =====================================================
+   KLIK LUAR MODAL
+===================================================== */
+
+masterModal.addEventListener(
+  "click",
+  event=>{
+
+    if(
+      event.target === masterModal
+    ){
+
+      closeMasterModal();
+
+    }
+
+  }
+);
+
+
+jadwalModal.addEventListener(
+  "click",
+  event=>{
+
+    if(
+      event.target === jadwalModal
+    ){
+
+      closeJadwalModal();
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+document
+  .getElementById(
+    "btnRefreshAll"
+  )
+  .addEventListener(
+    "click",
+    async()=>{
+
+      setStatus(
+        "Memuat ulang semua data..."
+      );
+
+
+      try{
+
+        await loadMapel();
+
+        await loadGuru();
+
+        await loadJadwal();
+
+
+        setStatus(
+          "Semua data berhasil dimuat dari Firebase."
+        );
+
+      }
+      catch(error){
+
+        console.error(
+          error
+        );
+
+        setStatus(
+          "Gagal memuat data Firebase.",
+          true
+        );
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   START
+===================================================== */
+
+async function start(){
+
+  try{
+
+    setStatus(
+      "Membaca master mata pelajaran..."
+    );
+
+    await loadMapel();
+
+
+    setStatus(
+      "Membaca master guru..."
+    );
+
+    await loadGuru();
+
+
+    setStatus(
+      "Membaca semua jadwal..."
+    );
+
+    await loadJadwal();
+
+
+    setStatus(
+      "Semua data berhasil dimuat dari Firebase."
+    );
+
+  }
+  catch(error){
+
+    console.error(
+      "START ERROR:",
+      error
+    );
+
+
+    setStatus(
+      "Gagal membaca Firebase: "
+      + error.message,
+      true
+    );
+
+  }
+
+}
+
+
+start();
 
 </script>
 
+
 </body>
+
 </html>
