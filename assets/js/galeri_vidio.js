@@ -1,8 +1,7 @@
 /* =========================
    IMPORT FIREBASE
 ========================= */
-import { db }
-from "./firebase.js";
+import { db } from "./firebase.js";
 
 import {
   collection,
@@ -10,68 +9,181 @@ import {
   getDocs,
   deleteDoc,
   doc
-}
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 
 /* =========================
    ELEMENT
 ========================= */
 const judulVideo =
-document.getElementById("judulVideo");
+  document.getElementById("judulVideo");
 
 const linkVideo =
-document.getElementById("linkVideo");
+  document.getElementById("linkVideo");
 
 const deskripsiVideo =
-document.getElementById("deskripsiVideo");
+  document.getElementById("deskripsiVideo");
 
 const btnSimpan =
-document.getElementById("btnSimpan");
+  document.getElementById("btnSimpan");
 
 const tbodyVideo =
-document.getElementById("tbodyVideo");
+  document.getElementById("tbodyVideo");
 
 
 /* =========================
-   UBAH LINK YOUTUBE
+   AMBIL YOUTUBE ID
 ========================= */
-function convertYoutube(url){
+function getYoutubeId(url) {
 
-  try{
+  try {
 
-    /* SHORT LINK */
-    if(url.includes("youtu.be/")){
+    const parsed = new URL(url);
 
-      const id =
-      url.split("youtu.be/")[1];
+    const hostname =
+      parsed.hostname.toLowerCase();
 
-      return `
-      https://www.youtube.com/embed/${id}
-      `;
+    const pathname =
+      parsed.pathname;
+
+
+    /* =========================
+       youtu.be/VIDEO_ID
+    ========================== */
+    if (
+      hostname === "youtu.be" ||
+      hostname === "www.youtu.be"
+    ) {
+
+      return pathname
+        .replace(/^\/+/, "")
+        .split("/")[0]
+        .split("?")[0];
 
     }
 
-    /* LINK BIASA */
-    if(url.includes("watch?v=")){
 
-      const id =
-      url.split("watch?v=")[1]
-      .split("&")[0];
+    /* =========================
+       youtube.com/shorts/VIDEO_ID
+    ========================== */
+    if (
+      pathname.startsWith("/shorts/")
+    ) {
 
-      return `
-      https://www.youtube.com/embed/${id}
-      `;
+      return pathname
+        .split("/")[2]
+        ?.split("?")[0]
+        ?.split("/")[0] || null;
 
     }
 
-    return url;
 
-  }catch{
+    /* =========================
+       youtube.com/watch?v=VIDEO_ID
+    ========================== */
+    if (
+      pathname === "/watch"
+    ) {
+
+      return parsed.searchParams.get("v");
+
+    }
+
+
+    /* =========================
+       youtube.com/embed/VIDEO_ID
+    ========================== */
+    if (
+      pathname.startsWith("/embed/")
+    ) {
+
+      return pathname
+        .split("/")[2]
+        ?.split("?")[0]
+        ?.split("/")[0] || null;
+
+    }
+
+
+    /* =========================
+       youtube.com/live/VIDEO_ID
+    ========================== */
+    if (
+      pathname.startsWith("/live/")
+    ) {
+
+      return pathname
+        .split("/")[2]
+        ?.split("?")[0]
+        ?.split("/")[0] || null;
+
+    }
+
+
+    return null;
+
+  } catch (error) {
+
+    console.error(
+      "Gagal membaca URL YouTube:",
+      error
+    );
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================
+   UBAH LINK MENJADI EMBED
+========================= */
+function convertYoutube(url) {
+
+  const youtubeId =
+    getYoutubeId(url);
+
+  if (!youtubeId) {
 
     return url;
 
   }
+
+  return (
+    `https://www.youtube.com/embed/${youtubeId}`
+  );
+
+}
+
+
+/* =========================
+   BUAT URL THUMBNAIL
+========================= */
+function getYoutubeThumbnail(url) {
+
+  const youtubeId =
+    getYoutubeId(url);
+
+  if (!youtubeId) {
+
+    return "";
+
+  }
+
+  return (
+    `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`
+  );
+
+}
+
+
+/* =========================
+   VALIDASI LINK YOUTUBE
+========================= */
+function isYoutubeUrl(url) {
+
+  return !!getYoutubeId(url);
 
 }
 
@@ -79,120 +191,278 @@ function convertYoutube(url){
 /* =========================
    SIMPAN VIDEO
 ========================= */
-btnSimpan.addEventListener("click", async()=>{
+btnSimpan.addEventListener(
+  "click",
+  async () => {
 
-  const judul =
-  judulVideo.value.trim();
+    const judul =
+      judulVideo.value.trim();
 
-  const link =
-  linkVideo.value.trim();
+    const link =
+      linkVideo.value.trim();
 
-  const deskripsi =
-  deskripsiVideo.value.trim();
+    const deskripsi =
+      deskripsiVideo.value.trim();
 
-  if(!judul || !link){
 
-    alert("Lengkapi data");
+    /* =========================
+       VALIDASI DATA
+    ========================== */
 
-    return;
+    if (!judul || !link) {
+
+      alert(
+        "Lengkapi judul dan link video."
+      );
+
+      return;
+
+    }
+
+
+    /* =========================
+       VALIDASI YOUTUBE
+    ========================== */
+
+    if (!isYoutubeUrl(link)) {
+
+      alert(
+        "Link YouTube tidak valid.\n\n" +
+        "Gunakan salah satu format:\n" +
+        "https://www.youtube.com/watch?v=ID\n" +
+        "https://youtu.be/ID\n" +
+        "https://www.youtube.com/shorts/ID"
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+      /* =========================
+         DATA YOUTUBE
+      ========================== */
+
+      const youtubeId =
+        getYoutubeId(link);
+
+      const embedUrl =
+        convertYoutube(link);
+
+      const thumbnail =
+        getYoutubeThumbnail(link);
+
+
+      /* =========================
+         SIMPAN FIRESTORE
+      ========================== */
+
+      await addDoc(
+
+        collection(
+          db,
+          "video_sekolah"
+        ),
+
+        {
+
+          judul:
+            judul,
+
+          link:
+            embedUrl,
+
+          thumbnail:
+            thumbnail,
+
+          youtubeId:
+            youtubeId,
+
+          deskripsi:
+            deskripsi,
+
+          type:
+            "youtube",
+
+          createdAt:
+            Date.now()
+
+        }
+
+      );
+
+
+      /* =========================
+         BERHASIL
+      ========================== */
+
+      alert(
+        "Video berhasil disimpan."
+      );
+
+
+      /* =========================
+         KOSONGKAN FORM
+      ========================== */
+
+      judulVideo.value = "";
+
+      linkVideo.value = "";
+
+      deskripsiVideo.value = "";
+
+
+      /* =========================
+         MUAT ULANG DATA
+      ========================== */
+
+      loadVideo();
+
+
+    } catch (error) {
+
+      console.error(
+        "Gagal menyimpan video:",
+        error
+      );
+
+      alert(
+        "Gagal menyimpan video.\n" +
+        "Periksa koneksi dan Firebase."
+      );
+
+    }
 
   }
-
-  try{
-
-    await addDoc(
-
-      collection(db,"video_sekolah"),
-
-      {
-        judul: judul,
-
-        link:
-        convertYoutube(link),
-
-        deskripsi: deskripsi,
-
-        tipe: "youtube",
-
-        createdAt:
-        Date.now()
-      }
-
-    );
-
-    alert("Video berhasil disimpan");
-
-    judulVideo.value = "";
-    linkVideo.value = "";
-    deskripsiVideo.value = "";
-
-    loadVideo();
-
-  }catch(err){
-
-    console.log(err);
-
-    alert("Gagal simpan");
-
-  }
-
-});
+);
 
 
 /* =========================
    LOAD VIDEO
 ========================= */
-async function loadVideo(){
+async function loadVideo() {
 
   tbodyVideo.innerHTML = "";
 
-  const snap =
-  await getDocs(
-    collection(db,"video_sekolah")
-  );
+  try {
 
-  let no = 1;
+    const snap =
+      await getDocs(
+        collection(
+          db,
+          "video_sekolah"
+        )
+      );
 
-  snap.forEach((docu)=>{
 
-    const d =
-    docu.data();
+    let no = 1;
 
-    tbodyVideo.innerHTML += `
+
+    snap.forEach(
+      (docu) => {
+
+        const d =
+          docu.data();
+
+
+        /*
+         * Data lama mungkin memakai
+         * "tipe", sedangkan data baru
+         * memakai "type".
+         *
+         * Kita baca keduanya agar
+         * data lama tidak rusak.
+         */
+
+        const videoType =
+          d.type ||
+          d.tipe ||
+          "youtube";
+
+
+        tbodyVideo.innerHTML += `
+
+          <tr>
+
+            <td>
+              ${no++}
+            </td>
+
+            <td>
+              ${escapeHtml(
+                d.judul || "-"
+              )}
+            </td>
+
+            <td>
+
+              <a
+                href="${escapeAttribute(
+                  d.link || "#"
+                )}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-video"
+              >
+
+                Lihat Video
+
+              </a>
+
+            </td>
+
+            <td>
+
+              <button
+                class="btn-hapus"
+                onclick="hapusVideo('${docu.id}')"
+              >
+
+                <i
+                  class="fa-solid fa-trash"
+                ></i>
+
+                Hapus
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      "Gagal memuat video:",
+      error
+    );
+
+    tbodyVideo.innerHTML = `
+
       <tr>
 
-        <td>${no++}</td>
+        <td
+          colspan="4"
+          style="text-align:center;"
+        >
 
-        <td>${d.judul}</td>
-
-        <td>
-          <a
-            href="${d.link}"
-            target="_blank"
-            class="link-video">
-
-            Lihat Video
-
-          </a>
-        </td>
-
-        <td>
-
-          <button
-            class="btn-hapus"
-            onclick="hapusVideo('${docu.id}')">
-
-            <i class="fa-solid fa-trash"></i>
-            Hapus
-
-          </button>
+          Gagal memuat data video.
 
         </td>
 
       </tr>
+
     `;
 
-  });
+  }
 
 }
 
@@ -201,28 +471,85 @@ async function loadVideo(){
    HAPUS VIDEO
 ========================= */
 window.hapusVideo =
-async(id)=>{
+async (id) => {
 
   const yakin =
-  confirm("Hapus video?");
+    confirm(
+      "Hapus video ini?"
+    );
 
-  if(!yakin) return;
 
-  try{
+  if (!yakin) {
+
+    return;
+
+  }
+
+
+  try {
 
     await deleteDoc(
-      doc(db,"video_sekolah",id)
+      doc(
+        db,
+        "video_sekolah",
+        id
+      )
     );
+
+
+    alert(
+      "Video berhasil dihapus."
+    );
+
 
     loadVideo();
 
-  }catch(err){
 
-    console.log(err);
+  } catch (error) {
+
+    console.error(
+      "Gagal menghapus video:",
+      error
+    );
+
+    alert(
+      "Gagal menghapus video."
+    );
 
   }
 
 };
+
+
+/* =========================
+   ESCAPE HTML
+   Mencegah judul/deskripsi
+   merusak tabel HTML
+========================= */
+function escapeHtml(value) {
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================
+   ESCAPE ATTRIBUTE
+========================= */
+function escapeAttribute(value) {
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+}
 
 
 /* =========================
