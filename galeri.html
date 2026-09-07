@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -134,14 +135,20 @@
 <body>
 
 <!-- ================= HEADER ================= -->
+
 <div id="header"></div>
 
-<!-- ================= GALERI ================= -->
+
+<!-- =====================================================
+     GALERI FOTO
+===================================================== -->
+
 <section class="galeri-section">
 
   <div class="container">
 
     <!-- JUDUL -->
+
     <div class="section-title">
 
       <h2>
@@ -154,13 +161,18 @@
 
     </div>
 
+
     <!-- GALERI FOTO -->
+
     <div
       class="gallery-full"
       id="galleryFull">
+
     </div>
 
+
     <!-- LINK FOTO -->
+
     <div class="lihat-semua">
 
       <a href="galeri_lengkap.html">
@@ -177,10 +189,17 @@
 
 </section>
 
-<!-- ================= VIDEO ================= -->
+
+
+<!-- =====================================================
+     VIDEO KEGIATAN
+===================================================== -->
+
 <section class="video-section">
 
   <div class="container">
+
+    <!-- JUDUL -->
 
     <div class="section-title">
 
@@ -194,19 +213,26 @@
 
     </div>
 
+
     <!-- VIDEO GRID -->
+
     <div
       class="video-grid"
       id="videoGrid">
 
-      <!-- VIDEO FIREBASE -->
+      <!-- VIDEO FIREBASE AKAN DIMUAT DI SINI -->
 
     </div>
 
-    <!-- LINK VIDEO -->
+
+    <!-- LINK YOUTUBE -->
+
     <div class="lihat-semua">
 
-      <a href="https://youtube.com/@smpn20konsel?si=n46GKczyoI1t9fRu">
+      <a
+        href="https://youtube.com/@smpn20konsel?si=n46GKczyoI1t9fRu"
+        target="_blank"
+        rel="noopener noreferrer">
 
         <i class="fa-solid fa-circle-play"></i>
 
@@ -220,26 +246,53 @@
 
 </section>
 
+
+
 <!-- ================= FOOTER ================= -->
+
 <div id="footer"></div>
 
-<!-- ================= INCLUDE ================= -->
+
+
+<!-- =====================================================
+     INCLUDE HEADER & FOOTER
+===================================================== -->
+
 <script
   type="module"
   src="assets/js/include.js">
 </script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="assets/js/aos-global.js"></script>
 
-<!-- ================= LOAD FOTO ================= -->
+
+<!-- =====================================================
+     AOS
+===================================================== -->
+
+<script
+  src="https://unpkg.com/aos@2.3.4/dist/aos.js">
+</script>
+
+<script
+  src="assets/js/aos-global.js">
+</script>
+
+
+
+<!-- =====================================================
+     LOAD FOTO
+===================================================== -->
 
 <script>
+
 const gallery =
 document.getElementById(
   "galleryFull"
 );
 
-/* ================= ARRAY FOTO ================= */
+
+/* =====================================================
+   ARRAY FOTO
+===================================================== */
 
 const photos = [
 
@@ -262,12 +315,15 @@ const photos = [
 
 ];
 
-/* ================= FOTO OTOMATIS ================= */
+
+/* =====================================================
+   FOTO OTOMATIS
+===================================================== */
 
 for(let i = 1; i <= 84; i++){
 
   const number =
-  String(i).padStart(4,"0");
+    String(i).padStart(4,"0");
 
   photos.push(
     `IMG-20250613-WA${number}.jpg`
@@ -275,19 +331,24 @@ for(let i = 1; i <= 84; i++){
 
 }
 
-/* ======================================================
-   SISTEM GANTI FOTO SETIAP 5 HARI
-====================================================== */
+
+/* =====================================================
+   JUMLAH FOTO YANG DITAMPILKAN
+===================================================== */
 
 /*
-  TOTAL FOTO TAMPIL:
-  10 FOTO
-  = 2 BARIS × 5 KOLOM
+
+   10 FOTO
+   2 BARIS × 5 KOLOM
+
 */
 
 const jumlahFoto = 10;
 
-/* ================= HARI ================= */
+
+/* =====================================================
+   HITUNG HARI
+===================================================== */
 
 const sekarang =
 new Date();
@@ -301,79 +362,128 @@ Math.floor(
 
 );
 
-/* ================= PERIODE ================= */
+
+/* =====================================================
+   PERIODE 5 HARI
+===================================================== */
 
 const periode =
-Math.floor(totalHari / 5);
+Math.floor(
+  totalHari / 5
+);
 
-/* ================= INDEX ================= */
+
+/* =====================================================
+   INDEX AWAL
+===================================================== */
 
 const startIndex =
 
-(periode * jumlahFoto)
+(
+  periode *
+  jumlahFoto
+)
 
 % photos.length;
 
-/* ================= FOTO TAMPIL ================= */
+
+/* =====================================================
+   FOTO YANG AKAN DITAMPILKAN
+===================================================== */
 
 const tampilFoto = [];
 
-for(let i = 0; i < jumlahFoto; i++){
+
+for(
+  let i = 0;
+  i < jumlahFoto;
+  i++
+){
 
   tampilFoto.push(
 
     photos[
-      (startIndex + i)
-      % photos.length
+
+      (
+        startIndex +
+        i
+      )
+
+      %
+
+      photos.length
+
     ]
 
   );
 
 }
 
-/* ================= RENDER ================= */
+
+/* =====================================================
+   RENDER FOTO
+===================================================== */
 
 gallery.innerHTML = "";
 
-tampilFoto.forEach((photo)=>{
 
-  const img =
-  document.createElement("img");
+tampilFoto.forEach(
+  (photo) => {
 
-  img.src =
-  `Galeri/${photo}`;
+    const img =
+      document.createElement(
+        "img"
+      );
 
-  img.alt =
-  "Kegiatan Sekolah";
 
-  img.loading =
-  "lazy";
+    img.src =
+      `Galeri/${photo}`;
 
-  img.onerror = function(){
 
-    this.style.display =
-    "none";
+    img.alt =
+      "Kegiatan SMP Negeri 20 Konawe Selatan";
 
-  };
 
-  gallery.appendChild(img);
+    img.loading =
+      "lazy";
 
-});
+
+    img.onerror =
+      function(){
+
+        this.style.display =
+          "none";
+
+      };
+
+
+    gallery.appendChild(
+      img
+    );
+
+  }
+);
 
 </script>
 
-<!-- ================= VIDEO FIREBASE ================= -->
+
+
+<!-- =====================================================
+     VIDEO FIREBASE
+===================================================== -->
+
 <script type="module">
 
-/* ======================================================
-   VIDEO 2 BARIS 3 KOLOM
-   BERGANTI SETIAP 5 HARI
-====================================================== */
 
-/* ================= IMPORT ================= */
+/* =====================================================
+   IMPORT FIREBASE
+===================================================== */
 
-import { db }
+import {
+  db
+}
 from "./assets/js/firebase.js";
+
 
 import {
   collection,
@@ -383,64 +493,234 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-/* ================= ELEMENT ================= */
+
+
+/* =====================================================
+   ELEMENT VIDEO
+===================================================== */
 
 const videoGrid =
-document.getElementById(
-  "videoGrid"
-);
+  document.getElementById(
+    "videoGrid"
+  );
 
-/* ================= CONVERT YOUTUBE ================= */
+
+
+/* =====================================================
+   CONVERT YOUTUBE URL
+===================================================== */
+
+/*
+
+   FUNGSI INI MENDUKUNG:
+
+   1. YouTube biasa
+      https://www.youtube.com/watch?v=ABC123
+
+   2. YouTube pendek
+      https://youtu.be/ABC123
+
+   3. YouTube Shorts
+      https://youtube.com/shorts/ABC123
+
+   4. URL embed
+      https://www.youtube.com/embed/ABC123
+
+*/
 
 function convertYoutube(link){
 
-  if(link.includes("watch?v=")){
+  /* =================
+     LINK KOSONG
+  ================= */
 
-    return link.replace(
-      "watch?v=",
-      "embed/"
+  if(!link){
+
+    return "";
+
+  }
+
+
+  try{
+
+    const url =
+      new URL(link);
+
+
+    let videoId =
+      "";
+
+
+    /* =================================================
+       YOUTUBE SHORTS
+    ================================================= */
+
+    if(
+      url.pathname.startsWith(
+        "/shorts/"
+      )
+    ){
+
+      videoId =
+
+        url.pathname
+
+        .split(
+          "/shorts/"
+        )[1]
+
+        .split(
+          "/"
+        )[0];
+
+    }
+
+
+    /* =================================================
+       YOUTUBE WATCH
+    ================================================= */
+
+    else if(
+      url.searchParams.has("v")
+    ){
+
+      videoId =
+        url.searchParams.get("v");
+
+    }
+
+
+    /* =================================================
+       YOUTU.BE
+    ================================================= */
+
+    else if(
+      url.hostname ===
+      "youtu.be"
+    ){
+
+      videoId =
+
+        url.pathname
+
+        .replace(
+          "/",
+          ""
+        )
+
+        .split(
+          "/"
+        )[0];
+
+    }
+
+
+    /* =================================================
+       YOUTUBE EMBED
+    ================================================= */
+
+    else if(
+      url.pathname.startsWith(
+        "/embed/"
+      )
+    ){
+
+      videoId =
+
+        url.pathname
+
+        .split(
+          "/embed/"
+        )[1]
+
+        .split(
+          "/"
+        )[0];
+
+    }
+
+
+    /* =================================================
+       HASIL
+    ================================================= */
+
+    if(videoId){
+
+      return `https://www.youtube.com/embed/${videoId}`;
+
+    }
+
+  }
+
+  catch(error){
+
+    console.error(
+      "URL YouTube tidak valid:",
+      link
     );
 
   }
 
-  if(link.includes("youtu.be/")){
 
-    return link.replace(
-      "youtu.be/",
-      "www.youtube.com/embed/"
-    );
+  return "";
 
-  }
-
-  return link;
 }
 
-/* ================= LOAD VIDEO ================= */
+
+
+/* =====================================================
+   LOAD VIDEO DARI FIREBASE
+===================================================== */
 
 async function loadVideo(){
 
   try{
 
-const q = query(
 
-  collection(db,"video_sekolah"),
+    /* =================================================
+       QUERY FIRESTORE
+    ================================================= */
 
-  orderBy("createdAt","desc")
+    const q =
+      query(
 
-);
+        collection(
+          db,
+          "video_sekolah"
+        ),
+
+        orderBy(
+          "createdAt",
+          "desc"
+        )
+
+      );
+
+
+    /* =================================================
+       AMBIL DATA
+    ================================================= */
 
     const snap =
-    await getDocs(q);
+      await getDocs(q);
 
-    /* ================= KOSONG ================= */
 
-    if(snap.empty){
+
+    /* =================================================
+       JIKA KOSONG
+    ================================================= */
+
+    if(
+      snap.empty
+    ){
 
       videoGrid.innerHTML = `
 
         <div class="video-error">
 
-          <i class="fa-solid fa-video-slash"></i>
+          <i
+            class="fa-solid fa-video-slash">
+          </i>
 
           <p>
             Belum ada video kegiatan
@@ -451,123 +731,314 @@ const q = query(
       `;
 
       return;
+
     }
 
-    /* ================= SEMUA VIDEO ================= */
+
+
+    /* =================================================
+       SEMUA VIDEO
+    ================================================= */
 
     const semuaVideo = [];
 
-    snap.forEach((docu)=>{
 
-      semuaVideo.push(
-        docu.data()
-      );
+    snap.forEach(
+      (docu) => {
 
-    });
+        semuaVideo.push(
+          docu.data()
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       JUMLAH VIDEO
+    ================================================= */
 
     /*
-      TOTAL VIDEO:
-      6 VIDEO
-      = 2 BARIS × 3 KOLOM
+
+       Maksimal 6 video
+
+       2 BARIS × 3 KOLOM
+
     */
 
     const jumlahVideo =
-Math.min(6, semuaVideo.length);
 
-    /* ================= HARI ================= */
+      Math.min(
+        6,
+        semuaVideo.length
+      );
+
+
+
+    /* =================================================
+       HITUNG HARI
+    ================================================= */
 
     const sekarang =
-    new Date();
+      new Date();
+
 
     const totalHari =
-    Math.floor(
 
-      sekarang.getTime() /
+      Math.floor(
 
-      (1000 * 60 * 60 * 24)
+        sekarang.getTime() /
 
-    );
+        (1000 * 60 * 60 * 24)
 
-    /* ================= PERIODE ================= */
+      );
+
+
+
+    /* =================================================
+       PERIODE 5 HARI
+    ================================================= */
 
     const periode =
-    Math.floor(totalHari / 5);
 
-    /* ================= INDEX ================= */
+      Math.floor(
+        totalHari / 5
+      );
+
+
+
+    /* =================================================
+       INDEX VIDEO
+    ================================================= */
 
     const startIndex =
 
-    (periode * jumlahVideo)
+      (
+        periode *
+        jumlahVideo
+      )
 
-    % semuaVideo.length;
+      %
 
-    /* ================= VIDEO TAMPIL ================= */
+      semuaVideo.length;
+
+
+
+    /* =================================================
+       VIDEO YANG DITAMPILKAN
+    ================================================= */
 
     const tampilVideo = [];
 
-    for(let i = 0; i < jumlahVideo; i++){
+
+    for(
+
+      let i = 0;
+
+      i < jumlahVideo;
+
+      i++
+
+    ){
 
       tampilVideo.push(
 
         semuaVideo[
-          (startIndex + i)
-          % semuaVideo.length
+
+          (
+            startIndex +
+            i
+          )
+
+          %
+
+          semuaVideo.length
+
         ]
 
       );
 
     }
 
-    /* ================= RENDER ================= */
+
+
+    /* =================================================
+       RENDER VIDEO
+    ================================================= */
 
     videoGrid.innerHTML = "";
 
-    tampilVideo.forEach((d)=>{
 
-      const youtubeLink =
-      convertYoutube(d.link);
 
-      videoGrid.innerHTML += `
+    tampilVideo.forEach(
+      (d) => {
 
-        <div class="video-card">
+
+        /* =============================================
+           LINK YOUTUBE
+        ============================================= */
+
+        const youtubeLink =
+          convertYoutube(
+            d.link
+          );
+
+
+
+        /* =============================================
+           JIKA LINK TIDAK VALID
+        ============================================= */
+
+        if(!youtubeLink){
+
+          return;
+
+        }
+
+
+
+        /* =============================================
+           JUDUL
+        ============================================= */
+
+        const judul =
+          d.judul ||
+          "Video Kegiatan Sekolah";
+
+
+
+        /* =============================================
+           DESKRIPSI
+        ============================================= */
+
+        const deskripsi =
+          d.deskripsi ||
+          "";
+
+
+
+        /* =============================================
+           CREATE CARD
+        ============================================= */
+
+        const card =
+          document.createElement(
+            "div"
+          );
+
+
+        card.className =
+          "video-card";
+
+
+
+        /* =============================================
+           VIDEO CARD
+        ============================================= */
+
+        card.innerHTML = `
 
           <div class="video-wrapper">
 
             <iframe
+
               src="${youtubeLink}"
-              title="${d.judul}"
+
+              title="${judul}"
+
+              loading="lazy"
+
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share
+              "
+
               allowfullscreen>
+
             </iframe>
 
           </div>
 
+
           <div class="video-content">
 
             <h3>
-              ${d.judul || "-"}
+              ${judul}
             </h3>
 
             <p>
-              ${d.deskripsi || ""}
+              ${deskripsi}
             </p>
 
           </div>
+
+        `;
+
+
+
+        /* =============================================
+           MASUKKAN KE GRID
+        ============================================= */
+
+        videoGrid.appendChild(
+          card
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       JIKA SEMUA LINK INVALID
+    ================================================= */
+
+    if(
+      videoGrid.children.length === 0
+    ){
+
+      videoGrid.innerHTML = `
+
+        <div class="video-error">
+
+          <i
+            class="fa-solid fa-circle-exclamation">
+          </i>
+
+          <p>
+            Link video tidak valid
+          </p>
 
         </div>
 
       `;
 
-    });
+    }
 
-  }catch(err){
 
-    console.log(err);
+  }
+
+  catch(err){
+
+    console.error(
+      "Gagal memuat video:",
+      err
+    );
+
 
     videoGrid.innerHTML = `
 
       <div class="video-error">
 
-        <i class="fa-solid fa-circle-exclamation"></i>
+        <i
+          class="fa-solid fa-circle-exclamation">
+        </i>
 
         <p>
           Video gagal dimuat
@@ -576,10 +1047,16 @@ Math.min(6, semuaVideo.length);
       </div>
 
     `;
+
   }
+
 }
 
-/* ================= RUN ================= */
+
+
+/* =====================================================
+   JALANKAN
+===================================================== */
 
 loadVideo();
 
@@ -588,3 +1065,4 @@ loadVideo();
 
 </body>
 </html>
+```
