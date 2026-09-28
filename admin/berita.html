@@ -3,364 +3,765 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Admin Berita Firebase</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <link rel="stylesheet" href="../assets/css/admin.css">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 :root{
---primary:#0b2b4d;
---secondary:#ff9800;
---bg:#f5f7fb;
---white:#fff;
---border:#e5e7eb;
+    --primary:#0b2b4d;
+    --secondary:#ff9800;
+    --bg:#f5f7fb;
+    --white:#fff;
+    --border:#e5e7eb;
 }
 
 .main{
-margin-left:260px;
-width:calc(100% - 260px);
-min-height:100vh;
+    margin-left:260px;
+    width:calc(100% - 260px);
+    min-height:100vh;
+    background:var(--bg);
 }
+
 .topbar{
-background:#fff;
-padding:16px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 12px rgba(0,0,0,.06);
-position:sticky;
-top:0;
-z-index:999;
+    background:#fff;
+    padding:16px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
+    position:sticky;
+    top:0;
+    z-index:999;
 }
-.topbar h1{font-size:20px;color:var(--primary)}
-.admin-box{display:flex;align-items:center;gap:10px}
+
+.topbar h1{
+    font-size:20px;
+    color:var(--primary);
+}
+
+.admin-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
 .admin-box img{
-width:40px;height:40px;border-radius:50%;
-object-fit:cover;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
 }
+
 .container{
-max-width:1200px;
-margin:auto;
-padding:25px;
+    max-width:1200px;
+    margin:auto;
+    padding:25px;
 }
+
 .title{
-font-size:36px;
-color:var(--primary);
-margin-bottom:10px;
+    font-size:36px;
+    color:var(--primary);
+    margin-bottom:10px;
 }
+
 .subtitle{
-color:#64748b;
-margin-bottom:25px;
+    color:#64748b;
+    margin-bottom:25px;
 }
-.form-box,.list-berita{
-background:#fff;
-padding:25px;
-border-radius:20px;
-box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+.form-box,
+.list-berita{
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
-.grid-2{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
+
+.form-group{
+    margin-bottom:20px;
 }
-.form-group{margin-bottom:20px}
+
 .form-group label{
-display:block;
-margin-bottom:8px;
-font-weight:600;
-color:var(--primary);
+    display:block;
+    margin-bottom:8px;
+    font-weight:700;
+    color:var(--primary);
 }
+
+.form-group small{
+    display:block;
+    margin-top:6px;
+    color:#64748b;
+    font-size:13px;
+}
+
 .form-group input,
 .form-group textarea{
-width:100%;
-padding:14px;
-border:1px solid var(--border);
-border-radius:12px;
-font-size:15px;
+    width:100%;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    font-size:15px;
+    font-family:inherit;
 }
+
 .form-group textarea{
-min-height:220px;
-resize:vertical;
+    min-height:300px;
+    resize:vertical;
+    line-height:1.7;
 }
+
 .form-group input:focus,
 .form-group textarea:focus{
-outline:none;
-border-color:var(--secondary);
-box-shadow:0 0 0 4px rgba(255,152,0,.15);
+    outline:none;
+    border-color:var(--secondary);
+    box-shadow:0 0 0 4px rgba(255,152,0,.15);
 }
+
+.grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
 .btn{
-border:none;
-background:var(--secondary);
-color:#fff;
-padding:15px 25px;
-border-radius:12px;
-font-weight:700;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
+    border:none;
+    background:var(--secondary);
+    color:#fff;
+    padding:15px 25px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
 }
-.btn:hover{background:#e68900}
-.list-berita{margin-top:30px}
-.table-wrapper{overflow-x:auto}
+
+.btn:hover{
+    background:#e68900;
+}
+
+.btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
+.list-berita{
+    margin-top:30px;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
 table{
-width:100%;
-border-collapse:collapse;
-min-width:700px;
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
 }
+
 thead{
-background:var(--primary);
-color:#fff;
+    background:var(--primary);
+    color:#fff;
 }
-th,td{
-padding:14px;
-border-bottom:1px solid #eee;
-text-align:left;
+
+th,
+td{
+    padding:14px;
+    border-bottom:1px solid #eee;
+    text-align:left;
 }
-tbody tr:hover{background:#f8fafc}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
 @media(max-width:992px){
-.main{margin-left:0;width:100%}
-.grid-2{grid-template-columns:1fr}
-.title{font-size:28px}
+
+    .main{
+        margin-left:0;
+        width:100%;
+    }
+
+    .grid-2{
+        grid-template-columns:1fr;
+    }
+
+    .title{
+        font-size:28px;
+    }
 }
+
 @media(max-width:768px){
-.container{padding:15px}
-.title{font-size:24px}
-.form-box,.list-berita{padding:18px}
-.btn{width:100%}
-.admin-box span{display:none}
+
+    .container{
+        padding:15px;
+    }
+
+    .title{
+        font-size:24px;
+    }
+
+    .form-box,
+    .list-berita{
+        padding:18px;
+    }
+
+    .admin-box span{
+        display:none;
+    }
 }
 </style>
 </head>
+
 <body>
+
 <div id="sidebar"></div>
 
 <div class="main">
 
-<div class="topbar">
-<h1>Berita Sekolah Admin</h1>
-<div class="admin-box">
-<img src="../image/Logo_transparent.png" alt="Logo">
-<span>Administrator</span>
+    <div class="topbar">
+
+        <h1>
+            <i class="fas fa-newspaper"></i>
+            Berita Sekolah Admin
+        </h1>
+
+        <div class="admin-box">
+            <img src="../image/Logo_transparent.png" alt="Logo">
+            <span>Administrator</span>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <h1 class="title">
+            Tambahkan Berita SMPN 20 Konawe Selatan
+        </h1>
+
+        <p class="subtitle">
+            Isi data berita sesuai petunjuk dan contoh yang tersedia.
+        </p>
+
+
+        <!-- FORM BERITA -->
+
+        <div class="form-box">
+
+            <!-- JUDUL -->
+
+            <div class="form-group">
+
+                <label for="judul">
+                    <i class="fas fa-heading"></i>
+                    Judul Berita
+                </label>
+
+                <input
+                    type="text"
+                    id="judul"
+                    placeholder="Contoh: SMPN 20 Konawe Selatan Raih Juara 1 Olimpiade Matematika"
+                >
+
+                <small>
+                    Tuliskan judul berita yang singkat, jelas, dan menarik.
+                </small>
+
+            </div>
+
+
+            <!-- TANGGAL + PENULIS -->
+
+            <div class="grid-2">
+
+                <div class="form-group">
+
+                    <label for="tanggal">
+                        <i class="fas fa-calendar"></i>
+                        Tanggal
+                    </label>
+
+                    <input
+                        type="date"
+                        id="tanggal"
+                    >
+
+                    <small>
+                        Pilih tanggal saat kegiatan atau peristiwa berlangsung.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="penulis">
+                        <i class="fas fa-user-edit"></i>
+                        Penulis
+                    </label>
+
+                    <input
+                        type="text"
+                        id="penulis"
+                        placeholder="Contoh: Komang Winastiyana, S.Pd., M.Pd., Gr."
+                    >
+
+                    <small>
+                        Tuliskan nama guru, admin, atau pihak yang membuat berita.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- KATEGORI -->
+
+            <div class="form-group">
+
+                <label for="kategori">
+                    <i class="fas fa-tags"></i>
+                    Kategori
+                </label>
+
+                <input
+                    type="text"
+                    id="kategori"
+                    placeholder="Contoh: Prestasi / Kegiatan / Pengumuman / Sekolah"
+                >
+
+                <small>
+                    Contoh kategori: Prestasi, Kegiatan, Pengumuman,
+                    Pendidikan, Sekolah, SPMB, atau lainnya.
+                </small>
+
+            </div>
+
+
+            <!-- GAMBAR -->
+
+            <div class="grid-2">
+
+                <div class="form-group">
+
+                    <label for="gambar1">
+                        <i class="fas fa-image"></i>
+                        URL Gambar 1
+                    </label>
+
+                    <input
+                        type="text"
+                        id="gambar1"
+                        placeholder="Contoh: image/berita/olimpiade-1.jpg"
+                    >
+
+                    <small>
+                        Masukkan alamat/path gambar utama berita.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="gambar2">
+                        <i class="fas fa-images"></i>
+                        URL Gambar 2
+                    </label>
+
+                    <input
+                        type="text"
+                        id="gambar2"
+                        placeholder="Contoh: image/berita/olimpiade-2.jpg"
+                    >
+
+                    <small>
+                        Masukkan gambar tambahan. Boleh dikosongkan.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- ISI BERITA -->
+
+            <div class="form-group">
+
+                <label for="isi">
+                    <i class="fas fa-align-left"></i>
+                    Isi Berita
+                </label>
+
+                <textarea
+                    id="isi"
+                    placeholder="CONTOH FORMAT PENULISAN BERITA:
+
+Paragraf 1:
+Tuliskan pembuka berita. Jelaskan apa kegiatan atau peristiwa yang terjadi, kapan, dan di mana kegiatan tersebut berlangsung.
+
+Paragraf 2:
+Jelaskan secara lebih rinci kegiatan yang dilaksanakan dan siapa saja yang mengikuti kegiatan tersebut.
+
+Paragraf 3:
+Tuliskan hal-hal penting yang terjadi selama kegiatan, termasuk hasil, prestasi, atau informasi utama yang ingin disampaikan.
+
+Paragraf 4:
+Tuliskan tanggapan atau harapan dari kepala sekolah, guru, siswa, atau pihak terkait.
+
+Paragraf 5:
+Tuliskan penutup berita dan harapan agar kegiatan tersebut dapat memberikan manfaat bagi warga sekolah."
+                ></textarea>
+
+                <small>
+                    <strong>Tips:</strong>
+                    Gunakan paragraf terpisah agar berita lebih mudah dibaca.
+                    Tekan Enter untuk membuat paragraf baru.
+                </small>
+
+            </div>
+
+
+            <!-- TOMBOL -->
+
+            <button class="btn" id="btnSimpan">
+
+                <i class="fas fa-save"></i>
+
+                Simpan Berita
+
+            </button>
+
+        </div>
+
+
+        <!-- DAFTAR BERITA -->
+
+        <div class="list-berita">
+
+            <h2 style="color:#0b2b4d;margin-bottom:20px;">
+                <i class="fas fa-list"></i>
+                Daftar Berita
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>No</th>
+                            <th>Judul</th>
+                            <th>Penulis</th>
+                            <th>Tanggal</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="listBerita">
+
+                        <tr>
+                            <td colspan="4">
+                                Memuat berita...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-</div>
 
-<div class="container">
 
-<h1 class="title">Tambahkan Berita SMPN 20 Konawe Selatan</h1>
-<p class="subtitle">Kelola berita sekolah langsung dari Firebase Firestore.</p>
-
-<div class="form-box">
-
-<div class="form-group">
-<label>Judul Berita</label>
-<input type="text" id="judul" placeholder="Masukkan judul berita">
-</div>
-
-<div class="grid-2">
-
-<div class="form-group">
-<label>Tanggal</label>
-<input type="date" id="tanggal">
-</div>
-
-<div class="form-group">
-<label>Penulis</label>
-<input type="text" id="penulis" placeholder="Nama penulis">
-</div>
-
-<div class="form-group">
-<label>Kategori</label>
-<input type="text" id="kategori" placeholder="Kegiatan">
-</div>
-
-<div class="form-group">
-<label>URL Gambar 1</label>
-<input type="text" id="gambar1">
-</div>
-
-<div class="form-group">
-<label>URL Gambar 2</label>
-<input type="text" id="gambar2">
-</div>
-
-</div>
-
-<div class="form-group">
-<label>Isi Berita</label>
-<textarea id="isi"></textarea>
-</div>
-
-<button class="btn" id="btnSimpan">
-<i class="fas fa-save"></i>
-Simpan Berita
-</button>
-
-</div>
-
-<div class="list-berita">
-<div class="table-wrapper">
-<table>
-<thead>
-<tr>
-<th>No</th>
-<th>Judul</th>
-<th>Penulis</th>
-<th>Tanggal</th>
-</tr>
-</thead>
-<tbody id="listBerita">
-<tr><td colspan="4">Memuat berita...</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-
-</div>
-</div>
 <script type="module" src="../assets/js/sidebar.js"></script>
+
 
 <script type="module">
 
 import { db } from "../assets/js/firebase.js";
 
 import {
-collection,
-doc,
-setDoc,
-getDocs,
-query,
-orderBy,
-serverTimestamp
+    collection,
+    doc,
+    setDoc,
+    getDocs,
+    query,
+    orderBy,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-const btnSimpan=document.getElementById("btnSimpan");
-const listBerita=document.getElementById("listBerita");
+
+const btnSimpan = document.getElementById("btnSimpan");
+const listBerita = document.getElementById("listBerita");
+
+
+/* ================================
+   MEMBUAT ID BERITA
+================================ */
 
 function buatId(judul){
-return judul.toLowerCase().trim()
-.replace(/\s+/g,"-")
-.replace(/[^a-z0-9-]/g,"");
+
+    return judul
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g,"-")
+        .replace(/[^a-z0-9-]/g,"");
+
 }
+
+
+/* ================================
+   MENAMPILKAN BERITA
+================================ */
 
 async function tampilBerita(){
 
-listBerita.innerHTML='<tr><td colspan="4">Memuat berita...</td></tr>';
+    listBerita.innerHTML = `
+        <tr>
+            <td colspan="4">
+                Memuat berita...
+            </td>
+        </tr>
+    `;
 
-try{
+    try{
 
-const q=query(
-collection(db,"berita"),
-orderBy("createdAt","desc")
-);
+        const q = query(
+            collection(db,"berita"),
+            orderBy("createdAt","desc")
+        );
 
-const snapshot=await getDocs(q);
+        const snapshot = await getDocs(q);
 
-listBerita.innerHTML="";
+        listBerita.innerHTML = "";
 
-if(snapshot.empty){
-listBerita.innerHTML='<tr><td colspan="4">Belum ada berita</td></tr>';
-return;
+        if(snapshot.empty){
+
+            listBerita.innerHTML = `
+                <tr>
+                    <td colspan="4">
+                        Belum ada berita
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        let no = 1;
+
+
+        snapshot.forEach((item)=>{
+
+            const data = item.data();
+
+            listBerita.innerHTML += `
+
+                <tr>
+
+                    <td>${no++}</td>
+
+                    <td>
+                        ${data.judul || "-"}
+                    </td>
+
+                    <td>
+                        ${data.penulis || "-"}
+                    </td>
+
+                    <td>
+                        ${data.tanggal || "-"}
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+    }catch(error){
+
+        console.error(error);
+
+        listBerita.innerHTML = `
+
+            <tr>
+
+                <td colspan="4" style="color:red">
+
+                    Gagal memuat berita
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
 }
 
-let no=1;
 
-snapshot.forEach((item)=>{
-
-const data=item.data();
-
-listBerita.innerHTML+=`
-<tr>
-<td>${no++}</td>
-<td>${data.judul||"-"}</td>
-<td>${data.penulis||"-"}</td>
-<td>${data.tanggal||"-"}</td>
-</tr>
-`;
-
-});
-
-}catch(error){
-
-console.error(error);
-
-listBerita.innerHTML=`
-<tr>
-<td colspan="4" style="color:red">
-Gagal memuat berita
-</td>
-</tr>
-`;
-
-}
-
-}
+/* ================================
+   SIMPAN BERITA
+================================ */
 
 btnSimpan.addEventListener("click",async()=>{
 
-const judul=document.getElementById("judul").value.trim();
-const tanggal=document.getElementById("tanggal").value;
-const penulis=document.getElementById("penulis").value.trim();
-const kategori=document.getElementById("kategori").value.trim();
-const gambar1=document.getElementById("gambar1").value.trim();
-const gambar2=document.getElementById("gambar2").value.trim();
+    const judul =
+        document.getElementById("judul").value.trim();
 
-const isi=document.getElementById("isi").value
-.split("\n")
-.map(i=>i.trim())
-.filter(i=>i!=='');
+    const tanggal =
+        document.getElementById("tanggal").value;
 
-if(!judul||!tanggal||!penulis||!kategori||isi.length===0){
-alert("Lengkapi semua data");
-return;
-}
+    const penulis =
+        document.getElementById("penulis").value.trim();
 
-try{
+    const kategori =
+        document.getElementById("kategori").value.trim();
 
-btnSimpan.disabled=true;
+    const gambar1 =
+        document.getElementById("gambar1").value.trim();
 
-btnSimpan.innerHTML='<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+    const gambar2 =
+        document.getElementById("gambar2").value.trim();
 
-await setDoc(
-doc(db,"berita",buatId(judul)),
-{
-judul,
-tanggal,
-penulis,
-kategori,
-gambar1,
-gambar2,
-isi,
-createdAt:serverTimestamp()
-}
-);
+    const isi =
+        document.getElementById("isi").value
+        .split("\n")
+        .map(i => i.trim())
+        .filter(i => i !== "");
 
-alert("Berita berhasil disimpan");
 
-document.getElementById("judul").value="";
-document.getElementById("tanggal").value="";
-document.getElementById("penulis").value="";
-document.getElementById("kategori").value="";
-document.getElementById("gambar1").value="";
-document.getElementById("gambar2").value="";
-document.getElementById("isi").value="";
+    /* VALIDASI */
 
-tampilBerita();
+    if(
+        !judul ||
+        !tanggal ||
+        !penulis ||
+        !kategori ||
+        isi.length === 0
+    ){
 
-}catch(error){
+        alert(
+            "Lengkapi Judul, Tanggal, Penulis, Kategori, dan Isi Berita."
+        );
 
-console.error(error);
-alert(error.message);
+        return;
 
-}
+    }
 
-btnSimpan.disabled=false;
 
-btnSimpan.innerHTML='<i class="fas fa-save"></i> Simpan Berita';
+    try{
+
+        btnSimpan.disabled = true;
+
+        btnSimpan.innerHTML = `
+            <i class="fas fa-spinner fa-spin"></i>
+            Menyimpan...
+        `;
+
+
+        await setDoc(
+
+            doc(
+                db,
+                "berita",
+                buatId(judul)
+            ),
+
+            {
+
+                judul,
+                tanggal,
+                penulis,
+                kategori,
+                gambar1,
+                gambar2,
+                isi,
+
+                createdAt:
+                    serverTimestamp()
+
+            }
+
+        );
+
+
+        alert(
+            "Berita berhasil disimpan!"
+        );
+
+
+        /* RESET FORM */
+
+        document.getElementById("judul").value = "";
+
+        document.getElementById("tanggal").value = "";
+
+        document.getElementById("penulis").value = "";
+
+        document.getElementById("kategori").value = "";
+
+        document.getElementById("gambar1").value = "";
+
+        document.getElementById("gambar2").value = "";
+
+        document.getElementById("isi").value = "";
+
+
+        tampilBerita();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Gagal menyimpan berita: " +
+            error.message
+        );
+
+    }
+
+
+    btnSimpan.disabled = false;
+
+    btnSimpan.innerHTML = `
+        <i class="fas fa-save"></i>
+        Simpan Berita
+    `;
 
 });
+
+
+/* ================================
+   LOAD BERITA
+================================ */
 
 tampilBerita();
 
