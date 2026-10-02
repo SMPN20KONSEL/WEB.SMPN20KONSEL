@@ -1,84 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- =========================
-       HALAMAN UTAMA
-  ========================== -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
   </url>
-
-
-  <!-- =========================
-       PROFIL
-  ========================== -->
-
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/profil.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
-
-
-  <!-- =========================
-       GURU
-  ========================== -->
-
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/profil_guru.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
-
-
-  <!-- =========================
-       GALERI
-  ========================== -->
-
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/galeri.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
-
-
-  <!-- =========================
-       BERITA
-  ========================== -->
-
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/berita.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
   </url>
-
-
-  <!-- =========================
-       KURIKULUM
-  ========================== -->
-
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/kurikulum.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
-
-
-  <!-- =========================
-       KONTAK
-  ========================== -->
-
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/kontak.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
-
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=upacara-pelepasan-purnabakti-bapak-i-nyoman-berata-spd-di-smpn-20-konawe-selatan</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=smpn-20-konawe-selatan-resmi-buka-spmb-20262027-pendaftaran-gratis-dan-tersedia-online-maupun-offline</loc>
+    <lastmod>2026-06-03</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=pelaksanaan-ujian-sekolah-berbasis-nasional-dengan-cbt-di-smpn-20-konawe-selatan-berjalan-lancar</loc>
+    <lastmod>2026-05-18</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=pramuka-smpn-20-konawe-selatan-tunjukkan-semangat-dan-kedisiplinan-dalam-perkemahan-akbar-hut-konawe-selatan-ke-23</loc>
+    <lastmod>2026-04-30</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=pesantren-kilat-dan-pasraman-smpn-20-konawe-selatan-menjadi-wadah-pembinaan-karakter-dan-spiritual-siswa-selama-bulan-ramadan</loc>
+    <lastmod>2026-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=puskesmas-sabulakoa-gelar-sosialisasi-kesehatan-bagi-siswa-smpn-20-konawe-selatan</loc>
+    <lastmod>2026-02-26</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=bupati-konawe-selatan-salurkan-bantuan-seragam-sekolah-untuk-siswa-smpn-20-konawe-selatan</loc>
+    <lastmod>2026-02-12</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=kegiatan-edukasi-anti-bullying-oleh-kapolsek-kalpospol-di-smp-negeri-wujud-kepedulian-terhadap-karakter-pelajar</loc>
+    <lastmod>2026-02-02</lastmod>
+  </url>
+  <url>
+    <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html?id=upacara-peringatan-hari-guru-nasional-di-smpn-20-konawe-selatan-berlangsung-khidmat</loc>
+    <lastmod>2025-11-25</lastmod>
+  </url>
 </urlset>
-=======
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/</loc></url></urlset>
