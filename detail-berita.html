@@ -5,174 +5,424 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"/>
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-<title>Detail Berita Sekolah</title>
+<!-- =====================================================
+     SEO DINAMIS
+     Nilai awal akan diganti setelah data Firebase dimuat
+===================================================== -->
 
-<!-- FONT AWESOME -->
+<title id="pageTitle">
+  Berita Sekolah | SMP Negeri 20 Konawe Selatan
+</title>
+
+<meta
+  id="metaDescription"
+  name="description"
+  content="Berita terbaru SMP Negeri 20 Konawe Selatan."
+>
+
+<meta
+  name="author"
+  content="SMP Negeri 20 Konawe Selatan"
+>
+
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large"
+>
+
+<!-- CANONICAL -->
 <link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  id="canonicalUrl"
+  rel="canonical"
+  href="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html"
+>
+
+<!-- =====================================================
+     OPEN GRAPH
+===================================================== -->
+
+<meta
+  property="og:type"
+  content="article"
+>
+
+<meta
+  property="og:site_name"
+  content="SMP Negeri 20 Konawe Selatan"
+>
+
+<meta
+  id="ogTitle"
+  property="og:title"
+  content="Berita Sekolah | SMP Negeri 20 Konawe Selatan"
+>
+
+<meta
+  id="ogDescription"
+  property="og:description"
+  content="Berita terbaru SMP Negeri 20 Konawe Selatan."
+>
+
+<meta
+  id="ogUrl"
+  property="og:url"
+  content="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html"
+>
+
+<meta
+  id="ogImage"
+  property="og:image"
+  content="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/Logo_transparent.png"
+>
+
+<meta
+  property="og:locale"
+  content="id_ID"
+>
+
+<!-- =====================================================
+     TWITTER / X CARD
+===================================================== -->
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+>
+
+<meta
+  id="twitterTitle"
+  name="twitter:title"
+  content="Berita Sekolah | SMP Negeri 20 Konawe Selatan"
+>
+
+<meta
+  id="twitterDescription"
+  name="twitter:description"
+  content="Berita terbaru SMP Negeri 20 Konawe Selatan."
+>
+
+<meta
+  id="twitterImage"
+  name="twitter:image"
+  content="https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/Logo_transparent.png"
+>
+
+<!-- =====================================================
+     NEWS ARTICLE STRUCTURED DATA
+===================================================== -->
+
+<script id="newsSchema" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "Berita Sekolah | SMP Negeri 20 Konawe Selatan",
+  "description": "Berita terbaru SMP Negeri 20 Konawe Selatan.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://smpn20konsel.github.io/WEB.SMPN20KONSEL/detail-berita.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "SMP Negeri 20 Konawe Selatan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SMP Negeri 20 Konawe Selatan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/Logo_transparent.png"
+    }
+  },
+  "image": [
+    "https://smpn20konsel.github.io/WEB.SMPN20KONSEL/image/Logo_transparent.png"
+  ]
+}
+</script>
+
+<!-- =====================================================
+     FAVICON
+===================================================== -->
 
 <link
-rel="stylesheet"
-href="assets/css/global.css">
+  rel="icon"
+  type="image/png"
+  href="image/Logo_transparent.png"
+>
+
+<!-- =====================================================
+     FONT AWESOME
+===================================================== -->
 
 <link
-rel="stylesheet"
-href="assets/css/header-footer.css">
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+>
+
+<!-- =====================================================
+     CSS
+===================================================== -->
+
 <link
-rel="stylesheet"
-href="assets/css/detail_berrita.css">
+  rel="stylesheet"
+  href="assets/css/global.css"
+>
+
+<link
+  rel="stylesheet"
+  href="assets/css/header-footer.css"
+>
+
+<link
+  rel="stylesheet"
+  href="assets/css/detail_berrita.css"
+>
+
 </head>
 
 <body>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <div id="header"></div>
 
-<!-- HERO -->
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
+
   <div class="hero-container">
 
-    <!-- TEXT -->
-<div class="hero-text">
+    <div class="hero-text">
 
-  <h1 class="hero-title">
+      <h1 class="hero-title">
 
-    <div class="title-icon">
-      <i class="fas fa-newspaper"></i>
+        <div class="title-icon">
+          <i class="fas fa-newspaper"></i>
+        </div>
+
+        <span id="judulBerita">
+          Memuat berita...
+        </span>
+
+      </h1>
+
     </div>
 
-    <span id="judulBerita">
-      Loading...
-    </span>
 
-  </h1>
-
-</div>
-
-    <!-- IMAGE -->
     <div class="hero-image">
+
       <div class="circle1"></div>
       <div class="circle2"></div>
 
       <img
         id="gambarBerita"
-        src=""
-        alt="Gambar Berita">
+        src="image/Logo_transparent.png"
+        alt="Berita SMP Negeri 20 Konawe Selatan"
+      >
 
       <div class="square"></div>
       <div class="dot"></div>
+
     </div>
 
   </div>
+
 </section>
 
 
-<!-- CONTENT -->
-<!-- ========================= CONTENT ========================= -->
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
 <section class="content">
 
-  <!-- ARTICLE -->
   <div class="article">
 
-    <div class="article-meta" id="metaBerita"></div>
-
-    <div id="isiBerita"></div>
-
-    <!-- SHARE -->
-<div class="share-box">
-
-  <h3>Bagikan Berita</h3>
-
-  <div class="share-icons">
-
-    <a
-      href="https://web.facebook.com/profile.php?id=61577266951408"
-      target="_blank"
+    <!-- META -->
+    <div
+      class="article-meta"
+      id="metaBerita"
     >
-      <i class="fab fa-facebook-f"></i>
-    </a>
+      Memuat informasi berita...
+    </div>
 
-    <a
-      href="https://www.tiktok.com/@smpn20konsel7"
-      target="_blank"
-    >
-      <i class="fab fa-tiktok"></i>
-    </a>
 
-    <a
-      href="https://www.instagram.com/smpn20konsel"
-      target="_blank"
-    >
-      <i class="fab fa-instagram"></i>
-    </a>
+    <!-- ISI BERITA -->
+    <div id="isiBerita">
+      <p>Memuat berita...</p>
+    </div>
 
-    <a
-      href="https://wa.me/qr/AXZTONE55Z4YK1"
-      target="_blank"
-    >
-      <i class="fab fa-whatsapp"></i>
-    </a>
 
-  </div>
+    <!-- =================================================
+         SHARE
+    ================================================== -->
 
-</div>
+    <div class="share-box">
 
-    <!-- KOMENTAR -->
+      <h3>Bagikan Berita</h3>
+
+      <div class="share-icons">
+
+        <a
+          href="https://web.facebook.com/profile.php?id=61577266951408"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@smpn20konsel7"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+
+        <a
+          href="https://www.instagram.com/smpn20konsel"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <a
+          href="https://wa.me/qr/AXZTONE55Z4YK1"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         KOMENTAR
+    ================================================== -->
+
     <div class="comment-box">
 
       <h3>Tinggalkan Komentar</h3>
 
       <div class="form-group">
-        <label>Nama</label>
-        <input type="text" id="nama" placeholder="Nama kamu">
+
+        <label for="nama">
+          Nama
+        </label>
+
+        <input
+          type="text"
+          id="nama"
+          placeholder="Nama kamu"
+        >
+
       </div>
+
 
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="Email kamu">
+
+        <label for="email">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email kamu"
+        >
+
       </div>
+
 
       <div class="form-group">
-        <label>Komentar</label>
-        <textarea id="pesan" placeholder="Tulis komentar..."></textarea>
+
+        <label for="pesan">
+          Komentar
+        </label>
+
+        <textarea
+          id="pesan"
+          placeholder="Tulis komentar..."
+        ></textarea>
+
       </div>
 
-      <button class="btn" id="btnKirim">
+
+      <button
+        class="btn"
+        id="btnKirim"
+      >
         Kirim Komentar
       </button>
 
-      <!-- LIST KOMENTAR -->
+
       <div id="listKomentar"></div>
 
     </div>
 
   </div>
 
-<aside class="sidebar">
 
-  <div class="sidebar-box">
+  <!-- ===================================================
+       SIDEBAR
+  ==================================================== -->
 
-    <h3>Popular Post</h3>
+  <aside class="sidebar">
 
-    <div id="popularPost">
+    <div class="sidebar-box">
 
-      <p>Memuat berita...</p>
+      <h3>Popular Post</h3>
+
+      <div id="popularPost">
+
+        <p>Memuat berita...</p>
+
+      </div>
 
     </div>
 
-  </div>
+  </aside>
 
-</aside>
 </section>
-<!-- FIREBASE -->
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <div id="footer"></div>
 
-<!-- ================= SCRIPT ================= -->
 
-<script type="module" src="assets/js/include.js"></script>
+<!-- =====================================================
+     INCLUDE
+===================================================== -->
+
+<script
+  type="module"
+  src="assets/js/include.js">
+</script>
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
 <script type="module">
 
 import { db }
@@ -193,425 +443,1152 @@ import {
   serverTimestamp,
 
   getDocs,
-  orderBy,
-  limit
+  orderBy
 
 }
 from
 "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-/* =========================
-   URL PARAM
-========================= */
+
+/* =====================================================
+   URL PARAMETER
+===================================================== */
 
 const params =
-new URLSearchParams(
-  window.location.search
-);
+  new URLSearchParams(
+    window.location.search
+  );
 
 const id =
-params.get("id");
+  params.get("id");
 
-/* =========================
+
+/* =====================================================
+   BASE URL
+===================================================== */
+
+const BASE_URL =
+  "https://smpn20konsel.github.io/WEB.SMPN20KONSEL/";
+
+
+/* =====================================================
    VALIDASI ID
-========================= */
+===================================================== */
 
 if(!id){
 
   document.body.innerHTML = `
-    <div style="padding:100px;text-align:center;font-family:Arial;">
-      <h1>ID berita tidak ditemukan</h1>
+
+    <div
+      style="
+        padding:100px 20px;
+        text-align:center;
+        font-family:Arial;
+      "
+    >
+
+      <h1>
+        ID berita tidak ditemukan
+      </h1>
+
+      <p>
+        Silakan kembali ke halaman berita.
+      </p>
+
+      <a href="${BASE_URL}berita.html">
+        Kembali ke Berita
+      </a>
+
     </div>
+
   `;
 
-  throw new Error("ID tidak ditemukan");
+  throw new Error("ID berita tidak ditemukan");
 
 }
 
-/* =========================
+
+/* =====================================================
    ESCAPE HTML
-========================= */
+===================================================== */
 
 function escapeHtml(text){
 
-  if(!text) return "";
+  if(text === undefined || text === null){
+    return "";
+  }
 
-  return text
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
-/* =========================
+
+/* =====================================================
    FORMAT TANGGAL
-========================= */
+===================================================== */
 
 function formatTanggalIndonesia(tanggalInput){
 
-  if(!tanggalInput) return "-";
+  if(!tanggalInput){
+    return "-";
+  }
 
   try{
 
-    if(tanggalInput.seconds){
-      tanggalInput = new Date(tanggalInput.seconds * 1000);
+    if(
+      typeof tanggalInput === "object" &&
+      tanggalInput.seconds
+    ){
+
+      tanggalInput =
+        new Date(
+          tanggalInput.seconds * 1000
+        );
+
     }else{
-      tanggalInput = new Date(tanggalInput);
+
+      tanggalInput =
+        new Date(tanggalInput);
+
     }
 
-    return tanggalInput.toLocaleDateString("id-ID",{
-      weekday:"long",
-      day:"numeric",
-      month:"long",
-      year:"numeric"
-    });
+    if(isNaN(tanggalInput.getTime())){
+      return "-";
+    }
+
+    return tanggalInput.toLocaleDateString(
+      "id-ID",
+      {
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
+    );
 
   }catch{
+
     return "-";
+
   }
 
 }
 
-/* =========================
+
+/* =====================================================
+   GET DATE ISO
+===================================================== */
+
+function getDateISO(tanggalInput){
+
+  try{
+
+    let tanggal;
+
+    if(
+      typeof tanggalInput === "object" &&
+      tanggalInput?.seconds
+    ){
+
+      tanggal =
+        new Date(
+          tanggalInput.seconds * 1000
+        );
+
+    }else{
+
+      tanggal =
+        new Date(tanggalInput);
+
+    }
+
+    if(isNaN(tanggal.getTime())){
+      return new Date().toISOString();
+    }
+
+    return tanggal.toISOString();
+
+  }catch{
+
+    return new Date().toISOString();
+
+  }
+
+}
+
+
+/* =====================================================
+   BUAT DESKRIPSI DARI ISI
+===================================================== */
+
+function buatDeskripsi(data){
+
+  let teks = "";
+
+  if(Array.isArray(data.isi)){
+
+    teks =
+      data.isi
+        .join(" ")
+        .replace(/\s+/g," ")
+        .trim();
+
+  }else{
+
+    teks =
+      String(data.isi || "")
+        .replace(/<[^>]*>/g," ")
+        .replace(/\s+/g," ")
+        .trim();
+
+  }
+
+  if(!teks){
+
+    teks =
+      `Berita terbaru SMP Negeri 20 Konawe Selatan tentang ${data.judul || "kegiatan sekolah"}.`;
+
+  }
+
+  if(teks.length > 160){
+
+    teks =
+      teks.substring(0,157).trim() + "...";
+
+  }
+
+  return teks;
+
+}
+
+
+/* =====================================================
+   UPDATE SEO
+===================================================== */
+
+function updateSEO(data){
+
+  const judul =
+    String(
+      data.judul ||
+      "Berita Sekolah"
+    ).trim();
+
+  const deskripsi =
+    buatDeskripsi(data);
+
+  const gambar =
+    data.gambar1 ||
+    `${BASE_URL}image/Logo_transparent.png`;
+
+  const url =
+    `${BASE_URL}detail-berita.html?id=${encodeURIComponent(id)}`;
+
+  const tanggalISO =
+    getDateISO(data.tanggal);
+
+  const penulis =
+    String(
+      data.penulis ||
+      "SMP Negeri 20 Konawe Selatan"
+    ).trim();
+
+
+  /* ===================================================
+     TITLE
+  =================================================== */
+
+  document.title =
+    `${judul} | SMP Negeri 20 Konawe Selatan`;
+
+
+  const pageTitle =
+    document.getElementById("pageTitle");
+
+  if(pageTitle){
+
+    pageTitle.textContent =
+      `${judul} | SMP Negeri 20 Konawe Selatan`;
+
+  }
+
+
+  /* ===================================================
+     DESCRIPTION
+  =================================================== */
+
+  document
+    .getElementById("metaDescription")
+    ?.setAttribute(
+      "content",
+      deskripsi
+    );
+
+
+  /* ===================================================
+     CANONICAL
+  =================================================== */
+
+  document
+    .getElementById("canonicalUrl")
+    ?.setAttribute(
+      "href",
+      url
+    );
+
+
+  /* ===================================================
+     OPEN GRAPH
+  =================================================== */
+
+  document
+    .getElementById("ogTitle")
+    ?.setAttribute(
+      "content",
+      judul
+    );
+
+  document
+    .getElementById("ogDescription")
+    ?.setAttribute(
+      "content",
+      deskripsi
+    );
+
+  document
+    .getElementById("ogUrl")
+    ?.setAttribute(
+      "content",
+      url
+    );
+
+  document
+    .getElementById("ogImage")
+    ?.setAttribute(
+      "content",
+      gambar
+    );
+
+
+  /* ===================================================
+     TWITTER
+  =================================================== */
+
+  document
+    .getElementById("twitterTitle")
+    ?.setAttribute(
+      "content",
+      judul
+    );
+
+  document
+    .getElementById("twitterDescription")
+    ?.setAttribute(
+      "content",
+      deskripsi
+    );
+
+  document
+    .getElementById("twitterImage")
+    ?.setAttribute(
+      "content",
+      gambar
+    );
+
+
+  /* ===================================================
+     NEWSARTICLE SCHEMA
+  =================================================== */
+
+  const schema = {
+
+    "@context":
+      "https://schema.org",
+
+    "@type":
+      "NewsArticle",
+
+    "headline":
+      judul,
+
+    "description":
+      deskripsi,
+
+    "datePublished":
+      tanggalISO,
+
+    "dateModified":
+      tanggalISO,
+
+    "mainEntityOfPage":{
+
+      "@type":
+        "WebPage",
+
+      "@id":
+        url
+
+    },
+
+    "author":{
+
+      "@type":
+        "Person",
+
+      "name":
+        penulis
+
+    },
+
+    "publisher":{
+
+      "@type":
+        "Organization",
+
+      "name":
+        "SMP Negeri 20 Konawe Selatan",
+
+      "logo":{
+
+        "@type":
+          "ImageObject",
+
+        "url":
+          `${BASE_URL}image/Logo_transparent.png`
+
+      }
+
+    },
+
+    "image":[
+      gambar
+    ]
+
+  };
+
+
+  document
+    .getElementById("newsSchema")
+    .textContent =
+      JSON.stringify(
+        schema,
+        null,
+        2
+      );
+
+}
+
+
+/* =====================================================
    LOAD BERITA
-========================= */
+===================================================== */
 
 async function loadBerita(){
 
   try{
 
-    const beritaRef = doc(db,"berita",id);
-    const beritaSnap = await getDoc(beritaRef);
+    const beritaRef =
+      doc(
+        db,
+        "berita",
+        id
+      );
 
-    if(beritaSnap.exists()){
-      tampilBerita(beritaSnap.data());
-    }else{
+    const beritaSnap =
+      await getDoc(
+        beritaRef
+      );
+
+
+    if(!beritaSnap.exists()){
+
       document.body.innerHTML = `
-        <div style="padding:100px;text-align:center;font-family:Arial;">
-          <h1>Berita tidak ditemukan</h1>
+
+        <div
+          style="
+            padding:100px 20px;
+            text-align:center;
+            font-family:Arial;
+          "
+        >
+
+          <h1>
+            Berita tidak ditemukan
+          </h1>
+
+          <p>
+            Berita yang kamu cari tidak tersedia.
+          </p>
+
+          <a href="${BASE_URL}berita.html">
+            Kembali ke Berita
+          </a>
+
         </div>
+
       `;
+
+      return;
+
     }
 
+
+    const data =
+      beritaSnap.data();
+
+
+    /* UPDATE SEO */
+    updateSEO(data);
+
+
+    /* TAMPILKAN BERITA */
+    tampilBerita(data);
+
+
   }catch(error){
-    console.log(error);
+
+    console.error(
+      "Gagal memuat berita:",
+      error
+    );
+
   }
 
 }
 
-/* =========================
-   TAMPIL BERITA (FIX ISI)
-========================= */
+
+/* =====================================================
+   TAMPIL BERITA
+===================================================== */
+
 function tampilBerita(data){
 
-  document.getElementById("judulBerita").textContent =
-  data.judul || "-";
+  /* JUDUL */
 
-  document.getElementById("metaBerita").innerHTML = `
-    ${formatTanggalIndonesia(data.tanggal)}
-    &nbsp; • &nbsp;
-    ${escapeHtml(data.penulis || "-")}
-  `;
+  document
+    .getElementById("judulBerita")
+    .textContent =
+      data.judul || "-";
+
+
+  /* META */
+
+  document
+    .getElementById("metaBerita")
+    .innerHTML = `
+
+      <i class="fas fa-calendar-alt"></i>
+
+      ${formatTanggalIndonesia(data.tanggal)}
+
+      &nbsp; • &nbsp;
+
+      <i class="fas fa-user"></i>
+
+      ${escapeHtml(
+        data.penulis ||
+        "SMP Negeri 20 Konawe Selatan"
+      )}
+
+      ${
+        data.kategori
+        ? `
+          &nbsp; • &nbsp;
+
+          <i class="fas fa-folder"></i>
+
+          ${escapeHtml(data.kategori)}
+        `
+        : ""
+      }
+
+    `;
+
+
+  /* GAMBAR UTAMA */
 
   const gambarHero =
-  document.getElementById("gambarBerita");
+    document.getElementById(
+      "gambarBerita"
+    );
+
+
+  const gambarDefault =
+    "image/Logo_transparent.png";
+
 
   gambarHero.src =
-  data.gambar1 ||
-  "https://via.placeholder.com/1000x700?text=Berita";
+    data.gambar1 ||
+    gambarDefault;
 
-  gambarHero.onerror = function(){
-    this.src = "https://via.placeholder.com/1000x700?text=Berita";
-  };
+
+  gambarHero.alt =
+    data.judul ||
+    "Berita SMP Negeri 20 Konawe Selatan";
+
+
+  gambarHero.onerror =
+    function(){
+
+      this.src =
+        gambarDefault;
+
+    };
+
+
+  /* ISI */
 
   let isiHtml = "";
 
-  /* =========================
-     ARRAY
-  ========================= */
 
   if(Array.isArray(data.isi)){
 
-    data.isi.forEach((item,index)=>{
+    data.isi.forEach(
+      (item,index)=>{
 
-      isiHtml += `
-        <p>${escapeHtml(item)}</p>
-      `;
+        if(item){
 
-      if(index === 2 && data.gambar2){
+          isiHtml += `
 
-        isiHtml += `
-          <img
-            src="${data.gambar2}"
-            class="gambar-tengah"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-        `;
+            <p>
+              ${escapeHtml(item)}
+            </p>
+
+          `;
+
+        }
+
+
+        if(
+          index === 2 &&
+          data.gambar2
+        ){
+
+          isiHtml += `
+
+            <figure>
+
+              <img
+                src="${escapeHtml(data.gambar2)}"
+                class="gambar-tengah"
+                loading="lazy"
+                alt="${escapeHtml(data.judul || "Dokumentasi berita")}"
+                onerror="this.parentElement.style.display='none'"
+              >
+
+              <figcaption>
+                Dokumentasi kegiatan
+                SMP Negeri 20 Konawe Selatan
+              </figcaption>
+
+            </figure>
+
+          `;
+
+        }
 
       }
+    );
 
-    });
+  }else{
 
-  }
+    if(data.isi){
 
-  /* =========================
-     STRING
-  ========================= */
+      isiHtml += `
 
-  else{
+        <p>
+          ${escapeHtml(data.isi)}
+        </p>
 
-    isiHtml += `
-      <p>${escapeHtml(data.isi || "")}</p>
-    `;
+      `;
+
+    }
+
 
     if(data.gambar2){
 
       isiHtml += `
-        <img
-          src="${data.gambar2}"
-          class="gambar-tengah"
-          loading="lazy"
-          onerror="this.style.display='none'"
-        >
+
+        <figure>
+
+          <img
+            src="${escapeHtml(data.gambar2)}"
+            class="gambar-tengah"
+            loading="lazy"
+            alt="${escapeHtml(data.judul || "Dokumentasi berita")}"
+            onerror="this.parentElement.style.display='none'"
+          >
+
+          <figcaption>
+            Dokumentasi kegiatan
+            SMP Negeri 20 Konawe Selatan
+          </figcaption>
+
+        </figure>
+
       `;
 
     }
 
   }
 
-  document.getElementById("isiBerita").innerHTML =
-  isiHtml;
+
+  if(!isiHtml){
+
+    isiHtml =
+      "<p>Isi berita belum tersedia.</p>";
+
+  }
+
+
+  document
+    .getElementById("isiBerita")
+    .innerHTML =
+      isiHtml;
 
 }
-/* =========================
+
+
+/* =====================================================
    KIRIM KOMENTAR
-========================= */
+===================================================== */
 
 const btnKirim =
-document.getElementById("btnKirim");
+  document.getElementById(
+    "btnKirim"
+  );
 
-btnKirim.addEventListener("click", async () => {
 
-  const nama =
-  document.getElementById("nama").value.trim();
+btnKirim.addEventListener(
+  "click",
+  async ()=>{
 
-  const email =
-  document.getElementById("email").value.trim();
+    const nama =
+      document
+        .getElementById("nama")
+        .value
+        .trim();
 
-  const pesan =
-  document.getElementById("pesan").value.trim();
 
-  if(!nama || !email || !pesan){
-    alert("Lengkapi semua data");
-    return;
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
+
+    const pesan =
+      document
+        .getElementById("pesan")
+        .value
+        .trim();
+
+
+    if(
+      !nama ||
+      !email ||
+      !pesan
+    ){
+
+      alert(
+        "Lengkapi semua data"
+      );
+
+      return;
+
+    }
+
+
+    try{
+
+      btnKirim.disabled =
+        true;
+
+      btnKirim.innerHTML =
+        "Mengirim...";
+
+
+      await addDoc(
+
+        collection(
+          db,
+          "komentar"
+        ),
+
+        {
+
+          beritaId:id,
+
+          nama,
+
+          email,
+
+          pesan,
+
+          createdAt:
+            serverTimestamp()
+
+        }
+
+      );
+
+
+      alert(
+        "Komentar berhasil dikirim"
+      );
+
+
+      document
+        .getElementById("nama")
+        .value = "";
+
+
+      document
+        .getElementById("email")
+        .value = "";
+
+
+      document
+        .getElementById("pesan")
+        .value = "";
+
+
+    }catch(error){
+
+      console.error(error);
+
+      alert(
+        "Gagal mengirim komentar"
+      );
+
+    }
+
+
+    btnKirim.disabled =
+      false;
+
+    btnKirim.innerHTML =
+      "Kirim Komentar";
+
   }
+);
 
-  try{
 
-    btnKirim.disabled = true;
-    btnKirim.innerHTML = "Mengirim...";
-
-    await addDoc(
-      collection(db,"komentar"),
-      {
-        beritaId:id,
-        nama,
-        email,
-        pesan,
-        createdAt: serverTimestamp()
-      }
-    );
-
-    alert("Komentar berhasil dikirim");
-
-    document.getElementById("nama").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("pesan").value = "";
-
-  }catch(error){
-    console.log(error);
-    alert("Gagal mengirim komentar");
-  }
-
-  btnKirim.disabled = false;
-  btnKirim.innerHTML = "Kirim Komentar";
-
-});
-
-/* =========================
-   TAMPIL KOMENTAR (ANTI ERROR FIX)
-========================= */
+/* =====================================================
+   TAMPIL KOMENTAR
+===================================================== */
 
 function tampilKomentar(){
 
   const listKomentar =
-  document.getElementById("listKomentar");
+    document.getElementById(
+      "listKomentar"
+    );
 
-  listKomentar.innerHTML = "<p>Memuat komentar...</p>";
 
-  const q = query(
-    collection(db,"komentar"),
-    where("beritaId","==",id)
-  );
+  listKomentar.innerHTML =
+    "<p>Memuat komentar...</p>";
 
-  onSnapshot(q, (snapshot) => {
 
-    listKomentar.innerHTML = "";
+  const q =
+    query(
 
-    if(snapshot.empty){
-      listKomentar.innerHTML = "<p>Belum ada komentar</p>";
-      return;
-    }
+      collection(
+        db,
+        "komentar"
+      ),
 
-    const list = [];
+      where(
+        "beritaId",
+        "==",
+        id
+      )
 
-    snapshot.forEach(doc => {
-      list.push(doc.data());
-    });
+    );
 
-    // urutkan manual (biar tidak perlu orderBy index)
-    list.sort((a,b)=>{
-      return (b.createdAt?.seconds || 0)
-           - (a.createdAt?.seconds || 0);
-    });
 
-    list.forEach(data => {
+  onSnapshot(
+    q,
 
-      let waktu = "Baru saja";
+    snapshot=>{
 
-      if(data.createdAt?.seconds){
-        waktu = new Date(
-          data.createdAt.seconds * 1000
-        ).toLocaleString("id-ID");
+      listKomentar.innerHTML =
+        "";
+
+
+      if(snapshot.empty){
+
+        listKomentar.innerHTML =
+          "<p>Belum ada komentar</p>";
+
+        return;
+
       }
 
-      listKomentar.innerHTML += `
-        <div class="komentar-item">
 
-          <div class="komentar-top">
-            <h5>${escapeHtml(data.nama)}</h5>
-            <span>${waktu}</span>
-          </div>
+      const list = [];
 
-          <p>${escapeHtml(data.pesan)}</p>
 
-        </div>
+      snapshot.forEach(
+        docSnap=>{
+
+          list.push(
+            docSnap.data()
+          );
+
+        }
+      );
+
+
+      list.sort(
+        (a,b)=>{
+
+          return (
+            b.createdAt?.seconds || 0
+          ) -
+          (
+            a.createdAt?.seconds || 0
+          );
+
+        }
+      );
+
+
+      list.forEach(
+        data=>{
+
+          let waktu =
+            "Baru saja";
+
+
+          if(
+            data.createdAt?.seconds
+          ){
+
+            waktu =
+              new Date(
+                data.createdAt.seconds * 1000
+              ).toLocaleString(
+                "id-ID"
+              );
+
+          }
+
+
+          listKomentar.innerHTML += `
+
+            <div class="komentar-item">
+
+              <div class="komentar-top">
+
+                <h5>
+                  ${escapeHtml(data.nama)}
+                </h5>
+
+                <span>
+                  ${escapeHtml(waktu)}
+                </span>
+
+              </div>
+
+              <p>
+                ${escapeHtml(data.pesan)}
+              </p>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+    },
+
+    error=>{
+
+      console.error(error);
+
+      listKomentar.innerHTML = `
+
+        <p style="color:red;">
+          Gagal memuat komentar
+        </p>
+
       `;
 
-    });
+    }
 
-  }, (error) => {
-
-    console.log(error);
-
-    listKomentar.innerHTML = `
-      <p style="color:red;">
-        Gagal memuat komentar
-      </p>
-    `;
-
-  });
+  );
 
 }
+
+
+/* =====================================================
+   POPULAR POST
+===================================================== */
 
 async function loadPopularPost(){
 
   const container =
-  document.getElementById("popularPost");
+    document.getElementById(
+      "popularPost"
+    );
 
-  if(!container) return;
+
+  if(!container){
+    return;
+  }
+
 
   try{
 
-    const q = query(
-      collection(db,"berita"),
-      orderBy("tanggal","desc")
-    );
+    const q =
+      query(
+
+        collection(
+          db,
+          "berita"
+        ),
+
+        orderBy(
+          "tanggal",
+          "desc"
+        )
+
+      );
+
 
     const snapshot =
-    await getDocs(q);
+      await getDocs(q);
 
-    let berita = [];
 
-    snapshot.forEach(docSnap=>{
+    const berita = [];
 
-      if(docSnap.id !== id){
 
-        berita.push({
-          id: docSnap.id,
-          ...docSnap.data()
-        });
+    snapshot.forEach(
+      docSnap=>{
+
+        if(docSnap.id !== id){
+
+          berita.push({
+
+            id:
+              docSnap.id,
+
+            ...docSnap.data()
+
+          });
+
+        }
 
       }
+    );
 
-    });
 
-    if(berita.length === 0){
+    if(
+      berita.length === 0
+    ){
 
       container.innerHTML =
-      "<p>Belum ada berita.</p>";
+        "<p>Belum ada berita.</p>";
 
       return;
 
     }
 
-    // indeks berubah setiap hari
+
     const hari =
-    Math.floor(Date.now() / 86400000);
+      Math.floor(
+        Date.now() /
+        86400000
+      );
+
 
     let html = "";
 
-    for(let i=0;i<3;i++){
+
+    const jumlah =
+      Math.min(
+        3,
+        berita.length
+      );
+
+
+    for(
+      let i=0;
+      i<jumlah;
+      i++
+    ){
 
       const item =
-      berita[(hari + i) % berita.length];
+        berita[
+          (hari + i) %
+          berita.length
+        ];
+
 
       html += `
 
-      <a href="detail-berita.html?id=${item.id}"
-         class="popular-post">
-
-        <img
-          src="${item.gambar1 || 'https://via.placeholder.com/150'}"
-          alt="${escapeHtml(item.judul)}"
-          loading="lazy"
+        <a
+          href="detail-berita.html?id=${encodeURIComponent(item.id)}"
+          class="popular-post"
         >
 
-        <div>
-          <h4>${escapeHtml(item.judul)}</h4>
+          <img
+            src="${escapeHtml(item.gambar1 || "image/Logo_transparent.png")}"
+            alt="${escapeHtml(item.judul || "Berita sekolah")}"
+            loading="lazy"
+            onerror="this.src='image/Logo_transparent.png'"
+          >
 
-          <span>
-            ${formatTanggalIndonesia(item.tanggal)}
-          </span>
-        </div>
+          <div>
 
-      </a>
+            <h4>
+              ${escapeHtml(item.judul || "-")}
+            </h4>
+
+            <span>
+              ${formatTanggalIndonesia(item.tanggal)}
+            </span>
+
+          </div>
+
+        </a>
 
       `;
 
     }
 
-    container.innerHTML = html;
+
+    container.innerHTML =
+      html;
+
 
   }catch(error){
 
-    console.log(error);
+    console.error(error);
 
     container.innerHTML =
-    "<p>Gagal memuat berita.</p>";
+      "<p>Gagal memuat berita.</p>";
 
   }
 
 }
 
-/* =========================
+
+/* =====================================================
    START
-========================= */
+===================================================== */
+
 loadBerita();
+
 tampilKomentar();
+
 loadPopularPost();
 
 </script>

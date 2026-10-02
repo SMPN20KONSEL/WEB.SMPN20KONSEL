@@ -1,32 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- =========================
+       HALAMAN UTAMA
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
+
+
+  <!-- =========================
+       PROFIL
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/profil.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
+
+  <!-- =========================
+       GURU
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/profil_guru.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
+
+
+  <!-- =========================
+       GALERI
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/galeri.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
+
+
+  <!-- =========================
+       BERITA
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/berita.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
+
+
+  <!-- =========================
+       KURIKULUM
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/kurikulum.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
+
+
+  <!-- =========================
+       KONTAK
+  ========================== -->
 
   <url>
     <loc>https://smpn20konsel.github.io/WEB.SMPN20KONSEL/kontak.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
