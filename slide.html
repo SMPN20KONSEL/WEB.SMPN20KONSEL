@@ -802,8 +802,7 @@ function speakFrom(slideI, from, token){
       Music.duck(false); advTimer = setTimeout(() => { if(token === tok) go(slideI + 1, true); }, s.gallery ? 2500 : 1800); return;
     }
     sentIdx = i;
-    /* di slide video, narasi tetap dibacakan tetapi tulisannya tidak ditampilkan */
-    cap.textContent = s.video ? '' : lines[i];
+    cap.textContent = lines[i];
     prog.style.transition = 'width .6s ease';
     prog.style.width = ((slideI + i / lines.length) / slides.length * 100) + '%';
     const u = new SpeechSynthesisUtterance(sp(lines[i]));
