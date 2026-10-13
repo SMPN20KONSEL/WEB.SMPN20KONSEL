@@ -1,238 +1,219 @@
-/* =========================================
+/* =========================================================
+   INDEX.JS
+   1. Hero slider (tombol, dots, auto-slide, swipe)
+   2. Load data SPMB dari Firebase (import dinamis, supaya
+      kalau Firebase gagal dimuat, slider tetap jalan)
+========================================================= */
+
+/* =========================================================
    HERO SLIDER
-========================================= */
+========================================================= */
 
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+const slider   = document.querySelector(".hero-slider");
+const slides   = document.querySelectorAll(".slide");
+const dots     = document.querySelectorAll(".dot");
+const nextBtn  = document.querySelector(".next");
+const prevBtn  = document.querySelector(".prev");
 
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
+const AUTO_DELAY = 5000;
 
 let currentSlide = 0;
+let timer = null;
 
-/* =========================
-   SHOW SLIDE
-========================= */
+/* ---------- Tampilkan slide ---------- */
 
 function showSlide(index){
 
-  slides.forEach(slide => {
-    slide.classList.remove("active");
-  });
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
 
-  dots.forEach(dot => {
-    dot.classList.remove("active");
-  });
-
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
+  if(slides[index]) slides[index].classList.add("active");
+  if(dots[index]) dots[index].classList.add("active");
 
 }
 
-/* =========================
-   NEXT
-========================= */
+/* ---------- Auto slide (bisa di-restart) ---------- */
+
+function startAuto(){
+  stopAuto();
+  if(slides.length > 1){
+    timer = setInterval(nextSlide, AUTO_DELAY);
+  }
+}
+
+function stopAuto(){
+  if(timer){
+    clearInterval(timer);
+    timer = null;
+  }
+}
+
+/* ---------- Next / Prev ---------- */
 
 function nextSlide(){
-
-  currentSlide++;
-
-  if(currentSlide >= slides.length){
-    currentSlide = 0;
-  }
-
+  currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
-
 }
-
-/* =========================
-   PREV
-========================= */
 
 function prevSlide(){
-
-  currentSlide--;
-
-  if(currentSlide < 0){
-    currentSlide = slides.length - 1;
-  }
-
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
   showSlide(currentSlide);
-
 }
 
-/* =========================
-   BUTTON EVENT
-========================= */
+/* ---------- Event: tombol ---------- */
 
-nextBtn.addEventListener("click", nextSlide);
+if(slides.length){
 
-prevBtn.addEventListener("click", prevSlide);
+  if(nextBtn){
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      startAuto();
+    });
+  }
 
-/* =========================
-   DOT CLICK
-========================= */
+  if(prevBtn){
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      startAuto();
+    });
+  }
 
-dots.forEach((dot,index)=>{
+  /* ---------- Event: dots ---------- */
 
-  dot.addEventListener("click", ()=>{
-
-    currentSlide = index;
-
-    showSlide(currentSlide);
-
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      currentSlide = index;
+      showSlide(currentSlide);
+      startAuto();
+    });
   });
 
-});
+  /* ---------- Swipe (sentuh) ---------- */
 
-/* =========================
-   AUTO SLIDE
-========================= */
+  if(slider){
 
-setInterval(() => {
+    let startX = 0;
+    let startY = 0;
 
-  nextSlide();
+    slider.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, { passive:true });
 
-}, 5000);
+    slider.addEventListener("touchend", (e) => {
 
-/* =========================
-   TOUCH SWIPE
-========================= */
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
 
-let startX = 0;
-let endX = 0;
+      // hanya dianggap swipe kalau gerakan horizontal dominan
+      if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)){
+        if(dx < 0){
+          nextSlide();
+        }else{
+          prevSlide();
+        }
+        startAuto();
+      }
 
-const slider = document.querySelector(".hero-slider");
-
-slider.addEventListener("touchstart",(e)=>{
-
-  startX = e.touches[0].clientX;
-
-});
-
-slider.addEventListener("touchend",(e)=>{
-
-  endX = e.changedTouches[0].clientX;
-
-  if(startX > endX + 50){
-
-    nextSlide();
+    }, { passive:true });
 
   }
 
-  else if(startX < endX - 50){
+  /* ---------- Hemat baterai: berhenti saat tab tidak aktif ---------- */
 
-    prevSlide();
+  document.addEventListener("visibilitychange", () => {
+    if(document.hidden){
+      stopAuto();
+    }else{
+      startAuto();
+    }
+  });
 
-  }
+  showSlide(currentSlide);
+  startAuto();
 
-});
-
-/* =========================================
-   FIREBASE
-========================================= */
-
-import { db }
-from "./firebase.js";
-
-import {
-  doc,
-  getDoc
 }
-from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-/* =========================================
-   LOAD SPMB
-========================================= */
+/* =========================================================
+   LOAD SPMB (FIREBASE)
+========================================================= */
+
+function hideSpmb(){
+  const section = document.getElementById("spmbSection");
+  if(section) section.style.display = "none";
+}
 
 async function loadPPDB(){
 
   try{
 
-    const ref = doc(db,"website","ppdb");
+    const { db } = await import("./firebase.js");
 
-    const snap = await getDoc(ref);
+    const { doc, getDoc } = await import(
+      "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js"
+    );
 
-    /* =========================
-       DATA TIDAK ADA
-    ========================= */
+    const snap = await getDoc(doc(db, "website", "ppdb"));
+
+    /* ---------- Data tidak ada ---------- */
 
     if(!snap.exists()){
-
-      document.getElementById("spmbSection").style.display = "none";
-
+      hideSpmb();
       return;
-
     }
 
     const d = snap.data();
 
-    /* =========================
-       STATUS NONAKTIF
-    ========================= */
+    /* ---------- Status nonaktif ---------- */
 
     if(d.is_active !== true){
-
-      document.getElementById("spmbSection").style.display = "none";
-
+      hideSpmb();
       return;
-
     }
 
-    /* =========================
-       TITLE
-    ========================= */
+    /* ---------- Judul & deskripsi ---------- */
 
-    document.getElementById("spmbTitle").innerText =
-    d.title || "-";
+    const titleEl = document.getElementById("spmbTitle");
+    const descEl  = document.getElementById("spmbDesc");
 
-    /* =========================
-       DESC
-    ========================= */
+    if(titleEl) titleEl.textContent = d.title || "-";
+    if(descEl)  descEl.textContent  = d.desc  || "-";
 
-    document.getElementById("spmbDesc").innerText =
-    d.desc || "-";
+    /* ---------- Timeline ---------- */
 
-    /* =========================
-       TIMELINE
-    ========================= */
+    const jadwalBox = document.getElementById("jadwalBox");
+    if(!jadwalBox) return;
 
-    const jadwalBox =
-    document.getElementById("jadwalBox");
+    jadwalBox.textContent = "";
 
-    jadwalBox.innerHTML = "";
+    if(Array.isArray(d.timeline)){
 
-    if(d.timeline){
+      const ICONS = {
+        user: "fa-user-check",
+        bullhorn: "fa-bullhorn"
+      };
 
       d.timeline.forEach(item => {
 
-        let icon = "fa-calendar-days";
+        const iconClass = ICONS[item.icon] || "fa-calendar-days";
 
-        if(item.icon === "user"){
-          icon = "fa-user-check";
-        }
+        const wrap = document.createElement("div");
+        wrap.className = "jadwal-item";
 
-        if(item.icon === "bullhorn"){
-          icon = "fa-bullhorn";
-        }
+        const icon = document.createElement("i");
+        icon.className = "fas " + iconClass;
 
-        jadwalBox.innerHTML += `
+        const text = document.createElement("div");
 
-          <div class="jadwal-item">
+        const h3 = document.createElement("h3");
+        h3.textContent = item.title || "";
 
-            <i class="fas ${icon}"></i>
+        const p = document.createElement("p");
+        p.textContent = item.date || "";
 
-            <div>
-
-              <h3>${item.title}</h3>
-
-              <p>${item.date}</p>
-
-            </div>
-
-          </div>
-
-        `;
+        text.append(h3, p);
+        wrap.append(icon, text);
+        jadwalBox.appendChild(wrap);
 
       });
 

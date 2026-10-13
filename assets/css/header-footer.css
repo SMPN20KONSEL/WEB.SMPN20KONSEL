@@ -1,3 +1,8 @@
+/* =========================================================
+   HEADER & FOOTER  (versi responsive)
+   --header-h diisi otomatis oleh include.js (tinggi header asli)
+========================================================= */
+
 /* ================= HEADER ================= */
 
 .app-header{
@@ -17,6 +22,7 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
   padding:8px 5%;
   font-size:14px;
 }
@@ -39,6 +45,7 @@
 
 .app-nav{
   background:rgba(0,0,0,0.6);
+  -webkit-backdrop-filter:blur(10px);
   backdrop-filter:blur(10px);
   display:flex;
   justify-content:space-between;
@@ -51,16 +58,20 @@
   display:flex;
   align-items:center;
   gap:12px;
+  min-width:0;
 }
 
 .app-logo img{
   width:60px;
+  height:auto;
+  flex-shrink:0;
 }
 
 .logo-text h2{
   font-size:18px;
   color:#fff;
   margin:0;
+  line-height:1.2;
 }
 
 .logo-text small{
@@ -85,6 +96,7 @@
   border:none;
   cursor:pointer;
   font-size:15px;
+  font-family:inherit;
   position:relative;
 }
 
@@ -130,6 +142,10 @@
   color:#222;
 }
 
+.app-dropdown-content a::after{
+  display:none;
+}
+
 .app-dropdown-content a:hover{
   background:#f2fff6;
   color:#00b894;
@@ -154,6 +170,10 @@
   background:#0984e3;
 }
 
+.app-btn::after{
+  display:none;
+}
+
 /* ================= HAMBURGER ================= */
 
 .app-toggle{
@@ -161,86 +181,72 @@
   font-size:26px;
   color:#fff;
   cursor:pointer;
+  background:none;
+  border:0;
+  padding:6px 8px;
+  line-height:1;
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:768px){
-
-  .app-toggle{
-    display:block;
-  }
-
-  .app-menu{
-    position:absolute;
-    top:100%;
-    left:0;
-    width:100%;
-    background:#021427;
-    flex-direction:column;
-    align-items:flex-start;
-    padding:15px;
-    display:none;
-  }
-
-  .app-menu.active{
-    display:flex;
-  }
-
-}
-/* FOOTER */
-.app-footer {
-  width: 100%;
-  background: #0f172a;
-  color: white;
-  padding: 20px;
-  border-top: 3px solid #2563eb;
-  font-family: Arial, sans-serif;
+.app-toggle:focus-visible,
+.app-dropbtn:focus-visible,
+.app-menu a:focus-visible{
+  outline:2px solid #00b894;
+  outline-offset:3px;
 }
 
-.app-footer-wrapper {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+/* ================= FOOTER ================= */
+
+.app-footer{
+  width:100%;
+  background:#0f172a;
+  color:white;
+  padding:20px;
+  border-top:3px solid #2563eb;
+  font-family:Arial, sans-serif;
+}
+
+.app-footer-wrapper{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
 }
 
 /* KIRI & KANAN */
 .app-footer-left,
-.app-footer-right {
-  display: flex;
-  gap: 14px;
+.app-footer-right{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
 }
 
-/* STYLE ICON */
-.app-footer a {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 18px;
-  color: white;
-  transition: 0.3s ease;
+/* ICON sosial (hanya yang memakai ikon, bukan semua link) */
+.app-footer-left a,
+.app-footer-right a{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:18px;
+  color:white;
+  transition:0.3s ease;
 }
 
 /* FACEBOOK */
-.app-footer a:has(.fa-facebook-f) {
-  background: #1877f2;
-}
+.app-footer a:has(.fa-facebook-f){ background:#1877f2; }
 
 /* TIKTOK */
-.app-footer a:has(.fa-tiktok) {
-  background: #000000;
-}
+.app-footer a:has(.fa-tiktok){ background:#000000; }
 
 /* INSTAGRAM */
-.app-footer a:has(.fa-instagram) {
-  background: linear-gradient(
+.app-footer a:has(.fa-instagram){
+  background:linear-gradient(
     45deg,
     #feda75,
     #fa7e1e,
@@ -251,36 +257,168 @@
 }
 
 /* YOUTUBE */
-.app-footer a:has(.fa-youtube) {
-  background: #ff0000;
-}
+.app-footer a:has(.fa-youtube){ background:#ff0000; }
 
 /* WHATSAPP */
-.app-footer a:has(.fa-whatsapp) {
-  background: #25d366;
-}
+.app-footer a:has(.fa-whatsapp){ background:#25d366; }
 
 /* HOVER */
-.app-footer a:hover {
-  transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.app-footer-left a:hover,
+.app-footer-right a:hover{
+  transform:translateY(-4px) scale(1.08);
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* TENGAH */
-.app-footer-center {
-  text-align: center;
+.app-footer-center{
+  text-align:center;
 }
 
-.app-footer-center p {
-  margin: 0;
-  color: #e2e8f0;
-  font-size: 15px;
+.app-footer-center p{
+  margin:0;
+  color:#e2e8f0;
+  font-size:15px;
+  line-height:1.6;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .app-footer-wrapper {
-    flex-direction: column;
-    gap: 20px;
+/* ================= RESPONSIVE ================= */
+
+/* Tablet & HP: menu jadi hamburger */
+@media (max-width:992px){
+
+  .app-toggle{
+    display:block;
+  }
+
+  .app-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:10px 5% 20px;
+    background:#021427;
+    max-height:calc(100vh - var(--header-h, 130px));
+    max-height:calc(100dvh - var(--header-h, 130px));
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+
+  .app-menu.active{
+    display:flex;
+  }
+
+  .app-menu > a,
+  .app-dropbtn{
+    width:100%;
+    text-align:left;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+
+  .app-menu a::after,
+  .app-dropbtn::after{
+    display:none;
+  }
+
+  /* Dropdown mengalir di dalam menu, tidak melayang */
+  .app-dropdown{
+    width:100%;
+  }
+
+  .app-dropdown-content{
+    position:static;
+    background:rgba(255,255,255,.06);
+    box-shadow:none;
+    border-radius:8px;
+    margin:6px 0;
+    min-width:0;
+  }
+
+  .app-dropdown-content a{
+    color:#fff;
+    padding:12px 16px;
+  }
+
+  .app-dropdown-content a:hover{
+    background:rgba(255,255,255,.1);
+    color:#00b894;
+  }
+
+  .app-menu > a.app-btn{
+    padding:12px 18px;
+    margin-top:14px;
+    text-align:center;
+    border-bottom:0;
+  }
+}
+
+/* HP */
+@media (max-width:768px){
+
+  .app-footer-wrapper{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .app-footer-left,
+  .app-footer-right{
+    justify-content:center;
+  }
+}
+
+/* HP kecil */
+@media (max-width:480px){
+
+  .app-topbar{
+    font-size:12px;
+    padding:6px 4%;
+  }
+
+  .app-nav{
+    padding:10px 4%;
+  }
+
+  .app-logo{
+    gap:8px;
+  }
+
+  .app-logo img{
+    width:44px;
+  }
+
+  .logo-text h2{
+    font-size:14px;
+  }
+
+  .logo-text small{
+    font-size:10px;
+  }
+
+  .app-footer{
+    padding:20px 14px;
+  }
+
+  .app-footer-center p{
+    font-size:13px;
+  }
+}
+
+/* HP sangat kecil */
+@media (max-width:360px){
+
+  .logo-text small{
+    display:none;
+  }
+
+  .app-footer-left a,
+  .app-footer-right a{
+    width:40px;
+    height:40px;
+    font-size:16px;
   }
 }
