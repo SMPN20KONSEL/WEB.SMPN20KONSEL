@@ -89,7 +89,8 @@ td:nth-child(2){font-family:var(--serif);font-size:1.25em;color:var(--gold)}
 .vframe{position:relative;overflow:hidden;background:#000}
 .slide.vid{display:block;padding:0}
 .slide.vid .vframe{position:absolute;inset:0;width:100%;height:100%}
-.vtitle{position:absolute;left:0;right:0;top:0;z-index:3;padding:20px clamp(18px,3vw,40px) 48px;background:linear-gradient(#000c,transparent);pointer-events:none;animation:vt 1s 8s forwards}
+/* Teks judul di atas video disembunyikan sepenuhnya (permintaan: video tanpa teks) */
+.vtitle{display:none}
 .vtitle h3{margin:6px 0 0;font-family:var(--serif);font-size:clamp(18px,2.4vw,34px);line-height:1.15;color:#fff}
 @keyframes vt{to{opacity:0}}
 .vfall{position:absolute;inset:0;z-index:4;display:grid;place-items:center;text-align:center;padding:24px;background:#000d;color:#fff}
@@ -323,19 +324,6 @@ async function initGalleryPool(){
     const extra = (await Promise.all(BASE_IMGS.map(probe))).filter(Boolean);
     galPool = galPool.concat(extra);
   }
-}
-
-/* ===== VIDEO ===== */
-function ytId(link){
-  if(!link) return '';
-  try{
-    const u = new URL(link);
-    if(u.pathname.startsWith('/shorts/')) return u.pathname.split('/shorts/')[1].split('/')[0];
-    if(u.searchParams.has('v')) return u.searchParams.get('v');
-    if(u.hostname === 'youtu.be') return u.pathname.replace('/', '').split('/')[0];
-    if(u.pathname.startsWith('/embed/')) return u.pathname.split('/embed/')[1].split('/')[0];
-  }catch(e){}
-  return '';
 }
 
 /* ===== SUSUN SLIDE ===== */
@@ -618,7 +606,7 @@ const Music = (() => {
       started = true; enabled = true;
       loadYT().then(ok => {
         if(!ok) return;
-        const pv = { loop: 1, playlist: MUSIC_ID, controls: 0, playsinline: 1, rel: 0, autoplay: 1 };
+        const pv = { loop: 1, playlist: MUSIC_ID, controls: 0, playsinline: 1, rel: 0, autoplay: 1, cc_load_policy: 0 };
         if(/^https?:/.test(location.protocol)) pv.origin = location.origin;
         try{
           mp = new YT.Player('mplayer', { videoId: MUSIC_ID, width: '240', height: '135', playerVars: pv,
@@ -640,7 +628,7 @@ const Music = (() => {
 })();
 
 /* ===== VIDEO & KONTROLER ===== */
-let idx = 0, playing = false, narOn = !!synth, tok = 0, sentIdx = 0, advTimer = null, musOn = false;
+let idx = 0, playing = false, narOn = !!synth, tok = 0, sentIdx = 0, advTimer = null;
 let yt = null, ytReady = false, ytPending = false, ytApi = null, vel = null, vFail = false, videoPhase = false, galTimer = null;
 
 function loadYT(){
@@ -659,6 +647,8 @@ function disposeVideo(){
   if(vel){ try{ vel.pause(); vel.removeAttribute('src'); vel.load(); }catch(e){} vel = null; }
   ytReady = false; ytPending = false; vFail = false;
 }
+/* parameter tambahan agar caption/anotasi YouTube tidak tampil */
+const NOCC = 'cc_load_policy=0&iv_load_policy=3';
 async function prepareVideo(s, slideI){
   const box = s.el.querySelector('.vframe');
   disposeVideo();
@@ -690,19 +680,28 @@ async function prepareVideo(s, slideI){
   const ok = await loadYT();
   if(slideI !== idx) return;
   if(!ok){
-    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&autoplay=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`;
+    box.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&autoplay=1&${NOCC}" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`;
     return;
   }
-  const pv = { rel: 0, modestbranding: 1, playsinline: 1 };
+  const pv = { rel: 0, modestbranding: 1, playsinline: 1, cc_load_policy: 0, iv_load_policy: 3 };
   if(v.auto){ pv.autoplay = 1; pv.mute = 1; }
   if(/^https?:/.test(location.protocol)) pv.origin = location.origin;
   const opt = { videoId: v.id, width: '100%', height: '100%', playerVars: pv };
   if(v.short) opt.host = 'https://www.youtube-nocookie.com';
   yt = new YT.Player('ytp', Object.assign(opt, {
     events: {
-      onReady: () => { ytReady = true; if(v.auto){ try{ yt.mute(); yt.playVideo(); }catch(x){} } if(ytPending){ ytPending = false; ytStart(); } },
+      onReady: () => {
+        ytReady = true;
+        try{ yt.unloadModule('captions'); yt.unloadModule('cc'); }catch(x){}
+        if(v.auto){ try{ yt.mute(); yt.playVideo(); }catch(x){} }
+        if(ytPending){ ytPending = false; ytStart(); }
+      },
       onStateChange: e => {
-        if(e.data === 1 && v.auto && !v.unm){ v.unm = 1; try{ yt.unMute(); yt.setVolume(100); }catch(x){} }
+        if(e.data === 1){
+          /* modul caption baru dimuat saat video mulai berputar, jadi matikan lagi di sini */
+          try{ yt.unloadModule('captions'); yt.unloadModule('cc'); }catch(x){}
+          if(v.auto && !v.unm){ v.unm = 1; try{ yt.unMute(); yt.setVolume(100); }catch(x){} }
+        }
         if(e.data === 0 && videoPhase) endVideo();
       },
       onError: e => {
@@ -712,7 +711,7 @@ async function prepareVideo(s, slideI){
           box.dataset.alt = 1;
           try{ yt.destroy(); }catch(x){}
           yt = null; ytReady = false; ytPending = false;
-          box.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&playsinline=1&autoplay=1" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>`;
+          box.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&playsinline=1&autoplay=1&${NOCC}" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>`;
           return;
         }
         vFail = true; failVideo(v.id);
@@ -803,7 +802,8 @@ function speakFrom(slideI, from, token){
       Music.duck(false); advTimer = setTimeout(() => { if(token === tok) go(slideI + 1, true); }, s.gallery ? 2500 : 1800); return;
     }
     sentIdx = i;
-    cap.textContent = lines[i];
+    /* di slide video, narasi tetap dibacakan tetapi tulisannya tidak ditampilkan */
+    cap.textContent = s.video ? '' : lines[i];
     prog.style.transition = 'width .6s ease';
     prog.style.width = ((slideI + i / lines.length) / slides.length * 100) + '%';
     const u = new SpeechSynthesisUtterance(sp(lines[i]));
@@ -947,7 +947,8 @@ const clean = t => String(t || '').replace(/#\S+/g, '').replace(/\s+/g, ' ').tri
            'Silakan simak videonya.'] }
   ];
   btn.textContent = 'Menyiapkan video…';
-  const metas = await limit(Promise.all(LIST.map(v => ytTitle(v.id))), 4500, LIST.map(() => null));
+  /* video dengan judul tetap (fixed) tidak perlu menanyakan judul ke YouTube */
+  const metas = await limit(Promise.all(LIST.map(v => v.fixed ? null : ytTitle(v.id))), 4500, LIST.map(() => null));
   const vids = LIST.map((v, i) => {
     const got = clean(metas[i] && metas[i].title);
     const t = v.fixed ? v.judul : (got || v.judul);
